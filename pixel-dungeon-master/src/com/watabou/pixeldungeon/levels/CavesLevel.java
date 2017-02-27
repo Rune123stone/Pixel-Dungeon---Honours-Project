@@ -39,7 +39,166 @@ public class CavesLevel extends RegularLevel {
 		
 		viewDistance = 6;
 	}
-	
+
+	private boolean[] cellMap = new boolean[LENGTH];
+	private float chanceOfAlive = 0.45f;
+	private int floodFillCount = 0;
+	private boolean[] finalMap = new boolean[LENGTH];
+
+	int deathLimit = 7;
+	int birthLimit = 2;
+
+
+
+	private void initialiseCellMap() {
+		for (int i = 0; i < LENGTH; i++) {
+			if (Math.random() < chanceOfAlive) {
+				cellMap[i] = true;
+			} else {
+				cellMap[i] = false;
+			}
+		}
+
+		for (int i = 0; i < 6; i++) {
+			try {
+				cellMap = doSimulationStep(cellMap);
+			} catch (Exception e) {}
+		}
+
+
+	}
+
+	private boolean[] doSimulationStep(boolean[] oldMap) throws Exception {
+		boolean[] newMap = new boolean[LENGTH];
+
+		for (int i = 0; i < oldMap.length; i++) {
+			int neighbours = CountAliveNeighbours(oldMap, i);
+
+			if (oldMap[i]) {
+				if (neighbours <= 2) {
+					newMap[i] = false;
+				} else {
+					newMap[i] = true;
+				}
+			} else {
+				if (neighbours >= 5) {
+					newMap[i] = true;
+				} else {
+					newMap[i] = false;
+				}
+			}
+		}
+		return newMap;
+	}
+
+	//finds the starting point for the flood-fill algorithm
+	private int findStartCell() throws Exception {
+		for (int i = 0; i < map.length; i++) {
+			if (cellMap[i]) {
+				int firstCellNeighbours = CountAliveNeighbours(cellMap, i);
+				int secondCellNeighbours = CountAliveNeighbours(cellMap, i + 1);
+				int thirdCellNeighbours = CountAliveNeighbours(cellMap, i - WIDTH);
+				int fourthCellNeighbours = CountAliveNeighbours(cellMap, i + WIDTH);
+				if (firstCellNeighbours == 8 && secondCellNeighbours == 8 && thirdCellNeighbours == 8 && fourthCellNeighbours == 8) {return i;}
+			}
+		}
+		return 0;
+	}
+
+	private void floodFill(int x, int y, boolean[][] TwoDimensionalCellMap) {
+
+		if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT ) {
+			return;
+		}
+
+		if (TwoDimensionalCellMap[x][y]) {
+			floodFillCount++;
+		} else {
+			return;
+		}
+
+		TwoDimensionalCellMap[x][y] = false;
+
+
+		floodFill(x, y - 1, TwoDimensionalCellMap);
+		floodFill(x, y + 1, TwoDimensionalCellMap);
+		floodFill(x  - 1, y, TwoDimensionalCellMap);
+		floodFill(x + 1, y, TwoDimensionalCellMap);
+	}
+//	private int CountAliveNeighbours(boolean[] cellMap, int mapWidth, int i) throws Exception {
+//
+//		boolean[][] map = Get2dMap(cellMap, mapWidth);
+//		int mapHeight = (map[0]).length;
+//		int x = i % mapWidth;
+//		int y = (int) Math.floor(i / mapWidth);
+//
+//		int count = 0;
+//
+//		if ( y > 0 ) { // if not on top row
+//			if (x > 0) count += ((map[x - 1][y - 1]) ? 1 : 0); // if not in left col
+//			count += ((map[x][y - 1]) ? 1 : 0);
+//			if (x < mapWidth - 1) count += ((map[x + 1][y - 1]) ? 1 : 0); // if not in right col
+//		}
+//
+//		if ( x > 0) count += ((map[x-1][y]) ? 1 : 0); // if not in left col
+//		if ( x < mapWidth - 1) count += ((map[x+1][y]) ? 1 : 0); // if not in right col
+//
+//		if ( y < mapHeight - 1 ) {
+//			if (x > 0) count += ((map[x - 1][y + 1]) ? 1 : 0); // if not in left col
+//			count += ((map[x][y + 1]) ? 1 : 0);
+//			if (x < mapWidth - 1) count += ((map[x + 1][y + 1]) ? 1 : 0); // if not in right col
+//		}
+//
+//		return count;
+//	}
+
+	private int CountAliveNeighbours(boolean[] cellMap, int i) throws Exception {
+		int count = 0;
+
+		boolean[][] map = Get2dMap(cellMap, WIDTH);
+		int x = i % WIDTH;
+		int y = (int)Math.floor(i / WIDTH);
+
+		for (int row = -1; row < 2; row++) {
+			for (int col = -1; col < 2; col++) {
+
+				int neighbour_x = x + col;
+				int neighbour_y = y + row;
+
+				if (row == 0 && col == 0) {}
+				else if (neighbour_x < 0 || neighbour_y < 0 || neighbour_x >= LENGTH || neighbour_y >= map[0].length || neighbour_x >= WIDTH || neighbour_y >= HEIGHT) {}
+				else if (map[neighbour_x][neighbour_y]) {count++;}
+				}
+			}
+		return count;
+	}
+
+	private boolean[][] Get2dMap(boolean[] cellMap, int mapWidth) throws Exception {
+
+		if (cellMap.length % mapWidth != 0)
+			throw new Exception("Map width does not divide map size.");
+
+		int mapHeight = cellMap.length / mapWidth;
+		boolean[][] map = new boolean[mapWidth][mapHeight];
+
+		for (int row = 0; row < mapHeight; row++) {
+			for (int col = 0; col < mapWidth; col++) {
+				map[col][row] = cellMap[ row*mapWidth + col ];
+			}
+		}
+
+		return map;
+	}
+
+	private void qualityCheck() throws Exception {
+		initialiseCellMap();
+		int startCell = findStartCell();
+		int x = startCell % WIDTH;
+		int y = (int) Math.floor(startCell / WIDTH);
+		boolean[][] TwoDCellMap = Get2dMap(cellMap, WIDTH);
+		floodFill(x, y, TwoDCellMap);
+	}
+
 	@Override
 	public String tilesTex() {
 		return Assets.TILES_CAVES;
@@ -51,6 +210,7 @@ public class CavesLevel extends RegularLevel {
 	}
 	
 	protected boolean[] water() {
+		System.out.println(Feeling.WATER);
 		return Patch.generate( feeling == Feeling.WATER ? 0.60f : 0.45f, 6 );
 	}
 	
@@ -67,43 +227,64 @@ public class CavesLevel extends RegularLevel {
 	
 	@Override
 	protected void decorate() {
-		
+		initialiseCellMap();
+
+		int startCell = 0;
+
+		try {
+			startCell = findStartCell();
+			System.out.println("Start Cell: " +startCell);
+			int x = startCell % WIDTH;
+			int y = (int)Math.floor(startCell / WIDTH);
+			boolean[][] TwoDCellMap = Get2dMap(cellMap, WIDTH);
+			floodFill(x, y, TwoDCellMap);
+
+			while (floodFillCount < 1100) {
+				System.out.println("Total empty in area: " +floodFillCount);
+				qualityCheck();
+			}
+
+		} catch (Exception e) {}
+
+
+
+
 		for (Room room : rooms) {
 			if (room.type != Room.Type.STANDARD) {
 				continue;
 			}
-			
+
 			if (room.width() <= 3 || room.height() <= 3) {
 				continue;
 			}
-			
+
 			int s = room.square();
-			
+
 			if (Random.Int( s ) > 8) {
 				int corner = (room.left + 1) + (room.top + 1) * WIDTH;
 				if (map[corner - 1] == Terrain.WALL && map[corner - WIDTH] == Terrain.WALL) {
-					map[corner] = Terrain.WALL;
+					//map[corner] = Terrain.WALL;
 				}
 			}
-			
+
 			if (Random.Int( s ) > 8) {
 				int corner = (room.right - 1) + (room.top + 1) * WIDTH;
 				if (map[corner + 1] == Terrain.WALL && map[corner - WIDTH] == Terrain.WALL) {
-					map[corner] = Terrain.WALL;
+					//map[corner] = Terrain.WALL;
 				}
 			}
-			
+
 			if (Random.Int( s ) > 8) {
 				int corner = (room.left + 1) + (room.bottom - 1) * WIDTH;
 				if (map[corner - 1] == Terrain.WALL && map[corner + WIDTH] == Terrain.WALL) {
-					map[corner] = Terrain.WALL;
+					//map[corner] = Terrain.WALL;
 				}
 			}
-			
+
 			if (Random.Int( s ) > 8) {
 				int corner = (room.right - 1) + (room.bottom - 1) * WIDTH;
 				if (map[corner + 1] == Terrain.WALL && map[corner + WIDTH] == Terrain.WALL) {
-					map[corner] = Terrain.WALL;
+					//map[corner] = Terrain.WALL;
 				}
 			}
 
@@ -113,34 +294,43 @@ public class CavesLevel extends RegularLevel {
 				}
 			}
 		}
-		
-		for (int i=WIDTH + 1; i < LENGTH - WIDTH; i++) {
-			if (map[i] == Terrain.EMPTY) {
-				int n = 0;
-				if (map[i+1] == Terrain.WALL) {
-					n++;
-				}
-				if (map[i-1] == Terrain.WALL) {
-					n++;
-				}
-				if (map[i+WIDTH] == Terrain.WALL) {
-					n++;
-				}
-				if (map[i-WIDTH] == Terrain.WALL) {
-					n++;
-				}
-				if (Random.Int( 6 ) <= n) {
-					map[i] = Terrain.EMPTY_DECO;
-				}
+
+
+		for (int i = 0; i < LENGTH; i++) {
+			if (cellMap[i]) {
+				map[i] = Terrain.EMPTY;
+			} else {
+				map[i] = Terrain.WALL;
 			}
 		}
-		
-		for (int i=0; i < LENGTH; i++) {
-			if (map[i] == Terrain.WALL && Random.Int( 12 ) == 0) {
-				map[i] = Terrain.WALL_DECO;
-			}
-		}
-		
+
+//		for (int i=WIDTH + 1; i < LENGTH - WIDTH; i++) {
+//			if (map[i] == Terrain.EMPTY) {
+//				int n = 0;
+//				if (map[i+1] == Terrain.WALL) {
+//					n++;
+//				}
+//				if (map[i-1] == Terrain.WALL) {
+//					n++;
+//				}
+//				if (map[i+WIDTH] == Terrain.WALL) {
+//					n++;
+//				}
+//				if (map[i-WIDTH] == Terrain.WALL) {
+//					n++;
+//				}
+//				if (Random.Int( 6 ) <= n) {
+//					map[i] = Terrain.EMPTY_DECO;
+//				}
+//			}
+//		}
+//
+//		for (int i=0; i < LENGTH; i++) {
+//			if (map[i] == Terrain.WALL && Random.Int( 12 ) == 0) {
+//				map[i] = Terrain.WALL_DECO;
+//			}
+//		}
+
 		while (true) {
 			int pos = roomEntrance.random();
 			if (pos != entrance) {
@@ -148,38 +338,38 @@ public class CavesLevel extends RegularLevel {
 				break;
 			}
 		}
-		
+
 		if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
 			return;
 		}
-		
-		for (Room r : rooms) {
-			if (r.type == Type.STANDARD) {
-				for (Room n : r.neigbours) {
-					if (n.type == Type.STANDARD && !r.connected.containsKey( n )) {
-						Rect w = r.intersect( n );
-						if (w.left == w.right && w.bottom - w.top >= 5) {
-							
-							w.top += 2;
-							w.bottom -= 1;
-							
-							w.right++;
-							
-							Painter.fill( this, w.left, w.top, 1, w.height(), Terrain.CHASM );
-							
-						} else if (w.top == w.bottom && w.right - w.left >= 5) {
-							
-							w.left += 2;
-							w.right -= 1;
-							
-							w.bottom++;
-							
-							Painter.fill( this, w.left, w.top, w.width(), 1, Terrain.CHASM );
-						}
-					}
-				}
-			}
-		}
+
+//		for (Room r : rooms) {
+//			if (r.type == Type.STANDARD) {
+//				for (Room n : r.neigbours) {
+//					if (n.type == Type.STANDARD && !r.connected.containsKey( n )) {
+//						Rect w = r.intersect( n );
+//						if (w.left == w.right && w.bottom - w.top >= 5) {
+//
+//							w.top += 2;
+//							w.bottom -= 1;
+//
+//							w.right++;
+//
+//							Painter.fill( this, w.left, w.top, 1, w.height(), Terrain.CHASM );
+//
+//						} else if (w.top == w.bottom && w.right - w.left >= 5) {
+//
+//							w.left += 2;
+//							w.right -= 1;
+//
+//							w.bottom++;
+//
+//							Painter.fill( this, w.left, w.top, w.width(), 1, Terrain.CHASM );
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 	
 	@Override
@@ -213,13 +403,13 @@ public class CavesLevel extends RegularLevel {
 			return super.tileDesc( tile );
 		}
 	}
-	
+
 	@Override
 	public void addVisuals( Scene scene ) {
 		super.addVisuals( scene );
 		addVisuals( this, scene );
 	}
-	
+
 	public static void addVisuals( Level level, Scene scene ) {
 		for (int i=0; i < LENGTH; i++) {
 			if (level.map[i] == Terrain.WALL_DECO) {

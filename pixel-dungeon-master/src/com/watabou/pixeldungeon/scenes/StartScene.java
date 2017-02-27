@@ -34,6 +34,7 @@ import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.GamesInProgress;
 import com.watabou.pixeldungeon.PixelDungeon;
+import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.Speck;
@@ -43,10 +44,7 @@ import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.utils.Utils;
-import com.watabou.pixeldungeon.windows.WndChallenges;
-import com.watabou.pixeldungeon.windows.WndClass;
-import com.watabou.pixeldungeon.windows.WndMessage;
-import com.watabou.pixeldungeon.windows.WndOptions;
+import com.watabou.pixeldungeon.windows.*;
 import com.watabou.utils.Callback;
 
 public class StartScene extends PixelScene {
@@ -142,6 +140,7 @@ public class StartScene extends PixelScene {
 				} else {
 					startNewGame();
 				}
+
 			}
 		};
 		add( btnNewGame );
@@ -298,16 +297,16 @@ public class StartScene extends PixelScene {
 	}
 	
 	private void startNewGame() {
-
 		Dungeon.hero = null;
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-		
+		WndBackgroundStory.setStoryTold(false);
 		if (PixelDungeon.intro()) {
 			PixelDungeon.intro( false );
 			Game.switchScene( IntroScene.class );
 		} else {
 			Game.switchScene( InterlevelScene.class );
-		}	
+		}
+
 	}
 	
 	@Override

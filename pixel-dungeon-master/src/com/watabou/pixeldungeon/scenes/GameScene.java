@@ -37,6 +37,7 @@ import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.blobs.Blob;
+import com.watabou.pixeldungeon.actors.hero.HeroBackground;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.BlobEmitter;
@@ -69,6 +70,7 @@ import com.watabou.pixeldungeon.ui.Toast;
 import com.watabou.pixeldungeon.ui.Toolbar;
 import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.GLog;
+import com.watabou.pixeldungeon.windows.WndBackgroundStory;
 import com.watabou.pixeldungeon.windows.WndBag.Mode;
 import com.watabou.pixeldungeon.windows.WndGame;
 import com.watabou.pixeldungeon.windows.WndBag;
@@ -247,23 +249,39 @@ public class GameScene extends PixelScene {
 			Chasm.heroLand();
 			break;
 		case DESCEND:
-			switch (Dungeon.depth) {
-			case 1:
-				WndStory.showChapter( WndStory.ID_SEWERS );
-				break;
-			case 6:
-				WndStory.showChapter( WndStory.ID_PRISON );
-				break;
-			case 11:
-				WndStory.showChapter( WndStory.ID_CAVES );
-				break;
-			case 16:
-				WndStory.showChapter( WndStory.ID_METROPOLIS );
-				break;
-			case 22:
-				WndStory.showChapter( WndStory.ID_HALLS );
-				break;
+//			switch (Dungeon.depth) {
+//			case 1:
+//				WndStory.showChapter( WndStory.ID_SEWERS );
+//				break;
+//			case 6:
+//				WndStory.showChapter( WndStory.ID_PRISON );
+//				break;
+//			case 11:
+//				WndStory.showChapter( WndStory.ID_CAVES );
+//				break;
+//			case 16:
+//				WndStory.showChapter( WndStory.ID_METROPOLIS );
+//				break;
+//			case 22:
+//				WndStory.showChapter( WndStory.ID_HALLS );
+//				break;
+//			}
+
+			switch (Dungeon.hero.heroBackground) {
+				case CRIMINAL:
+					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_CRIMINAL);
+					break;
+				case KNIGHT:
+					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_KNIGHT);
+					break;
+				case OUTSIDER:
+					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_OUTSIDER);
+					break;
+				case PEASANT:
+					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_PEASANT);
+					break;
 			}
+
 			if (Dungeon.hero.isAlive() && Dungeon.depth != 22) {
 				Badges.validateNoKilling();
 			}

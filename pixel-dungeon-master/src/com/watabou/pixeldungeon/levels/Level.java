@@ -80,9 +80,9 @@ public abstract class Level implements Bundlable {
 		WATER,
 		GRASS
 	};
-	
-	public static final int WIDTH = 32;
-	public static final int HEIGHT = 32;
+
+	public static final int WIDTH = 40;
+	public static final int HEIGHT = 40;
 	public static final int LENGTH = WIDTH * HEIGHT;
 	
 	public static final int[] NEIGHBOURS4 = {-WIDTH, +1, +WIDTH, -1}; 
@@ -146,7 +146,7 @@ public abstract class Level implements Bundlable {
 	public void create() {
 		
 		resizingNeeded = false;
-		
+
 		map = new int[LENGTH];
 		visited = new boolean[LENGTH];
 		Arrays.fill( visited, false );
@@ -194,7 +194,7 @@ public abstract class Level implements Bundlable {
 		
 		do {
 			Arrays.fill( map, feeling == Feeling.CHASM ? Terrain.CHASM : Terrain.WALL );
-			
+
 			pitRoomNeeded = pitNeeded;
 			weakFloorCreated = false;
 			
@@ -390,6 +390,7 @@ public abstract class Level implements Bundlable {
 		} while (!passable[cell] || Dungeon.visible[cell] || Actor.findChar( cell ) != null);
 		return cell;
 	}
+
 	
 	public int randomDestination() {
 		int cell;
@@ -495,9 +496,9 @@ public abstract class Level implements Bundlable {
 	
 	private void cleanWalls() {	
 		for (int i=0; i < LENGTH; i++) {
-			
+
 			boolean d = false;
-			
+
 			for (int j=0; j < NEIGHBOURS9.length; j++) {
 				int n = i + NEIGHBOURS9[j];
 				if (n >= 0 && n < LENGTH && map[n] != Terrain.WALL && map[n] != Terrain.WALL_DECO) {
@@ -505,10 +506,10 @@ public abstract class Level implements Bundlable {
 					break;
 				}
 			}
-			
+
 			if (d) {
 				d = false;
-				
+
 				for (int j=0; j < NEIGHBOURS9.length; j++) {
 					int n = i + NEIGHBOURS9[j];
 					if (n >= 0 && n < LENGTH && !pit[n]) {
@@ -517,7 +518,7 @@ public abstract class Level implements Bundlable {
 					}
 				}
 			}
-			
+
 			discoverable[i] = d;
 		}
 	}

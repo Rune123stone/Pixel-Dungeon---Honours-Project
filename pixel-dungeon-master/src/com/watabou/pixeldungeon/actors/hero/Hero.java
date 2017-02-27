@@ -132,7 +132,8 @@ public class Hero extends Char {
 	
 	private static final float TIME_TO_REST		= 1f;
 	private static final float TIME_TO_SEARCH	= 2f;
-	
+
+	public HeroBackground heroBackground = HeroBackground.selectBackground();
 	public HeroClass heroClass = HeroClass.ROGUE;
 	public HeroSubClass subClass = HeroSubClass.NONE;
 	
@@ -169,13 +170,14 @@ public class Hero extends Char {
 	public Hero() {
 		super();
 		name = "you";
-		
-		HP = HT = 20;
+
+		//change to 20 when done testing - makes hero invincible
+		HP = HT = 1000;
 		STR = STARTING_STR;
 		awareness = 0.1f;
-		
+
 		belongings = new Belongings( this );
-		
+
 		visibleEnemies = new ArrayList<Mob>();
 	}
 
@@ -192,10 +194,11 @@ public class Hero extends Char {
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle( bundle );
-		
+
+		heroBackground.storeInBundle( bundle);
 		heroClass.storeInBundle( bundle );
 		subClass.storeInBundle( bundle );
-		
+
 		bundle.put( ATTACK, attackSkill );
 		bundle.put( DEFENSE, defenseSkill );
 		
@@ -210,10 +213,11 @@ public class Hero extends Char {
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
 		super.restoreFromBundle( bundle );
-		
+
+		heroBackground = HeroBackground.restoreInBundle( bundle);
 		heroClass = HeroClass.restoreInBundle( bundle );
 		subClass = HeroSubClass.restoreInBundle( bundle );
-		
+
 		attackSkill = bundle.getInt( ATTACK );
 		defenseSkill = bundle.getInt( DEFENSE );
 		
@@ -232,6 +236,10 @@ public class Hero extends Char {
 	
 	public String className() {
 		return subClass == null || subClass == HeroSubClass.NONE ? heroClass.title() : subClass.title();
+	}
+
+	public String backgroundName() {
+		return heroBackground.title();
 	}
 	
 	public void live() {
@@ -404,7 +412,7 @@ public class Hero extends Char {
 			ready = false;
 			
 			if (curAction instanceof HeroAction.Move) {
-				
+
 				return actMove( (HeroAction.Move)curAction );
 				
 			} else 

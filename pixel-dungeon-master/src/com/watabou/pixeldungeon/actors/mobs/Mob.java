@@ -57,6 +57,9 @@ public abstract class Mob extends Char {
 	public AiState WANDERING	= new Wandering();
 	public AiState FLEEING		= new Fleeing();
 	public AiState PASSIVE		= new Passive();
+	//cams shit
+	public AiState FOLLOW = new Follow();
+	///
 	public AiState state = SLEEPEING;
 	
 	public Class<? extends CharSprite> spriteClass;
@@ -94,6 +97,8 @@ public abstract class Mob extends Char {
 			bundle.put( STATE, Fleeing.TAG );
 		} else if (state == PASSIVE) {
 			bundle.put( STATE, Passive.TAG );
+		} else if (state == FOLLOW) {
+			bundle.put( STATE, Follow.TAG);
 		}
 		bundle.put( TARGET, target );
 	}
@@ -114,6 +119,8 @@ public abstract class Mob extends Char {
 			this.state = FLEEING;
 		} else if (state.equals( Passive.TAG )) {
 			this.state = PASSIVE;
+		} else if (state.equals( Follow.TAG)) {
+			this.state = FOLLOW;
 		}
 
 		target = bundle.getInt( TARGET );
@@ -472,15 +479,15 @@ public abstract class Mob extends Char {
 			if (enemyInFOV && (justAlerted || Random.Int( distance( enemy ) / 2 + enemy.stealth() ) == 0)) {
 				
 				enemySeen = true;
-				
+
 				notice();
 				state = HUNTING;
 				target = enemy.pos;
 				
 			} else {
-				
+
 				enemySeen = false;
-				
+
 				int oldPos = pos;
 				if (target != -1 && getCloser( target )) {
 					spend( 1 / speed() );
@@ -519,7 +526,6 @@ public abstract class Mob extends Char {
 
 				int oldPos = pos;
 				if (target != -1 && getCloser( target )) {
-					
 					spend( 1 / speed() );
 					return moveSprite( oldPos,  pos );
 					
@@ -588,6 +594,31 @@ public abstract class Mob extends Char {
 		@Override
 		public String status() {
 			return Utils.format( "This %s is passive", name );
+		}
+	}
+
+	private class Follow implements AiState {
+		public static final String TAG = "FOLLOW";
+
+		@Override
+		public boolean act(boolean enemyInFOV, boolean justAlerted) {
+			target = Dungeon.hero.pos;
+
+			int oldPos = pos;
+			if (target != -1 && getCloser(target)) {
+				spend( 0.5f / speed());
+				return moveSprite(oldPos, pos);
+			} else {
+				spend( TICK );
+				target = pos;
+				return true;
+			}
+
+		}
+
+		@Override
+		public String status() {
+			return Utils.format("This %s is follow", name);
 		}
 	}
 }

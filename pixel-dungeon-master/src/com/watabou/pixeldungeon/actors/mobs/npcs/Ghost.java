@@ -19,6 +19,7 @@ package com.watabou.pixeldungeon.actors.mobs.npcs;
 
 import java.util.HashSet;
 
+import android.util.Log;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.tweeners.AlphaTweener;
 import com.watabou.pixeldungeon.Assets;
@@ -239,17 +240,17 @@ public class Ghost extends NPC {
 				reset();
 			}
 		}
-		
+
 		public static void spawn( SewerLevel level ) {
 			if (!spawned && Dungeon.depth > 1 && Random.Int( 5 - Dungeon.depth ) == 0) {
-				
+
 				Ghost ghost = new Ghost();
 				do {
 					ghost.pos = level.randomRespawnCell();
 				} while (ghost.pos == -1);
 				level.mobs.add( ghost );
 				Actor.occupyCell( ghost );
-				
+
 				spawned = true;
 				switch (Random.Int( 3 )) {
 				case 0:
@@ -263,22 +264,22 @@ public class Ghost extends NPC {
 					type = Type.CURSE;
 					break;
 				}
-				
+
 				given = false;
 				processed = false;
 				depth = Dungeon.depth;
-				
+
 				for (int i=0; i < 4; i++) {
 					Item another;
 					do {
 						another = (Weapon)Generator.random( Generator.Category.WEAPON );
 					} while (another instanceof MissileWeapon);
-					
+
 					if (weapon == null || another.level() > weapon.level()) {
 						weapon = (Weapon)another;
 					}
 				}
-				
+
 				if (Dungeon.isChallenged( Challenges.NO_ARMOR )) {
 					armor = (Armor)new ClothArmor().degrade();
 				} else {
@@ -290,7 +291,7 @@ public class Ghost extends NPC {
 						}
 					}
 				}
-				
+
 				weapon.identify();
 				armor.identify();
 			}

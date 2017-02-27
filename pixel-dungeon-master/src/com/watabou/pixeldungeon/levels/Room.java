@@ -34,7 +34,7 @@ import com.watabou.utils.Random;
 import com.watabou.utils.Rect;
 
 public class Room extends Rect implements Graph.Node, Bundlable {
-	
+
 	public HashSet<Room> neigbours = new HashSet<Room>();
 	public HashMap<Room, Door> connected = new HashMap<Room, Door>();
 	
@@ -114,7 +114,7 @@ public class Room extends Rect implements Graph.Node, Bundlable {
 		}
 		
 	}
-	
+
 	public void connect( Room room ) {
 		if (!connected.containsKey( room )) {	
 			connected.put( room, null );

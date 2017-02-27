@@ -17,6 +17,7 @@
  */
 package com.watabou.pixeldungeon.levels;
 
+import android.util.Log;
 import com.watabou.utils.Random;
 
 public class Patch {
@@ -32,13 +33,15 @@ public class Patch {
 		for (int i=0; i < Level.LENGTH; i++) {
 			off[i] = Random.Float() < seed;
 		}
-		
+
+
 		for (int i=0; i < nGen; i++) {
 			
 			for (int y=1; y < h-1; y++) {
 				for (int x=1; x < w-1; x++) {
 					
 					int pos = x + y * w;
+
 					int count = 0;
 					if (off[pos-w-1]) {
 						count++;
@@ -82,4 +85,5 @@ public class Patch {
 		
 		return off;
 	}
+
 }

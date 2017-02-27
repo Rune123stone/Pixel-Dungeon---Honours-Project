@@ -82,48 +82,48 @@ public class Tilemap extends Visual {
 		float y2 = y1 + cellH;
 		
 		for (int i=updated.top; i < updated.bottom; i++) {
-			
+
 			float x1 = cellW * updated.left;
 			float x2 = x1 + cellW;
-			
+
 			int pos = i * mapWidth + updated.left;
 			quads.position( 16 * pos );
-			
+
 			for (int j=updated.left; j < updated.right; j++) {
 
 				RectF uv = tileset.get( data[pos++] );
-			
+
 				vertices[0] 	= x1;
 				vertices[1] 	= y1;
-				
+
 				vertices[2]		= uv.left;
 				vertices[3]		= uv.top;
-				
+
 				vertices[4] 	= x2;
 				vertices[5] 	= y1;
-				
+
 				vertices[6]		= uv.right;
 				vertices[7]		= uv.top;
-				
+
 				vertices[8] 	= x2;
 				vertices[9] 	= y2;
-				
+
 				vertices[10]	= uv.right;
 				vertices[11]	= uv.bottom;
-				
+
 				vertices[12]	= x1;
 				vertices[13]	= y2;
-				
+
 				vertices[14]	= uv.left;
 				vertices[15]	= uv.bottom;
-				
+
 				quads.put( vertices );
-				
+
 				x1 = x2;
 				x2 += cellW;
-				
+
 			}
-			
+
 			y1 = y2;
 			y2 += cellH;
 		}

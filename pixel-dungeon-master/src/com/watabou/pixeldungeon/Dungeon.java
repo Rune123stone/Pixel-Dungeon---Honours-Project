@@ -32,6 +32,7 @@ import com.watabou.pixeldungeon.actors.buffs.Amok;
 import com.watabou.pixeldungeon.actors.buffs.Light;
 import com.watabou.pixeldungeon.actors.buffs.Rage;
 import com.watabou.pixeldungeon.actors.hero.Hero;
+import com.watabou.pixeldungeon.actors.hero.HeroBackground;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Imp;
@@ -163,63 +164,80 @@ public class Dungeon {
 		}
 		
 		Arrays.fill( visible, false );
-		
 		Level level;
-		switch (depth) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-			level = new SewerLevel();
-			break;
-		case 5:
-			level = new SewerBossLevel();
-			break;
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-			level = new PrisonLevel();
-			break;
-		case 10:
-			level = new PrisonBossLevel();
-			break;
-		case 11:
-		case 12:
-		case 13:
-		case 14:
-			level = new CavesLevel();
-			break;
-		case 15:
-			level = new CavesBossLevel();
-			break;
-		case 16:
-		case 17:
-		case 18:
-		case 19:
-			level = new CityLevel();
-			break;
-		case 20:
-			level = new CityBossLevel();
-			break;
-		case 21:
-			level = new LastShopLevel();
-			break;
-		case 22:
-		case 23:
-		case 24:
-			level = new HallsLevel();
-			break;
-		case 25:
-			level = new HallsBossLevel();
-			break;
-		case 26:
-			level = new LastLevel();
-			break;
-		default:
+
+		switch(hero.heroBackground) {
+			case CRIMINAL:
+				level = new CavesLevel();
+				break;
+			case OUTSIDER:
+				level = new CavesLevel();
+				break;
+			case KNIGHT:
+				level = new CavesLevel();
+				break;
+			case PEASANT:
+				level = new CavesLevel();
+				break;
+			default:
 			level = new DeadEndLevel();
 			Statistics.deepestFloor--;
 		}
+//		switch (depth) {
+//		case 1:
+//		case 2:
+//		case 3:
+//		case 4:
+//			level = new SewerLevel();
+//			break;
+//		case 5:
+//			level = new SewerBossLevel();
+//			break;
+//		case 6:
+//		case 7:
+//		case 8:
+//		case 9:
+//			level = new PrisonLevel();
+//			break;
+//		case 10:
+//			level = new PrisonBossLevel();
+//			break;
+//		case 11:
+//		case 12:
+//		case 13:
+//		case 14:
+//			level = new CavesLevel();
+//			break;
+//		case 15:
+//			level = new CavesBossLevel();
+//			break;
+//		case 16:
+//		case 17:
+//		case 18:
+//		case 19:
+//			level = new CityLevel();
+//			break;
+//		case 20:
+//			level = new CityBossLevel();
+//			break;
+//		case 21:
+//			level = new LastShopLevel();
+//			break;
+//		case 22:
+//		case 23:
+//		case 24:
+//			level = new HallsLevel();
+//			break;
+//		case 25:
+//			level = new HallsBossLevel();
+//			break;
+//		case 26:
+//			level = new LastLevel();
+//			break;
+//		default:
+//			level = new DeadEndLevel();
+//			Statistics.deepestFloor--;
+//		}
 		
 		level.create();
 		

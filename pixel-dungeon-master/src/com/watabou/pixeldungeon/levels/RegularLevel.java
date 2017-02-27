@@ -63,48 +63,48 @@ public abstract class RegularLevel extends Level {
 			do {
 				roomEntrance = Random.element( rooms );
 			} while (roomEntrance.width() < 4 || roomEntrance.height() < 4);
-			
+
 			do {
 				roomExit = Random.element( rooms );
 			} while (roomExit == roomEntrance || roomExit.width() < 4 || roomExit.height() < 4);
-	
+
 			Graph.buildDistanceMap( rooms, roomExit );
 			distance = roomEntrance.distance();
-			
+
 			if (retry++ > 10) {
 				return false;
 			}
-			
+
 		} while (distance < minDistance);
-		
+
 		roomEntrance.type = Type.ENTRANCE;
 		roomExit.type = Type.EXIT;
-		
+
 		HashSet<Room> connected = new HashSet<Room>();
 		connected.add( roomEntrance );
-		
+
 		Graph.buildDistanceMap( rooms, roomExit );
 		List<Room> path = Graph.buildPath( rooms, roomEntrance, roomExit );
-		
+
 		Room room = roomEntrance;
 		for (Room next : path) {
 			room.connect( next );
 			room = next;
 			connected.add( room );
 		}
-		
+
 		Graph.setPrice( path, roomEntrance.distance );
-		
+
 		Graph.buildDistanceMap( rooms, roomExit );
 		path = Graph.buildPath( rooms, roomEntrance, roomExit );
-		
+
 		room = roomEntrance;
 		for (Room next : path) {
 			room.connect( next );
 			room = next;
 			connected.add( room );
 		}
-		
+
 		int nConnected = (int)(rooms.size() * Random.Float( 0.5f, 0.7f ));
 		while (connected.size() < nConnected) {
 			Room cr = Random.element( connected );
@@ -114,7 +114,7 @@ public abstract class RegularLevel extends Level {
 				connected.add( or );
 			}
 		}
-		
+
 		if (Dungeon.shopOnLevel()) {
 			Room shop = null;
 			for (Room r : roomEntrance.connected.keySet()) {
@@ -123,26 +123,26 @@ public abstract class RegularLevel extends Level {
 					break;
 				}
 			}
-			
+
 			if (shop == null) {
 				return false;
 			} else {
 				shop.type = Room.Type.SHOP;
 			}
 		}
-		
+
 		specials = new ArrayList<Room.Type>( Room.SPECIALS );
 		if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
 			specials.remove( Room.Type.WEAK_FLOOR );
 		}
 		assignRoomType();
-		
+
 		paint();
 		paintWater();
 		paintGrass();
-		
+
 		placeTraps();
-		
+
 		return true;
 	}
 	
