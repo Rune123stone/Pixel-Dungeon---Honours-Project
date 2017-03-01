@@ -19,21 +19,28 @@
       <file leaf-file-name="CavesLevel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CavesLevel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="133" column="13" lean-forward="false" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
+            <state relative-caret-position="1385">
+              <caret line="414" column="49" lean-forward="true" selection-start-line="414" selection-start-column="49" selection-end-line="414" selection-end-column="49" />
               <folding>
-                <element signature="e#0#14611#0" expanded="true" />
+                <element signature="e#0#15329#0" expanded="true" />
                 <element signature="imports" expanded="true" />
+                <element signature="initializer##0;class#CavesLevel#0" expanded="false" />
                 <element signature="method#initialiseCellMap#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#CountAliveNeighbours#0;class#CavesLevel#0" expanded="false" />
                 <element signature="method#doSimulationStep#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#setBorderCells#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#Get2dMap#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#isBorderCell#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#buildCave#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#InitCavernMap#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#SeekCavern#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#FillCavern#0;class#CavesLevel#0" expanded="false" />
                 <element signature="method#CellAlive#0;class#CavesLevel#0" expanded="false" />
                 <element signature="method#findStartCell#0;class#CavesLevel#0" expanded="false" />
                 <element signature="method#floodFill#0;class#CavesLevel#0" expanded="false" />
-                <element signature="method#findCavern#0;class#CavesLevel#0" expanded="false" />
-                <element signature="e#6278#6372#0" expanded="false" />
-                <element signature="method#CountAliveNeighbours#0;class#CavesLevel#0" expanded="false" />
-                <element signature="method#Get2dMap#0;class#CavesLevel#0" expanded="false" />
                 <element signature="method#qualityCheck#0;class#CavesLevel#0" expanded="false" />
+                <element signature="method#fillSmallCaverns#0;class#CavesLevel#0" expanded="false" />
+                <element signature="e#8827#8921#0" expanded="false" />
                 <element signature="method#water#0;class#CavesLevel#0" expanded="false" />
                 <element signature="method#assignRoomType#0;class#CavesLevel#0" expanded="false" />
               </folding>
@@ -44,17 +51,13 @@
       <file leaf-file-name="Cavern.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Cavern.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="527">
+              <caret line="37" column="23" lean-forward="true" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
               <folding>
-                <element signature="e#138#139#0" expanded="true" />
-                <element signature="e#162#163#0" expanded="true" />
-                <element signature="e#188#189#0" expanded="true" />
-                <element signature="e#210#211#0" expanded="true" />
-                <element signature="e#238#239#0" expanded="true" />
-                <element signature="e#265#266#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#334#335#0" expanded="true" />
+                <element signature="e#370#371#0" expanded="true" />
+                <element signature="e#402#403#0" expanded="true" />
+                <element signature="e#450#451#0" expanded="true" />
+                <element signature="e#503#504#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,9 +66,26 @@
       <file leaf-file-name="Level.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Level.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="221">
               <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#0#27081#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#9025#9026#0" expanded="false" />
+                <element signature="e#9098#9099#0" expanded="false" />
+                <element signature="e#10056#10057#0" expanded="false" />
+                <element signature="e#10123#10124#0" expanded="false" />
+                <element signature="e#10153#10154#0" expanded="false" />
+                <element signature="e#10171#10172#0" expanded="false" />
+                <element signature="e#10201#10202#0" expanded="false" />
+                <element signature="e#10219#10220#0" expanded="false" />
+                <element signature="e#10653#10654#0" expanded="false" />
+                <element signature="e#10668#10669#0" expanded="false" />
+                <element signature="e#16937#16938#0" expanded="false" />
+                <element signature="e#16964#16965#0" expanded="false" />
+                <element signature="e#16990#16991#0" expanded="false" />
+                <element signature="e#17023#17024#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,11 +93,17 @@
       <file leaf-file-name="RegularLevel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
+            <state relative-caret-position="2397">
               <caret line="260" column="4" lean-forward="false" selection-start-line="260" selection-start-column="4" selection-end-line="260" selection-end-column="4" />
               <folding>
+                <element signature="e#0#15566#0" expanded="false" />
+                <element signature="imports" expanded="false" />
                 <element signature="method#assignRoomType#0;class#RegularLevel#0" expanded="false" />
                 <element signature="method#paintGrass#0;class#RegularLevel#0" expanded="false" />
+                <element signature="e#8138#8139#0" expanded="false" />
+                <element signature="e#8222#8223#0" expanded="false" />
+                <element signature="e#12393#12394#0" expanded="false" />
+                <element signature="e#12446#12447#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -86,9 +112,12 @@
       <file leaf-file-name="Patch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Patch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
+            <state relative-caret-position="578">
               <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-              <folding />
+              <folding>
+                <element signature="e#0#1943#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,8 +172,8 @@
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CameronCaveLevelAttempt.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Level.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CavesLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Cavern.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CavesLevel.java" />
       </list>
     </option>
   </component>
@@ -754,11 +783,13 @@
       <workItem from="1487970443829" duration="295000" />
       <workItem from="1488119493736" duration="12698000" />
       <workItem from="1488219240638" duration="9174000" />
+      <workItem from="1488267415868" duration="701000" />
+      <workItem from="1488297478488" duration="7702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62154000" />
+    <option name="totallyTimeSpent" value="70557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -785,10 +816,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7388949" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.111592636" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25266525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -807,7 +838,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1103,65 +1134,94 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
+        <state relative-caret-position="2397">
           <caret line="260" column="4" lean-forward="false" selection-start-line="260" selection-start-column="4" selection-end-line="260" selection-end-column="4" />
           <folding>
+            <element signature="e#0#15566#0" expanded="false" />
+            <element signature="imports" expanded="false" />
             <element signature="method#assignRoomType#0;class#RegularLevel#0" expanded="false" />
             <element signature="method#paintGrass#0;class#RegularLevel#0" expanded="false" />
+            <element signature="e#8138#8139#0" expanded="false" />
+            <element signature="e#8222#8223#0" expanded="false" />
+            <element signature="e#12393#12394#0" expanded="false" />
+            <element signature="e#12446#12447#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Patch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
+        <state relative-caret-position="578">
           <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-          <folding />
+          <folding>
+            <element signature="e#0#1943#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Level.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="221">
           <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#27081#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#9025#9026#0" expanded="false" />
+            <element signature="e#9098#9099#0" expanded="false" />
+            <element signature="e#10056#10057#0" expanded="false" />
+            <element signature="e#10123#10124#0" expanded="false" />
+            <element signature="e#10153#10154#0" expanded="false" />
+            <element signature="e#10171#10172#0" expanded="false" />
+            <element signature="e#10201#10202#0" expanded="false" />
+            <element signature="e#10219#10220#0" expanded="false" />
+            <element signature="e#10653#10654#0" expanded="false" />
+            <element signature="e#10668#10669#0" expanded="false" />
+            <element signature="e#16937#16938#0" expanded="false" />
+            <element signature="e#16964#16965#0" expanded="false" />
+            <element signature="e#16990#16991#0" expanded="false" />
+            <element signature="e#17023#17024#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Cavern.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="527">
+          <caret line="37" column="23" lean-forward="true" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
           <folding>
-            <element signature="e#138#139#0" expanded="true" />
-            <element signature="e#162#163#0" expanded="true" />
-            <element signature="e#188#189#0" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#238#239#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CavesLevel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="133" column="13" lean-forward="false" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
+        <state relative-caret-position="1385">
+          <caret line="414" column="49" lean-forward="true" selection-start-line="414" selection-start-column="49" selection-end-line="414" selection-end-column="49" />
           <folding>
-            <element signature="e#0#14611#0" expanded="true" />
+            <element signature="e#0#15329#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="initializer##0;class#CavesLevel#0" expanded="false" />
             <element signature="method#initialiseCellMap#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#CountAliveNeighbours#0;class#CavesLevel#0" expanded="false" />
             <element signature="method#doSimulationStep#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#setBorderCells#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#Get2dMap#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#isBorderCell#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#buildCave#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#InitCavernMap#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#SeekCavern#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#FillCavern#0;class#CavesLevel#0" expanded="false" />
             <element signature="method#CellAlive#0;class#CavesLevel#0" expanded="false" />
             <element signature="method#findStartCell#0;class#CavesLevel#0" expanded="false" />
             <element signature="method#floodFill#0;class#CavesLevel#0" expanded="false" />
-            <element signature="method#findCavern#0;class#CavesLevel#0" expanded="false" />
-            <element signature="e#6278#6372#0" expanded="false" />
-            <element signature="method#CountAliveNeighbours#0;class#CavesLevel#0" expanded="false" />
-            <element signature="method#Get2dMap#0;class#CavesLevel#0" expanded="false" />
             <element signature="method#qualityCheck#0;class#CavesLevel#0" expanded="false" />
+            <element signature="method#fillSmallCaverns#0;class#CavesLevel#0" expanded="false" />
+            <element signature="e#8827#8921#0" expanded="false" />
             <element signature="method#water#0;class#CavesLevel#0" expanded="false" />
             <element signature="method#assignRoomType#0;class#CavesLevel#0" expanded="false" />
           </folding>

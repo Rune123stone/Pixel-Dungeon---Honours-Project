@@ -48,12 +48,14 @@ public class CavesLevel extends RegularLevel {
 	private float chanceOfAlive = 0.45f;
 	private int floodFillCount = 0;
 	private ArrayList<Cavern> caverns;
+	private int minCavernSize = 30;
 
-	int deathLimit = 7;
-	int birthLimit = 2;
+	private int deathLimit = 2;
+	private int birthLimit = 5;
 
-
-
+	/*
+	The following code is responsible for initialising the cave map.
+	 */
 	private void initialiseCellMap() {
 		for (int i = 0; i < LENGTH; i++) {
 			if (Math.random() < chanceOfAlive) {
@@ -70,6 +72,27 @@ public class CavesLevel extends RegularLevel {
 		}
 	}
 
+	private int CountAliveNeighbours(boolean[] cellMap, int i) throws Exception {
+		int count = 0;
+
+		boolean[][] map = Get2dMap(cellMap, WIDTH);
+		int x = i % WIDTH;
+		int y = (int)Math.floor(i / WIDTH);
+
+		for (int row = -1; row < 2; row++) {
+			for (int col = -1; col < 2; col++) {
+
+				int neighbour_x = x + col;
+				int neighbour_y = y + row;
+
+				if (row == 0 && col == 0) {}
+				else if (neighbour_x < 0 || neighbour_y < 0 || neighbour_x >= LENGTH || neighbour_y >= map[0].length || neighbour_x >= WIDTH || neighbour_y >= HEIGHT) {}
+				else if (map[neighbour_x][neighbour_y]) {count++;}
+			}
+		}
+		return count;
+	}
+
 	private boolean[] doSimulationStep(boolean[] oldMap) throws Exception {
 		boolean[] newMap = new boolean[LENGTH];
 
@@ -77,13 +100,13 @@ public class CavesLevel extends RegularLevel {
 			int neighbours = CountAliveNeighbours(oldMap, i);
 
 			if (oldMap[i]) {
-				if (neighbours <= 2) {
+				if (neighbours <= deathLimit) {
 					newMap[i] = false;
 				} else {
 					newMap[i] = true;
 				}
 			} else {
-				if (neighbours >= 5) {
+				if (neighbours >= birthLimit) {
 					newMap[i] = true;
 				} else {
 					newMap[i] = false;
@@ -93,12 +116,60 @@ public class CavesLevel extends RegularLevel {
 		return newMap;
 	}
 
-	private boolean CellAlive(int x, int y) {
-		// Gets the value of a cell from the 1d array given 2d coordinates
-
-		return ( cellMap[ (y * HEIGHT) + x ] );
+	private void setBorderCells() {
+		for (int i = 0; i < cellMap.length; i++) {
+			int x = i % WIDTH;
+			int y = (int)Math.floor(i / WIDTH);
+			if (isBorderCell(x, y)) {
+				cellMap[i] = false;
+			}
+		}
 	}
 
+	private boolean[][] Get2dMap(boolean[] cellMap, int mapWidth) throws Exception {
+
+		if (cellMap.length % mapWidth != 0)
+			throw new Exception("Map width does not divide map size.");
+
+		int mapHeight = cellMap.length / mapWidth;
+		boolean[][] map = new boolean[mapWidth][mapHeight];
+
+		for (int row = 0; row < mapHeight; row++) {
+			for (int col = 0; col < mapWidth; col++) {
+				map[col][row] = cellMap[ row*mapWidth + col ];
+			}
+		}
+
+		return map;
+	}
+
+	private boolean isBorderCell(int x, int y) {
+		return ((x < WIDTH && y == 0) || (x == 0 && y < HEIGHT) || (x == WIDTH - 1 && y < HEIGHT) || (x < WIDTH && y == HEIGHT - 1));
+	}
+
+	private void buildCave() {
+		try {
+			int startCell = findStartCell();
+			System.out.println("Start Cell: " +startCell);
+			int x = startCell % WIDTH;
+			int y = (int)Math.floor(startCell / WIDTH);
+			boolean[][] TwoDCellMap = Get2dMap(cellMap, WIDTH);
+			floodFill(x, y, TwoDCellMap);
+
+			while (floodFillCount < 800) {
+				qualityCheck();
+				System.out.println("Total empty in area: " +floodFillCount);
+			}
+
+			InitCavernMap();
+			fillSmallCaverns();
+			setBorderCells();
+		} catch (Exception e) {}
+	}
+
+	/*
+	The following code is responsible for finding caverns within the cave.
+	 */
 	private void InitCavernMap() {
 
 		System.out.println("Initializing cavern map...");
@@ -143,7 +214,6 @@ public class CavesLevel extends RegularLevel {
 			Cavern check = caverns.get(i);
 
 			if (check.getSize() > primarySize) {
-
 				primaryIndex = i;
 				primarySize = check.getSize();
 			}
@@ -161,10 +231,12 @@ public class CavesLevel extends RegularLevel {
 			return;
 
 		// Stop condition: when this cell is not both alive and unassigned (-1)
-		if (cavernMap[x][y] != -1)
+		if (cavernMap[x][y] != -1) {
 			return;
+		}
 
 		cavernMap[x][y] = cavernIndex;
+		(caverns.get(cavernIndex)).addCavernCells(x, y);
 		(caverns.get(cavernIndex)).Grow();
 
 		FillCavern(x - 1, y, cavernIndex);
@@ -178,22 +250,23 @@ public class CavesLevel extends RegularLevel {
 		FillCavern(x + 1, y - 1, cavernIndex);
 		FillCavern(x + 1, y + 1, cavernIndex);
 	}
-//	private void FillNeighbour(int x, int y, int cavernIndex) {
-//
-//		if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-//			FillCavern(x,y,cavernIndex);
-//	}
 
+	private boolean CellAlive(int x, int y) {
+		// Gets the value of a cell from the 1d array given 2d coordinates
 
+		return ( cellMap[ (y * HEIGHT) + x ] );
+	}
 
-	//finds the starting point for the flood-fill algorithm
+	/*
+	The following code is responsible for quality checking the cave (making sure it has enough empty terrain & filling caverns that are too small).
+	 */
 	private int findStartCell() throws Exception {
 		for (int i = 0; i < map.length; i++) {
 			if (cellMap[i]) {
 				int firstCellNeighbours = CountAliveNeighbours(cellMap, i);
-				int secondCellNeighbours = CountAliveNeighbours(cellMap, i + 1);
-				int thirdCellNeighbours = CountAliveNeighbours(cellMap, i - WIDTH);
-				int fourthCellNeighbours = CountAliveNeighbours(cellMap, i + WIDTH);
+				int secondCellNeighbours = CountAliveNeighbours(cellMap, i + 2);
+				int thirdCellNeighbours = CountAliveNeighbours(cellMap, i - 2*WIDTH);
+				int fourthCellNeighbours = CountAliveNeighbours(cellMap, i + 2*WIDTH);
 				if (firstCellNeighbours == 8 && secondCellNeighbours == 8 && thirdCellNeighbours == 8 && fourthCellNeighbours == 8) {return i;}
 			}
 		}
@@ -205,39 +278,51 @@ public class CavesLevel extends RegularLevel {
 			return;
 		}
 
-		if (TwoDimensionalCellMap[x][y]) {
-			floodFillCount++;
-		} else {
+		//if cell is alive, increment counter by 1.
+//		if (TwoDimensionalCellMap[x][y]) {
+//			floodFillCount++;
+//		} else {
+//			return;
+//		}
+		if (!(TwoDimensionalCellMap[x][y])) {
 			return;
 		}
 
+		floodFillCount++;
 		TwoDimensionalCellMap[x][y] = false;
 
 		floodFill(x, y - 1, TwoDimensionalCellMap);
 		floodFill(x, y + 1, TwoDimensionalCellMap);
+
 		floodFill(x  - 1, y, TwoDimensionalCellMap);
 		floodFill(x + 1, y, TwoDimensionalCellMap);
+
+		floodFill(x - 1, y - 1, TwoDimensionalCellMap);
+		floodFill(x - 1, y + 1, TwoDimensionalCellMap);
+
+		floodFill(x + 1, y - 1, TwoDimensionalCellMap);
+		floodFill(x + 1, y + 1, TwoDimensionalCellMap);
 	}
 
-	private void findCavern(boolean[] cellMap) throws Exception {
+	private void qualityCheck() throws Exception {
 		floodFillCount = 0;
-		caverns = new ArrayList<>();
-		boolean[][] TwoDimensionalMap = Get2dMap(cellMap, WIDTH);
+		initialiseCellMap();
+		int startCell = findStartCell();
+		int x = startCell % WIDTH;
+		int y = (int) Math.floor(startCell / WIDTH);
+		boolean[][] TwoDCellMap = Get2dMap(cellMap, WIDTH);
+		floodFill(x, y, TwoDCellMap);
+	}
 
-//		for (int x = 0; x < WIDTH; x++) {
-//			for (int y = 0; y < HEIGHT; y++) {
-//				if (TwoDimensionalMap[x][y]) {
-//					floodFill(x,y,TwoDimensionalMap);
-//					Cavern cavern = new Cavern(x,y);
-//					cavern.setSize(floodFillCount);
-//					cavern.setVIsited();
-//					if (floodFillCount > 8) {
-//
-//					}
-//				}
-//				floodFillCount = 0;
-//			}
-//		}
+	private void fillSmallCaverns() {
+		for (Cavern cavern : caverns) {
+			if (cavern.getSize() < minCavernSize) {
+				for (Cavern.CavernCells cavernCells : cavern.getCells()) {
+					int i = (cavernCells.y*WIDTH) + cavernCells.x;
+					cellMap[i] = false;
+				}
+			}
+		}
 	}
 //	private int CountAliveNeighbours(boolean[] cellMap, int mapWidth, int i) throws Exception {
 //
@@ -266,54 +351,6 @@ public class CavesLevel extends RegularLevel {
 //		return count;
 //	}
 
-
-
-	private int CountAliveNeighbours(boolean[] cellMap, int i) throws Exception {
-		int count = 0;
-
-		boolean[][] map = Get2dMap(cellMap, WIDTH);
-		int x = i % WIDTH;
-		int y = (int)Math.floor(i / WIDTH);
-
-		for (int row = -1; row < 2; row++) {
-			for (int col = -1; col < 2; col++) {
-
-				int neighbour_x = x + col;
-				int neighbour_y = y + row;
-
-				if (row == 0 && col == 0) {}
-				else if (neighbour_x < 0 || neighbour_y < 0 || neighbour_x >= LENGTH || neighbour_y >= map[0].length || neighbour_x >= WIDTH || neighbour_y >= HEIGHT) {}
-				else if (map[neighbour_x][neighbour_y]) {count++;}
-				}
-			}
-		return count;
-	}
-
-	private boolean[][] Get2dMap(boolean[] cellMap, int mapWidth) throws Exception {
-
-		if (cellMap.length % mapWidth != 0)
-			throw new Exception("Map width does not divide map size.");
-
-		int mapHeight = cellMap.length / mapWidth;
-		boolean[][] map = new boolean[mapWidth][mapHeight];
-
-		for (int row = 0; row < mapHeight; row++) {
-			for (int col = 0; col < mapWidth; col++) {
-				map[col][row] = cellMap[ row*mapWidth + col ];
-			}
-		}
-
-		return map;
-	}
-
-	private void qualityCheck() throws Exception {
-		initialiseCellMap();
-		int startCell = findStartCell();
-		int x = startCell % WIDTH;
-		int y = (int) Math.floor(startCell / WIDTH);
-		boolean[][] TwoDCellMap = Get2dMap(cellMap, WIDTH);
-		floodFill(x, y, TwoDCellMap);
-	}
 
 	@Override
 	public String tilesTex() {
@@ -345,23 +382,7 @@ public class CavesLevel extends RegularLevel {
 	protected void decorate() {
 		initialiseCellMap();
 
-		try {
-			int startCell = findStartCell();
-			System.out.println("Start Cell: " +startCell);
-			int x = startCell % WIDTH;
-			int y = (int)Math.floor(startCell / WIDTH);
-			boolean[][] TwoDCellMap = Get2dMap(cellMap, WIDTH);
-			floodFill(x, y, TwoDCellMap);
-
-			while (floodFillCount < 1100) {
-				System.out.println("Total empty in area: " +floodFillCount);
-				qualityCheck();
-			}
-
-			InitCavernMap();
-
-		} catch (Exception e) {}
-
+		buildCave();
 
 		for (Room room : rooms) {
 			if (room.type != Room.Type.STANDARD) {
@@ -409,10 +430,6 @@ public class CavesLevel extends RegularLevel {
 			}
 		}
 
-		try {
-			findCavern(cellMap);
-		} catch (Exception e) {}
-
 		for (int i = 0; i < LENGTH; i++) {
 			if (cellMap[i]) {
 				map[i] = Terrain.EMPTY;
@@ -420,6 +437,7 @@ public class CavesLevel extends RegularLevel {
 				map[i] = Terrain.WALL;
 			}
 		}
+
 
 //		for (int i=WIDTH + 1; i < LENGTH - WIDTH; i++) {
 //			if (map[i] == Terrain.EMPTY) {
