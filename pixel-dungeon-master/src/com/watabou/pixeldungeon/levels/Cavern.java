@@ -4,43 +4,26 @@ import java.util.ArrayList;
 
 public class Cavern  {
 
-    private int size;
-    private ArrayList<CavernCells> cavernCells = new ArrayList<>();
-
-    public Cavern() {
-        size = 0;
-    }
-
-    public void Grow() {
-        size++;
-    }
+    private ArrayList<Cell> cells = new ArrayList<>();
+    private boolean killed = false;
 
     public int getSize() {
-        return size;
+        return cells.size();
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void AddCell( Cell newCell ) {
+        cells.add( newCell );
     }
 
-    public void addCavernCells(int x, int y) {
-        cavernCells.add(new CavernCells(x,y));
+    public void KillCells() {
+
+        killed = true;
+
+        for ( Cell cell : cells )
+            cell.setDead();
     }
 
-    public ArrayList<CavernCells> getCells() {
-        ArrayList<CavernCells> cells = new ArrayList<>();
-        for (CavernCells i : cavernCells) {
-            cells.add(i);
-        }
-        return cells;
-    }
-
-    class CavernCells {
-        int x, y;
-
-        private CavernCells(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
+    public boolean Killed() {
+        return killed;
     }
 }
