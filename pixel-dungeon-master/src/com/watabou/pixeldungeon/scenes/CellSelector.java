@@ -35,10 +35,10 @@ public class CellSelector extends TouchArea {
 	public CellSelector( DungeonTilemap map ) {
 		super( map );
 		camera = map.camera();
-		
+
 		dragThreshold = PixelScene.defaultZoom * DungeonTilemap.SIZE / 2;
 	}
-	
+
 	@Override
 	protected void onClick( Touch touch ) {
 		if (dragging) {
@@ -46,8 +46,8 @@ public class CellSelector extends TouchArea {
 			dragging = false;
 			
 		} else {
-			
-			select( ((DungeonTilemap)target).screenToTile( 
+
+			select( ((DungeonTilemap)target).screenToTile(
 				(int)touch.current.x, 
 				(int)touch.current.y ) );
 		}
@@ -58,7 +58,7 @@ public class CellSelector extends TouchArea {
 			
 			listener.onSelect( cell );
 			GameScene.ready();
-			
+
 		} else {
 			
 			GameScene.cancel();

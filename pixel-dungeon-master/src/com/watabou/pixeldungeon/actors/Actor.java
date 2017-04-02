@@ -28,6 +28,8 @@ import com.watabou.pixeldungeon.actors.blobs.Blob;
 import com.watabou.pixeldungeon.actors.buffs.Buff;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.levels.Level;
+import com.watabou.pixeldungeon.overworld.OverworldMap;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 

@@ -82,7 +82,7 @@ public abstract class Level implements Bundlable {
 	};
 
 	public static final int WIDTH = 40;
-	public static final int HEIGHT = 40;
+	public static final int HEIGHT = 40; //change to 40;
 	public static final int LENGTH = WIDTH * HEIGHT;
 	
 	public static final int[] NEIGHBOURS4 = {-WIDTH, +1, +WIDTH, -1}; 
@@ -296,31 +296,31 @@ public abstract class Level implements Bundlable {
 	private void adjustMapSize() {
 		// For levels saved before 1.6.3
 		if (map.length < LENGTH) {
-			
+
 			resizingNeeded = true;
 			loadedMapSize = (int)Math.sqrt( map.length );
-			
+
 			int[] map = new int[LENGTH];
 			Arrays.fill( map, Terrain.WALL );
-			
+
 			boolean[] visited = new boolean[LENGTH];
 			Arrays.fill( visited, false );
-			
+
 			boolean[] mapped = new boolean[LENGTH];
 			Arrays.fill( mapped, false );
-			
+
 			for (int i=0; i < loadedMapSize; i++) {
 				System.arraycopy( this.map, i * loadedMapSize, map, i * WIDTH, loadedMapSize );
 				System.arraycopy( this.visited, i * loadedMapSize, visited, i * WIDTH, loadedMapSize );
 				System.arraycopy( this.mapped, i * loadedMapSize, mapped, i * WIDTH, loadedMapSize );
 			}
-			
+
 			this.map = map;
 			this.visited = visited;
 			this.mapped = mapped;
-			
+
 			entrance = adjustPos( entrance );
-			exit = adjustPos( exit ); 
+			exit = adjustPos( exit );
 		} else {
 			resizingNeeded = false;
 		}
@@ -417,7 +417,7 @@ public abstract class Level implements Bundlable {
 	}
 
 	private void buildFlagMaps() {
-		
+
 		for (int i=0; i < LENGTH; i++) {
 			int flags = Terrain.flags[map[i]];
 			passable[i]		= (flags & Terrain.PASSABLE) != 0;
@@ -428,6 +428,7 @@ public abstract class Level implements Bundlable {
 			avoid[i]		= (flags & Terrain.AVOID) != 0;
 			water[i]		= (flags & Terrain.LIQUID) != 0;
 			pit[i]			= (flags & Terrain.PIT) != 0;
+			//water[i] = true;
 		}
 
 		int lastRow = LENGTH - WIDTH;
@@ -439,18 +440,18 @@ public abstract class Level implements Bundlable {
 			passable[i] = avoid[i] = false;
 			passable[i + WIDTH-1] = avoid[i + WIDTH-1] = false;
 		}
-		 
+
 		for (int i=WIDTH; i < LENGTH - WIDTH; i++) {
-			
+
 			if (water[i]) {
 				map[i] = getWaterTile( i );
 			}
-			
+
 			if (pit[i]) {
 				if (!pit[i - WIDTH]) {
 					int c = map[i - WIDTH];
 					if (c == Terrain.EMPTY_SP || c == Terrain.STATUE_SP) {
-						map[i] = Terrain.CHASM_FLOOR_SP;  
+						map[i] = Terrain.CHASM_FLOOR_SP;
 					} else if (water[i - WIDTH]) {
 						map[i] = Terrain.CHASM_WATER;
 					} else if ((Terrain.flags[c] & Terrain.UNSTITCHABLE) != 0) {
@@ -494,7 +495,7 @@ public abstract class Level implements Bundlable {
 		}
 	}
 	
-	private void cleanWalls() {	
+	private void cleanWalls() {
 		for (int i=0; i < LENGTH; i++) {
 
 			boolean d = false;

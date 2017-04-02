@@ -51,7 +51,7 @@ public abstract class RegularLevel extends Level {
 	
 	@Override
 	protected boolean build() {
-		
+
 		if (!initRooms()) {
 			return false;
 		}

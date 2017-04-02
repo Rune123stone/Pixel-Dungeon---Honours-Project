@@ -54,7 +54,7 @@ public class CavesLevel extends RegularLevel {
 	/*
 	The following code is responsible for initialising the cave map and quality checking the cave (making sure it has enough empty terrain & filling caverns that are too small).
 	 */
-	private void buildCave() {
+	private void buildCave() throws Exception {
 
 		do {
 			generateNoise();
@@ -65,7 +65,7 @@ public class CavesLevel extends RegularLevel {
 
 			initCavernMap();
 			fillSmallCaverns();
-			setBorderCell();
+			setBorderCells();
 		}
 		while ( (getPrimaryCavern()).getSize() < 800 );
 	}
@@ -125,7 +125,7 @@ public class CavesLevel extends RegularLevel {
 		return count;
 	}
 
-	private void setBorderCell() {
+	private void setBorderCells() {
 
 		for (int x = 0; x < WIDTH; x++) {
 			(cellMap[x][0]).setBorder();
@@ -137,6 +137,22 @@ public class CavesLevel extends RegularLevel {
 			(cellMap[WIDTH-1][y]).setBorder();
 		}
 
+	}
+
+	private void setCornerCells() throws Exception {
+		for (int x = 0; x < WIDTH; x++) {
+			for (int y = 0; y < HEIGHT; y++) {
+				if (cellMap[x][y].isDead()) {
+					if (x > 0 && cellMap[x - 1][y].isAlive() && cellMap[x - 1][y + 1].isAlive() && y < HEIGHT - 1) {
+						cellMap[x - 1][y].setCorner();
+						continue;
+					}
+					if (x < 39 && cellMap[x + 1][y].isAlive() && cellMap[x + 1][y + 1].isAlive() && y < HEIGHT - 1) {
+						cellMap[x + 1][y].setCorner();
+					}
+				}
+			}
+		}
 	}
 
 
@@ -244,8 +260,10 @@ public class CavesLevel extends RegularLevel {
 	
 	@Override
 	protected void decorate() {
+		try {
+			buildCave();
+		} catch (Exception e) {}
 
-		buildCave();
 
 		for (Room room : rooms) {
 			if (room.type != Room.Type.STANDARD) {
@@ -298,9 +316,10 @@ public class CavesLevel extends RegularLevel {
 			int y = (int) Math.floor(i / WIDTH);
 			if (cellMap[x][y].isAlive()) {
 				map[i] = Terrain.EMPTY;
-			} else {
+			} else  {
 				map[i] = Terrain.WALL;
 			}
+
 		}
 
 //		for (int i = 0; i < LENGTH; i++) {

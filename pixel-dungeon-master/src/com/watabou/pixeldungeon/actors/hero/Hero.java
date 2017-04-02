@@ -94,6 +94,7 @@ import com.watabou.pixeldungeon.levels.Terrain;
 import com.watabou.pixeldungeon.levels.features.AlchemyPot;
 import com.watabou.pixeldungeon.levels.features.Chasm;
 import com.watabou.pixeldungeon.levels.features.Sign;
+import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.plants.Earthroot;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
@@ -946,7 +947,8 @@ public class Hero extends Char {
 				passable[i] = p[i] && (v[i] || m[i]);
 			}
 			
-			step = Dungeon.findPath( this, pos, target, passable, Level.fieldOfView );
+			//step = Dungeon.findPath( this, pos, target, passable, Level.fieldOfView );
+			step = OverworldMap.findOverworldPath(this, pos, target, OverworldMap.passable);
 		}
 		
 		if (step != -1) {

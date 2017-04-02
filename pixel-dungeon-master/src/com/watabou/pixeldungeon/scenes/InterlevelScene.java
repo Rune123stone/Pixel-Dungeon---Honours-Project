@@ -147,7 +147,10 @@ public class InterlevelScene extends PixelScene {
 					
 				} catch (Exception e ) {
 					
-					error = ERR_GENERIC;
+					//error = ERR_GENERIC;
+					error = e.getMessage();
+
+					e.printStackTrace();
 					
 				}
 				
@@ -217,7 +220,7 @@ public class InterlevelScene extends PixelScene {
 		} else {
 			Dungeon.saveLevel();
 		}
-		
+
 		Level level;
 		if (Dungeon.depth >= Statistics.deepestFloor) {
 			level = Dungeon.newLevel();

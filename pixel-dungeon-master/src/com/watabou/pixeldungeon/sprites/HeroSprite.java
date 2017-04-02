@@ -22,12 +22,15 @@ import android.graphics.RectF;
 import com.watabou.gltextures.SmartTexture;
 import com.watabou.gltextures.TextureCache;
 import com.watabou.noosa.Camera;
+import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
+import com.watabou.pixeldungeon.overworld.OverworldMap;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.utils.Callback;
 
 public class HeroSprite extends CharSprite {
@@ -45,9 +48,11 @@ public class HeroSprite extends CharSprite {
 	public HeroSprite() {
 		super();
 		
-		link( Dungeon.hero );
+		//link( Dungeon.hero );
+		link (OverworldScene.hero);
 		
-		texture( Dungeon.hero.heroClass.spritesheet() );
+		//texture( Dungeon.hero.heroClass.spritesheet() );
+		texture (Assets.WARRIOR);
 		updateArmor();
 		
 		idle();
@@ -86,6 +91,14 @@ public class HeroSprite extends CharSprite {
 		super.place( p );
 		Camera.main.target = this;
 	}
+
+	//cameron
+	@Override
+	public void placeOnOverworld(int p) {
+		super.placeOnOverworld(p);
+		Camera.main.target = null;
+	}
+	//
 
 	@Override
 	public void move( int from, int to ) {		
@@ -135,13 +148,11 @@ public class HeroSprite extends CharSprite {
 	}
 	
 	public static Image avatar( HeroClass cl, int armorTier ) {
-		
 		RectF patch = tiers().get( armorTier );
 		Image avatar = new Image( cl.spritesheet() );
 		RectF frame = avatar.texture.uvRect( 1, 0, FRAME_WIDTH, FRAME_HEIGHT );
 		frame.offset( patch.left, patch.top );
 		avatar.frame( frame );
-		
 		return avatar;
 	}
 }

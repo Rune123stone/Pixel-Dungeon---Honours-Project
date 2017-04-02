@@ -36,6 +36,8 @@ import com.watabou.pixeldungeon.effects.TorchHalo;
 import com.watabou.pixeldungeon.effects.particles.FlameParticle;
 import com.watabou.pixeldungeon.items.potions.PotionOfInvisibility;
 import com.watabou.pixeldungeon.levels.Level;
+import com.watabou.pixeldungeon.overworld.OverworldMap;
+import com.watabou.pixeldungeon.overworld.OverworldTileMap;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Callback;
@@ -115,6 +117,27 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 	public void place( int cell ) {
 		point( worldToCamera( cell ) );
 	}
+
+	// **** START of Cameron Methods ****
+	public PointF overworldToCamera(int cell) {
+		final int cellSize = OverworldTileMap.SIZE;
+
+		return new PointF(
+				((cell % OverworldMap.overworldMapWidth) + 0.5f) * cellSize - width * 0.5f,
+				((cell / OverworldMap.overworldMapWidth) + 1.0f) * cellSize - height
+		);
+	}
+
+	public void placeOnOverworld(int cell) {
+		point(overworldToCamera(cell));
+	}
+
+	//scales avatar to match size of overworld
+	public void scaleSpriteToOverworld(int scaleFactor) {
+		this.scale.x *= scaleFactor;
+		this.scale.y *= scaleFactor;
+	}
+	// **** END of Cameron Methods ****
 	
 	public void showStatus( int color, String text, Object... args ) {
 		if (visible) {

@@ -18,6 +18,7 @@
 package com.watabou.pixeldungeon.ui;
 
 
+import android.graphics.Bitmap;
 import com.watabou.input.Keys;
 import com.watabou.input.Keys.Key;
 import com.watabou.input.Touchscreen.Touch;
@@ -45,7 +46,7 @@ public class Window extends Group implements Signal.Listener<Key> {
 	public Window() {
 		this( 0, 0, Chrome.get( Chrome.Type.WINDOW ) );
 	}
-	
+
 	public Window( int width, int height ) {
 		this( width, height, Chrome.get( Chrome.Type.WINDOW ) );
 	}
@@ -106,14 +107,14 @@ public class Window extends Group implements Signal.Listener<Key> {
 		this.width = w;
 		this.height = h;
 		
-		chrome.size( 
+		chrome.size(
 			width + chrome.marginHor(),
 			height + chrome.marginVer() );
-		
+
 		camera.resize( (int)chrome.width, (int)chrome.height );
 		camera.x = (int)(Game.width - camera.screenWidth()) / 2;
 		camera.y = (int)(Game.height - camera.screenHeight()) / 2;
-		
+
 		shadow.boxRect( camera.x / camera.zoom, camera.y / camera.zoom, chrome.width(), chrome.height );
 	}
 	

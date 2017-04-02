@@ -53,6 +53,7 @@ import com.watabou.pixeldungeon.items.wands.WandOfBlink;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.levels.RegularLevel;
 import com.watabou.pixeldungeon.levels.features.Chasm;
+import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.sprites.DiscardedItemSprite;
@@ -270,15 +271,19 @@ public class GameScene extends PixelScene {
 			switch (Dungeon.hero.heroBackground) {
 				case CRIMINAL:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_CRIMINAL);
+					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 				case KNIGHT:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_KNIGHT);
+					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 				case OUTSIDER:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_OUTSIDER);
+					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 				case PEASANT:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_PEASANT);
+					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 			}
 
@@ -640,6 +645,7 @@ public class GameScene extends PixelScene {
 		selectCell( defaultCellListener );
 		QuickSlot.cancel();
 	}
+
 	
 	private static final CellSelector.Listener defaultCellListener = new CellSelector.Listener() {
 		@Override

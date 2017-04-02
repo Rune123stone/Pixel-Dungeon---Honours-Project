@@ -32,7 +32,6 @@ import com.watabou.pixeldungeon.actors.buffs.Amok;
 import com.watabou.pixeldungeon.actors.buffs.Light;
 import com.watabou.pixeldungeon.actors.buffs.Rage;
 import com.watabou.pixeldungeon.actors.hero.Hero;
-import com.watabou.pixeldungeon.actors.hero.HeroBackground;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Imp;
@@ -44,21 +43,7 @@ import com.watabou.pixeldungeon.items.potions.Potion;
 import com.watabou.pixeldungeon.items.rings.Ring;
 import com.watabou.pixeldungeon.items.scrolls.Scroll;
 import com.watabou.pixeldungeon.items.wands.Wand;
-import com.watabou.pixeldungeon.levels.CavesBossLevel;
-import com.watabou.pixeldungeon.levels.CavesLevel;
-import com.watabou.pixeldungeon.levels.CityBossLevel;
-import com.watabou.pixeldungeon.levels.CityLevel;
-import com.watabou.pixeldungeon.levels.DeadEndLevel;
-import com.watabou.pixeldungeon.levels.HallsBossLevel;
-import com.watabou.pixeldungeon.levels.HallsLevel;
-import com.watabou.pixeldungeon.levels.LastLevel;
-import com.watabou.pixeldungeon.levels.LastShopLevel;
-import com.watabou.pixeldungeon.levels.Level;
-import com.watabou.pixeldungeon.levels.PrisonBossLevel;
-import com.watabou.pixeldungeon.levels.PrisonLevel;
-import com.watabou.pixeldungeon.levels.Room;
-import com.watabou.pixeldungeon.levels.SewerBossLevel;
-import com.watabou.pixeldungeon.levels.SewerLevel;
+import com.watabou.pixeldungeon.levels.*;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.StartScene;
 import com.watabou.pixeldungeon.ui.QuickSlot;
@@ -166,86 +151,86 @@ public class Dungeon {
 		Arrays.fill( visible, false );
 		Level level;
 
-		switch(hero.heroBackground) {
-			case CRIMINAL:
-				level = new CavesLevel();
-				break;
-			case OUTSIDER:
-				level = new CavesLevel();
-				break;
-			case KNIGHT:
-				level = new CavesLevel();
-				break;
-			case PEASANT:
-				level = new CavesLevel();
-				break;
-			default:
-			level = new DeadEndLevel();
-			Statistics.deepestFloor--;
-		}
-//		switch (depth) {
-//		case 1:
-//		case 2:
-//		case 3:
-//		case 4:
-//			level = new SewerLevel();
-//			break;
-//		case 5:
-//			level = new SewerBossLevel();
-//			break;
-//		case 6:
-//		case 7:
-//		case 8:
-//		case 9:
-//			level = new PrisonLevel();
-//			break;
-//		case 10:
-//			level = new PrisonBossLevel();
-//			break;
-//		case 11:
-//		case 12:
-//		case 13:
-//		case 14:
-//			level = new CavesLevel();
-//			break;
-//		case 15:
-//			level = new CavesBossLevel();
-//			break;
-//		case 16:
-//		case 17:
-//		case 18:
-//		case 19:
-//			level = new CityLevel();
-//			break;
-//		case 20:
-//			level = new CityBossLevel();
-//			break;
-//		case 21:
-//			level = new LastShopLevel();
-//			break;
-//		case 22:
-//		case 23:
-//		case 24:
-//			level = new HallsLevel();
-//			break;
-//		case 25:
-//			level = new HallsBossLevel();
-//			break;
-//		case 26:
-//			level = new LastLevel();
-//			break;
-//		default:
+//		switch(hero.heroBackground) {
+//			case CRIMINAL:
+//				level = new ForestLevel();
+//				break;
+//			case OUTSIDER:
+//				level = new ForestLevel();
+//				break;
+//			case KNIGHT:
+//				level = new ForestLevel();
+//				break;
+//			case PEASANT:
+//				level = new ForestLevel();
+//				break;
+//			default:
 //			level = new DeadEndLevel();
 //			Statistics.deepestFloor--;
 //		}
+		switch (depth) {
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			level = new SewerLevel();
+			break;
+		case 5:
+			level = new SewerBossLevel();
+			break;
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			level = new PrisonLevel();
+			break;
+		case 10:
+			level = new PrisonBossLevel();
+			break;
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+			level = new CavesLevel();
+			break;
+		case 15:
+			level = new CavesBossLevel();
+			break;
+		case 16:
+		case 17:
+		case 18:
+		case 19:
+			level = new CityLevel();
+			break;
+		case 20:
+			level = new CityBossLevel();
+			break;
+		case 21:
+			level = new LastShopLevel();
+			break;
+		case 22:
+		case 23:
+		case 24:
+			level = new HallsLevel();
+			break;
+		case 25:
+			level = new HallsBossLevel();
+			break;
+		case 26:
+			level = new LastLevel();
+			break;
+		default:
+			level = new DeadEndLevel();
+			Statistics.deepestFloor--;
+		}
 		
 		level.create();
-		
+
 		Statistics.qualifiedForNoKilling = !bossLevel();
 		
 		return level;
 	}
-	
+
 	public static void resetLevel() {
 		
 		Actor.clear();
@@ -622,7 +607,6 @@ public class Dungeon {
 		if (level == null) {
 			return;
 		}
-		
 		level.updateFieldOfView( hero );
 		System.arraycopy( Level.fieldOfView, 0, visible, 0, visible.length );
 		

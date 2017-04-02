@@ -82,7 +82,7 @@ public class Terrain {
 	
 	public static final int UNSTITCHABLE	= 0x100; 
 	
-	public static final int[] flags = new int[256];
+	public static final int[] flags = new int[256]; //change to 1023 for map testing
 	static {
 		flags[CHASM]		= AVOID	| PIT									| UNSTITCHABLE;
 		flags[EMPTY]		= PASSABLE;

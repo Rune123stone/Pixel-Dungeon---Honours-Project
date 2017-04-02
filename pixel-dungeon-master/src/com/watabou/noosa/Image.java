@@ -89,7 +89,7 @@ public class Image extends Visual {
 		
 		width = other.width;
 		height = other.height;
-		
+
 		updateFrame();
 		updateVertices();
 	}

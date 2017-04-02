@@ -2,7 +2,7 @@ package com.watabou.pixeldungeon.levels;
 
 public class Cell {
 
-    private boolean alive, corner, border;
+    private boolean alive, corner, border, lake, tempLake, grass, tempGrass;
     private int cavernIndex = -1;
 
     public Cell(boolean alive) {
@@ -22,6 +22,10 @@ public class Cell {
         setDead();
     }
 
+    public void setCorner() {
+        corner = true;
+    }
+
     public void assignCavern(int cavern) {
         this.cavernIndex = cavern;
     }
@@ -34,9 +38,47 @@ public class Cell {
         return !alive;
     }
 
+    public boolean isCorner() {
+        return corner;
+    }
+
     public boolean isBorder() {
         return border;
     }
+
+    public boolean isLake() {
+        return lake;
+    }
+
+    public void setLake() {
+        lake = true;
+    }
+
+    public boolean isGrass() {
+        return grass;
+    }
+
+    public void setGrass() {
+        grass = true;
+    }
+
+    //find better solution
+    public boolean isTempLake() {
+        return tempLake;
+    }
+
+    public void setTempLake() {
+        tempLake = true;
+    }
+
+    public boolean isTempGrass() {
+        return tempGrass;
+    }
+
+    public void setTempGrass() {
+        tempGrass = true;
+    }
+    /////
 
     public boolean needsCavern() {
         return ( cavernIndex == -1 && alive );
@@ -45,5 +87,7 @@ public class Cell {
     public boolean hasCavern() {
         return !needsCavern();
     }
+
+
 
 }

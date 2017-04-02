@@ -96,7 +96,9 @@ public class Assets {
 	public static final String TILES_CAVES	= "tiles2.png";
 	public static final String TILES_CITY	= "tiles3.png";
 	public static final String TILES_HALLS	= "tiles4.png";
-	
+	public static final String TILES_FOREST = "forest_tiles.png";
+
+
 	public static final String WATER_SEWERS	= "water0.png";
 	public static final String WATER_PRISON	= "water1.png";
 	public static final String WATER_CAVES	= "water2.png";
@@ -164,4 +166,8 @@ public class Assets {
 	public static final String SND_BEE		= "snd_bee.mp3";
 	public static final String SND_DEGRADE	= "snd_degrade.mp3";
 	public static final String SND_MIMIC	= "snd_mimic.mp3";
+
+	//Cameron
+	public static final String OVERWORLD_MAP = "Overworld.png";
+	public static final String OVERWORLDJSON = "Overworld..json";
 }

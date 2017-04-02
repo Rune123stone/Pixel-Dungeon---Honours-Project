@@ -1,6 +1,9 @@
 package com.watabou.pixeldungeon.windows;
 
 
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 import com.watabou.input.Touchscreen;
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Game;
@@ -50,8 +53,6 @@ public class WndBackgroundStory extends Window {
                         "Your feet hurt and you have no friends. " +
                         "You are the outsider.");
     }
-
-    ;
 
     private BitmapTextMultiline tf;
 

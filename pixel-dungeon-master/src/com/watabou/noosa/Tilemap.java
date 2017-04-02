@@ -50,11 +50,11 @@ public class Tilemap extends Visual {
 		
 		this.texture = TextureCache.get( tx );
 		this.tileset = tileset;
-		
+
 		RectF r = tileset.get( 0 );
 		cellW = tileset.width( r );
 		cellH = tileset.height( r );
-		
+
 		vertices = new float[16];
 		
 		updated = new Rect();
@@ -130,12 +130,12 @@ public class Tilemap extends Visual {
 		
 		updated.setEmpty();
 	}
-	
+
 	@Override
 	public void draw() {
 		
 		super.draw();
-		
+
 		NoosaScript script = NoosaScript.get();
 		
 		texture.bind();

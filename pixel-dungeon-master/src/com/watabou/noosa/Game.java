@@ -111,6 +111,7 @@ public class Game extends Activity implements GLSurfaceView.Renderer, View.OnTou
 		view.setEGLContextClientVersion( 2 );
 		view.setEGLConfigChooser( false );
 		view.setRenderer( this );
+
 		view.setOnTouchListener( this );
 		setContentView( view );
 	}

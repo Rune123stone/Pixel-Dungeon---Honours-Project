@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="CompilerConfiguration">
-    <excludeFromCompile>
-      <file url="file://$USER_HOME$/.IntelliJIdea2016.3/system/compile-server/pixel-dungeon-master_32e1a39f/targets/java-production/pixel-dungeon-master/android/generated_sources/build_config/com/watabou/pixeldungeon/BuildConfig.java" />
-      <file url="file://$PROJECT_DIR$/pixel-dungeon-master/gen/com/watabou/pixeldungeon/R.java" />
-    </excludeFromCompile>
-  </component>
-</project>
