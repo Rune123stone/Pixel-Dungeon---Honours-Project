@@ -52,6 +52,8 @@ import com.watabou.pixeldungeon.effects.particles.PoisonParticle;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.levels.Terrain;
 import com.watabou.pixeldungeon.levels.features.Door;
+import com.watabou.pixeldungeon.overworld.OverworldMap;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
@@ -93,10 +95,10 @@ public abstract class Char extends Actor {
 	
 	@Override
 	protected boolean act() {
-		Dungeon.level.updateFieldOfView( this );
+		//Dungeon.level.updateFieldOfView( this );
 		return false;
 	}
-	
+
 	private static final String POS			= "pos";
 	private static final String TAG_HP		= "HP";
 	private static final String TAG_HT		= "HT";
@@ -473,7 +475,8 @@ public abstract class Char extends Actor {
 	}
 	
 	public void move( int step ) {
-		
+
+		// Moves the character in a random direction if they have the "Vertigo" debuff
 		if (Level.adjacent( step, pos ) && buff( Vertigo.class ) != null) {
 			step = pos + Level.NEIGHBOURS8[Random.Int( 8 )];
 			if (!(Level.passable[step] || Level.avoid[step]) || Actor.findChar( step ) != null) {
@@ -495,6 +498,23 @@ public abstract class Char extends Actor {
 			sprite.visible = Dungeon.visible[pos];
 		}
 	}
+
+	/**
+	 * Cameron
+	 */
+	public void overworldMove(int step) {
+		System.out.println("MOVING! step="+step + "; pos="+pos);
+		pos = step;
+		//OverworldScene.hero.pos = step;
+		System.out.println("MOVED! step="+step + "; pos="+pos);
+	}
+
+	@Override
+	protected boolean overworldAct() {
+		return false;
+	}
+	////////////////////////
+
 	
 	public int distance( Char other ) {
 		return Level.distance( pos, other.pos );

@@ -54,6 +54,14 @@ public class Pushing extends Actor {
 		}
 	}
 
+	/**
+	 * Cameron
+	 */
+	@Override
+	public boolean overworldAct() {
+		return false;
+	}
+
 	public class Effect extends Visual {
 
 		private static final float DELAY = 0.15f;

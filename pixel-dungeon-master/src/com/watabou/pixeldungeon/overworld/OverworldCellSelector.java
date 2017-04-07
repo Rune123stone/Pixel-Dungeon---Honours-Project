@@ -11,7 +11,7 @@ import com.watabou.utils.PointF;
 
 public class OverworldCellSelector extends TouchArea {
 
-    public CellSelector.Listener listener = null;
+    public Listener listener = null;
 
     public boolean enabled;
 
@@ -32,21 +32,29 @@ public class OverworldCellSelector extends TouchArea {
             dragging = false;
 
         } else {
-
             select( ((OverworldTileMap)target).screenToTile(
                     (int)touch.current.x,
                     (int)touch.current.y ) );
-            System.out.println((int)touch.current.x);
-            System.out.println((int)touch.current.y);
+//            System.out.println((int)touch.current.x);
+//            System.out.println((int)touch.current.y);
         }
     }
 
     public void select( int cell ) {
-        if (enabled && listener != null && cell != -1) {
+//        if (enabled && listener != null && cell != -1) {
+//
+//            listener.onSelect( cell );
+//            OverworldScene.overworldReady();
+//        }
+//        if (enabled && cell != -1) {
+//            listener.onSelect( cell );
+//            OverworldScene.overworldReady();
+//            System.out.println("yes");
+//
+//        }
+        OverworldScene.overworldReady();
+        listener.onSelect( cell );
 
-            listener.onSelect( cell );
-            OverworldScene.overworldReady();
-        }
     }
 
     private boolean pinching = false;

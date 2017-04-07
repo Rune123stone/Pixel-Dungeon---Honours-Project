@@ -14,6 +14,7 @@ import com.watabou.pixeldungeon.overworld.OverworldCellSelector;
 import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.overworld.OverworldTileMap;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
+import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.utils.GLog;
 
 public class OverworldScene extends PixelScene {
@@ -21,7 +22,7 @@ public class OverworldScene extends PixelScene {
     static OverworldScene scene;
 
     private OverworldTileMap tiles;
-    private HeroSprite heroSpite;
+    public static HeroSprite heroSpite;
     public static Hero hero;
 
     private static OverworldCellSelector overworldCellSelector;
@@ -69,6 +70,7 @@ public class OverworldScene extends PixelScene {
         //brightness(PixelDungeon.brightness());
         hero = new Hero();
         hero.live();
+        hero.pos = OverworldMap.getZonePos("TOWN");
 
         heroSpite = new HeroSprite();
         int townNodePos = OverworldMap.getZonePos("TOWN");
@@ -83,6 +85,7 @@ public class OverworldScene extends PixelScene {
         //adds cell listener (ability to drag, touch, etc.)
         add(overworldCellSelector = new OverworldCellSelector(tiles));
         ////////////
+        Actor.overworldActorInit();
     }
 
     public void destroy() {
@@ -92,36 +95,43 @@ public class OverworldScene extends PixelScene {
 
     @Override
     public synchronized void update() {
-//        if (Dungeon.hero == null) {
-//            return;
-//        }
-
         super.update();
 
         //animates water
         water.offset(0, -5 * Game.elapsed);
 
-        Actor.process();
+        Actor.overworldProcess();
+        heroSpite.placeOnOverworld(hero.pos);
+
+        overworldCellSelector.enabled = hero.ready;
     }
 
-    public static void selectCell(CellSelector.Listener listener) {
+    public static void selectCell(OverworldCellSelector.Listener listener) {
         overworldCellSelector.listener = listener;
     }
 
     public static void overworldReady() {
-        selectCell(defaultCellListener);
+        selectCell(defaultCellListener);;
     }
 
-    private static final CellSelector.Listener defaultCellListener = new CellSelector.Listener() {
+    private static final OverworldCellSelector.Listener defaultCellListener = new OverworldCellSelector.Listener() {
         @Override
         public void onSelect( Integer cell ) {
-            if (Dungeon.hero.handle( cell )) {
-                Dungeon.hero.next();
+//            int count = 1;
+//            for (Integer integer : hero.moveCells(cell)) {
+//                System.out.println("Path cell : " +count+ " , " +integer);
+//                count++;
+//                heroSpite.placeOnOverworld(integer);
+//                try {
+//                    Thread.sleep(100);
+//                } catch (Exception e) {
+//
+//                }
+//            }
+            if (hero.overworldHandle(cell)) {
+                //sets the current actor to the Hero on the overworld map
+                hero.next();
             }
-        }
-        @Override
-        public String prompt() {
-            return null;
         }
     };
 

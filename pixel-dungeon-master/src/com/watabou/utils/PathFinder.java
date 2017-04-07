@@ -17,6 +17,9 @@
 
 package com.watabou.utils;
 
+import com.watabou.pixeldungeon.overworld.OverworldMap;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -77,11 +80,14 @@ public class PathFinder {
 		
 		return result;
 	}
-	
+
+	//Returns the step corresponding to the shortest path found by buildDistanceMap
 	public static int getStep( int from, int to, boolean[] passable ) {
-		
+
 		if (!buildDistanceMap( from, to, passable )) {
 			return -1;
+		} else {
+			System.out.println("Found a path from "+from+" to "+to);
 		}
 		
 		// From the starting position we are making one step downwards
@@ -91,13 +97,12 @@ public class PathFinder {
 		int step, stepD;
 		
 		for (int i=0; i < dir.length; i++) {
-
 			if ((stepD = distance[step = from + dir[i]]) < minD) {
 				minD = stepD;
 				best = step;
 			}
 		}
-
+		//System.out.println("Best Step: " +best+ ", current hero pos is:  " +OverworldScene.hero.pos);
 		return best;
 	}
 	
@@ -130,7 +135,8 @@ public class PathFinder {
 
 		return mins;
 	}
-	
+
+	//Performs Dijkstras Algorithm - calculates the shortest route between the "from" cell and "to" cell.
 	private static boolean buildDistanceMap( int from, int to, boolean[] passable ) {
 		
 		if (from == to) {

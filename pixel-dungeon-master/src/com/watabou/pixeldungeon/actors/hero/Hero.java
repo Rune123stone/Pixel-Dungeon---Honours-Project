@@ -98,6 +98,7 @@ import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.plants.Earthroot;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.scenes.SurfaceScene;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
@@ -380,90 +381,82 @@ public class Hero extends Char {
 	public boolean act() {
 		
 		super.act();
-		
+
 		if (paralysed) {
-			
 			curAction = null;
-			
+
 			spendAndNext( TICK );
 			return false;
 		}
-		
-		checkVisibleMobs();
-		AttackIndicator.updateState();
-		
+
+//		checkVisibleMobs();
+//		AttackIndicator.updateState();
+
 		if (curAction == null) {
-			
-			if (restoreHealth) {
-				if (isStarving() || HP >= HT) {
-					restoreHealth = false;
-				} else {
-					spend( TIME_TO_REST ); next();
-					return false;
-				}
-			}
-			
+
+//			if (restoreHealth) {
+//				if (isStarving() || HP >= HT) {
+//					restoreHealth = false;
+//				} else {
+//					spend( TIME_TO_REST ); next();
+//					return false;
+//				}
+//			}
 			ready();
 			return false;
-			
+
 		} else {
-			
+
 			restoreHealth = false;
-			
+
 			ready = false;
-			
+
 			if (curAction instanceof HeroAction.Move) {
 
-				return actMove( (HeroAction.Move)curAction );
-				
-			} else 
+				//return actMove( (HeroAction.Move)curAction );
+				//System.out.println(curAction);
+
+				return overworldActMove((HeroAction.Move)curAction);
+
+			} else
 			if (curAction instanceof HeroAction.Interact) {
-				
 				return actInteract( (HeroAction.Interact)curAction );
-				
-			} else 
+
+			} else
 			if (curAction instanceof HeroAction.Buy) {
-				
 				return actBuy( (HeroAction.Buy)curAction );
-				
-			}else 
+
+			}else
 			if (curAction instanceof HeroAction.PickUp) {
-				
 				return actPickUp( (HeroAction.PickUp)curAction );
-				
-			} else 
+
+			} else
 			if (curAction instanceof HeroAction.OpenChest) {
-				
 				return actOpenChest( (HeroAction.OpenChest)curAction );
-				
-			} else 
+
+			} else
 			if (curAction instanceof HeroAction.Unlock) {
-				
 				return actUnlock( (HeroAction.Unlock)curAction );
-				
-			} else 
+
+			} else
 			if (curAction instanceof HeroAction.Descend) {
-				
 				return actDescend( (HeroAction.Descend)curAction );
-				
+
 			} else
 			if (curAction instanceof HeroAction.Ascend) {
-				
 				return actAscend( (HeroAction.Ascend)curAction );
-				
+
 			} else
 			if (curAction instanceof HeroAction.Attack) {
-
 				return actAttack( (HeroAction.Attack)curAction );
-				
+
 			} else
 			if (curAction instanceof HeroAction.Cook) {
-
 				return actCook( (HeroAction.Cook)curAction );
-				
+
 			}
 		}
-		
+
 		return false;
 	}
 	
@@ -476,7 +469,8 @@ public class Hero extends Char {
 		curAction = null;
 		ready = true;
 		
-		GameScene.ready();
+		//GameScene.ready();
+		OverworldScene.overworldReady();
 	}
 	
 	public void interrupt() {
@@ -494,14 +488,16 @@ public class Hero extends Char {
 	
 	private boolean actMove( HeroAction.Move action ) {
 
+		// dst = destination
 		if (getCloser( action.dst )) {
-			
+			System.out.println("actMove() called");
 			return true;
 			
 		} else {
 			if (Dungeon.level.map[pos] == Terrain.SIGN) {
 				Sign.read( pos );
 			}
+			System.out.println("actMove() is false and has ended. The spire is ready for the next action.");
 			ready();
 			
 			return false;
@@ -913,7 +909,8 @@ public class Hero extends Char {
 	public Mob visibleEnemy( int index ) {
 		return visibleEnemies.get( index % visibleEnemies.size() );
 	}
-	
+
+	//take a step closer to target
 	private boolean getCloser( final int target ) {
 		
 		if (rooted) {
@@ -947,12 +944,11 @@ public class Hero extends Char {
 				passable[i] = p[i] && (v[i] || m[i]);
 			}
 			
-			//step = Dungeon.findPath( this, pos, target, passable, Level.fieldOfView );
-			step = OverworldMap.findOverworldPath(this, pos, target, OverworldMap.passable);
+			step = Dungeon.findPath( this, pos, target, passable, Level.fieldOfView );
 		}
 		
 		if (step != -1) {
-			
+
 			int oldPos = pos;
 			move( step );
 			sprite.move( oldPos, pos );
@@ -967,7 +963,116 @@ public class Hero extends Char {
 		}
 
 	}
-	
+
+	/**
+	 * Cameron
+	 */
+	public boolean getCloserOverworldMap(final int target) {
+		int step;
+		boolean[] passable = OverworldMap.passable;
+
+//		step = OverworldMap.findOverworldPath(OverworldMap.getZonePos("TOWN"),
+//				OverworldMap.getZonePos("FOREST"), passable);
+
+		step = OverworldMap.findOverworldPath(pos, target, passable);
+		System.out.println("step="+step + "; pos="+pos);
+
+		if (step != -1) {
+			int oldPos = pos;
+			overworldMove(step);
+			sprite.overworldMove(oldPos, pos);
+			spend(1 / speed());
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	///////test lolz
+	public ArrayList<Integer> moveCells(final int target) {
+		boolean[] passable = OverworldMap.passable;
+		ArrayList<Integer> cells = new ArrayList<>();
+
+		int step = -1;
+
+		while (step != target) {
+			step = OverworldMap.findOverworldPath(pos, target, passable);
+			cells.add(step);
+
+			pos = step;
+		}
+
+		return cells;
+	}
+	/////
+
+	@Override
+	public void overworldMove(int step) {
+
+		//System.out.println("overWorldMove(step="+step+")");
+		super.overworldMove(step);
+	}
+
+	@Override
+	public boolean overworldAct() {
+		super.overworldAct();
+		//boolean result = overworldActMove( (HeroAction.Move)curAction );
+		//System.out.println("overworldAct() = " + result);
+		if (curAction == null) {
+			ready();
+			return false;
+		} else {
+			ready = false;
+
+			if (curAction instanceof HeroAction.Move) {
+				//System.out.println("im moving");
+				return overworldActMove((HeroAction.Move)curAction);
+			}
+		}
+
+		return false;
+	}
+
+
+	private boolean overworldActMove( HeroAction.Move action ) {
+
+		//System.out.println("overWorldMove(action.dst="+action.dst+") = ?");
+
+		// dst = destination
+		if (getCloserOverworldMap( action.dst )) {
+			System.out.println("overworldActMove() called");
+			//System.out.println("^^...overWorldMove(action.dst="+action.dst+") = true");
+			return true;
+
+		} else {
+			//ready to receive the next action
+			System.out.println("overworldActMove() is finished. The sprite is ready for the next action.");
+//			System.out.println("Destination Pixel ["+(action.dst)+"]");
+//			System.out.println("You are at [" + (pos) + "]");
+			ready();
+			//System.out.println("^^...overWorldMove(action.dst="+action.dst+") = false");
+			return false;
+		}
+	}
+
+	public boolean overworldHandle(int cell) {
+
+		//System.out.println("overworldHandle(cell="+cell+") = overworldAct()");
+
+
+		if (cell == -1) {
+			//System.out.println("^...overworldHandle(cell="+cell+") = false");
+			return false;
+		}
+
+		curAction = new HeroAction.Move(cell);
+		lastAction = null;
+
+		return overworldAct();
+	}
+	////////////////////////
+
+
 	public boolean handle( int cell ) {
 		
 		if (cell == -1) {
@@ -976,19 +1081,19 @@ public class Hero extends Char {
 		
 		Char ch;
 		Heap heap;
-		
+
 		if (Dungeon.level.map[cell] == Terrain.ALCHEMY && cell != pos) {
-			
+
 			curAction = new HeroAction.Cook( cell );
-			
+
 		} else if (Level.fieldOfView[cell] && (ch = Actor.findChar( cell )) instanceof Mob) {
-			
+
 			if (ch instanceof NPC) {
 				curAction = new HeroAction.Interact( (NPC)ch );
 			} else {
 				curAction = new HeroAction.Attack( ch );
 			}
-			
+
 		} else if (Level.fieldOfView[cell] && (heap = Dungeon.level.heaps.get( cell )) != null && heap.type != Heap.Type.HIDDEN) {
 
 			switch (heap.type) {
@@ -996,31 +1101,31 @@ public class Hero extends Char {
 				curAction = new HeroAction.PickUp( cell );
 				break;
 			case FOR_SALE:
-				curAction = heap.size() == 1 && heap.peek().price() > 0 ? 
-					new HeroAction.Buy( cell ) : 
+				curAction = heap.size() == 1 && heap.peek().price() > 0 ?
+					new HeroAction.Buy( cell ) :
 					new HeroAction.PickUp( cell );
 				break;
 			default:
 				curAction = new HeroAction.OpenChest( cell );
 			}
-			
+
 		} else if (Dungeon.level.map[cell] == Terrain.LOCKED_DOOR || Dungeon.level.map[cell] == Terrain.LOCKED_EXIT) {
-			
+
 			curAction = new HeroAction.Unlock( cell );
-			
+
 		} else if (cell == Dungeon.level.exit) {
-			
+
 			curAction = new HeroAction.Descend( cell );
-			
+
 		} else if (cell == Dungeon.level.entrance) {
-			
+
 			curAction = new HeroAction.Ascend( cell );
-			
+
 		} else  {
-			
+
 			curAction = new HeroAction.Move( cell );
 			lastAction = null;
-			
+
 		}
 
 		return act();

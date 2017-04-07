@@ -137,6 +137,23 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 		this.scale.x *= scaleFactor;
 		this.scale.y *= scaleFactor;
 	}
+
+	public void overworldMove(int from, int to) {
+
+		System.out.println("CharSprite.overworldMove(from="+from+", to="+to+")");
+
+		play(run);
+
+		motion = new PosTweener( this, worldToCamera( to ), MOVE_INTERVAL );
+		motion.listener = this;
+		parent.add( motion );
+
+		isMoving = true;
+
+		turnTo( from , to );
+
+		ch.onMotionComplete();
+	}
 	// **** END of Cameron Methods ****
 	
 	public void showStatus( int color, String text, Object... args ) {
@@ -173,7 +190,7 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 		
 		ch.onMotionComplete();
 	}
-	
+
 	public void interruptMotion() {
 		if (motion != null) {
 			onComplete( motion );

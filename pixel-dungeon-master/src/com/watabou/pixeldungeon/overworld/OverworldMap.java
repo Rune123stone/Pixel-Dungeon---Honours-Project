@@ -18,7 +18,7 @@ import java.util.HashSet;
 public class OverworldMap  {
 
     public static final int overworldMapWidth = 32; //Tiled map width
-    //public static final int overworldMapHeight = 40; //use the Tiled map height if map gives problems later on
+    //public static final int overworldMapHeight = 32; //use the Tiled map height if map gives problems later on
 
     public static final int overworldMapHeight = Game.height / OverworldTileMap.SIZE; //sets map height to full screen
     public static int overworldMapLength = overworldMapWidth * overworldMapHeight;
@@ -55,7 +55,7 @@ public class OverworldMap  {
 
     //paints tiles of overworld map
     public static void paintOverworld() {
-
+        PathFinder.setMapSize(overworldMapWidth, overworldMapHeight);
         ArrayList<Long> jsonTileMap = getTileMaps("overworldv2.json");
         //converts array list of longs to int array
         int[] mapData = new int[jsonTileMap.size()];
@@ -147,8 +147,13 @@ public class OverworldMap  {
         return 0;
     }
 
-    public static int findOverworldPath(Char ch, int from, int to, boolean pass[]) {
-        return PathFinder.getStep(from, to, passable);
+    //pathFinding
+    public static int findOverworldPath(int from, int to, boolean pass[]) {
+        //System.arraycopy(pass, 0, passable, 0, overworldMapLength);
+
+        int testy = PathFinder.getStep(from, to, passable);
+        //System.out.println("findOverworldPath(from="+from+", to="+to+") = " + testy);
+        return testy;
     }
 
     public static void setPassable() {

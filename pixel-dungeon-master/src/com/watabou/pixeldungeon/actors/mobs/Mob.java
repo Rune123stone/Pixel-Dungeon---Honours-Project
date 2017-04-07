@@ -137,28 +137,29 @@ public abstract class Mob extends Char {
 	
 	@Override
 	protected boolean act() {
-		
+
 		super.act();
-		
+
 		boolean justAlerted = alerted;
 		alerted = false;
-		
+
 		sprite.hideAlert();
-		
+
 		if (paralysed) {
 			enemySeen = false;
 			spend( TICK );
 			return true;
 		}
-		
+
 		enemy = chooseEnemy();
-		
-		boolean enemyInFOV = 
-			enemy != null && enemy.isAlive() && 
+
+		boolean enemyInFOV =
+			enemy != null && enemy.isAlive() &&
 			Level.fieldOfView[enemy.pos] && enemy.invisible <= 0;
-		
+
 		return state.act( enemyInFOV, justAlerted );
 	}
+
 	
 	protected Char chooseEnemy() {
 		

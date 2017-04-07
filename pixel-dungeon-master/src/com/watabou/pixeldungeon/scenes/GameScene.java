@@ -271,19 +271,15 @@ public class GameScene extends PixelScene {
 			switch (Dungeon.hero.heroBackground) {
 				case CRIMINAL:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_CRIMINAL);
-					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 				case KNIGHT:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_KNIGHT);
-					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 				case OUTSIDER:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_OUTSIDER);
-					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 				case PEASANT:
 					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_PEASANT);
-					//OverworldMap.getTileMaps(Assets.OVERWORLDJSON);
 					break;
 			}
 

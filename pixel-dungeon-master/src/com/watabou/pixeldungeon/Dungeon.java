@@ -151,78 +151,78 @@ public class Dungeon {
 		Arrays.fill( visible, false );
 		Level level;
 
-//		switch(hero.heroBackground) {
-//			case CRIMINAL:
-//				level = new ForestLevel();
-//				break;
-//			case OUTSIDER:
-//				level = new ForestLevel();
-//				break;
-//			case KNIGHT:
-//				level = new ForestLevel();
-//				break;
-//			case PEASANT:
-//				level = new ForestLevel();
-//				break;
-//			default:
-//			level = new DeadEndLevel();
-//			Statistics.deepestFloor--;
-//		}
-		switch (depth) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-			level = new SewerLevel();
-			break;
-		case 5:
-			level = new SewerBossLevel();
-			break;
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-			level = new PrisonLevel();
-			break;
-		case 10:
-			level = new PrisonBossLevel();
-			break;
-		case 11:
-		case 12:
-		case 13:
-		case 14:
-			level = new CavesLevel();
-			break;
-		case 15:
-			level = new CavesBossLevel();
-			break;
-		case 16:
-		case 17:
-		case 18:
-		case 19:
-			level = new CityLevel();
-			break;
-		case 20:
-			level = new CityBossLevel();
-			break;
-		case 21:
-			level = new LastShopLevel();
-			break;
-		case 22:
-		case 23:
-		case 24:
-			level = new HallsLevel();
-			break;
-		case 25:
-			level = new HallsBossLevel();
-			break;
-		case 26:
-			level = new LastLevel();
-			break;
-		default:
+		switch(hero.heroBackground) {
+			case CRIMINAL:
+				level = new ForestLevel();
+				break;
+			case OUTSIDER:
+				level = new ForestLevel();
+				break;
+			case KNIGHT:
+				level = new ForestLevel();
+				break;
+			case PEASANT:
+				level = new ForestLevel();
+				break;
+			default:
 			level = new DeadEndLevel();
 			Statistics.deepestFloor--;
 		}
+//		switch (depth) {
+//		case 1:
+//		case 2:
+//		case 3:
+//		case 4:
+//			level = new SewerLevel();
+//			break;
+//		case 5:
+//			level = new SewerBossLevel();
+//			break;
+//		case 6:
+//		case 7:
+//		case 8:
+//		case 9:
+//			level = new PrisonLevel();
+//			break;
+//		case 10:
+//			level = new PrisonBossLevel();
+//			break;
+//		case 11:
+//		case 12:
+//		case 13:
+//		case 14:
+//			level = new CavesLevel();
+//			break;
+//		case 15:
+//			level = new CavesBossLevel();
+//			break;
+//		case 16:
+//		case 17:
+//		case 18:
+//		case 19:
+//			level = new CityLevel();
+//			break;
+//		case 20:
+//			level = new CityBossLevel();
+//			break;
+//		case 21:
+//			level = new LastShopLevel();
+//			break;
+//		case 22:
+//		case 23:
+//		case 24:
+//			level = new HallsLevel();
+//			break;
+//		case 25:
+//			level = new HallsBossLevel();
+//			break;
+//		case 26:
+//			level = new LastLevel();
+//			break;
+//		default:
+//			level = new DeadEndLevel();
+//			Statistics.deepestFloor--;
+//		}
 		
 		level.create();
 
@@ -618,17 +618,22 @@ public class Dungeon {
 	private static boolean[] passable = new boolean[Level.LENGTH];
 	
 	public static int findPath( Char ch, int from, int to, boolean pass[], boolean[] visible ) {
-		
+
+		//if the cell is adjacent to where you are, simply return that cell instead of running Pathfinder.getStep
 		if (Level.adjacent( from, to )) {
 			return Actor.findChar( to ) == null && (pass[to] || Level.avoid[to]) ? to : -1;
 		}
 		
 		if (ch.flying || ch.buff( Amok.class ) != null || ch.buff( Rage.class ) != null) {
+			//returns passable array based on: passable[i] = pass[i] || Level.avoid[i]
 			BArray.or( pass, Level.avoid, passable );
 		} else {
+			//arraycopy(Object source, int sourcePos, Object destination, int destinationPos, int numberOfElements) :
+			//Copies the numberOfElements (Level.LENGTH) from the source array (pass) beginning with the element at sourcePos(0) to the array destination (passable) starting at destinationPos(0).
 			System.arraycopy( pass, 0, passable, 0, Level.LENGTH );
 		}
-		
+
+		// Ensures that you can't walk through other characters
 		for (Actor actor : Actor.all()) {
 			if (actor instanceof Char) {
 				int pos = ((Char)actor).pos;
@@ -637,11 +642,11 @@ public class Dungeon {
 				}
 			}
 		}
-		
+
 		return PathFinder.getStep( from, to, passable );
 		
 	}
-	
+
 	public static int flee( Char ch, int cur, int from, boolean pass[], boolean[] visible ) {
 		
 		if (ch.flying) {

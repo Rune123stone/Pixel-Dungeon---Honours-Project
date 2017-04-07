@@ -24,6 +24,14 @@ import com.watabou.pixeldungeon.ui.BuffIndicator;
 public class Buff extends Actor {
 
 	public Char target;
+
+	/**
+	 * Cameron
+	 */
+	@Override
+	public boolean overworldAct() {
+		return false;
+	}
 	
 	public boolean attachTo( Char target ) {
 
@@ -46,7 +54,7 @@ public class Buff extends Actor {
 		diactivate();
 		return true;
 	}
-	
+
 	public int icon() {
 		return BuffIndicator.NONE;
 	}

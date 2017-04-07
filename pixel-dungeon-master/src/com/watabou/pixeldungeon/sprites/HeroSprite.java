@@ -92,13 +92,24 @@ public class HeroSprite extends CharSprite {
 		Camera.main.target = this;
 	}
 
-	//cameron
+	/**
+	 * cameron
+	 */
 	@Override
 	public void placeOnOverworld(int p) {
 		super.placeOnOverworld(p);
 		Camera.main.target = null;
 	}
-	//
+
+	@Override
+	public void overworldMove(int from, int to) {
+
+		System.out.println("HeroSprite.overworldMove(from="+from+", to="+to+")");
+
+		super.overworldMove(from, to);
+		Camera.main.target = null;
+	}
+	///////////////////////////
 
 	@Override
 	public void move( int from, int to ) {		
