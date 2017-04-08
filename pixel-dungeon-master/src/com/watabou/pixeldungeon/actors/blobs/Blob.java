@@ -40,14 +40,6 @@ public class Blob extends Actor {
 	
 	public BlobEmitter emitter;
 
-	/**
-	 * Cameron
-	 */
-	@Override
-	public boolean overworldAct() {
-		return false;
-	}
-	
 	protected Blob() {
 		
 		cur = new int[LENGTH];

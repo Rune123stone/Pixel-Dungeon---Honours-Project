@@ -17,6 +17,7 @@
  */
 package com.watabou.pixeldungeon.sprites;
 
+import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.MovieClip;
 import com.watabou.noosa.Visual;
@@ -118,44 +119,6 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 		point( worldToCamera( cell ) );
 	}
 
-	// **** START of Cameron Methods ****
-	public PointF overworldToCamera(int cell) {
-		final int cellSize = OverworldTileMap.SIZE;
-
-		return new PointF(
-				((cell % OverworldMap.overworldMapWidth) + 0.5f) * cellSize - width * 0.5f,
-				((cell / OverworldMap.overworldMapWidth) + 1.0f) * cellSize - height
-		);
-	}
-
-	public void placeOnOverworld(int cell) {
-		point(overworldToCamera(cell));
-	}
-
-	//scales avatar to match size of overworld
-	public void scaleSpriteToOverworld(int scaleFactor) {
-		this.scale.x *= scaleFactor;
-		this.scale.y *= scaleFactor;
-	}
-
-	public void overworldMove(int from, int to) {
-
-		System.out.println("CharSprite.overworldMove(from="+from+", to="+to+")");
-
-		play(run);
-
-		motion = new PosTweener( this, worldToCamera( to ), MOVE_INTERVAL );
-		motion.listener = this;
-		parent.add( motion );
-
-		isMoving = true;
-
-		turnTo( from , to );
-
-		ch.onMotionComplete();
-	}
-	// **** END of Cameron Methods ****
-	
 	public void showStatus( int color, String text, Object... args ) {
 		if (visible) {
 			if (args.length > 0) {
@@ -473,6 +436,26 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 			
 		}
 	}
+
+	// **** START: Handles overworld character sprite ****
+	public void overworldMove(int from, int to) {
+
+		System.out.println("CharSprite.overworldMove(from="+from+", to="+to+")");
+
+		play(run);
+
+		motion = new PosTweener( this, worldToCamera( to ), MOVE_INTERVAL );
+		motion.listener = this;
+		parent.add( motion );
+
+		isMoving = true;
+
+		turnTo( from , to );
+
+		ch.onMotionComplete();
+		Camera.main.target = null; //doesn't seem to do anything, remove if no problems occur down the line.
+	}
+	// **** END of Cameron Methods ****
 	
 	private static class JumpTweener extends Tweener {
 

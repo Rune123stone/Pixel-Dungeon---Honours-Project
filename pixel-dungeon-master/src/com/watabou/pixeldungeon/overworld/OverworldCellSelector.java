@@ -26,7 +26,6 @@ public class OverworldCellSelector extends TouchArea {
 
     @Override
     protected void onClick( Touchscreen.Touch touch ) {
-        System.out.println("im being called");
         if (dragging) {
 
             dragging = false;
@@ -35,8 +34,6 @@ public class OverworldCellSelector extends TouchArea {
             select( ((OverworldTileMap)target).screenToTile(
                     (int)touch.current.x,
                     (int)touch.current.y ) );
-//            System.out.println((int)touch.current.x);
-//            System.out.println((int)touch.current.y);
         }
     }
 

@@ -56,14 +56,6 @@ public class Swap extends Actor {
 		return false;
 	}
 
-	/**
-	 * Cameron
-	 */
-	@Override
-	public boolean overworldAct() {
-		return false;
-	}
-	
 	private void finish( Effect eff ) {
 		if (eff == eff1) {
 			eff1 = null;

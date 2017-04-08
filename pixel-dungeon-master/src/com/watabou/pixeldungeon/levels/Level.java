@@ -380,13 +380,6 @@ public abstract class Level implements Bundlable {
 				spend( Dungeon.nightMode || Statistics.amuletObtained ? TIME_TO_RESPAWN / 2 : TIME_TO_RESPAWN );
 				return true;
 			}
-			/**
-			 * Cameron
-			 */
-			@Override
-			public boolean overworldAct() {
-				return false;
-			}
 		};
 	}
 	

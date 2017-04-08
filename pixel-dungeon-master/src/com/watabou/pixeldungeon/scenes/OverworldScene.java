@@ -10,9 +10,7 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.hero.Hero;
-import com.watabou.pixeldungeon.overworld.OverworldCellSelector;
-import com.watabou.pixeldungeon.overworld.OverworldMap;
-import com.watabou.pixeldungeon.overworld.OverworldTileMap;
+import com.watabou.pixeldungeon.overworld.*;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.utils.GLog;
@@ -22,8 +20,9 @@ public class OverworldScene extends PixelScene {
     static OverworldScene scene;
 
     private OverworldTileMap tiles;
-    public static HeroSprite heroSpite;
-    public static Hero hero;
+
+    public static OverworldHero hero;
+    public static OverworldHeroSprite heroSprite;
 
     private static OverworldCellSelector overworldCellSelector;
 
@@ -38,7 +37,7 @@ public class OverworldScene extends PixelScene {
         Music.INSTANCE.play(Assets.THEME, false);
         Music.INSTANCE.volume(1f);
 
-        OverworldMap.paintOverworld();
+        OverworldMap.createOverworld();
 
         super.create();
 
@@ -46,7 +45,19 @@ public class OverworldScene extends PixelScene {
         Camera.main.zoom( 1 );
         Camera.main.focusOn((Game.width / 2) - (OverworldMap.overworldMapWidth / 2), Game.height / 2);
 
-        //sets map terrain
+        setMapTerrain();
+
+        //adds hero to map
+        createHero();
+
+        //adds cell listener (ability to drag, touch, etc.)
+        add(overworldCellSelector = new OverworldCellSelector(tiles));
+
+        //allows the hero to run continuously
+        Actor.overworldActorInit();
+    }
+
+    private void setMapTerrain() {
         terrain = new Group();
         add(terrain);
 
@@ -55,37 +66,27 @@ public class OverworldScene extends PixelScene {
                 OverworldMap.overworldMapHeight * OverworldTileMap.SIZE,
                 OverworldMap.waterTexture());
         terrain.add(water);
-        //////
 
         tiles = new OverworldTileMap();
 
         terrain.add(tiles);
-        ////////////
+    }
 
-
-        //adds hero to map
+    private void createHero() {
         mobs = new Group();
         add (mobs);
 
-        //brightness(PixelDungeon.brightness());
-        hero = new Hero();
-        hero.live();
-        hero.pos = OverworldMap.getZonePos("TOWN");
+        hero = new OverworldHero();
+        hero.mapPos = OverworldMap.getZonePos("TOWN");
 
-        heroSpite = new HeroSprite();
+        heroSprite = new OverworldHeroSprite();
         int townNodePos = OverworldMap.getZonePos("TOWN");
-        //heroSpite.place(townNodePos);
-        heroSpite.placeOnOverworld(townNodePos);
-        heroSpite.updateArmor();
-        heroSpite.scaleSpriteToOverworld(3);
 
-        mobs.add(heroSpite);
-        /////////////
+        heroSprite.placeOnOverworld(townNodePos);
+        heroSprite.updateSprite();
+        heroSprite.scaleSpriteToOverworld();
 
-        //adds cell listener (ability to drag, touch, etc.)
-        add(overworldCellSelector = new OverworldCellSelector(tiles));
-        ////////////
-        Actor.overworldActorInit();
+        mobs.add(heroSprite);
     }
 
     public void destroy() {
@@ -100,8 +101,11 @@ public class OverworldScene extends PixelScene {
         //animates water
         water.offset(0, -5 * Game.elapsed);
 
-        Actor.overworldProcess();
-        heroSpite.placeOnOverworld(hero.pos);
+        //animates hero
+        Actor.process(); //if process() gives problems later down the line for the overworld, use this (overworldProcess()).
+
+        //always update the sprites position on the map.
+        heroSprite.placeOnOverworld(hero.mapPos);
 
         overworldCellSelector.enabled = hero.ready;
     }
@@ -117,17 +121,6 @@ public class OverworldScene extends PixelScene {
     private static final OverworldCellSelector.Listener defaultCellListener = new OverworldCellSelector.Listener() {
         @Override
         public void onSelect( Integer cell ) {
-//            int count = 1;
-//            for (Integer integer : hero.moveCells(cell)) {
-//                System.out.println("Path cell : " +count+ " , " +integer);
-//                count++;
-//                heroSpite.placeOnOverworld(integer);
-//                try {
-//                    Thread.sleep(100);
-//                } catch (Exception e) {
-//
-//                }
-//            }
             if (hero.overworldHandle(cell)) {
                 //sets the current actor to the Hero on the overworld map
                 hero.next();

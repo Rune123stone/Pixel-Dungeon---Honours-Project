@@ -43,74 +43,6 @@ public abstract class Actor implements Bundlable {
 	
 	protected abstract boolean act();
 
-	/**
-	 *Cameron
-	 */
-	protected abstract boolean overworldAct();
-
-	public static void overworldProcess() {
-
-		if (current != null) {
-			return;
-		}
-
-		System.out.println("overworldProcess()");
-		boolean doNext;
-
-		do {
-			System.out.println("I'm in the while loop now. (overworldProcess())");
-			now = Float.MAX_VALUE;
-			current = null;
-
-			Arrays.fill( chars, null );
-
-			for (Actor actor : all) {
-				//System.out.println(all.size());
-				if (actor.time < now) {
-					now = actor.time;
-					current = actor;
-				}
-
-				if (actor instanceof Char) {
-					System.out.println("I'm a character (overlookProcess())");
-					Char ch = (Char)actor;
-					chars[ch.pos] = ch;
-				}
-			}
-
-			if (current != null) {
-
-				if (current instanceof Char && ((Char)current).sprite.isMoving) {
-
-					//System.out.println("It's my turn but my sprite is busy; go 'way.");
-					// If it's character's turn to act, but its sprite
-					// is moving, wait till the movement is over
-					current = null;
-					break;
-				}
-
-				doNext = current.overworldAct();
-
-				//doNext = current.act();
-
-				if (doNext && !OverworldScene.hero.isAlive()) {
-					//System.out.println("Do next thing.");
-					doNext = false;
-					current = null;
-				}
-			} else {
-				//System.out.println("Don't do next thing");
-				doNext = false;
-			}
-		} while (doNext);
-	}
-
-	public static void overworldActorInit() {
-		addDelayed(OverworldScene.hero, -Float.MIN_VALUE);
-		current = null;
-	}
-	///////////////////////////////////////////////
-	
 	protected void spend( float time ) {
 		this.time += time;
 	}
@@ -234,31 +166,24 @@ public abstract class Actor implements Bundlable {
 	public static void process() {
 		
 		if (current != null) {
-			//System.out.println("process() broken");
 			return;
 		}
 
-		//must get called on every movement step, if it's not, the sprite is not moving through the whole path.
-		System.out.println("process();");
-	
 		boolean doNext;
 
 		do {
-			System.out.println("I'm in the while() loop now. process()");
 			now = Float.MAX_VALUE;
 			current = null;
 			
 			Arrays.fill( chars, null );
 			
 			for (Actor actor : all) {
-				System.out.println(all.size());
 				if (actor.time < now) {
 					now = actor.time;
 					current = actor;
 				}
 				
 				if (actor instanceof Char) {
-					System.out.println("I'm a character.");
 					Char ch = (Char)actor;
 					chars[ch.pos] = ch;
 				}
@@ -274,9 +199,17 @@ public abstract class Actor implements Bundlable {
 				}
 				
 				doNext = current.act();
-				if (doNext && !Dungeon.hero.isAlive()) {
-					doNext = false;
-					current = null;
+
+				if (Dungeon.hero == null) { //if in processing overworld hero and not dungeon/level hero
+					if (doNext) {
+						doNext = false;
+						current = null;
+					}
+				} else {
+					if (doNext && !Dungeon.hero.isAlive()) {
+						doNext = false;
+						current = null;
+					}
 				}
 			} else {
 				doNext = false;
@@ -340,4 +273,62 @@ public abstract class Actor implements Bundlable {
 	public static HashSet<Actor> all() {
 		return all;
 	}
+
+	// **** START: Handles overworld acting (movement) ****
+	//if process() gives problems later down the line for the overworld, use this (overworldProcess()).
+//	public static void overworldProcess() {
+//		if (current != null) {
+//			return;
+//		}
+//
+//		boolean doNext;
+//		do {
+//			now = Float.MAX_VALUE;
+//			current = null;
+//
+//			Arrays.fill( chars, null );
+//
+//			for (Actor actor : all) {
+//				//System.out.println(all.size());
+//				if (actor.time < now) {
+//					now = actor.time;
+//					current = actor;
+//				}
+//
+//				if (actor instanceof Char) {
+//					Char ch = (Char)actor;
+//					chars[ch.pos] = ch;
+//				}
+//			}
+//
+//			if (current != null) {
+//
+//				if (current instanceof Char && ((Char)current).sprite.isMoving) {
+//
+//					//System.out.println("It's my turn but my sprite is busy; go 'way.");
+//					// If it's character's turn to act, but its sprite
+//					// is moving, wait till the movement is over
+//					current = null;
+//					break;
+//				}
+//
+//				doNext = current.act();
+//
+//				if (doNext && !OverworldScene.hero.isAlive()) {
+//					//System.out.println("Do next thing.");
+//					doNext = false;
+//					current = null;
+//				}
+//			} else {
+//				//System.out.println("Don't do next thing");
+//				doNext = false;
+//			}
+//		} while (doNext);
+//	}
+
+	public static void overworldActorInit() {
+		addDelayed(OverworldScene.hero, -Float.MIN_VALUE);
+		current = null;
+	}
+	// **** END ****
 }

@@ -86,8 +86,6 @@ public class PathFinder {
 
 		if (!buildDistanceMap( from, to, passable )) {
 			return -1;
-		} else {
-			System.out.println("Found a path from "+from+" to "+to);
 		}
 		
 		// From the starting position we are making one step downwards
@@ -102,7 +100,6 @@ public class PathFinder {
 				best = step;
 			}
 		}
-		//System.out.println("Best Step: " +best+ ", current hero pos is:  " +OverworldScene.hero.pos);
 		return best;
 	}
 	

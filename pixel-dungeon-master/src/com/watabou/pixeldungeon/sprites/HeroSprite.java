@@ -29,6 +29,7 @@ import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
+import com.watabou.pixeldungeon.overworld.OverworldHero;
 import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.utils.Callback;
@@ -48,11 +49,9 @@ public class HeroSprite extends CharSprite {
 	public HeroSprite() {
 		super();
 		
-		//link( Dungeon.hero );
-		link (OverworldScene.hero);
-		
-		//texture( Dungeon.hero.heroClass.spritesheet() );
-		texture (Assets.WARRIOR);
+		link( Dungeon.hero );
+
+		texture( Dungeon.hero.heroClass.spritesheet() );
 		updateArmor();
 		
 		idle();
@@ -61,7 +60,7 @@ public class HeroSprite extends CharSprite {
 	public void updateArmor() {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
-		
+
 		idle = new Animation( 1, true );
 		idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1 );
 		
@@ -92,25 +91,6 @@ public class HeroSprite extends CharSprite {
 		Camera.main.target = this;
 	}
 
-	/**
-	 * cameron
-	 */
-	@Override
-	public void placeOnOverworld(int p) {
-		super.placeOnOverworld(p);
-		Camera.main.target = null;
-	}
-
-	@Override
-	public void overworldMove(int from, int to) {
-
-		System.out.println("HeroSprite.overworldMove(from="+from+", to="+to+")");
-
-		super.overworldMove(from, to);
-		Camera.main.target = null;
-	}
-	///////////////////////////
-
 	@Override
 	public void move( int from, int to ) {		
 		super.move( from, to );
@@ -140,7 +120,7 @@ public class HeroSprite extends CharSprite {
 	@Override
 	public void update() {
 		sleeping = ((Hero)ch).restoreHealth;
-		
+
 		super.update();
 	}
 	

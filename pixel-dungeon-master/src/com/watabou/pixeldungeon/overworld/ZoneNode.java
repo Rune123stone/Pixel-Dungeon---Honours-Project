@@ -5,6 +5,7 @@ public class ZoneNode {
     String zoneName;
     private boolean accessible;
 
+    //maybe make inner class inside OverworldMap?
     public ZoneNode(int x, int y, String zoneName) {
         this.x = x;
         this.y = y;
@@ -16,6 +17,4 @@ public class ZoneNode {
     public void setAccessible(boolean accessible) {
         this.accessible = accessible;
     }
-
-
 }

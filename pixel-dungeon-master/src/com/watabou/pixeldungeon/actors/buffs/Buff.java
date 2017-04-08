@@ -25,14 +25,6 @@ public class Buff extends Actor {
 
 	public Char target;
 
-	/**
-	 * Cameron
-	 */
-	@Override
-	public boolean overworldAct() {
-		return false;
-	}
-	
 	public boolean attachTo( Char target ) {
 
 		if (target.immunities().contains( getClass() )) {

@@ -3,9 +3,6 @@ package com.watabou.pixeldungeon.overworld;
 import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.PixelDungeon;
-import com.watabou.pixeldungeon.actors.Char;
-import com.watabou.pixeldungeon.levels.Terrain;
-import com.watabou.utils.Graph;
 import com.watabou.utils.PathFinder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,7 +10,6 @@ import org.json.simple.parser.JSONParser;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class OverworldMap  {
 
@@ -26,11 +22,35 @@ public class OverworldMap  {
     public static int[] overworldMap = new int[overworldMapLength];
     public static boolean[] water = new boolean[overworldMapLength];
 
-    public static ArrayList<Zone> zones;
     public static boolean[] passable = new boolean[overworldMapLength];
 
-    //returns an array list of longs corresponding to the given Json tile map
-    public static ArrayList<Long> getTileMaps(String jsonFile) {
+    //paints tiles of overworld map
+    public static void createOverworld() {
+        PathFinder.setMapSize(overworldMapWidth, overworldMapHeight); //sets size of map for Pathfinder class
+
+        int mapData[] = integerTileMap();
+
+        //note : 24 is water texture
+        //"paints" the overworld with the specified tile textures
+        for (int i = 0; i < overworldMapLength; i++) {
+            if (i < mapData.length) {
+                if (mapData[i] == 0) {
+                    overworldMap[i] = 24; //set to water texture
+                } else {
+                    //note : when using forest_tiles.png tileset, use data - 1
+                    overworldMap[i] = mapData[i] - 1;
+                }
+            } else {
+                overworldMap[i] = 24; //set to water texture
+            }
+        }
+
+        setZoneNodes();
+        setPassable();
+    }
+
+    //returns an array list of longs corresponding to the given Json tile map.
+    private static ArrayList<Long> getTileMap(String jsonFile) {
         JSONParser parser = new JSONParser();
         ArrayList<Long> jsonTileMap;
 
@@ -53,39 +73,29 @@ public class OverworldMap  {
         return null;
     }
 
-    //paints tiles of overworld map
-    public static void paintOverworld() {
-        PathFinder.setMapSize(overworldMapWidth, overworldMapHeight);
-        ArrayList<Long> jsonTileMap = getTileMaps("overworldv2.json");
-        //converts array list of longs to int array
+    //returns an int[] array corresponding to the tileMap of longs obtained from the JSON file.
+    private static int[] integerTileMap() {
+        ArrayList<Long> jsonTileMap = getTileMap("overworld.json");
+
         int[] mapData = new int[jsonTileMap.size()];
         int k = 0;
         for (long dataValue : jsonTileMap) {
             mapData[k] = (int)dataValue;
             k++;
         }
+        return mapData;
+    }
 
-        //note : 24 is water texture
+    //returns the most efficient step current position to target position based on the cells that can be traversed. (finds a path from current position to target)
+    public static int findOverworldPath(int from, int to) {
+        return PathFinder.getStep(from, to, passable);
+    }
+
+    //sets which cells can be traversed.
+    private static void setPassable() {
         for (int i = 0; i < overworldMapLength; i++) {
-            if (i < mapData.length) {
-                if (mapData[i] == 0) {
-                    overworldMap[i] = 24;
-                } else {
-                    overworldMap[i] = mapData[i] - 1;
-                }
-            } else {
-                overworldMap[i] = 24;
-            }
-//            if (mapData[i] == null || mapData[i] == 0) {
-//                overworldMap[i] = 24;
-//            } else {
-//                //note : when using forest_tiles.png tileset, use data - 1
-//                overworldMap[i] = mapData[i] - 1;
-//            }
-//        }
+            passable[i] = true;
         }
-        setZoneNodes();
-        setPassable();
     }
 
     //sets tile textures
@@ -98,46 +108,28 @@ public class OverworldMap  {
         return Assets.WATER_CAVES;
     }
 
-    //zone building attempts
-    //private ArrayList<Zone> zones;
-    private Zone zoneEntrance;
-    private Zone zoneExit;
+    // **** START: Zone Logic ****
+    private static ArrayList<ZoneNode> zoneNodes;
 
-    public void buildZones() {
-        int distance;
-        int minDistance = (int)Math.sqrt(zones.size());
+    //zone name keys:
+    public static String TOWN = "TOWN";
+    public static String FOREST = "FOREST";
+    public static String FIELDS = "FIELDS";
+    public static String VILLAGE = "VILLAGE";
+    public static String SHADOWLANDS = "SHADOWLANDS";
 
-        zoneEntrance = zones.get(0);
-        zoneExit = zones.get(5);
-
-        Graph.buildDistanceMap(zones, zoneExit);
-        distance = zoneEntrance.distance;
-
-    }
-
-    public void initZones() {
-        zones = new ArrayList<>();
-    }
-
-    public boolean zoneExists(String thisZoneName) {
-        for (Zone zone : zones) {
-            if (zone.zoneName.equals(thisZoneName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static ArrayList<ZoneNode> zoneNodes;
-
-    public static void setZoneNodes() {
+    //sets the cell that represents where the hero sprite will be positioned should it move to that zone.
+    private static void setZoneNodes() {
         zoneNodes = new ArrayList<>();
-        ZoneNode townZoneNode = new ZoneNode(13, 4, "TOWN");
-        ZoneNode forestZoneNode = new ZoneNode(7, 27, "FOREST");
+
+        ZoneNode townZoneNode = new ZoneNode(13, 4, TOWN);
+        ZoneNode forestZoneNode = new ZoneNode(7, 27, FOREST);
+
         zoneNodes.add(townZoneNode);
         zoneNodes.add(forestZoneNode);
     }
 
+    //returns the position of the zoneNode based on the zone name.
     public static int getZonePos(String name) {
         for (ZoneNode zoneNode : zoneNodes) {
             if (zoneNode.zoneName.equals(name)) {
@@ -146,19 +138,5 @@ public class OverworldMap  {
         }
         return 0;
     }
-
-    //pathFinding
-    public static int findOverworldPath(int from, int to, boolean pass[]) {
-        //System.arraycopy(pass, 0, passable, 0, overworldMapLength);
-
-        int testy = PathFinder.getStep(from, to, passable);
-        //System.out.println("findOverworldPath(from="+from+", to="+to+") = " + testy);
-        return testy;
-    }
-
-    public static void setPassable() {
-        for (int i = 0; i < overworldMapLength; i++) {
-            passable[i] = true;
-        }
-    }
+    // **** END: Zone Logic ****
 }

@@ -509,10 +509,6 @@ public abstract class Char extends Actor {
 		System.out.println("MOVED! step="+step + "; pos="+pos);
 	}
 
-	@Override
-	protected boolean overworldAct() {
-		return false;
-	}
 	////////////////////////
 
 	

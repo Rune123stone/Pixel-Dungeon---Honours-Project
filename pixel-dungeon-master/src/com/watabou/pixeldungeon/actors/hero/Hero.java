@@ -389,19 +389,20 @@ public class Hero extends Char {
 			return false;
 		}
 
-//		checkVisibleMobs();
-//		AttackIndicator.updateState();
+		checkVisibleMobs();
+		AttackIndicator.updateState();
 
 		if (curAction == null) {
 
-//			if (restoreHealth) {
-//				if (isStarving() || HP >= HT) {
-//					restoreHealth = false;
-//				} else {
-//					spend( TIME_TO_REST ); next();
-//					return false;
-//				}
-//			}
+			if (restoreHealth) {
+				if (isStarving() || HP >= HT) {
+					restoreHealth = false;
+				} else {
+					spend( TIME_TO_REST ); next();
+					return false;
+				}
+			}
+
 			ready();
 			return false;
 
@@ -412,11 +413,7 @@ public class Hero extends Char {
 			ready = false;
 
 			if (curAction instanceof HeroAction.Move) {
-
-				//return actMove( (HeroAction.Move)curAction );
-				//System.out.println(curAction);
-
-				return overworldActMove((HeroAction.Move)curAction);
+				return actMove( (HeroAction.Move)curAction );
 
 			} else
 			if (curAction instanceof HeroAction.Interact) {
@@ -453,7 +450,6 @@ public class Hero extends Char {
 			} else
 			if (curAction instanceof HeroAction.Cook) {
 				return actCook( (HeroAction.Cook)curAction );
-
 			}
 		}
 
@@ -469,8 +465,8 @@ public class Hero extends Char {
 		curAction = null;
 		ready = true;
 		
-		//GameScene.ready();
-		OverworldScene.overworldReady();
+		GameScene.ready();
+		//OverworldScene.overworldReady();
 	}
 	
 	public void interrupt() {
@@ -490,14 +486,12 @@ public class Hero extends Char {
 
 		// dst = destination
 		if (getCloser( action.dst )) {
-			System.out.println("actMove() called");
 			return true;
 			
 		} else {
 			if (Dungeon.level.map[pos] == Terrain.SIGN) {
 				Sign.read( pos );
 			}
-			System.out.println("actMove() is false and has ended. The spire is ready for the next action.");
 			ready();
 			
 			return false;
@@ -963,115 +957,6 @@ public class Hero extends Char {
 		}
 
 	}
-
-	/**
-	 * Cameron
-	 */
-	public boolean getCloserOverworldMap(final int target) {
-		int step;
-		boolean[] passable = OverworldMap.passable;
-
-//		step = OverworldMap.findOverworldPath(OverworldMap.getZonePos("TOWN"),
-//				OverworldMap.getZonePos("FOREST"), passable);
-
-		step = OverworldMap.findOverworldPath(pos, target, passable);
-		System.out.println("step="+step + "; pos="+pos);
-
-		if (step != -1) {
-			int oldPos = pos;
-			overworldMove(step);
-			sprite.overworldMove(oldPos, pos);
-			spend(1 / speed());
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	///////test lolz
-	public ArrayList<Integer> moveCells(final int target) {
-		boolean[] passable = OverworldMap.passable;
-		ArrayList<Integer> cells = new ArrayList<>();
-
-		int step = -1;
-
-		while (step != target) {
-			step = OverworldMap.findOverworldPath(pos, target, passable);
-			cells.add(step);
-
-			pos = step;
-		}
-
-		return cells;
-	}
-	/////
-
-	@Override
-	public void overworldMove(int step) {
-
-		//System.out.println("overWorldMove(step="+step+")");
-		super.overworldMove(step);
-	}
-
-	@Override
-	public boolean overworldAct() {
-		super.overworldAct();
-		//boolean result = overworldActMove( (HeroAction.Move)curAction );
-		//System.out.println("overworldAct() = " + result);
-		if (curAction == null) {
-			ready();
-			return false;
-		} else {
-			ready = false;
-
-			if (curAction instanceof HeroAction.Move) {
-				//System.out.println("im moving");
-				return overworldActMove((HeroAction.Move)curAction);
-			}
-		}
-
-		return false;
-	}
-
-
-	private boolean overworldActMove( HeroAction.Move action ) {
-
-		//System.out.println("overWorldMove(action.dst="+action.dst+") = ?");
-
-		// dst = destination
-		if (getCloserOverworldMap( action.dst )) {
-			System.out.println("overworldActMove() called");
-			//System.out.println("^^...overWorldMove(action.dst="+action.dst+") = true");
-			return true;
-
-		} else {
-			//ready to receive the next action
-			System.out.println("overworldActMove() is finished. The sprite is ready for the next action.");
-//			System.out.println("Destination Pixel ["+(action.dst)+"]");
-//			System.out.println("You are at [" + (pos) + "]");
-			ready();
-			//System.out.println("^^...overWorldMove(action.dst="+action.dst+") = false");
-			return false;
-		}
-	}
-
-	public boolean overworldHandle(int cell) {
-
-		//System.out.println("overworldHandle(cell="+cell+") = overworldAct()");
-
-
-		if (cell == -1) {
-			//System.out.println("^...overworldHandle(cell="+cell+") = false");
-			return false;
-		}
-
-		curAction = new HeroAction.Move(cell);
-		lastAction = null;
-
-		return overworldAct();
-	}
-	////////////////////////
-
 
 	public boolean handle( int cell ) {
 		
