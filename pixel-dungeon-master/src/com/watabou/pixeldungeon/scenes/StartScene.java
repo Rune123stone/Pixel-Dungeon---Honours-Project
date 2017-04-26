@@ -140,7 +140,6 @@ public class StartScene extends PixelScene {
 				} else {
 					startNewGame();
 				}
-
 			}
 		};
 		add( btnNewGame );
@@ -285,6 +284,7 @@ public class StartScene extends PixelScene {
 				btnNewGame.visible = true;
 				btnNewGame.secondary( null, false );
 				btnNewGame.setRect( buttonX, buttonY, Camera.main.width - buttonX * 2, BUTTON_HEIGHT );
+
 			}
 			
 		} else {
@@ -314,7 +314,7 @@ public class StartScene extends PixelScene {
 		PixelDungeon.switchNoFade( TitleScene.class );
 	}
 	
-	private static class GameButton extends RedButton {
+	public static class GameButton extends RedButton {
 		
 		private static final int SECONDARY_COLOR_N	= 0xCACFC2;
 		private static final int SECONDARY_COLOR_H	= 0xFFFF88;

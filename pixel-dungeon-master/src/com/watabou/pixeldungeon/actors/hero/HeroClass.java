@@ -84,25 +84,25 @@ public enum HeroClass {
 		hero.heroClass = this;
 		
 		initCommon( hero );
-		
+
 		switch (this) {
 		case WARRIOR:
 			initWarrior( hero );
 			break;
-			
+
 		case MAGE:
 			initMage( hero );
 			break;
-			
+
 		case ROGUE:
 			initRogue( hero );
 			break;
-			
+
 		case HUNTRESS:
 			initHuntress( hero );
 			break;
 		}
-		
+
 		if (Badges.isUnlocked( masteryBadge() )) {
 			new TomeOfMastery().collect();
 		}

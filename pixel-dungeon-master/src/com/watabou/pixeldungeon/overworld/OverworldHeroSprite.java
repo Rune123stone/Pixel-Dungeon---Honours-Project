@@ -1,15 +1,10 @@
 package com.watabou.pixeldungeon.overworld;
 
-import android.graphics.PointF;
-import android.graphics.RectF;
 import com.watabou.gltextures.SmartTexture;
 import com.watabou.gltextures.TextureCache;
 import com.watabou.noosa.Camera;
-import com.watabou.noosa.Image;
 import com.watabou.noosa.TextureFilm;
-import com.watabou.noosa.tweeners.PosTweener;
 import com.watabou.pixeldungeon.Assets;
-import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 
@@ -69,6 +64,7 @@ public class OverworldHeroSprite extends CharSprite {
         );
     }
 
+    //scales sprite's size to match the overworld's size
     public void scaleSpriteToOverworld() {
         scale.x *= 3;
         scale.y *= 3;

@@ -2,55 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5e89f61-9a68-4486-b6f2-816443146dfe" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/PD_classes_master.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/pixel-dungeon-master.apk" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/Dungeon$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/Dungeon$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/Dungeon.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/Dungeon.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/FogOfWar$FogTexture.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/FogOfWar$FogTexture.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/FogOfWar.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/FogOfWar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/Char.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/Char.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/hero/Hero$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/hero/Hero$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/hero/Hero.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/hero/Hero.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Fleeing.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Fleeing.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Hunting.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Hunting.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Passive.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Passive.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Sleeping.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Sleeping.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Wandering.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob$Wandering.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/Mob.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$2.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$3.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$4$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$4$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$4.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$5.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$Quest$Type.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$Quest$Type.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$Quest.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$Quest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$QuestHandler.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost$QuestHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/Level.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/Level.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/Patch.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/Patch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel$Sink$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel$Sink$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel$Sink.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel$Sink.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel$WaterParticle.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel$WaterParticle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/SewerLevel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene$2.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene$3.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/GameScene.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$1$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$2.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$3.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$ChallengeButton$1.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$ChallengeButton$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$ChallengeButton.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$ChallengeButton.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$ClassShield.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$ClassShield.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$GameButton.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene$GameButton.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene.class" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/scenes/StartScene.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/pixel-dungeon-master/pixel-dungeon-master.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/pixel-dungeon-master/pixel-dungeon-master.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -82,9 +33,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#2836#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,9 +43,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#7647#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,9 +53,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#8023#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,11 +61,9 @@
       <file leaf-file-name="CavesLevel.class" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/CavesLevel.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3519">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#9786#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -142,8 +85,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-24" />
+    <option name="y" value="19" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -162,9 +105,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -245,6 +186,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -652,14 +595,15 @@
       <workItem from="1487798603304" duration="270000" />
       <workItem from="1487801263634" duration="24000" />
       <workItem from="1490623240692" duration="662000" />
+      <workItem from="1492624478393" duration="596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1074000" />
+    <option name="totallyTimeSpent" value="1670000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-24" y="19" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -709,6 +653,46 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/PixelDungeon.class">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="75" column="30" lean-forward="false" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/FogOfWar.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/Assets.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/CavesBossLevel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/CavesLevel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/PixelDungeon.class">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -743,9 +727,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2836#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -753,9 +735,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#7647#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -763,19 +743,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#8023#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/pixel-dungeon-master/com/watabou/pixeldungeon/levels/CavesLevel.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3519">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9786#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,16 +1,18 @@
 package com.watabou.pixeldungeon.overworld;
 
 public class ZoneNode {
-    int x, y, mapPos;
-    String zoneName;
+    public int mapPos, tileID;
+    public boolean heroPos; //position that the hero moves to/stands on
+    public String zoneName;
     private boolean accessible;
 
     //maybe make inner class inside OverworldMap?
-    public ZoneNode(int x, int y, String zoneName) {
-        this.x = x;
-        this.y = y;
+    public ZoneNode(boolean heroPos, int tileID, int mapPos, String zoneName) {
+        this.heroPos = heroPos;
+        this.tileID = tileID;
+        this.mapPos = mapPos;
         this.zoneName = zoneName;
-        mapPos = (y * OverworldMap.overworldMapWidth) + x;
+        //mapPos = (y * OverworldMap.overworldMapWidth) + x;
         accessible = true;
     }
 

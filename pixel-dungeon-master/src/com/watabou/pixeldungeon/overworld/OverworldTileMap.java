@@ -28,27 +28,6 @@ public class OverworldTileMap extends Tilemap{
                 invScale( SIZE ).
                 floor();
 
-        // we put the 'k' in "komputers"
-
-//        int W = Game.width;
-//        int H = Game.height;
-//        int w = OverworldMap.overworldMapWidth;
-//        int h = OverworldMap.overworldMapHeight;
-//        int l = OverworldMap.overworldMapLength;
-//        int s = SIZE;
-//        int Cx = x/s; // Cell co-ordinate
-//        int Cy = y/s;
-
-//        System.out.println("[!]");
-//        System.out.println("Game dimensions: ("+W+","+H+")");
-//        System.out.println("Map dimensions with tilesize ["+s+"]: ("+w+","+h+")");
-//        System.out.println("Map array length is ["+l+"]; should be ["+(w*h)+"]");
-//        System.out.println("You tapped pixel ("+x+", "+y+")");
-//        System.out.println("Even though pixel was married to ("+(x/s)+", "+(y/s)+")");
-//        System.out.println("Pixel is waiting for you at cell number ["+ ((Cy*w)+Cx) +"]");
-//        System.out.println("Point identified by Sweden guy: ("+p.x+", "+p.y+")");
-//        System.out.println("[!]");
-
         return p.x >= 0 && p.x < OverworldMap.overworldMapWidth && p.y >= 0 && p.y < OverworldMap.overworldMapHeight ? p.x + p.y * OverworldMap.overworldMapWidth : -1;
     }
 

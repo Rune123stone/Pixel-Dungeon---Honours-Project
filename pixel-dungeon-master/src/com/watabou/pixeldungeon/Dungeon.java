@@ -124,7 +124,8 @@ public class Dungeon {
 		hero.live();
 		
 		Badges.reset();
-		
+
+		StartScene.curClass = HeroClass.WARRIOR;
 		StartScene.curClass.initHero( hero );
 	}
 	
@@ -273,7 +274,7 @@ public class Dungeon {
 		
 		observe();
 	}
-	
+
 	public static void dropToChasm( Item item ) {
 		int depth = Dungeon.depth + 1;
 		ArrayList<Item> dropped = (ArrayList<Item>)Dungeon.droppedItems.get( depth );

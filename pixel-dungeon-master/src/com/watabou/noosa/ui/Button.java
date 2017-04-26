@@ -37,6 +37,7 @@ public class Button extends Component {
 		hotArea = new TouchArea( 0, 0, 0, 0 ) {
 			@Override
 			protected void onTouchDown(Touch touch) {
+				System.out.println("onTouchDown");
 				pressed = true;
 				pressTime = 0;
 				processed = false;
@@ -44,11 +45,13 @@ public class Button extends Component {
 			};
 			@Override
 			protected void onTouchUp(Touch touch) {
+				System.out.println("onTouchUp");
 				pressed = false;
 				Button.this.onTouchUp();
 			};
 			@Override
 			protected void onClick( Touch touch ) {
+				System.out.println("clicked");
 				if (!processed) {
 					Button.this.onClick();
 				}

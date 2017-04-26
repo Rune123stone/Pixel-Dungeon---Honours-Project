@@ -33,6 +33,7 @@ import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.scenes.CellSelector;
 import com.watabou.pixeldungeon.scenes.GameScene;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.windows.WndCatalogus;
 import com.watabou.pixeldungeon.windows.WndHero;
@@ -142,17 +143,17 @@ public class Toolbar extends Component {
 	@Override
 	public void update() {
 		super.update();
-		
+
 		if (lastEnabled != Dungeon.hero.ready) {
 			lastEnabled = Dungeon.hero.ready;
-			
+
 			for (Gizmo tool : members) {
 				if (tool instanceof Tool) {
 					((Tool)tool).enable( lastEnabled );
 				}
 			}
 		}
-		
+
 		if (!Dungeon.hero.isAlive()) {
 			btnInventory.enable( true );
 		}
@@ -178,32 +179,32 @@ public class Toolbar extends Component {
 	private static CellSelector.Listener informer = new CellSelector.Listener() {
 		@Override
 		public void onSelect( Integer cell ) {
-			
+
 			if (cell == null) {
 				return;
 			}
-			
+
 			if (cell < 0 || cell > Level.LENGTH || (!Dungeon.level.visited[cell] && !Dungeon.level.mapped[cell])) {
 				GameScene.show( new WndMessage( "You don't know what is there." ) ) ;
 				return;
 			}
-			
+
 			if (!Dungeon.visible[cell]) {
 				GameScene.show( new WndInfoCell( cell ) );
 				return;
 			}
-			
+
 			if (cell == Dungeon.hero.pos) {
 				GameScene.show( new WndHero() );
 				return;
 			}
-			
+
 			Mob mob = (Mob)Actor.findChar( cell );
 			if (mob != null) {
 				GameScene.show( new WndInfoMob( mob ) );
 				return;
 			}
-			
+
 			Heap heap = Dungeon.level.heaps.get( cell );
 			if (heap != null && heap.type != Heap.Type.HIDDEN) {
 				if (heap.type == Heap.Type.FOR_SALE && heap.size() == 1 && heap.peek().price() > 0) {
@@ -213,15 +214,15 @@ public class Toolbar extends Component {
 				}
 				return;
 			}
-			
+
 			Plant plant = Dungeon.level.plants.get( cell );
 			if (plant != null) {
 				GameScene.show( new WndInfoPlant( plant ) );
 				return;
 			}
-			
+
 			GameScene.show( new WndInfoCell( cell ) );
-		}	
+		}
 		@Override
 		public String prompt() {
 			return "Select a cell to examine";

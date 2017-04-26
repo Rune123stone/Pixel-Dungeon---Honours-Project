@@ -8,29 +8,30 @@ import com.watabou.utils.Bundle;
 public class OverworldHero extends Char {
     public boolean ready;
 
-    public HeroAction curAction;
-    public HeroAction lastAction;
+    private HeroAction curAction;
+    public HeroAction lastAction; //consider removing
 
-    public int mapPos;
-    public String currentZone;
+    //public int mapPos;
+    public String currentZone; //current zone of the hero on the overworld map
+    public int curPos;  //current position of the hero on the overworld map
 
     public OverworldHero() {
         //update heroSprite armor?
     }
 
     //bundle keys
-    public String mapPosKey = "MAPPOS";
-    public String zoneKey = "ZONE";
+    private String curPosKey = "CURPOS";
+    private String zoneKey = "ZONE";
 
     @Override
     public void storeInBundle(Bundle bundle) {
-        bundle.put(mapPosKey, mapPos);
+        bundle.put(curPosKey, curPos);
         bundle.put(zoneKey, currentZone);
     }
 
     @Override
     public void restoreFromBundle(Bundle bundle) {
-        mapPos = bundle.getInt(mapPosKey);
+        curPos = bundle.getInt(curPosKey);
         currentZone = bundle.getString(zoneKey);
     }
 
@@ -60,17 +61,21 @@ public class OverworldHero extends Char {
     // **** handles path finding across the map ****
 
     //move towards the target zone by one step.
-    public boolean moveTowardsTarget(final int target) {  //translates to getCloserOverworldMap(final int target)
+    private boolean moveTowardsTarget(final int target) {  //translates to getCloserOverworldMap(final int target)
         int step;
         //boolean[] passable = OverworldMap.passable;
 
-        step = OverworldMap.findOverworldPath(mapPos, target);
+        //step = OverworldMap.findOverworldPath(mapPos, target);
+        step = OverworldMap.findOverworldPath(curPos, target);
 
         //if a path exists between pos and target
         if (step != -1) {
-            int oldPos = mapPos;
-            mapPos = step; //should be the same as (overworldMove(step)).
-            sprite.overworldMove(oldPos, mapPos);
+            //int oldPos = mapPos;
+            int oldPos = curPos;
+            //mapPos = step; //should be the same as (overworldMove(step)).
+            curPos = step;
+            //sprite.overworldMove(oldPos, mapPos);
+            sprite.overworldMove(oldPos, curPos);
             spend(1);
 
             return true;
@@ -89,9 +94,11 @@ public class OverworldHero extends Char {
     }
 
     //sets the action to a "move" action and sets the target cell
-    public boolean overworldHandle(int cell) {
+    public boolean overworldHandle(int cell, int from) { //consider an array list of possible cells (zones)
         curAction = new HeroAction.Move(cell);
         lastAction = null;
+
+        curPos = from;
 
         return act();
     }

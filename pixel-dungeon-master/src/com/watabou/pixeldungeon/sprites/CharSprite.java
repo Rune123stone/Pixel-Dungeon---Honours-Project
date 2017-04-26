@@ -439,9 +439,6 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 
 	// **** START: Handles overworld character sprite ****
 	public void overworldMove(int from, int to) {
-
-		System.out.println("CharSprite.overworldMove(from="+from+", to="+to+")");
-
 		play(run);
 
 		motion = new PosTweener( this, worldToCamera( to ), MOVE_INTERVAL );

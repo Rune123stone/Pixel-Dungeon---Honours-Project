@@ -40,8 +40,6 @@ public class Chrome {
 	
 	public static NinePatch get( Type type ) {
 		switch (type) {
-			case OVERWORLDMAP:
-				return new NinePatch(Assets.OVERWORLD_MAP, 0);
 			case WINDOW:
 				return new NinePatch(Assets.CHROME, 0, 0, 22, 22, 7);
 			case TOAST:

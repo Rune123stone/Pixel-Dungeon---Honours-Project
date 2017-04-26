@@ -642,7 +642,6 @@ public class GameScene extends PixelScene {
 		QuickSlot.cancel();
 	}
 
-	
 	private static final CellSelector.Listener defaultCellListener = new CellSelector.Listener() {
 		@Override
 		public void onSelect( Integer cell ) {
