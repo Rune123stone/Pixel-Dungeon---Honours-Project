@@ -10,6 +10,7 @@ public class OverworldHero extends Char {
 
     private HeroAction curAction;
     public HeroAction lastAction; //consider removing
+    public boolean reachedDestination = true;
 
     //public int mapPos;
     public String currentZone; //current zone of the hero on the overworld map
@@ -62,6 +63,7 @@ public class OverworldHero extends Char {
 
     //move towards the target zone by one step.
     private boolean moveTowardsTarget(final int target) {  //translates to getCloserOverworldMap(final int target)
+        //reachedDestination = false;
         int step;
         //boolean[] passable = OverworldMap.passable;
 
@@ -78,10 +80,16 @@ public class OverworldHero extends Char {
             sprite.overworldMove(oldPos, curPos);
             spend(1);
 
+            if (curPos == target) {
+                reachedDestination = true;
+            }
+
             return true;
         } else {
             return false;
         }
+
+
     }
 
     private boolean overworldActMove(HeroAction.Move action) {

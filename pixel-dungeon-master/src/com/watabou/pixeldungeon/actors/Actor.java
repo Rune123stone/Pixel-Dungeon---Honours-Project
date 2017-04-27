@@ -330,5 +330,10 @@ public abstract class Actor implements Bundlable {
 		addDelayed(OverworldScene.hero, -Float.MIN_VALUE);
 		current = null;
 	}
+
+	public static void removeActor() {
+		remove(OverworldScene.hero);
+	}
+
 	// **** END ****
 }

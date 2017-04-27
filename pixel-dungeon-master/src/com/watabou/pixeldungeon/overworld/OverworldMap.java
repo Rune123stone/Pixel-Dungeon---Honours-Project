@@ -25,6 +25,8 @@ public class OverworldMap  {
     public static boolean[] passable = new boolean[overworldMapLength];
 
     private static int[] mapData = new int[overworldMapLength];
+    private static int[] passableMapData = new int[overworldMapLength];
+
     public static ArrayList<ZoneNode> zones;
 
     //paints tiles and sets paths for overworld map.
@@ -32,7 +34,7 @@ public class OverworldMap  {
         PathFinder.setMapSize(overworldMapWidth, overworldMapHeight); //sets size of map for Pathfinder class
 
         mapData = integerTileMap();
-
+        //passableMapData = mapData;
         //note : 24 is water texture
         //"paints" the overworld with the specified tile textures
         for (int i = 0; i < overworldMapLength; i++) {
@@ -42,6 +44,7 @@ public class OverworldMap  {
                 } else {
                     //note : when using forest_tiles.png tileset, use data - 1
                     overworldMap[i] = mapData[i] - 1;
+
                 }
             } else {
                 overworldMap[i] = 24; //set to water texture
@@ -49,9 +52,233 @@ public class OverworldMap  {
         }
 
         setZoneNodes();
-        setPassableTiles();
+
         setZoneTiles();
+
+        setFogTileData("Dock", "Forest");
+
+        setPassableTiles();
+        //setFogPathTileData("Dock", "Fields");
     }
+
+
+    // **** fog test methods START ****
+    //works
+    public static ArrayList<Integer> noFogZoneTileID(String zoneName) {
+
+        int[] data = integerTileMap();
+        ArrayList<Integer> noFogTiles = new ArrayList<>();
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
+
+            JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
+
+            JSONArray tileSets = (JSONArray)jsonObject.get("tilesets");
+
+            JSONObject tileSetsContent = (JSONObject)tileSets.get(0);
+
+            JSONObject tileProperties = (JSONObject)tileSetsContent.get("tileproperties");
+
+            for (int i = 0; i < data.length; i++) {
+
+                Integer curTileID = data[i] - 1;
+
+                JSONObject curTile = (JSONObject) tileProperties.get(curTileID.toString());
+
+                if (curTile != null) {
+
+                    String zone = (String) curTile.get("zoneName");
+                    boolean hasFog = (boolean) curTile.get("fog");
+
+                    if (zone != null && zone.equals(zoneName) && !hasFog) {
+                        noFogTiles.add(curTileID);
+                    }
+                }
+            }
+        } catch (Exception e) {
+
+        }
+
+        return noFogTiles;
+    }
+
+    //works
+    public static ArrayList<Integer> fogZoneTileID(String zoneName) {
+        ArrayList<Integer> fogTiles = new ArrayList<>();
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
+
+            JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
+
+            JSONArray tileSets = (JSONArray)jsonObject.get("tilesets");
+
+            JSONObject tileSetsContent = (JSONObject)tileSets.get(0);
+
+            Long numberOfTiles = (Long) tileSetsContent.get("tilecount");
+
+            System.out.println(numberOfTiles);
+
+            JSONObject tileProperties = (JSONObject)tileSetsContent.get("tileproperties");
+
+            for (Integer i = 0; i < numberOfTiles; i++) {
+
+                JSONObject curTile = (JSONObject) tileProperties.get(i.toString());
+
+                if (curTile != null) {
+
+                    String zone = (String) curTile.get("zoneName");
+                    boolean hasFog = (boolean) curTile.get("fog");
+
+                    if (zone != null && zone.equals(zoneName) && hasFog) {
+                        fogTiles.add(i);
+                    }
+
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("error in getting fog tiles: " +e);
+        }
+
+        return fogTiles;
+    }
+
+    //sets tiles to be their corresponding "fog" tiles.
+    public static void setFogTileData(String zoneOne, String zoneTwo) {
+        JSONParser parser = new JSONParser();
+
+
+        try {
+            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
+
+            JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
+
+            JSONArray tileSets = (JSONArray)jsonObject.get("tilesets");
+
+            JSONObject tileSetsContent = (JSONObject)tileSets.get(0);
+
+            JSONObject tileProperties = (JSONObject)tileSetsContent.get("tileproperties");
+
+            for (int i = 0; i < overworldMapLength; i++) {
+
+                if (mapData[i] == 0) {
+                    continue;
+                }
+
+                Integer curTileID = mapData[i] - 1;
+
+                JSONObject curTile = (JSONObject) tileProperties.get(curTileID.toString());
+
+                String curZone = null;
+                String connectedZone = null;
+
+                if (curTile != null) {
+
+                    curZone = (String) curTile.get("zoneName");
+                    connectedZone = (String) curTile.get("connectedZone");
+
+                    if (curZone == null && connectedZone == null) {
+                        continue;
+                    }
+                }
+
+                //sets bridge tiles
+                if (connectedZone != null) {
+                    //special case for fields and cave
+                    if ((connectedZone.equals("fieldAndCave")) && zoneOne.equals("Cave") && zoneTwo.equals("Fields")) {
+                        overworldMap[i] = (mapData[i] - 1) + 185;
+                        passableMapData[i] = (mapData[i]) + 185;
+                    }
+
+                    if (connectedZone.equals(zoneOne) || connectedZone.equals(zoneTwo)) {
+                        overworldMap[i] = (mapData[i] - 1) + 185;
+                        passableMapData[i] = (mapData[i] + 185);
+                    }
+                }
+
+                //sets zone tiles
+                if (curZone != null) {
+                    if ((curZone.equals(zoneOne) || curZone.equals(zoneTwo))) {
+                        overworldMap[i] = (mapData[i] - 1) + 1024;
+                        passableMapData[i] = (mapData[i]) + 1024;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("error in setting fog tiles: " +e);
+        }
+    }
+
+    //sets zone tiles to be their corresponding "no fog" tiles.
+    public static void setNoFogTileData(String zoneOne, String zoneTwo) {
+        JSONParser parser = new JSONParser();
+
+        try {
+            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
+
+            JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
+
+            JSONArray tileSets = (JSONArray)jsonObject.get("tilesets");
+
+            JSONObject tileSetsContent = (JSONObject)tileSets.get(0);
+
+            JSONObject tileProperties = (JSONObject)tileSetsContent.get("tileproperties");
+
+            for (int i = 0; i < overworldMapLength; i++) {
+
+                if (mapData[i] == 0) {
+                    continue;
+                }
+
+                Integer curTileID = mapData[i] - 1;
+
+                JSONObject curTile = (JSONObject) tileProperties.get(curTileID.toString());
+
+                String curZone = null;
+                String connectedZone = null;
+
+                if (curTile != null) {
+
+                    curZone = (String) curTile.get("zoneName");
+                    connectedZone = (String) curTile.get("connectedZone");
+
+                    if (curZone == null && connectedZone == null) {
+                        continue;
+                    }
+                }
+
+                //sets bridge tiles
+                if (connectedZone != null) {
+                    //special case for fields and cave
+                    if ((connectedZone.equals("fieldAndCave")) && zoneOne.equals("Cave") && zoneTwo.equals("Fields")) {
+                        overworldMap[i] = (mapData[i] - 1);
+                        passableMapData[i] = (mapData[i]);
+                    }
+
+                    if (connectedZone.equals(zoneOne) || connectedZone.equals(zoneTwo)) {
+                        overworldMap[i] = (mapData[i] - 1);
+                        passableMapData[i] = (mapData[i]);
+                    }
+                }
+
+                //sets zone tiles
+                if (curZone != null) {
+                    if ((curZone.equals(zoneOne) || curZone.equals(zoneTwo))) {
+                        overworldMap[i] = (mapData[i] - 1);
+                        passableMapData[i] = (mapData[i]);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("error in setting fog tiles: " +e);
+        }
+    }
+    // **** fog test methods END ****
 
     //returns an array list of longs corresponding to the given Json tile map.
     private static ArrayList<Long> getTileMap(String jsonFile) {
@@ -78,11 +305,11 @@ public class OverworldMap  {
     }
 
     //sets which tiles can be traversed based on the "passable" property in the Tiled JSON file.
-    private static void setPassableTiles() {
+    public static void setPassableTiles() {
         JSONParser parser = new JSONParser();
 
         try {
-            InputStream is = PixelDungeon.instance.getAssets().open("tempOverworld2.json");
+            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
 
             JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
 
@@ -97,7 +324,8 @@ public class OverworldMap  {
                 if (mapData[i] == 0) {
                     passable[i] = false;
                 } else {
-                    Integer tileID = mapData[i] - 1;
+                    //Integer tileID = mapData[i] - 1;
+                    Integer tileID = overworldMap[i];
                     JSONObject tile = (JSONObject)tileProperties.get(tileID.toString());
 
                     if (tile != null) {
@@ -119,7 +347,7 @@ public class OverworldMap  {
         zones = new ArrayList<>();
 
         try {
-            InputStream is = PixelDungeon.instance.getAssets().open("tempOverworld2.json");
+            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
 
             JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
 
@@ -140,8 +368,9 @@ public class OverworldMap  {
                     if (curTile != null) {
 
                         String zone = (String) curTile.get("zoneName");
+                        boolean fog = (boolean) curTile.get("fog");
 
-                        if (zone != null) {
+                        if (zone != null && !fog) {
 
                             Boolean isHeroPos = (Boolean)curTile.get("heroPos");
                             ZoneNode zoneNode;
@@ -166,7 +395,7 @@ public class OverworldMap  {
     //returns an int[] array corresponding to the tileMap of longs obtained from the JSON file.
     private static int[] integerTileMap() {
         //ArrayList<Long> jsonTileMap = getTileMap("overworldProp.json");
-        ArrayList<Long> jsonTileMap = getTileMap("tempOverworld2.json"); //change when final map is implemented
+        ArrayList<Long> jsonTileMap = getTileMap("overworldMap.json"); //change when final map is implemented
 
         int[] mapData = new int[jsonTileMap.size()];
         int k = 0;
@@ -184,7 +413,8 @@ public class OverworldMap  {
 
     //sets tile textures
     public static String tilesTexture() {
-        return Assets.TILES_FOREST;
+        //return Assets.TILES_FOREST;
+        return Assets.OVERWORLD_MAP_ASSETS;
     }
 
     //sets water texture

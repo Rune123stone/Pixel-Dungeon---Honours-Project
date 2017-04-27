@@ -107,19 +107,35 @@ public class OverworldScene extends PixelScene {
             protected void onClick() {
                 String zone = hero.currentZone;
 
-                switch (zone) {
-                    case "Forest":
-                        Dungeon.level = new ForestLevel();
-                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-                        Game.switchScene(InterlevelScene.class);
-                        break;
-                    case "Cave":
-                        break;
-                    default:
-                        System.out.println("Level not implemented yet.");
-                }
+                OverworldMap.setNoFogTileData("Dock", "Forest");
 
-                System.out.println("button clicked");
+                OverworldMap.setPassableTiles();
+
+                Actor.removeActor();
+
+                //create();
+
+                setMapTerrain();
+
+                createHero();
+
+                Actor.overworldActorInit();
+
+                createButtons();
+//
+//                switch (zone) {
+//                    case "Forest":
+//                        Dungeon.level = new ForestLevel();
+//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+//                        Game.switchScene(InterlevelScene.class);
+//                        break;
+//                    case "Cave":
+//                        break;
+//                    default:
+//                        System.out.println("Level not implemented yet.");
+//                }
+//
+//                System.out.println("button clicked");
             }
         };
         add(btnEnterLevel);
@@ -173,9 +189,13 @@ public class OverworldScene extends PixelScene {
 //                        hero.next();
 //                    }
 
-                    hero.overworldHandle(destinationPos, curPos);
+                    if (hero.reachedDestination) {
+                        hero.overworldHandle(destinationPos, curPos);
+                        hero.currentZone = destinationZone;
+                        hero.reachedDestination = false;
+                    }
 
-                    hero.currentZone = destinationZone;
+
 
                     System.out.println(destinationPos);
                     System.out.println(destinationZone);
