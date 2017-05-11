@@ -9,8 +9,7 @@ import com.watabou.pixeldungeon.GamesInProgress;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.hero.Hero;
-import com.watabou.pixeldungeon.levels.ForestLevel;
-import com.watabou.pixeldungeon.levels.Level;
+import com.watabou.pixeldungeon.levels.*;
 import com.watabou.pixeldungeon.overworld.*;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.ui.ExitButton;
@@ -38,6 +37,8 @@ public class OverworldScene extends PixelScene {
 
     //UI buttons
     private static OverworldButton btnEnterLevel; private String TXT_ENTER = "Enter Level";
+    private static OverworldButton btnJournal; private String TXT_JOURNAL = "Journal";
+
     public static Level level;
 
     @Override
@@ -88,11 +89,11 @@ public class OverworldScene extends PixelScene {
         add (mobs);
 
         hero = new OverworldHero();
-        hero.curPos = OverworldMap.getZonePos("TOWN");
-        hero.currentZone = "TOWN";
+        hero.curPos = OverworldMap.getZoneHeroPos("Town");
+        hero.currentZone = "Town";
 
         heroSprite = new OverworldHeroSprite();
-        int townNodePos = OverworldMap.getZonePos("TOWN");
+        int townNodePos = OverworldMap.getZonePos("Town");
 
         heroSprite.placeOnOverworld(townNodePos);
         heroSprite.updateSprite();
@@ -106,8 +107,57 @@ public class OverworldScene extends PixelScene {
             @Override
             protected void onClick() {
                 String zone = hero.currentZone;
+                System.out.println(zone);
+                InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                Game.switchScene(InterlevelScene.class);
+//                switch (zone) {
+//                    case "Forest":
+//                        Dungeon.level = new ForestLevel();
+//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+//                        Game.switchScene(InterlevelScene.class);
+//                        break;
+//                    case "Cave":
+//                        Dungeon.level = new CavesLevel();
+//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+//                        Game.switchScene(InterlevelScene.class);
+//                        break;
+//                    case "Dungeon":
+//                        Dungeon.level = new SewerLevel();
+//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+//                        Game.switchScene(InterlevelScene.class);
+//                        break;
+//                    case "Town":
+//                        Dungeon.level = new TownLevel();
+//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+//                        Game.switchScene(InterlevelScene.class);
+//                        break;
+//                    default:
+//                        System.out.println("Level not implemented yet.");
+//                }
 
-                OverworldMap.setNoFogTileData("Dock", "Forest");
+                System.out.println("button clicked");
+            }
+        };
+        add(btnEnterLevel);
+        btnEnterLevel.setRect(Game.width / 2, 70, Game.width / 2 - 30, 70);
+        btnEnterLevel.setPos((Game.width - btnEnterLevel.width()) - 20, Game.height - btnEnterLevel.height());
+
+        btnJournal = new OverworldButton( TXT_JOURNAL ) {
+            @Override
+            protected void onClick() {
+                System.out.println("journal clicked");
+            }
+        };
+        add(btnJournal);
+        btnJournal.setRect(Game.width / 2, 70, Game.width / 2 - 25, 70);
+        btnJournal.setPos(0, Game.height - btnEnterLevel.height());
+
+
+        //temp buttons
+        OverworldButton btnActTwo = new OverworldButton("Act Two") {
+            @Override
+            protected void onClick() {
+                OverworldMap.setRandomActTwoZones();
 
                 OverworldMap.setPassableTiles();
 
@@ -122,26 +172,38 @@ public class OverworldScene extends PixelScene {
                 Actor.overworldActorInit();
 
                 createButtons();
-//
-//                switch (zone) {
-//                    case "Forest":
-//                        Dungeon.level = new ForestLevel();
-//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-//                        Game.switchScene(InterlevelScene.class);
-//                        break;
-//                    case "Cave":
-//                        break;
-//                    default:
-//                        System.out.println("Level not implemented yet.");
-//                }
-//
-//                System.out.println("button clicked");
             }
         };
-        add(btnEnterLevel);
-        btnEnterLevel.setRect(Game.width / 2, 70, Game.width / 2, 70);
-        btnEnterLevel.setPos((Game.width - btnEnterLevel.width()) - 20, Game.height - btnEnterLevel.height());
+        add(btnActTwo);
+        btnActTwo.setRect(0, Game.height / 2 + 180, Game.width, 40);
+        btnActTwo.setPos(0, Game.height / 2 + 180);
+
+        OverworldButton btnActThree = new OverworldButton("Act Three") {
+            @Override
+            protected void onClick() {
+                OverworldMap.setRandomActThreeZones();
+
+                OverworldMap.setPassableTiles();
+
+                Actor.removeActor();
+
+                //create();
+
+                setMapTerrain();
+
+                createHero();
+
+                Actor.overworldActorInit();
+
+                createButtons();
+            }
+        };
+        add(btnActThree);
+        btnActThree.setRect(0, Game.height / 2 + 230, Game.width, 40);
+        btnActThree.setPos(0, Game.height / 2 + 230);
+
     }
+
     public void destroy() {
         scene = null;
         super.destroy();
@@ -158,7 +220,6 @@ public class OverworldScene extends PixelScene {
         Actor.process(); //if process() gives problems later down the line for the overworld, use this (overworldProcess()).
 
         //always update the sprites position on the map.
-        //heroSprite.placeOnOverworld(hero.mapPos);
         heroSprite.placeOnOverworld(hero.curPos);
 
         overworldCellSelector.enabled = hero.ready;
@@ -180,7 +241,7 @@ public class OverworldScene extends PixelScene {
             //checks if the cell clicked is in a zone you're not in. If it's not, move the hero there.
             for (ZoneNode zoneNode : OverworldMap.zones) {
 
-                if (zoneNode.mapPos == cell && !(zoneNode.zoneName.equals(curZone))) {
+                if (zoneNode.mapPos == cell && !(zoneNode.zoneName.equals(curZone)) && zoneNode.isAccessible()) {
                     String destinationZone = zoneNode.zoneName;
 
                     int destinationPos = OverworldMap.getZoneHeroPos(destinationZone);
@@ -195,10 +256,6 @@ public class OverworldScene extends PixelScene {
                         hero.reachedDestination = false;
                     }
 
-
-
-                    System.out.println(destinationPos);
-                    System.out.println(destinationZone);
 
                     break;
                 }
@@ -229,7 +286,6 @@ public class OverworldScene extends PixelScene {
         protected void layout() {
             super.layout();
 
-            //text.y = align(y + (height - text.baseLine()) / 2);
             text.scale.set(1.5f);
         }
     }

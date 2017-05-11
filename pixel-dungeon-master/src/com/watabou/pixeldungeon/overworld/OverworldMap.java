@@ -10,6 +10,8 @@ import org.json.simple.parser.JSONParser;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class OverworldMap  {
 
@@ -55,101 +57,106 @@ public class OverworldMap  {
 
         setZoneTiles();
 
-        setFogTileData("Dock", "Forest");
+        setRandomActOneZones();
+        //setFogTileData(firstZone, secondZone);
 
         setPassableTiles();
-        //setFogPathTileData("Dock", "Fields");
     }
 
 
     // **** fog test methods START ****
-    //works
-    public static ArrayList<Integer> noFogZoneTileID(String zoneName) {
+    //evaluation
+    public static String firstZone;
+    public static String secondZone;
+    public static ArrayList<String> tempZones = new ArrayList<>();
 
-        int[] data = integerTileMap();
-        ArrayList<Integer> noFogTiles = new ArrayList<>();
+    public static void setRandomActOneZones() {
+        tempZones.add("Castle");
+        tempZones.add("Cave");
+        tempZones.add("Forest");
+        tempZones.add("Dungeon");
+        tempZones.add("Fields");
+        tempZones.add("Shadow Lands");
 
-        JSONParser parser = new JSONParser();
+        Collections.shuffle(tempZones);
 
-        try {
-            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
+        tempZones.remove(0);
+        tempZones.remove(0);
 
-            JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
 
-            JSONArray tileSets = (JSONArray)jsonObject.get("tilesets");
-
-            JSONObject tileSetsContent = (JSONObject)tileSets.get(0);
-
-            JSONObject tileProperties = (JSONObject)tileSetsContent.get("tileproperties");
-
-            for (int i = 0; i < data.length; i++) {
-
-                Integer curTileID = data[i] - 1;
-
-                JSONObject curTile = (JSONObject) tileProperties.get(curTileID.toString());
-
-                if (curTile != null) {
-
-                    String zone = (String) curTile.get("zoneName");
-                    boolean hasFog = (boolean) curTile.get("fog");
-
-                    if (zone != null && zone.equals(zoneName) && !hasFog) {
-                        noFogTiles.add(curTileID);
-                    }
-                }
-            }
-        } catch (Exception e) {
-
+        for (String zone : tempZones) {
+            setFogTileData(zone);
         }
 
-        return noFogTiles;
+//
+//        Random random = new Random();
+//        int firstZoneIndex = random.nextInt(tempZones.size() );
+//        int secondZoneIndex = random.nextInt(tempZones.size());
+//
+//        firstZone = tempZones.get(firstZoneIndex);
+//        secondZone = tempZones.get(secondZoneIndex);
+//
+//        while (firstZoneIndex == secondZoneIndex) {
+//            secondZoneIndex = random.nextInt(tempZones.size());
+//            secondZone = tempZones.get(secondZoneIndex);
+//        }
+//
+//        tempZones.remove(firstZoneIndex);
+//        tempZones.remove(secondZoneIndex);
+
+
+        System.out.println(tempZones.size());
     }
 
-    //works
-    public static ArrayList<Integer> fogZoneTileID(String zoneName) {
-        ArrayList<Integer> fogTiles = new ArrayList<>();
+    public static void setRandomActTwoZones() {
+//        Random random = new Random();
+//        int firstZoneIndex = random.nextInt(tempZones.size());
+//        int secondZoneIndex = random.nextInt(tempZones.size());
+//
+//        firstZone = tempZones.get(firstZoneIndex);
+//        secondZone = tempZones.get(secondZoneIndex);
+//
+//        if (firstZoneIndex == secondZoneIndex) {
+//
+//            while (firstZoneIndex == secondZoneIndex) {
+//                firstZoneIndex = random.nextInt(tempZones.size());
+//                secondZoneIndex = random.nextInt(tempZones.size());
+//
+//                firstZone = tempZones.get(firstZoneIndex);
+//                secondZone = tempZones.get(secondZoneIndex);
+//            }
+//        } else {
+//
+//            setNoFogTileData(tempZones.get(firstZoneIndex));
+//            setNoFogTileData(tempZones.get(secondZoneIndex));
+//
+//            tempZones.remove(firstZoneIndex);
+//            tempZones.remove(secondZoneIndex);
+//        }
 
-        JSONParser parser = new JSONParser();
+        Collections.shuffle(tempZones);
 
-        try {
-            InputStream is = PixelDungeon.instance.getAssets().open("overworldMap.json");
+        setNoFogTileData(tempZones.get(0));
+        setNoFogTileData(tempZones.get(1));
 
-            JSONObject jsonObject = (JSONObject)parser.parse(new InputStreamReader(is, "UTF-8"));
+        tempZones.remove(0);
+        tempZones.remove(0);
 
-            JSONArray tileSets = (JSONArray)jsonObject.get("tilesets");
+        System.out.println(tempZones.size());
 
-            JSONObject tileSetsContent = (JSONObject)tileSets.get(0);
+    }
 
-            Long numberOfTiles = (Long) tileSetsContent.get("tilecount");
+    public static void setRandomActThreeZones() {
 
-            System.out.println(numberOfTiles);
-
-            JSONObject tileProperties = (JSONObject)tileSetsContent.get("tileproperties");
-
-            for (Integer i = 0; i < numberOfTiles; i++) {
-
-                JSONObject curTile = (JSONObject) tileProperties.get(i.toString());
-
-                if (curTile != null) {
-
-                    String zone = (String) curTile.get("zoneName");
-                    boolean hasFog = (boolean) curTile.get("fog");
-
-                    if (zone != null && zone.equals(zoneName) && hasFog) {
-                        fogTiles.add(i);
-                    }
-
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("error in getting fog tiles: " +e);
+        for (String zone : tempZones) {
+            System.out.println(zone);
+            setNoFogTileData(zone);
         }
 
-        return fogTiles;
     }
 
     //sets tiles to be their corresponding "fog" tiles.
-    public static void setFogTileData(String zoneOne, String zoneTwo) {
+    public static void setFogTileData(String zoneOne) {
         JSONParser parser = new JSONParser();
 
 
@@ -180,42 +187,60 @@ public class OverworldMap  {
                 if (curTile != null) {
 
                     curZone = (String) curTile.get("zoneName");
-                    connectedZone = (String) curTile.get("connectedZone");
+                    //connectedZone = (String) curTile.get("connectedZone"); //implements bridge fog, fix!
 
-                    if (curZone == null && connectedZone == null) {
+//                    if (curZone == null && connectedZone == null) {
+//                        continue;
+//                    }
+
+                    if (curZone == null) {
                         continue;
                     }
                 }
 
                 //sets bridge tiles
-                if (connectedZone != null) {
-                    //special case for fields and cave
-                    if ((connectedZone.equals("fieldAndCave")) && zoneOne.equals("Cave") && zoneTwo.equals("Fields")) {
-                        overworldMap[i] = (mapData[i] - 1) + 185;
-                        passableMapData[i] = (mapData[i]) + 185;
-                    }
-
-                    if (connectedZone.equals(zoneOne) || connectedZone.equals(zoneTwo)) {
-                        overworldMap[i] = (mapData[i] - 1) + 185;
-                        passableMapData[i] = (mapData[i] + 185);
-                    }
-                }
+//                if (connectedZone != null) {
+//                    //special case for fields and cave
+//                    if ((connectedZone.equals("fieldAndCave")) && zoneOne.equals("Cave") && zoneTwo.equals("Fields")) {
+//                        overworldMap[i] = (mapData[i] - 1) + 185;
+//                        passableMapData[i] = (mapData[i]) + 185;
+//                    }
+//
+//                    if (connectedZone.equals(zoneOne) || connectedZone.equals(zoneTwo)) {
+//                        overworldMap[i] = (mapData[i] - 1) + 185;
+//                        passableMapData[i] = (mapData[i] + 185);
+//                    }
+//                }
 
                 //sets zone tiles
+//                if (curZone != null) {
+//                    if ((curZone.equals(zoneOne) || curZone.equals(zoneTwo))) {
+//                        overworldMap[i] = (mapData[i] - 1) + 1024;
+//                        passableMapData[i] = (mapData[i]) + 1024;
+//                    }
+//                }
+
                 if (curZone != null) {
-                    if ((curZone.equals(zoneOne) || curZone.equals(zoneTwo))) {
+                    if ((curZone.equals(zoneOne))) {
                         overworldMap[i] = (mapData[i] - 1) + 1024;
                         passableMapData[i] = (mapData[i]) + 1024;
                     }
                 }
             }
+
         } catch (Exception e) {
             System.out.println("error in setting fog tiles: " +e);
+        }
+
+        for (ZoneNode zone : zones) {
+            if (zone.zoneName.equals(zoneOne)) {
+                zone.setAccessible(false);
+            }
         }
     }
 
     //sets zone tiles to be their corresponding "no fog" tiles.
-    public static void setNoFogTileData(String zoneOne, String zoneTwo) {
+    public static void setNoFogTileData(String zoneOne) {
         JSONParser parser = new JSONParser();
 
         try {
@@ -245,30 +270,41 @@ public class OverworldMap  {
                 if (curTile != null) {
 
                     curZone = (String) curTile.get("zoneName");
-                    connectedZone = (String) curTile.get("connectedZone");
+                    //connectedZone = (String) curTile.get("connectedZone");
 
-                    if (curZone == null && connectedZone == null) {
+//                    if (curZone == null && connectedZone == null) {
+//                        continue;
+//                    }
+
+                    if (curZone == null) {
                         continue;
                     }
                 }
 
                 //sets bridge tiles
-                if (connectedZone != null) {
-                    //special case for fields and cave
-                    if ((connectedZone.equals("fieldAndCave")) && zoneOne.equals("Cave") && zoneTwo.equals("Fields")) {
-                        overworldMap[i] = (mapData[i] - 1);
-                        passableMapData[i] = (mapData[i]);
-                    }
-
-                    if (connectedZone.equals(zoneOne) || connectedZone.equals(zoneTwo)) {
-                        overworldMap[i] = (mapData[i] - 1);
-                        passableMapData[i] = (mapData[i]);
-                    }
-                }
+//                if (connectedZone != null) {
+//                    //special case for fields and cave
+//                    if ((connectedZone.equals("fieldAndCave")) && zoneOne.equals("Cave") && zoneTwo.equals("Fields")) {
+//                        overworldMap[i] = (mapData[i] - 1);
+//                        passableMapData[i] = (mapData[i]);
+//                    }
+//
+//                    if (connectedZone.equals(zoneOne) || connectedZone.equals(zoneTwo)) {
+//                        overworldMap[i] = (mapData[i] - 1);
+//                        passableMapData[i] = (mapData[i]);
+//                    }
+//                }
 
                 //sets zone tiles
+//                if (curZone != null) {
+//                    if ((curZone.equals(zoneOne) || curZone.equals(zoneTwo))) {
+//                        overworldMap[i] = (mapData[i] - 1);
+//                        passableMapData[i] = (mapData[i]);
+//                    }
+//                }
+
                 if (curZone != null) {
-                    if ((curZone.equals(zoneOne) || curZone.equals(zoneTwo))) {
+                    if ((curZone.equals(zoneOne))) {
                         overworldMap[i] = (mapData[i] - 1);
                         passableMapData[i] = (mapData[i]);
                     }
@@ -277,6 +313,13 @@ public class OverworldMap  {
         } catch (Exception e) {
             System.out.println("error in setting fog tiles: " +e);
         }
+
+        for (ZoneNode zone : zones) {
+            if (zone.zoneName.equals(zoneOne)) {
+                zone.setAccessible(true);
+            }
+        }
+
     }
     // **** fog test methods END ****
 
@@ -324,8 +367,8 @@ public class OverworldMap  {
                 if (mapData[i] == 0) {
                     passable[i] = false;
                 } else {
-                    //Integer tileID = mapData[i] - 1;
-                    Integer tileID = overworldMap[i];
+                    Integer tileID = mapData[i] - 1;
+                    //Integer tileID = overworldMap[i];
                     JSONObject tile = (JSONObject)tileProperties.get(tileID.toString());
 
                     if (tile != null) {
@@ -368,9 +411,9 @@ public class OverworldMap  {
                     if (curTile != null) {
 
                         String zone = (String) curTile.get("zoneName");
-                        boolean fog = (boolean) curTile.get("fog");
+                        //boolean fog = (boolean) curTile.get("fog");
 
-                        if (zone != null && !fog) {
+                        if (zone != null) {
 
                             Boolean isHeroPos = (Boolean)curTile.get("heroPos");
                             ZoneNode zoneNode;

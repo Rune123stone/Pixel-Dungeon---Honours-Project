@@ -88,8 +88,6 @@ public class OverworldHero extends Char {
         } else {
             return false;
         }
-
-
     }
 
     private boolean overworldActMove(HeroAction.Move action) {

@@ -170,4 +170,7 @@ public class Assets {
 	// **** Overworld Assets ****
 	public static final String OVERWORLD_MAP_ASSETS = "overworld_tiles.png";
 	public static final String OVERWORLD_THEME = "overworldTheme.mp3";
+
+	// **** Town Assets ****
+	public static final String TOWN_ASSETS = "tiles_town.png";
 }

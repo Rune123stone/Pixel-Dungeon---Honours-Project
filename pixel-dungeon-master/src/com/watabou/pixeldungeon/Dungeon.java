@@ -44,7 +44,10 @@ import com.watabou.pixeldungeon.items.rings.Ring;
 import com.watabou.pixeldungeon.items.scrolls.Scroll;
 import com.watabou.pixeldungeon.items.wands.Wand;
 import com.watabou.pixeldungeon.levels.*;
+import com.watabou.pixeldungeon.overworld.OverworldHero;
 import com.watabou.pixeldungeon.scenes.GameScene;
+import com.watabou.pixeldungeon.scenes.InterlevelScene;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.scenes.StartScene;
 import com.watabou.pixeldungeon.ui.QuickSlot;
 import com.watabou.pixeldungeon.utils.BArray;
@@ -152,23 +155,45 @@ public class Dungeon {
 		Arrays.fill( visible, false );
 		Level level;
 
-		switch(hero.heroBackground) {
-			case CRIMINAL:
+		switch(OverworldScene.hero.currentZone) {
+			case "Forest":
 				level = new ForestLevel();
+
 				break;
-			case OUTSIDER:
-				level = new ForestLevel();
+			case "Cave":
+				level = new CavesLevel();
+
 				break;
-			case KNIGHT:
-				level = new ForestLevel();
+			case "Dungeon":
+				level = new SewerLevel();
+
 				break;
-			case PEASANT:
-				level = new ForestLevel();
+			case "Town":
+				level = new TownLevel();
+
 				break;
 			default:
-			level = new DeadEndLevel();
-			Statistics.deepestFloor--;
+				level = new DeadEndLevel();
+				System.out.println("Level not implemented yet.");
 		}
+
+//		switch(hero.heroBackground) {
+//			case CRIMINAL:
+//				level = new ForestLevel();
+//				break;
+//			case OUTSIDER:
+//				level = new ForestLevel();
+//				break;
+//			case KNIGHT:
+//				level = new ForestLevel();
+//				break;
+//			case PEASANT:
+//				level = new ForestLevel();
+//				break;
+//			default:
+//			level = new DeadEndLevel();
+//			Statistics.deepestFloor--;
+//		}
 //		switch (depth) {
 //		case 1:
 //		case 2:

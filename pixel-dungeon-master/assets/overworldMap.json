@@ -1,7 +1,7 @@
 { "height":40,
  "layers":[
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 34, 35, 36, 37, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 65, 66, 67, 68, 69, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 97, 98, 99, 100, 101, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 130, 131, 132, 133, 134, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 161, 162, 163, 164, 165, 166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 692, 693, 694, 695, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 724, 725, 726, 727, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 756, 757, 758, 759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 788, 789, 790, 791, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 692, 693, 694, 695, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 724, 725, 726, 727, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 756, 757, 758, 759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 788, 789, 790, 791, 0, 0, 0, 0, 0, 0, 217, 218, 219, 220, 221, 222, 223, 224, 13, 14, 15, 16, 17, 18, 0, 0, 0, 0, 0, 0, 26, 27, 28, 29, 30, 31, 32, 0, 0, 0, 0, 0, 249, 250, 251, 252, 253, 254, 255, 256, 45, 46, 47, 48, 49, 50, 2063, 2064, 2065, 2066, 2067, 2068, 58, 59, 60, 61, 62, 63, 64, 2069, 2070, 2071, 2072, 2073, 281, 282, 283, 284, 285, 286, 287, 288, 77, 78, 79, 80, 81, 82, 2095, 2096, 2097, 2098, 2099, 2100, 90, 91, 92, 93, 94, 95, 96, 2101, 2102, 2103, 2104, 2105, 313, 314, 315, 316, 317, 318, 319, 320, 109, 110, 111, 112, 113, 114, 2127, 2128, 2129, 2130, 2131, 2132, 122, 123, 124, 125, 126, 127, 128, 2133, 2134, 2135, 2136, 2137, 345, 346, 347, 348, 349, 350, 351, 352, 141, 142, 143, 144, 145, 146, 2159, 2160, 2161, 2162, 2163, 2164, 154, 155, 156, 157, 158, 159, 160, 2165, 2166, 2167, 2168, 2169, 377, 378, 379, 380, 381, 382, 383, 384, 173, 174, 175, 176, 177, 178, 0, 0, 0, 0, 0, 0, 186, 187, 188, 189, 190, 191, 192, 0, 0, 0, 0, 0, 409, 410, 411, 412, 413, 414, 415, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2090, 2091, 2092, 2093, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2122, 2123, 2124, 2125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2154, 2155, 2156, 2157, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2186, 2187, 2188, 2189, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2090, 2091, 2092, 2093, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2122, 2123, 2124, 2125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2154, 2155, 2156, 2157, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 22, 23, 24, 0, 0, 0, 0, 0, 2186, 2187, 2188, 2189, 0, 0, 0, 0, 0, 321, 322, 323, 324, 325, 326, 0, 0, 0, 0, 0, 0, 51, 52, 53, 54, 55, 56, 2076, 2077, 2078, 2079, 2080, 2090, 2091, 2092, 2093, 2267, 2268, 2269, 2270, 2271, 353, 354, 355, 356, 357, 358, 0, 0, 0, 0, 0, 0, 83, 84, 85, 86, 87, 88, 2108, 2109, 2110, 2111, 2112, 2122, 2123, 2124, 2125, 2299, 2300, 2301, 2302, 2303, 385, 386, 387, 388, 389, 390, 0, 0, 0, 0, 0, 0, 115, 116, 117, 118, 119, 120, 2140, 2141, 2142, 2143, 2144, 2154, 2155, 2156, 2157, 2331, 2332, 2333, 2334, 2335, 417, 418, 419, 420, 421, 422, 0, 0, 0, 0, 0, 0, 147, 148, 149, 150, 151, 152, 2172, 2173, 2174, 2175, 2176, 2186, 2187, 2188, 2189, 2363, 2364, 2365, 2366, 2367, 449, 450, 451, 452, 453, 454, 0, 0, 0, 0, 0, 0, 179, 180, 181, 182, 183, 184, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 481, 482, 483, 484, 485, 486, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 34, 35, 36, 37, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 65, 66, 67, 68, 69, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 97, 98, 99, 100, 101, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 130, 131, 132, 133, 134, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 161, 162, 163, 164, 165, 166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 692, 693, 694, 695, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 724, 725, 726, 727, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 756, 757, 758, 759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 788, 789, 790, 791, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 692, 693, 694, 695, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 724, 725, 726, 727, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 756, 757, 758, 759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 788, 789, 790, 791, 0, 0, 0, 0, 0, 0, 217, 218, 219, 220, 221, 222, 223, 224, 13, 14, 15, 16, 17, 18, 0, 0, 0, 0, 0, 0, 26, 27, 28, 29, 30, 31, 32, 0, 0, 0, 0, 0, 249, 250, 251, 252, 253, 254, 255, 256, 45, 46, 47, 48, 49, 50, 2063, 2064, 2065, 2066, 2067, 2068, 58, 59, 60, 61, 62, 63, 64, 2069, 2070, 2071, 2072, 2073, 281, 282, 283, 284, 285, 286, 287, 288, 77, 78, 79, 80, 81, 82, 2095, 2096, 2097, 2098, 2099, 2100, 90, 91, 92, 93, 94, 95, 96, 2101, 2102, 2103, 2104, 2105, 313, 314, 315, 316, 317, 318, 319, 320, 109, 110, 111, 112, 113, 114, 2127, 2128, 2129, 2130, 2131, 2132, 122, 123, 124, 125, 126, 127, 128, 2133, 2134, 2135, 2136, 2137, 345, 346, 347, 348, 349, 350, 351, 352, 141, 142, 143, 144, 145, 146, 2159, 2160, 2161, 2162, 2163, 2164, 154, 155, 156, 157, 158, 159, 160, 2165, 2166, 2167, 2168, 2169, 377, 378, 379, 380, 381, 382, 383, 384, 173, 174, 175, 176, 177, 178, 0, 0, 0, 0, 0, 0, 186, 187, 188, 189, 190, 191, 192, 0, 0, 0, 0, 0, 409, 410, 411, 412, 413, 414, 415, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2090, 2091, 2092, 2093, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2122, 2123, 2124, 2125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2154, 2155, 2156, 2157, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2186, 2187, 2188, 2189, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2090, 2091, 2092, 2093, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2122, 2123, 2124, 2125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2154, 2155, 2156, 2157, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 22, 23, 24, 0, 0, 0, 0, 0, 2186, 2187, 2188, 2189, 0, 0, 0, 0, 0, 321, 322, 323, 324, 325, 326, 0, 0, 0, 0, 0, 0, 51, 52, 53, 54, 55, 56, 2076, 2077, 2078, 2079, 2080, 2090, 2091, 2092, 2093, 2267, 2268, 2269, 2270, 2271, 353, 354, 355, 356, 357, 358, 0, 0, 0, 0, 0, 0, 83, 84, 85, 86, 87, 88, 2108, 2109, 2110, 2111, 2112, 2122, 2123, 2124, 2125, 2299, 2300, 2301, 2302, 2303, 385, 386, 387, 388, 389, 390, 0, 0, 0, 0, 0, 0, 115, 116, 117, 118, 119, 120, 2140, 2141, 2142, 2143, 2144, 2154, 2155, 2156, 2157, 2331, 2332, 2333, 2334, 2335, 417, 418, 419, 420, 421, 422, 0, 0, 0, 0, 0, 0, 147, 148, 149, 150, 151, 152, 2172, 2173, 2174, 2175, 2176, 2186, 2187, 2188, 2189, 2363, 2364, 2365, 2366, 2367, 449, 450, 451, 452, 453, 454, 0, 0, 0, 0, 0, 0, 179, 180, 181, 182, 183, 184, 0, 0, 0, 0, 333, 334, 335, 336, 337, 338, 0, 0, 0, 0, 481, 482, 483, 484, 485, 486, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 365, 366, 367, 368, 369, 370, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 397, 398, 399, 400, 401, 402, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 429, 430, 431, 432, 433, 434, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 461, 462, 463, 464, 465, 466, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 493, 494, 495, 496, 497, 498, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":40,
          "name":"Tile Layer 1",
          "opacity":1,
@@ -19,7 +19,7 @@
         {
          "columns":32,
          "firstgid":1,
-         "image":"..\/Documents\/Varsity\/Honours\/Second Year\/Honours Project\/Tiled\/overworld_tiles.png",
+         "image":"overworld_tiles.png",
          "imageheight":1312,
          "imagewidth":512,
          "margin":0,
@@ -807,49 +807,49 @@
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1241":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1242":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1243":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1244":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1245":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1246":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1247":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "125":
                 {
@@ -873,49 +873,49 @@
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1273":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1274":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1275":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1276":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1277":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1278":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1279":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "128":
                 {
@@ -945,37 +945,37 @@
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1305":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1306":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1307":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1308":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1309":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "131":
                 {
@@ -987,13 +987,13 @@
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1311":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "132":
                 {
@@ -1011,49 +1011,49 @@
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1337":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1338":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1339":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1340":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1341":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1342":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1343":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1344":
                 {
@@ -1091,53 +1091,89 @@
                  "passable":false,
                  "zoneName":"Cave"
                 },
+             "1356":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1357":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1358":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1359":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1360":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1361":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
              "1368":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1369":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1370":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1371":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1372":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1373":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1374":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1375":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1376":
                 {
@@ -1175,6 +1211,42 @@
                  "passable":false,
                  "zoneName":"Cave"
                 },
+             "1388":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1389":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1390":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1391":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1392":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1393":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
              "14":
                 {
                  "fog":false,
@@ -1191,49 +1263,49 @@
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1401":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1402":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1403":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1404":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1405":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1406":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1407":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1408":
                 {
@@ -1283,6 +1355,42 @@
                  "passable":true,
                  "zoneName":"Forest"
                 },
+             "1420":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1421":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1422":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1423":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1424":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1425":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
              "143":
                 {
                  "fog":false,
@@ -1293,49 +1401,49 @@
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1433":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1434":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1435":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1436":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1437":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1438":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "1439":
                 {
                  "fog":true,
                  "passable":false,
-                 "zoneName":"Dock"
+                 "zoneName":"Castle"
                 },
              "144":
                 {
@@ -1384,6 +1492,42 @@
                  "fog":false,
                  "passable":true,
                  "zoneName":"Forest"
+                },
+             "1452":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1453":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1454":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1455":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1456":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1457":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
                 },
              "146":
                 {
@@ -1438,6 +1582,42 @@
                  "fog":false,
                  "passable":true,
                  "zoneName":"Fields"
+                },
+             "1484":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1485":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1486":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1487":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1488":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1489":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
                 },
              "149":
                 {
@@ -1498,6 +1678,42 @@
                  "fog":false,
                  "passable":true,
                  "zoneName":"Fields"
+                },
+             "1516":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1517":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1518":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1519":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1520":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
+                },
+             "1521":
+                {
+                 "fog":true,
+                 "passable":false,
+                 "zoneName":"Shadow Lands"
                 },
              "153":
                 {
@@ -2145,7 +2361,7 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2160":
                 {
@@ -2211,7 +2427,7 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2170":
                 {
@@ -2253,7 +2469,7 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2185":
                 {
@@ -2283,7 +2499,7 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "22":
                 {
@@ -2295,25 +2511,25 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "221":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "222":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "223":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2247":
                 {
@@ -3069,13 +3285,13 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "249":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2497":
                 {
@@ -3105,7 +3321,7 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2500":
                 {
@@ -3129,13 +3345,13 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "252":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2529":
                 {
@@ -3147,7 +3363,7 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "2530":
                 {
@@ -3183,13 +3399,13 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "255":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "26":
                 {
@@ -3213,50 +3429,50 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "281":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "282":
                 {
                  "fog":false,
                  "heroPos":true,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "283":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "284":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "285":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "286":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "287":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "29":
                 {
@@ -3286,49 +3502,49 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "313":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "314":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "315":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "316":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "317":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "318":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "319":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "32":
                 {
@@ -3378,6 +3594,42 @@
                  "passable":true,
                  "zoneName":"Castle"
                 },
+             "332":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "333":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "334":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "335":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "336":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "337":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
              "34":
                 {
                  "fog":false,
@@ -3388,37 +3640,37 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "345":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "346":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "347":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "348":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "349":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "35":
                 {
@@ -3430,13 +3682,13 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "351":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "352":
                 {
@@ -3480,6 +3732,42 @@
                  "passable":true,
                  "zoneName":"Castle"
                 },
+             "364":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "365":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "366":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "367":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "368":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "369":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
              "37":
                 {
                  "fog":false,
@@ -3490,49 +3778,49 @@
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "377":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "378":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "379":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "380":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "381":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "382":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "383":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "384":
                 {
@@ -3571,59 +3859,96 @@
                  "passable":true,
                  "zoneName":"Cave"
                 },
+             "396":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "397":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "398":
+                {
+                 "fog":false,
+                 "heroPos":true,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "399":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
              "4":
                 {
                  "fog":false,
                  "passable":true,
                  "zoneName":"Castle"
                 },
+             "400":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "401":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
              "408":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "409":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "410":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "411":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "412":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "413":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "414":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "415":
                 {
                  "fog":false,
                  "passable":true,
-                 "zoneName":"Dock"
+                 "zoneName":"Dungeon"
                 },
              "416":
                 {
@@ -3660,6 +3985,42 @@
                  "fog":false,
                  "passable":true,
                  "zoneName":"Cave"
+                },
+             "428":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "429":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "430":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "431":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "432":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "433":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
                 },
              "44":
                 {
@@ -3715,6 +4076,42 @@
                  "passable":true,
                  "zoneName":"Forest"
                 },
+             "460":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "461":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "462":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "463":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "464":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "465":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
              "47":
                 {
                  "fog":false,
@@ -3768,6 +4165,42 @@
                  "fog":false,
                  "passable":true,
                  "zoneName":"Forest"
+                },
+             "492":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "493":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "494":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "495":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "496":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
+                },
+             "497":
+                {
+                 "fog":false,
+                 "passable":true,
+                 "zoneName":"Shadow Lands"
                 },
              "5":
                 {
@@ -5192,6 +5625,42 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "1356":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1357":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1358":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1359":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1360":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1361":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "1368":
                 {
                  "fog":"bool",
@@ -5271,6 +5740,42 @@
                  "zoneName":"string"
                 },
              "1381":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1388":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1389":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1390":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1391":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1392":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1393":
                 {
                  "fog":"bool",
                  "passable":"bool",
@@ -5384,6 +5889,42 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "1420":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1421":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1422":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1423":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1424":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1425":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "143":
                 {
                  "fog":"bool",
@@ -5486,6 +6027,42 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "1452":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1453":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1454":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1455":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1456":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1457":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "146":
                 {
                  "fog":"bool",
@@ -5535,6 +6112,42 @@
                  "zoneName":"string"
                 },
              "148":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1484":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1485":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1486":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1487":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1488":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1489":
                 {
                  "fog":"bool",
                  "passable":"bool",
@@ -5595,6 +6208,42 @@
                  "zoneName":"string"
                 },
              "151":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1516":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1517":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1518":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1519":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1520":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "1521":
                 {
                  "fog":"bool",
                  "passable":"bool",
@@ -7479,6 +8128,42 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "332":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "333":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "334":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "335":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "336":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "337":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "34":
                 {
                  "fog":"bool",
@@ -7581,6 +8266,42 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "364":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "365":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "366":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "367":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "368":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "369":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "37":
                 {
                  "fog":"bool",
@@ -7672,7 +8393,44 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "396":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "397":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "398":
+                {
+                 "fog":"bool",
+                 "heroPos":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "399":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "4":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "400":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "401":
                 {
                  "fog":"bool",
                  "passable":"bool",
@@ -7762,6 +8520,42 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "428":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "429":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "430":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "431":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "432":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "433":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "44":
                 {
                  "fog":"bool",
@@ -7816,6 +8610,42 @@
                  "passable":"bool",
                  "zoneName":"string"
                 },
+             "460":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "461":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "462":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "463":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "464":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "465":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
              "47":
                 {
                  "fog":"bool",
@@ -7865,6 +8695,42 @@
                  "zoneName":"string"
                 },
              "49":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "492":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "493":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "494":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "495":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "496":
+                {
+                 "fog":"bool",
+                 "passable":"bool",
+                 "zoneName":"string"
+                },
+             "497":
                 {
                  "fog":"bool",
                  "passable":"bool",
