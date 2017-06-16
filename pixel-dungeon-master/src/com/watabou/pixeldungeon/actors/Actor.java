@@ -335,5 +335,9 @@ public abstract class Actor implements Bundlable {
 		remove(OverworldScene.hero);
 	}
 
+	public static void removeAll() {
+		all.clear();
+	}
+
 	// **** END ****
 }

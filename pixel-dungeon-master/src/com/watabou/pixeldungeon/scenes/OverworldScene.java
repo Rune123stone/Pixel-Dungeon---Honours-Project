@@ -1,5 +1,6 @@
 package com.watabou.pixeldungeon.scenes;
 
+import android.animation.IntEvaluator;
 import com.watabou.noosa.*;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.ui.Button;
@@ -9,6 +10,7 @@ import com.watabou.pixeldungeon.GamesInProgress;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.hero.Hero;
+import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.levels.*;
 import com.watabou.pixeldungeon.overworld.*;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
@@ -17,6 +19,8 @@ import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.Toolbar;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.windows.WndOptions;
+
+import java.io.File;
 
 public class OverworldScene extends PixelScene {
 
@@ -28,6 +32,11 @@ public class OverworldScene extends PixelScene {
     public static OverworldHeroSprite heroSprite;
 
     private static OverworldCellSelector overworldCellSelector;
+
+    private String heroCurZone;
+
+    //handles level saves between switching scenes
+    public static String previousZone;
 
     //water
     private SkinnedBlock water;
@@ -67,6 +76,7 @@ public class OverworldScene extends PixelScene {
 
         //adds buttons to map
         createButtons();
+        Dungeon.level = null;
     }
 
     private void setMapTerrain() {
@@ -89,11 +99,48 @@ public class OverworldScene extends PixelScene {
         add (mobs);
 
         hero = new OverworldHero();
-        hero.curPos = OverworldMap.getZoneHeroPos("Town");
-        hero.currentZone = "Town";
+
+        try {
+            heroCurZone = Dungeon.level.getClass().getSimpleName();
+
+                switch (heroCurZone) {
+                    case "ForestLevel":
+                        hero.curPos = OverworldMap.getZoneHeroPos("Forest");
+                        hero.currentZone = "Forest";
+                        break;
+                    case "CavesLevel":
+                        hero.curPos = OverworldMap.getZoneHeroPos("Cave");
+                        hero.currentZone = "Cave";
+                        break;
+                    case "CastleLevel":
+                        hero.curPos = OverworldMap.getZoneHeroPos("Castle");
+                        hero.currentZone = "Castle";
+                        break;
+                    case "SewerLevel":
+                        hero.curPos = OverworldMap.getZoneHeroPos("Dungeon");
+                        hero.currentZone = "Dungeon";
+                        break;
+                    case "FieldsLevel":
+                        hero.curPos = OverworldMap.getZoneHeroPos("Fields");
+                        hero.currentZone = "Fields";
+                        break;
+                    case "TownLevel":
+                        hero.curPos = OverworldMap.getZoneHeroPos("Town");
+                        hero.currentZone = "Town";
+                        break;
+                    case "ShadowLandsLevel":
+                        hero.curPos = OverworldMap.getZoneHeroPos("Shadow Lands");
+                        hero.currentZone = "Shadow Lands";
+                        break;
+                }
+            }
+         catch (Exception e) {
+            hero.curPos = OverworldMap.getZoneHeroPos("Town");
+            hero.currentZone = "Town";
+        }
 
         heroSprite = new OverworldHeroSprite();
-        int townNodePos = OverworldMap.getZonePos("Town");
+        int townNodePos = OverworldMap.getZonePos(hero.currentZone);
 
         heroSprite.placeOnOverworld(townNodePos);
         heroSprite.updateSprite();
@@ -110,32 +157,67 @@ public class OverworldScene extends PixelScene {
                 System.out.println(zone);
                 InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
                 Game.switchScene(InterlevelScene.class);
-//                switch (zone) {
-//                    case "Forest":
-//                        Dungeon.level = new ForestLevel();
-//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-//                        Game.switchScene(InterlevelScene.class);
-//                        break;
-//                    case "Cave":
-//                        Dungeon.level = new CavesLevel();
-//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-//                        Game.switchScene(InterlevelScene.class);
-//                        break;
-//                    case "Dungeon":
-//                        Dungeon.level = new SewerLevel();
-//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-//                        Game.switchScene(InterlevelScene.class);
-//                        break;
-//                    case "Town":
-//                        Dungeon.level = new TownLevel();
-//                        InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
-//                        Game.switchScene(InterlevelScene.class);
-//                        break;
-//                    default:
-//                        System.out.println("Level not implemented yet.");
-//                }
 
-                System.out.println("button clicked");
+                switch (zone) {
+                    case "Forest":
+                        File file = Game.instance.getFileStreamPath("Forest");
+                        if (file.exists()) {
+                            InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
+
+                        } else {
+                            InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                        }
+                        break;
+                    case "Dungeon":
+                        file = Game.instance.getFileStreamPath("Dungeon");
+                        if (file.exists()) {
+                            InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
+                        } else {
+                            InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                        }
+                        break;
+                    case "Cave":
+                        file = Game.instance.getFileStreamPath("Caves");
+                        if (file.exists()) {
+                            InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
+                        } else {
+                            InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                        }
+                        break;
+                    case "Town":
+                        file = Game.instance.getFileStreamPath("Town");
+                        if (file.exists()) {
+                            InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
+
+                        } else {
+                            InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                        }
+                        break;
+                    case "Castle":
+                        file = Game.instance.getFileStreamPath("Castle");
+                        if (file.exists()) {
+                            InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
+                        } else {
+                            InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                        }
+                        break;
+                    case "Shadow Lands":
+                        file = Game.instance.getFileStreamPath("Shadow Lands");
+                        if (file.exists()) {
+                            InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
+                        } else {
+                            InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                        }
+                        break;
+                    case "Fields":
+                        file = Game.instance.getFileStreamPath("Fields");
+                        if (file.exists()) {
+                            InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
+                        } else {
+                            InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+                        }
+                        break;
+                }
             }
         };
         add(btnEnterLevel);
@@ -145,7 +227,8 @@ public class OverworldScene extends PixelScene {
         btnJournal = new OverworldButton( TXT_JOURNAL ) {
             @Override
             protected void onClick() {
-                System.out.println("journal clicked");
+                System.out.println(hero.currentZone);
+                System.out.println(hero.curPos);
             }
         };
         add(btnJournal);
@@ -153,54 +236,54 @@ public class OverworldScene extends PixelScene {
         btnJournal.setPos(0, Game.height - btnEnterLevel.height());
 
 
-        //temp buttons
-        OverworldButton btnActTwo = new OverworldButton("Act Two") {
-            @Override
-            protected void onClick() {
-                OverworldMap.setRandomActTwoZones();
-
-                OverworldMap.setPassableTiles();
-
-                Actor.removeActor();
-
-                //create();
-
-                setMapTerrain();
-
-                createHero();
-
-                Actor.overworldActorInit();
-
-                createButtons();
-            }
-        };
-        add(btnActTwo);
-        btnActTwo.setRect(0, Game.height / 2 + 180, Game.width, 40);
-        btnActTwo.setPos(0, Game.height / 2 + 180);
-
-        OverworldButton btnActThree = new OverworldButton("Act Three") {
-            @Override
-            protected void onClick() {
-                OverworldMap.setRandomActThreeZones();
-
-                OverworldMap.setPassableTiles();
-
-                Actor.removeActor();
-
-                //create();
-
-                setMapTerrain();
-
-                createHero();
-
-                Actor.overworldActorInit();
-
-                createButtons();
-            }
-        };
-        add(btnActThree);
-        btnActThree.setRect(0, Game.height / 2 + 230, Game.width, 40);
-        btnActThree.setPos(0, Game.height / 2 + 230);
+//        //temp buttons
+//        OverworldButton btnActTwo = new OverworldButton("Act Two") {
+//            @Override
+//            protected void onClick() {
+//                OverworldMap.setRandomActTwoZones();
+//
+//                OverworldMap.setPassableTiles();
+//
+//                Actor.removeActor();
+//
+//                //create();
+//
+//                setMapTerrain();
+//
+//                createHero();
+//
+//                Actor.overworldActorInit();
+//
+//                createButtons();
+//            }
+//        };
+//        add(btnActTwo);
+//        btnActTwo.setRect(0, Game.height / 2 + 180, Game.width, 40);
+//        btnActTwo.setPos(0, Game.height / 2 + 180);
+//
+//        OverworldButton btnActThree = new OverworldButton("Act Three") {
+//            @Override
+//            protected void onClick() {
+//                OverworldMap.setRandomActThreeZones();
+//
+//                OverworldMap.setPassableTiles();
+//
+//                Actor.removeActor();
+//
+//                //create();
+//
+//                setMapTerrain();
+//
+//                createHero();
+//
+//                Actor.overworldActorInit();
+//
+//                createButtons();
+//            }
+//        };
+//        add(btnActThree);
+//        btnActThree.setRect(0, Game.height / 2 + 230, Game.width, 40);
+//        btnActThree.setPos(0, Game.height / 2 + 230);
 
     }
 

@@ -25,6 +25,7 @@ import com.watabou.noosa.ui.Component;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Heap;
@@ -33,6 +34,7 @@ import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.scenes.CellSelector;
 import com.watabou.pixeldungeon.scenes.GameScene;
+import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.windows.WndCatalogus;
@@ -45,11 +47,14 @@ import com.watabou.pixeldungeon.windows.WndBag;
 import com.watabou.pixeldungeon.windows.WndMessage;
 import com.watabou.pixeldungeon.windows.WndTradeItem;
 
+import java.io.IOException;
+
 public class Toolbar extends Component {
 
 	private Tool btnWait;
 	private Tool btnSearch;
 	private Tool btnInfo;
+	private Tool btnOverworld; //Cameron
 	private Tool btnInventory;
 	private Tool btnQuick1;
 	private Tool btnQuick2;
@@ -95,8 +100,24 @@ public class Toolbar extends Component {
 				GameScene.selectCell( informer );
 			}
 		} );
-		
-		add( btnInventory = new Tool( 60, 7, 23, 25 ) {
+
+		add( btnOverworld = new Tool( 59, 7, 23, 25) {
+			@Override
+			protected void onClick() {
+				try {
+					Dungeon.saveAll();
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+				Dungeon.hero = null;
+				Actor.removeAll();
+				OverworldScene.previousZone = OverworldScene.hero.currentZone;
+				InterlevelScene.mode = InterlevelScene.Mode.OVERWORLD;
+				Game.switchScene(InterlevelScene.class);
+			}
+		} );
+
+		add( btnInventory = new Tool( 81, 7, 23, 25 ) {
 			private GoldIndicator gold;
 			@Override
 			protected void onClick() {
@@ -119,7 +140,7 @@ public class Toolbar extends Component {
 			};
 		} );
 		
-		add( btnQuick1 = new QuickslotTool( 83, 7, 22, 25, true ) );
+		add( btnQuick1 = new QuickslotTool( 103, 7, 22, 25, true ) );
 		add( btnQuick2 = new QuickslotTool( 83, 7, 22, 25, false ) );
 		btnQuick2.visible = (QuickSlot.secondaryValue != null);
 		
@@ -131,6 +152,8 @@ public class Toolbar extends Component {
 		btnWait.setPos( x, y );
 		btnSearch.setPos( btnWait.right(), y );
 		btnInfo.setPos( btnSearch.right(), y );
+		btnOverworld.setPos(btnInfo.right() + 2.5f, y);
+
 		btnQuick1.setPos( width - btnQuick1.width(), y );
 		if (btnQuick2.visible) {
 			btnQuick2.setPos(btnQuick1.left() - btnQuick2.width(), y );
@@ -248,10 +271,10 @@ public class Toolbar extends Component {
 		protected void createChildren() {
 			super.createChildren();
 			
-			base = new Image( Assets.TOOLBAR );
+			base = new Image( Assets.TOOLBARV2 );
 			add( base );
 		}
-		
+
 		@Override
 		protected void layout() {
 			super.layout();

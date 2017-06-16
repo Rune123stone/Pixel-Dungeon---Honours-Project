@@ -599,8 +599,9 @@ public class GameScene extends PixelScene {
 	}
 	
 	public static void selectCell( CellSelector.Listener listener ) {
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!I'm being called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		cellSelector.listener = listener;
-		scene.prompt( listener.prompt() );
+		scene.prompt(listener.prompt());
 	}
 	
 	private static boolean cancelCellSelector() {

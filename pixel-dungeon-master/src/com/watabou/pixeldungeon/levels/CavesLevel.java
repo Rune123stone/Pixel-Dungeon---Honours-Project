@@ -56,6 +56,18 @@ public class CavesLevel extends RegularLevel {
 	 */
 	private void buildCave() throws Exception {
 
+//		do {
+//			generateNoise();
+//
+//			for (int i = 0; i < 6; i++) {
+//				cellMap = doSimulationStep(cellMap);
+//			}
+//
+//			initCavernMap();
+//			fillSmallCaverns();
+//			setBorderCells();
+//		}
+//		while ( (getPrimaryCavern()).getSize() < 800 );
 		do {
 			generateNoise();
 
@@ -67,7 +79,7 @@ public class CavesLevel extends RegularLevel {
 			fillSmallCaverns();
 			setBorderCells();
 		}
-		while ( (getPrimaryCavern()).getSize() < 800 );
+		while ( caverns.size() != 1 );
 	}
 
 	private void generateNoise() {

@@ -34,6 +34,9 @@ public class Assets {
 	public static final String HP_BAR	= "hp_bar.png";
 	public static final String XP_BAR	= "exp_bar.png";
 	public static final String TOOLBAR	= "toolbar.png";
+
+	public static final String TOOLBARV2 = "toolbarV2.png"; //cameron - contains overworld button
+
 	public static final String SHADOW	= "shadow.png";
 	
 	public static final String WARRIOR	= "warrior.png";

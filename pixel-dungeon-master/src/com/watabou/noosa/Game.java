@@ -255,7 +255,6 @@ public class Game extends Activity implements GLSurfaceView.Renderer, View.OnTou
 	}
 	
 	protected void step() {
-		
 		if (requestedReset) {
 			requestedReset = false;
 			try {

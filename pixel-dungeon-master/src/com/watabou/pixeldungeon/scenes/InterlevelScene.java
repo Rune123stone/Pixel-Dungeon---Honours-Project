@@ -28,11 +28,13 @@ import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
+import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.Generator;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.ui.GameLog;
 import com.watabou.pixeldungeon.windows.WndError;
 import com.watabou.pixeldungeon.windows.WndStory;
+import com.watabou.utils.Bundle;
 
 public class InterlevelScene extends PixelScene {
 
@@ -45,12 +47,13 @@ public class InterlevelScene extends PixelScene {
 	private static final String TXT_RESURRECTING= "Resurrecting...";
 	private static final String TXT_RETURNING	= "Returning...";
 	private static final String TXT_FALLING		= "Falling...";
+	private static final String TXT_OVERWORLD   = "Travelling to Overworld...";
 	
 	private static final String ERR_FILE_NOT_FOUND	= "File not found. For some reason.";
 	private static final String ERR_GENERIC			= "Something went wrong..."	;	
 	
 	public static enum Mode {
-		DESCEND, ASCEND, CONTINUE, RESURRECT, RETURN, FALL, NONE
+		DESCEND, ASCEND, CONTINUE, RESURRECT, RETURN, FALL, OVERWORLD, NONE
 	};
 	public static Mode mode;
 	
@@ -96,6 +99,9 @@ public class InterlevelScene extends PixelScene {
 		case FALL:
 			text = TXT_FALLING;
 			break;
+		case OVERWORLD:
+			text = TXT_OVERWORLD;
+			break;
 		default:
 		}
 		
@@ -134,6 +140,9 @@ public class InterlevelScene extends PixelScene {
 						break;
 					case FALL:
 						fall();
+						break;
+					case OVERWORLD:
+						overworld();
 						break;
 					default:
 					}
@@ -186,7 +195,7 @@ public class InterlevelScene extends PixelScene {
 			
 		case FADE_OUT:
 			message.alpha( p );
-			if (mode == Mode.CONTINUE || (mode == Mode.DESCEND && Dungeon.depth == 1)) {
+			if (mode == Mode.CONTINUE || (mode == Mode.DESCEND && Dungeon.depth == 1)){
 				Music.INSTANCE.volume( p );
 			}
 			if ((timeLeft -= Game.elapsed) <= 0) {
@@ -222,6 +231,14 @@ public class InterlevelScene extends PixelScene {
 			Dungeon.saveLevel();
 		}
 
+		// *** loads hero if it exists. ***
+		try {
+			Dungeon.loadHero();
+		} catch (Exception e) {
+			System.out.println("No such file.");
+		}
+		// *** END ***
+
 		Level level;
 		if (Dungeon.depth >= Statistics.deepestFloor) {
 			level = Dungeon.newLevel();
@@ -231,6 +248,13 @@ public class InterlevelScene extends PixelScene {
 		}
 		Dungeon.switchLevel( level, level.entrance );
 	}
+
+	// *** Allows for transition between zones/levels and overworld ***
+	private void overworld() throws Exception {
+		Actor.fixTime();
+		Game.switchScene(OverworldScene.class);
+	}
+	// *** END ***
 	
 	private void fall() throws Exception {
 		
@@ -273,6 +297,7 @@ public class InterlevelScene extends PixelScene {
 		GameLog.wipe();
 		
 		Dungeon.loadGame( StartScene.curClass );
+
 		if (Dungeon.depth == -1) {
 			Dungeon.depth = Statistics.deepestFloor;
 			Dungeon.switchLevel( Dungeon.loadLevel( StartScene.curClass ), -1 );

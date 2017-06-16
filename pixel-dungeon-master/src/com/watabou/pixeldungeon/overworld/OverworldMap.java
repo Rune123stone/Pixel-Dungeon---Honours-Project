@@ -57,7 +57,7 @@ public class OverworldMap  {
 
         setZoneTiles();
 
-        setRandomActOneZones();
+        //setRandomActOneZones();
         //setFogTileData(firstZone, secondZone);
 
         setPassableTiles();

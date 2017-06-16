@@ -148,7 +148,8 @@ public class StartScene extends PixelScene {
 			@Override
 			protected void onClick() {
 				InterlevelScene.mode = InterlevelScene.Mode.CONTINUE;
-				Game.switchScene( InterlevelScene.class );
+				//Game.switchScene( InterlevelScene.class ); //uncomment to restore to normal
+				Game.switchScene( OverworldScene.class ); //takes the hero to overworld screen
 			}
 		};
 		add( btnLoad );	
@@ -300,12 +301,26 @@ public class StartScene extends PixelScene {
 		Dungeon.hero = null;
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 		WndBackgroundStory.setStoryTold(false);
-		if (PixelDungeon.intro()) {
-			PixelDungeon.intro( false );
-			Game.switchScene( IntroScene.class );
-		} else {
-			Game.switchScene( InterlevelScene.class );
-		}
+
+		// *** erases save previous save files and starts new game ***
+		Game.instance.deleteFile("Forest");
+		Game.instance.deleteFile("Dungeon");
+		Game.instance.deleteFile("Caves");
+		Game.instance.deleteFile("Fields");
+		Game.instance.deleteFile("Town");
+		Game.instance.deleteFile("Shadow Lands");
+		Game.instance.deleteFile("Castle");
+
+		Game.switchScene(OverworldScene.class);
+		// *** END ***
+
+		//uncomment to restore to normal
+//		if (PixelDungeon.intro()) {
+//			PixelDungeon.intro( false );
+//			Game.switchScene( IntroScene.class );
+//		} else {
+//			Game.switchScene( InterlevelScene.class );
+//		}
 
 	}
 	

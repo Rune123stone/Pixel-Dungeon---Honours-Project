@@ -362,6 +362,35 @@ public class Dungeon {
 	private static final String CHAPTERS	= "chapters";
 	private static final String QUESTS		= "quests";
 	private static final String BADGES		= "badges";
+
+	//Cameron Save Variables
+
+	//hero position keys for bundle - handles hero's position in each zone.
+	private static final String FORESTHEROPOS = "forestHeroPos";
+	private static final String CAVESHEROPOS = "cavesHeroPos";
+	private static final String DUNGEONHEROPOS = "dungeonHeroPos";
+	private static final String TOWNHEROPOS = "townHeroPos";
+	private static final String SHADOWLANDSHEROPOS = "shadowLandsHeroPos";
+	private static final String FIELDSHEROPOS = "fieldsHeroPos";
+	private static final String CASTLEHEROPOS = "castleHeroPos";
+
+	//hero keys for bundle - handles storage of heroes xp, quests, inventory etc so that they're constant between zones.
+	private static final String FORESTHERO = "forestHero";
+	private static final String CAVESHERO = "cavesHero";
+	private static final String DUNGEONHERO = "dungeonHero";
+	private static final String TOWNHERO = "townHero";
+	private static final String SHADOWLANDSHERO = "shadowLandsHero";
+	private static final String FIELDSHERO = "fieldsHero";
+	private static final String CASTLEHERO = "castleHero";
+
+	private static final String FORESTHEROGOLD = "forestHeroGold";
+	private static final String CAVESHEROGOLD = "cavesHeroGold";
+	private static final String DUNGEONHEROGOLD = "dungeonHeroGold";
+	private static final String TOWNHEROGOLD = "townHeroGold";
+	private static final String SHADOWLANDSHEROGOLD = "shadowLandsHeroGold";
+	private static final String FIELDSHEROGOLD = "fieldsHeroGold";
+	private static final String CASTLEHEROGOLD = "castleHeroGold";
+	///
 	
 	public static String gameFile( HeroClass cl ) {
 		switch (cl) {
@@ -398,7 +427,7 @@ public class Dungeon {
 			bundle.put( HERO, hero );
 			bundle.put( GOLD, gold );
 			bundle.put( DEPTH, depth );
-			
+
 			for (int d : droppedItems.keyArray()) {
 				bundle.put( String.format( DROPPED, d ), droppedItems.get( d ) );
 			}
@@ -447,16 +476,66 @@ public class Dungeon {
 			GamesInProgress.setUnknown( hero.heroClass );
 		}
 	}
-	
+
 	public static void saveLevel() throws IOException {
 		Bundle bundle = new Bundle();
 		bundle.put( LEVEL, level );
-		
-		OutputStream output = Game.instance.openFileOutput( Utils.format( depthFile( hero.heroClass ), depth ), Game.MODE_PRIVATE );
+
+		//OutputStream output = Game.instance.openFileOutput( Utils.format( depthFile( hero.heroClass ), depth ), Game.MODE_PRIVATE ); //uncomment to restore back to normal.
+
+		// *** Saves individual levels as well as the hero's position, gold, and items in those specific levels. ***
+		OutputStream output = null;
+
+		switch (OverworldScene.hero.currentZone) {
+			case "Forest":
+				bundle.put( FORESTHERO, hero);
+				bundle.put( FORESTHEROGOLD, gold );
+				bundle.put( FORESTHEROPOS, hero.pos);
+				output = Game.instance.openFileOutput("Forest", Game.MODE_PRIVATE);
+				break;
+			case "Dungeon":
+				bundle.put( DUNGEONHERO, hero);
+				bundle.put( DUNGEONHEROGOLD, gold );
+				bundle.put( DUNGEONHEROPOS, hero.pos);
+				output = Game.instance.openFileOutput("Dungeon", Game.MODE_PRIVATE);
+				break;
+			case "Cave":
+				bundle.put( CAVESHERO, hero);
+				bundle.put( CAVESHEROGOLD, gold );
+				bundle.put( CAVESHEROPOS, hero.pos);
+				output = Game.instance.openFileOutput("Caves", Game.MODE_PRIVATE);
+				break;
+			case "Castle":
+				bundle.put( CASTLEHERO, hero);
+				bundle.put( CASTLEHEROGOLD, gold );
+				bundle.put( CASTLEHEROPOS, hero.pos);
+				output = Game.instance.openFileOutput("Castle", Game.MODE_PRIVATE);
+				break;
+			case "Shadow Lands":
+				bundle.put( SHADOWLANDSHERO, hero);
+				bundle.put( SHADOWLANDSHEROGOLD, gold );
+				bundle.put( SHADOWLANDSHEROPOS, hero.pos);
+				output = Game.instance.openFileOutput("Shadow Lands", Game.MODE_PRIVATE);
+				break;
+			case "Town":
+				bundle.put( TOWNHERO, hero);
+				bundle.put( TOWNHEROGOLD, gold );
+				bundle.put( TOWNHEROPOS, hero.pos);
+				output = Game.instance.openFileOutput("Town", Game.MODE_PRIVATE);
+				break;
+			case "Fields":
+				bundle.put( FIELDSHERO, hero);
+				bundle.put( FIELDSHEROGOLD, gold );
+				bundle.put( FIELDSHEROPOS, hero.pos);
+				output = Game.instance.openFileOutput("Fields", Game.MODE_PRIVATE);
+				break;
+		}
+		// *** END ***
+
 		Bundle.write( bundle, output );
 		output.close();
 	}
-	
+
 	public static void saveAll() throws IOException {
 		if (hero.isAlive()) {
 			
@@ -473,7 +552,7 @@ public class Dungeon {
 			
 		}
 	}
-	
+
 	public static void loadGame( HeroClass cl ) throws IOException {
 		loadGame( gameFile( cl ), true );
 	}
@@ -485,7 +564,7 @@ public class Dungeon {
 	public static void loadGame( String fileName, boolean fullLoad ) throws IOException {
 		
 		Bundle bundle = gameBundle( fileName );
-		
+
 		Dungeon.challenges = bundle.getInt( CHALLENGES );
 		
 		Dungeon.level = null;
@@ -564,19 +643,109 @@ public class Dungeon {
 			}
 		}
 	}
-	
+
+	//loads hero gold and items
+	public static void loadHero() throws IOException {
+
+		String previousZone = OverworldScene.previousZone;
+
+		switch (previousZone) {
+			case "Forest":
+				Bundle bundle = gameBundle(previousZone);
+				Dungeon.hero = (Hero)bundle.get(FORESTHERO);
+				gold = bundle.getInt(FORESTHEROGOLD);
+				break;
+			case "Dungeon":
+				bundle = gameBundle(previousZone);
+				Dungeon.hero = (Hero)bundle.get(DUNGEONHERO);
+				gold = bundle.getInt(DUNGEONHEROGOLD);
+				break;
+			case "Caves":
+				bundle = gameBundle(previousZone);
+				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
+				gold = bundle.getInt(CAVESHEROGOLD);
+				break;
+			case "Town":
+				bundle = gameBundle(previousZone);
+				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
+				gold = bundle.getInt(CAVESHEROGOLD);
+				break;
+			case "Shadow Lands":
+				bundle = gameBundle(previousZone);
+				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
+				gold = bundle.getInt(CAVESHEROGOLD);
+				break;
+			case "Castle":
+				bundle = gameBundle(previousZone);
+				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
+				gold = bundle.getInt(CAVESHEROGOLD);
+				break;
+			case "Fields":
+				bundle = gameBundle(previousZone);
+				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
+				gold = bundle.getInt(CAVESHEROGOLD);
+				break;
+
+		}
+
+	}
+
 	public static Level loadLevel( HeroClass cl ) throws IOException {
-		
+
 		Dungeon.level = null;
 		Actor.clear();
-		
-		InputStream input = Game.instance.openFileInput( Utils.format( depthFile( cl ), depth ) ) ;
+
+		//InputStream input = Game.instance.openFileInput( Utils.format( depthFile( cl ), depth ) ) ; //uncomment to restore back to normal
+
+		// *** Loads individual levels as well as the hero's position in those levels. ***
+		InputStream input = null;
+		String posKey = "";
+
+		switch (OverworldScene.hero.currentZone) {
+			case "Forest":
+				posKey = FORESTHEROPOS;
+				input = Game.instance.openFileInput("Forest");
+				break;
+			case "Dungeon":
+				posKey = DUNGEONHEROPOS;
+				input = Game.instance.openFileInput("Dungeon");
+				break;
+			case "Cave":
+				posKey = CAVESHEROPOS;
+				input = Game.instance.openFileInput("Caves");
+				break;
+			case "Castle":
+				posKey = CASTLEHEROPOS;
+				input = Game.instance.openFileInput("Castle");
+				break;
+			case "Shadow Lands":
+				posKey = SHADOWLANDSHEROPOS;
+				input = Game.instance.openFileInput("Shadow Lands");
+				break;
+			case "Town":
+				posKey = TOWNHEROPOS;
+				input = Game.instance.openFileInput("Town");
+				break;
+			case "Fields":
+				posKey = FIELDSHEROPOS;
+				input = Game.instance.openFileInput("Fields");
+				break;
+		}
+		// *** END ***
+
+
 		Bundle bundle = Bundle.read( input );
+
+		// *** sets the hero's pos to where it was in the specified level. ***
+		hero.pos = bundle.getInt(posKey);
+		// *** END ***
+
 		input.close();
-		
+
+
 		return (Level)bundle.get( "level" );
 	}
-	
+
 	public static void deleteGame( HeroClass cl, boolean deleteLevels ) {
 		
 		Game.instance.deleteFile( gameFile( cl ) );
