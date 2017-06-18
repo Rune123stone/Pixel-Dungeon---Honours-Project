@@ -8,16 +8,12 @@ import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
-import com.watabou.pixeldungeon.levels.painters.Painter;
-import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class ForestLevel extends RegularLevel {
-
+public class FieldsLevel extends RegularLevel {
     {
         color1 = 0x534f3e;
         color2 = 0xb9d661;
@@ -25,7 +21,7 @@ public class ForestLevel extends RegularLevel {
         viewDistance = 6;
     }
 
-    private float chanceOfAlive = 0.50f;
+    private float chanceOfAlive = 0.45f;
 
     private ArrayList<Cavern> caverns;
     private int minCavernSize = 30;
@@ -33,26 +29,23 @@ public class ForestLevel extends RegularLevel {
     private int deathLimit = 3;
     private int birthLimit = 4;
 
-
     private Cell[][] cellMap = new Cell[WIDTH][HEIGHT];
 
     /*
     The following code is responsible for initialising the forest map and quality checking the forest (making sure it has enough empty terrain & filling caverns that are too small).
      */
-    private void buildForest() {
-
+    private void buildFields() {
         do {
             generateNoise();
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 8; i++) {
                 cellMap = doSimulationStep(cellMap);
             }
 
             initCavernMap();
             fillSmallCaverns();
             setBorderCells();
-            fillLake(8);
-            setGrassCells();
+            setWindmillMap();
         } while (caverns.size() > 1);
 
     }
@@ -126,9 +119,8 @@ public class ForestLevel extends RegularLevel {
 
     }
 
-
     /*
-    The following code is responsible for finding caverns within the cave.
+    The following code is responsible for ensuring that there are no "caverns" (unreachable areas).
     */
     private void initCavernMap() {
 
@@ -197,80 +189,59 @@ public class ForestLevel extends RegularLevel {
     }
 
     /*
-    The following code is responsible for generating a lake in the forest.
+    The following code is responsible for generating a windmill in the Fields.
      */
-    private void fillLake(int i) {
-        int k = 0;
-        startingLakeCell();
 
-        while (k < i) {
-            for (int x = 0; x < WIDTH; x++) {
-                for (int y = 0; y < HEIGHT; y++) {
-                    if (cellMap[x][y].isLake()) {
-                        if (x > 0 && !cellMap[x - 1][y].isLake() && cellMap[x - 1][y].isAlive())
-                            cellMap[x - 1][y].setTempLake();
-                        if (y > 0 && !cellMap[x][y - 1].isLake() && cellMap[x][y - 1].isAlive())
-                            cellMap[x][y - 1].setTempLake();
-                        if (x + 1 < WIDTH && !cellMap[x + 1][y].isLake() && cellMap[x + 1][y].isAlive())
-                            cellMap[x + 1][y].setTempLake();
-                        if (y + 1 < HEIGHT && !cellMap[x][y + 1].isLake() && cellMap[x][y + 1].isAlive())
-                            cellMap[x][y + 1].setTempLake();
-                    }
-                }
+    //sets the area of the windmill
+    public void setWindmillMap() {
+        boolean windmillSet = false;
+
+        while (!windmillSet) {
+            int x = (int) (Math.random() * (40));
+            int y = (int) (Math.random() * (40));
+
+            if (allNeighboursEmpty(x - 3, y - 3) && allNeighboursEmpty(x, y - 3) && allNeighboursEmpty(x + 3, y - 3) //top 3x3 groups
+                    && allNeighboursEmpty(x - 3, y) && allNeighboursEmpty(x, y) && allNeighboursEmpty(x + 3, y) //middle 3x3 group
+                    && allNeighboursEmpty(x - 3, y + 3) && allNeighboursEmpty(x, y + 3) && allNeighboursEmpty(x + 3, y + 3)) { //bottom 3x3 group
+
+                setWindmillCells(x - 3, y - 3);
+                setWindmillCells(x, y - 3);
+                setWindmillCells(x + 3, y - 3);
+
+                setWindmillCells(x - 3, y);
+                setWindmillCells(x, y);
+                setWindmillCells(x + 3, y);
+
+                setWindmillCells(x - 3, y + 3);
+                setWindmillCells(x, y + 3);
+                setWindmillCells(x + 3, y + 3);
+
+                windmillSet = true;
             }
-
-             for (int x = 0; x < WIDTH; x++) {
-                 for (int y = 0; y < HEIGHT; y++) {
-                     if (cellMap[x][y].isTempLake()) {
-                         cellMap[x][y].setLake();
-                     }
-                 }
-              }
-            k++;
         }
     }
 
-    private void startingLakeCell() {
-        int x, y;
-        do {
-            x = (int) (Math.random() * ((WIDTH) - 1));
-            y = (int) (Math.random() * ((WIDTH) - 1));
-        } while (cellMap[x][y].isDead());
-
-        cellMap[x][y].setLake();
+    //returns true if all neighbours of a cell are empty (alive). Used for setting "Windmill" cells.
+    public boolean allNeighboursEmpty(int x, int y) {
+        return countAliveNeighbours(cellMap, x, y) == 8;
     }
 
-    /*
-    The following code is responsible for generating grass in the forest.
-     */
-    private void setGrassCells() {
-        int k = 0;
+    //sets all the cells around the given cell, including the given cell,  to be windmill cells.
+    public void setWindmillCells(int x, int y) {
+        //top cells
+        cellMap[x-1][y-1].setWindmillCell();
+        cellMap[x][y-1].setWindmillCell();
+        cellMap[x+1][y-1].setWindmillCell();
 
-        while (k < 3) {
-            for (int x = 0; x < WIDTH; x++) {
-                for (int y = 0; y < HEIGHT; y++) {
-                    if ((cellMap[x][y].isDead() || cellMap[x][y].isGrass()) && !cellMap[x][y].isLake()) {
-                        if (x > 0 && cellMap[x - 1][y].isAlive())
-                            cellMap[x - 1][y].setTempGrass();
-                        if (y > 0 && cellMap[x][y - 1].isAlive())
-                            cellMap[x][y - 1].setTempGrass();
-                        if (x + 1 < WIDTH && cellMap[x + 1][y].isAlive())
-                            cellMap[x + 1][y].setTempGrass();
-                        if (y + 1 < HEIGHT && cellMap[x][y + 1].isAlive())
-                            cellMap[x][y + 1].setTempGrass();
-                    }
-                }
-            }
+        //middle cells
+        cellMap[x-1][y].setWindmillCell();
+        cellMap[x][y].setWindmillCell();
+        cellMap[x+1][y].setWindmillCell();
 
-            for (int x = 0; x < WIDTH; x++) {
-                for (int y = 0; y < HEIGHT; y++) {
-                    if (cellMap[x][y].isTempGrass()) {
-                        cellMap[x][y].setGrass();
-                    }
-                }
-            }
-            k++;
-        }
+        //bottom cells
+        cellMap[x-1][y+1].setWindmillCell();
+        cellMap[x][y+1].setWindmillCell();
+        cellMap[x+1][y+1].setWindmillCell();
     }
 
     @Override
@@ -285,12 +256,12 @@ public class ForestLevel extends RegularLevel {
     }
 
     protected boolean[] water() {
-        System.out.println(Feeling.WATER);
-        return Patch.generate( feeling == Feeling.WATER ? 0.60f : 0.45f, 6 );
+        System.out.println(Level.Feeling.WATER);
+        return Patch.generate( feeling == Level.Feeling.WATER ? 0.60f : 0.45f, 6 );
     }
 
     protected boolean[] grass() {
-        return Patch.generate( feeling == Feeling.GRASS ? 0.55f : 0.35f, 3 );
+        return Patch.generate( feeling == Level.Feeling.GRASS ? 0.55f : 0.35f, 3 );
     }
 
     @Override
@@ -303,7 +274,7 @@ public class ForestLevel extends RegularLevel {
     @Override
     protected void decorate() {
         try {
-            buildForest();
+            buildFields();
         } catch (Exception e) {}
 
         for (int i = 0; i < LENGTH; i++) {
@@ -317,8 +288,8 @@ public class ForestLevel extends RegularLevel {
                 map[i] = Terrain.WALL_DECO;
             }
 
-            if (cellMap[x][y].isLake()) {
-                map[i] = Terrain.WATER;
+            if (cellMap[x][y].isWindmillCell()) {
+                map[i] = Terrain.BOOKSHELF;
             }
 
 
@@ -366,7 +337,7 @@ public class ForestLevel extends RegularLevel {
     public static void addVisuals( Level level, Scene scene ) {
         for (int i=0; i < LENGTH; i++) {
             if (level.map[i] == Terrain.WALL_DECO) {
-                scene.add( new Vein( i ) );
+                scene.add( new FieldsLevel.Vein( i ) );
             }
         }
     }
@@ -397,7 +368,7 @@ public class ForestLevel extends RegularLevel {
                     delay = Random.Float();
 
                     PointF p = DungeonTilemap.tileToWorld( pos );
-                    ((Sparkle)recycle( Sparkle.class )).reset(
+                    ((ForestLevel.Sparkle)recycle( ForestLevel.Sparkle.class )).reset(
                             p.x + Random.Float( DungeonTilemap.SIZE ),
                             p.y + Random.Float( DungeonTilemap.SIZE ) );
                 }

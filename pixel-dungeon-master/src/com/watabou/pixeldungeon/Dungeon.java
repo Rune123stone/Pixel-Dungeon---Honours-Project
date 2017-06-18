@@ -158,19 +158,21 @@ public class Dungeon {
 		switch(OverworldScene.hero.currentZone) {
 			case "Forest":
 				level = new ForestLevel();
-
 				break;
 			case "Cave":
 				level = new CavesLevel();
-
 				break;
 			case "Dungeon":
 				level = new SewerLevel();
-
+				break;
+			case "Fields":
+				level = new FieldsLevel();
 				break;
 			case "Town":
 				level = new TownLevel();
-
+				break;
+			case "Castle":
+				level = new CityLevel();
 				break;
 			default:
 				level = new DeadEndLevel();
@@ -667,23 +669,23 @@ public class Dungeon {
 				break;
 			case "Town":
 				bundle = gameBundle(previousZone);
-				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
-				gold = bundle.getInt(CAVESHEROGOLD);
+				Dungeon.hero = (Hero)bundle.get(TOWNHERO);
+				gold = bundle.getInt(TOWNHEROGOLD);
 				break;
 			case "Shadow Lands":
 				bundle = gameBundle(previousZone);
-				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
-				gold = bundle.getInt(CAVESHEROGOLD);
+				Dungeon.hero = (Hero)bundle.get(SHADOWLANDSHERO);
+				gold = bundle.getInt(SHADOWLANDSHEROGOLD);
 				break;
 			case "Castle":
 				bundle = gameBundle(previousZone);
-				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
-				gold = bundle.getInt(CAVESHEROGOLD);
+				Dungeon.hero = (Hero)bundle.get(CASTLEHERO);
+				gold = bundle.getInt(CASTLEHEROGOLD);
 				break;
 			case "Fields":
 				bundle = gameBundle(previousZone);
-				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
-				gold = bundle.getInt(CAVESHEROGOLD);
+				Dungeon.hero = (Hero)bundle.get(FIELDSHERO);
+				gold = bundle.getInt(FIELDSHEROGOLD);
 				break;
 
 		}

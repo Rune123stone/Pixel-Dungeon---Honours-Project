@@ -2,7 +2,7 @@ package com.watabou.pixeldungeon.levels;
 
 public class Cell {
 
-    private boolean alive, corner, border, lake, tempLake, grass, tempGrass;
+    private boolean alive, corner, border, lake, tempLake, grass, tempGrass, windmillCell;
     private int cavernIndex = -1;
 
     public Cell(boolean alive) {
@@ -20,6 +20,14 @@ public class Cell {
     public void setBorder() {
         border = true;
         setDead();
+    }
+
+    public void setWindmillCell() {
+        windmillCell = true;
+    }
+
+    public boolean isWindmillCell() {
+        return windmillCell;
     }
 
     public void setCorner() {
