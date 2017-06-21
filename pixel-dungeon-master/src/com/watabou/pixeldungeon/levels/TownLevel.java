@@ -27,8 +27,6 @@ public class TownLevel extends RegularLevel {
     private static int[] mapData = new int[townMapLength];
     private static int[] passableMapData = new int[townMapLength];
 
-    public static ArrayList<ZoneNode> zones;
-
     //returns an array list of longs corresponding to the given Json tile map.
     private static ArrayList<Long> getTileMap(String jsonFile) {
         JSONParser parser = new JSONParser();
@@ -67,11 +65,6 @@ public class TownLevel extends RegularLevel {
         return mapData;
     }
 
-    //returns the most efficient step current position to target position based on the cells that can be traversed. (finds a path from current position to target)
-    public static int findOverworldPath(int from, int to) {
-        return PathFinder.getStep(from, to, passable);
-    }
-
     //sets tile textures
     @Override
     public String tilesTex() {
@@ -102,17 +95,16 @@ public class TownLevel extends RegularLevel {
         //note : 24 is water texture
         //"paints" the overworld with the specified tile textures
         for (int i = 0; i < townMapLength; i++) {
-            if (i < mapData.length) {
-                if (mapData[i] == 0) {
-                    map[i] = 24; //set to water texture
+                if (i < mapData.length) {
+                    if (mapData[i] == 0) {
+                        map[i] = 24; //set to water texture
+                    } else {
+                        //note : when using forest_tiles.png tileset, use data - 1
+                        map[i] = mapData[i] - 1;
+                    }
                 } else {
-                    //note : when using forest_tiles.png tileset, use data - 1
-                    map[i] = mapData[i] - 1;
-
+                    map[i] = 24; //set to water texture
                 }
-            } else {
-                map[i] = 24; //set to water texture
-            }
         }
 
     }

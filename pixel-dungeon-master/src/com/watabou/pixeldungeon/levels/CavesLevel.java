@@ -24,7 +24,9 @@ import com.watabou.noosa.particles.PixelParticle;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
+import com.watabou.pixeldungeon.actors.mobs.Skeleton;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
+import com.watabou.pixeldungeon.actors.mobs.npcs.KingGnoll;
 import com.watabou.pixeldungeon.levels.painters.Painter;
 import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
@@ -49,7 +51,7 @@ public class CavesLevel extends RegularLevel {
 	private int birthLimit = 5;
 
 
-	private Cell[][] cellMap = new Cell[WIDTH][HEIGHT];
+	private static Cell[][] cellMap = new Cell[WIDTH][HEIGHT];
 
 	/*
 	The following code is responsible for initialising the cave map and quality checking the cave (making sure it has enough empty terrain & filling caverns that are too small).
@@ -262,6 +264,22 @@ public class CavesLevel extends RegularLevel {
 	protected boolean[] grass() {
 		return Patch.generate( feeling == Feeling.GRASS ? 0.55f : 0.35f, 3 );
 	}
+
+	public static int spawnPos() {
+		int pos = (int) (Math.random() * (map.length));
+
+		int x = pos % WIDTH;
+		int y = (int) Math.floor(pos / WIDTH);
+
+		while (cellMap[x][y].isDead()) {
+			pos = (int) (Math.random() * (map.length));
+
+			x = pos % WIDTH;
+			y = (int) Math.floor(pos / WIDTH);
+		}
+
+		return pos;
+	}
 	
 	@Override
 	protected void assignRoomType() {
@@ -269,10 +287,32 @@ public class CavesLevel extends RegularLevel {
 		
 		Blacksmith.Quest.spawn( rooms );
 	}
+
+//	@Override
+//	protected void createMobs() {
+//		super.createMobs();
+//
+//		String enemies[] = new String[] {"skeleton", "bat", "gnoll"};
+//
+//		int randomEnemy = (int) (Math.random() * (3));
+//		int noEnemies = 0;
+//
+//		while (noEnemies < 10) {
+//			switch (enemies[randomEnemy]) {
+//				case "skeleton":
+//
+//			}
+//		}
+//
+//
+//	}
 	
 	@Override
 	protected void decorate() {
 		try {
+			Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+			Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
 			buildCave();
 		} catch (Exception e) {}
 

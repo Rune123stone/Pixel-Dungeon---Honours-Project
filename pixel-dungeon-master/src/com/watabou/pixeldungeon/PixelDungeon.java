@@ -42,7 +42,7 @@ public class PixelDungeon extends Game {
 
 	public PixelDungeon() {
 		super( TitleScene.class );
-		//super(OverworldScene.class);
+		// super(OverworldScene.class);
 
 		com.watabou.utils.Bundle.addAlias(
 			com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade.class,

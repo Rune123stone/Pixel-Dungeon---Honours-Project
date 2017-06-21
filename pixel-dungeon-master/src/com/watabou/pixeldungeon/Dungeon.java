@@ -174,6 +174,9 @@ public class Dungeon {
 			case "Castle":
 				level = new CityLevel();
 				break;
+			case "Shadow Lands":
+				level = new ShadowLandsLevel();
+				break;
 			default:
 				level = new DeadEndLevel();
 				System.out.println("Level not implemented yet.");
@@ -668,6 +671,7 @@ public class Dungeon {
 				gold = bundle.getInt(CAVESHEROGOLD);
 				break;
 			case "Town":
+				System.out.println("Im here ellen");
 				bundle = gameBundle(previousZone);
 				Dungeon.hero = (Hero)bundle.get(TOWNHERO);
 				gold = bundle.getInt(TOWNHEROGOLD);
@@ -687,7 +691,6 @@ public class Dungeon {
 				Dungeon.hero = (Hero)bundle.get(FIELDSHERO);
 				gold = bundle.getInt(FIELDSHEROGOLD);
 				break;
-
 		}
 
 	}
@@ -705,30 +708,51 @@ public class Dungeon {
 
 		switch (OverworldScene.hero.currentZone) {
 			case "Forest":
+				Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to NOT pass over water (lake).
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.PASSABLE; //allows the her to pass over wall decoration cells (will be grass cells).
+
 				posKey = FORESTHEROPOS;
 				input = Game.instance.openFileInput("Forest");
 				break;
 			case "Dungeon":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
 				posKey = DUNGEONHEROPOS;
 				input = Game.instance.openFileInput("Dungeon");
 				break;
 			case "Cave":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
 				posKey = CAVESHEROPOS;
 				input = Game.instance.openFileInput("Caves");
 				break;
 			case "Castle":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
 				posKey = CASTLEHEROPOS;
 				input = Game.instance.openFileInput("Castle");
 				break;
 			case "Shadow Lands":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
 				posKey = SHADOWLANDSHEROPOS;
 				input = Game.instance.openFileInput("Shadow Lands");
 				break;
 			case "Town":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
 				posKey = TOWNHEROPOS;
 				input = Game.instance.openFileInput("Town");
 				break;
 			case "Fields":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
 				posKey = FIELDSHEROPOS;
 				input = Game.instance.openFileInput("Fields");
 				break;

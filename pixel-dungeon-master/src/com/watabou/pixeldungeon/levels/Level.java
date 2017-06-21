@@ -66,6 +66,7 @@ import com.watabou.pixeldungeon.levels.traps.*;
 import com.watabou.pixeldungeon.mechanics.ShadowCaster;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.scenes.GameScene;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
@@ -96,7 +97,7 @@ public abstract class Level implements Bundlable {
 	public static boolean resizingNeeded;
 	public static int loadedMapSize;
 	
-	public int[] map;
+	public static int[] map;
 	public boolean[] visited;
 	public boolean[] mapped;
 	
@@ -200,12 +201,21 @@ public abstract class Level implements Bundlable {
 			
 		} while (!build());
 		decorate();
-		
-		buildFlagMaps();
-		cleanWalls();
-		
-		createMobs();
-		createItems();
+
+		if (!isTownLevel()) {
+
+			buildFlagMaps();
+			cleanWalls();
+
+			createMobs();
+			createItems();
+		}
+
+
+	}
+
+	public boolean isTownLevel() {
+		return OverworldScene.hero.currentZone.equals("Town");
 	}
 	
 	public void reset() {	
@@ -419,16 +429,18 @@ public abstract class Level implements Bundlable {
 	private void buildFlagMaps() {
 
 		for (int i=0; i < LENGTH; i++) {
-			int flags = Terrain.flags[map[i]];
-			passable[i]		= (flags & Terrain.PASSABLE) != 0;
-			losBlocking[i]	= (flags & Terrain.LOS_BLOCKING) != 0;
-			flamable[i]		= (flags & Terrain.FLAMABLE) != 0;
-			secret[i]		= (flags & Terrain.SECRET) != 0;
-			solid[i]		= (flags & Terrain.SOLID) != 0;
-			avoid[i]		= (flags & Terrain.AVOID) != 0;
-			water[i]		= (flags & Terrain.LIQUID) != 0;
-			pit[i]			= (flags & Terrain.PIT) != 0;
-			//water[i] = true;
+			try {
+				int flags = Terrain.flags[map[i]];
+				passable[i] = (flags & Terrain.PASSABLE) != 0;
+				losBlocking[i] = (flags & Terrain.LOS_BLOCKING) != 0;
+				flamable[i] = (flags & Terrain.FLAMABLE) != 0;
+				secret[i] = (flags & Terrain.SECRET) != 0;
+				solid[i] = (flags & Terrain.SOLID) != 0;
+				avoid[i] = (flags & Terrain.AVOID) != 0;
+				water[i] = (flags & Terrain.LIQUID) != 0;
+				pit[i] = (flags & Terrain.PIT) != 0;
+				//water[i] = true;
+			} catch (Exception e) {}
 		}
 
 		int lastRow = LENGTH - WIDTH;
@@ -463,7 +475,7 @@ public abstract class Level implements Bundlable {
 			}
 		}
 	}
-	
+
 	private int getWaterTile( int pos ) {
 		int t = Terrain.WATER_TILES;
 		for (int j=0; j < NEIGHBOURS4.length; j++) {

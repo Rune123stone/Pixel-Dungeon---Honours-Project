@@ -7,11 +7,14 @@ import com.watabou.noosa.particles.PixelParticle;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
+import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
+import com.watabou.pixeldungeon.actors.mobs.npcs.KingGnoll;
 import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FieldsLevel extends RegularLevel {
     {
@@ -29,7 +32,7 @@ public class FieldsLevel extends RegularLevel {
     private int deathLimit = 3;
     private int birthLimit = 4;
 
-    private Cell[][] cellMap = new Cell[WIDTH][HEIGHT];
+    private static Cell[][] cellMap = new Cell[WIDTH][HEIGHT];
 
     /*
     The following code is responsible for initialising the forest map and quality checking the forest (making sure it has enough empty terrain & filling caverns that are too small).
@@ -264,6 +267,22 @@ public class FieldsLevel extends RegularLevel {
         return Patch.generate( feeling == Level.Feeling.GRASS ? 0.55f : 0.35f, 3 );
     }
 
+    public static int spawnPos() {
+        int pos = (int) (Math.random() * (map.length));
+
+        int x = pos % WIDTH;
+        int y = (int) Math.floor(pos / WIDTH);
+
+        while (cellMap[x][y].isDead() || cellMap[x][y].isWindmillCell()) {
+            pos = (int) (Math.random() * (map.length));
+
+            x = pos % WIDTH;
+            y = (int) Math.floor(pos / WIDTH);
+        }
+
+        return pos;
+    }
+
     @Override
     protected void assignRoomType() {
         super.assignRoomType();
@@ -271,9 +290,21 @@ public class FieldsLevel extends RegularLevel {
         Blacksmith.Quest.spawn( rooms );
     }
 
+
+//    @Override
+//    protected void createMobs() {
+//        super.createMobs();
+//       KingGnoll.Quest.spawn(this);
+//
+//    }
+
     @Override
     protected void decorate() {
         try {
+            Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+            Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+
             buildFields();
         } catch (Exception e) {}
 
@@ -292,9 +323,10 @@ public class FieldsLevel extends RegularLevel {
                 map[i] = Terrain.BOOKSHELF;
             }
 
-
         }
     }
+
+
 
     @Override
     public String tileName( int tile ) {

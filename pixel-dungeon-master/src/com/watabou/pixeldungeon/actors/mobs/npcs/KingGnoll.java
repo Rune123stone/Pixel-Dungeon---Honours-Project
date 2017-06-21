@@ -26,6 +26,8 @@ import com.watabou.pixeldungeon.items.quest.DriedRose;
 import com.watabou.pixeldungeon.items.quest.RatSkull;
 import com.watabou.pixeldungeon.items.weapon.Weapon;
 import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
+import com.watabou.pixeldungeon.levels.FieldsLevel;
+import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.levels.SewerLevel;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.GhostSprite;
@@ -48,7 +50,7 @@ public class KingGnoll extends NPC {
         spriteClass = GnollSprite.class;
 
         flying = false;
-        state = FOLLOW;
+        state = PASSIVE;
     }
 
     public KingGnoll() {
@@ -228,13 +230,17 @@ public class KingGnoll extends NPC {
             }
         }
 
-        public static void spawn( SewerLevel level ) {
+        public static void spawn( Level level ) {
 //            if (!spawned && Dungeon.depth > 1 && Random.Int( 5 - Dungeon.depth ) == 0) {
             if (!spawned && Dungeon.depth == 1) {
 
                 KingGnoll kingGnoll = new KingGnoll();
+
                 do {
-                    kingGnoll.pos = level.randomRespawnCell();
+                    //kingGnoll.pos = level.randomRespawnCell();
+                    //kingGnoll.pos = 105;
+                    kingGnoll.pos = FieldsLevel.spawnPos();
+                    System.out.println(kingGnoll.pos);
                 } while (kingGnoll.pos == -1);
                 level.mobs.add( kingGnoll );
                 Actor.occupyCell( kingGnoll );

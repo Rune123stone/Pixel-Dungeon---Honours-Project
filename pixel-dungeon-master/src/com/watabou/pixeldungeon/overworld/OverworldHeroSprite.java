@@ -5,7 +5,9 @@ import com.watabou.gltextures.TextureCache;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.pixeldungeon.Assets;
+import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
+import com.watabou.pixeldungeon.scenes.StartScene;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 
 public class OverworldHeroSprite extends CharSprite {
@@ -23,7 +25,26 @@ public class OverworldHeroSprite extends CharSprite {
 
         //texture(OverworldHero.heroClass.spritesheet());
 
-        texture(Assets.WARRIOR); //using default textures for sprite for now, fix by using the commented line above when it's implemented.
+        //texture(Assets.WARRIOR); //using default textures for sprite for now, fix by using the commented line above when it's implemented.
+
+        System.out.println(StartScene.curClass.title);
+
+        switch (StartScene.curClass.title) {
+            case "warrior":
+                texture(Assets.WARRIOR);
+                break;
+            case "mage":
+                texture(Assets.MAGE);
+                break;
+            case "rogue":
+                texture(Assets.ROGUE);
+                break;
+            case "huntress":
+                texture(Assets.HUNTRESS);
+                break;
+        }
+
+
         updateSprite();
 
         idle();

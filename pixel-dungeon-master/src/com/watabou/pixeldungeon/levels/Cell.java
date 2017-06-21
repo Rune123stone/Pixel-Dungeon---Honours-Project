@@ -2,7 +2,18 @@ package com.watabou.pixeldungeon.levels;
 
 public class Cell {
 
-    private boolean alive, corner, border, lake, tempLake, grass, tempGrass, windmillCell;
+    //General variables
+    private boolean alive, corner, border;
+
+    //Forest variables
+    private boolean lake, tempLake, grass, tempGrass;
+
+    //Fields variables
+    private boolean windmillCell;
+
+    //Shadow Lands Variables
+    private boolean trapCell;
+
     private int cavernIndex = -1;
 
     public Cell(boolean alive) {
@@ -29,6 +40,15 @@ public class Cell {
     public boolean isWindmillCell() {
         return windmillCell;
     }
+
+    public void setTrapCell() {
+        trapCell = true;
+    }
+
+    public boolean isTrapCell() {
+        return trapCell;
+    }
+
 
     public void setCorner() {
         corner = true;

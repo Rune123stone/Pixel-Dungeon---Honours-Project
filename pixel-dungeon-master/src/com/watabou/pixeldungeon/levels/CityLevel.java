@@ -66,6 +66,8 @@ public class CityLevel extends RegularLevel {
 	
 	@Override
 	protected void decorate() {
+		Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+		Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
 		
 		for (int i=0; i < LENGTH; i++) {
 			if (map[i] == Terrain.EMPTY && Random.Int( 10 ) == 0) { 

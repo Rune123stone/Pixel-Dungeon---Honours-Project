@@ -24,6 +24,18 @@ import com.watabou.utils.Random;
 
 public class Bestiary {
 
+	public static Mob mob( String zone ) {
+		@SuppressWarnings("unchecked")
+		//Class<? extends Mob> cl = (Class<? extends Mob>)mobClass( depth );
+		 Class<? extends Mob> cl = (Class<? extends Mob>)mobClass2( zone );
+		try {
+			return cl.newInstance();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	//original constructor
 	public static Mob mob( int depth ) {
 		@SuppressWarnings("unchecked")
 		Class<? extends Mob> cl = (Class<? extends Mob>)mobClass( depth );
@@ -176,6 +188,44 @@ public class Bestiary {
 			classes = new Class<?>[]{ Eye.class };
 		}
 		
+		return classes[ Random.chances( chances )];
+	}
+
+	private static Class<?> mobClass2( String zone ) {
+
+		float[] chances;
+		Class<?>[] classes;
+
+		switch (zone) {
+			case "Cave":
+				chances = new float[]{ 1, 1, 1 };
+				classes = new Class<?>[]{ Skeleton.class, Bat.class, Gnoll.class };
+				break;
+			case "Fields":
+				chances = new float[]{ 1, 1, 1};
+				classes = new Class<?>[]{ Bandit.class, Scorpio.class, Thief.class};
+				break;
+			case "Dungeon":
+				chances = new float[]{ 1, 1, 1};
+				classes = new Class<?>[] { Rat.class, Golem.class, Albino.class};
+				break;
+			case "Forest":
+				chances = new float[]{ 1, 1, 1};
+				classes = new Class<?>[] { Gnoll.class, Rat.class, Crab.class};
+				break;
+			case "Castle":
+				chances = new float[]{ 1, 1, 1};
+				classes = new Class<?>[] { Statue.class, Monk.class, King.class};
+				break;
+			case "Shadow Lands":
+				chances = new float[]{ 1, 1, 1};
+				classes = new Class<?>[] { Succubus.class, Brute.class, Eye.class};
+				break;
+			default:
+				chances = new float[]{ 1 };
+				classes = new Class<?>[]{ Eye.class };
+		}
+
 		return classes[ Random.chances( chances )];
 	}
 	

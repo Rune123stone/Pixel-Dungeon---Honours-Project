@@ -17,10 +17,7 @@
  */
 package com.watabou.pixeldungeon.levels;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import com.watabou.pixeldungeon.Bones;
 import com.watabou.pixeldungeon.Dungeon;
@@ -33,6 +30,7 @@ import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.watabou.pixeldungeon.levels.Room.Type;
 import com.watabou.pixeldungeon.levels.painters.*;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Graph;
 import com.watabou.utils.Random;
@@ -44,7 +42,7 @@ public abstract class RegularLevel extends Level {
 	
 	protected Room roomEntrance;
 	protected Room roomExit;
-	
+
 	protected ArrayList<Room.Type> specials;
 	
 	public int secretDoors;
@@ -138,14 +136,20 @@ public abstract class RegularLevel extends Level {
 		assignRoomType();
 
 		paint();
-		paintWater();
-		paintGrass();
 
-		placeTraps();
+		//ensures that the following methods are only used on levels/zones other than "Town".
+		if (!isTownLevel()) {
+
+
+			paintWater();
+			paintGrass();
+
+			placeTraps();
+		}
 
 		return true;
 	}
-	
+
 	protected boolean initRooms() {
 		rooms = new HashSet<Room>();
 		split( new Rect( 0, 0, WIDTH - 1, HEIGHT - 1 ) );
@@ -525,15 +529,55 @@ public abstract class RegularLevel extends Level {
 	
 	@Override
 	protected void createMobs() {
+//		int nMobs = nMobs();
+//		for (int i=0; i < nMobs; i++) {
+//			Mob mob = Bestiary.mob( Dungeon.depth );
+//			do {
+//				mob.pos = randomRespawnCell();
+//			} while (mob.pos == -1);
+//			mobs.add( mob );
+//			Actor.occupyCell( mob );
+//		}
+
 		int nMobs = nMobs();
+
 		for (int i=0; i < nMobs; i++) {
-			Mob mob = Bestiary.mob( Dungeon.depth );
+			Mob mob = Bestiary.mob( OverworldScene.hero.currentZone );
 			do {
-				mob.pos = randomRespawnCell();
+				switch (OverworldScene.hero.currentZone) {
+					case "Cave":
+						mob.pos = CavesLevel.spawnPos();
+						break;
+					case "Fields":
+						mob.pos = FieldsLevel.spawnPos();
+						break;
+					case "Dungeon":
+						mob.pos = randomRespawnCell();
+						break;
+					case "Forest":
+						mob.pos = ForestLevel.spawnPos();
+						break;
+					case "Castle":
+						mob.pos = randomRespawnCell();
+						break;
+					case "Shadow Lands":
+						mob.pos = ShadowLandsLevel.spawnPos();
+						break;
+				}
 			} while (mob.pos == -1);
 			mobs.add( mob );
 			Actor.occupyCell( mob );
 		}
+
+		int count = 1;
+		Iterator iterator = mobs.iterator();
+		while (iterator.hasNext()) {
+			System.out.println("Mob " +count+ " is " +iterator.next());
+			count++;
+		}
+
+		System.out.println("The number of mobs is: " +mobs.size());
+
 	}
 	
 	@Override

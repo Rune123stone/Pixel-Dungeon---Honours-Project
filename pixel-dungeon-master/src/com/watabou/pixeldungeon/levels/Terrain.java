@@ -17,6 +17,8 @@
  */
 package com.watabou.pixeldungeon.levels;
 
+import com.watabou.pixeldungeon.scenes.OverworldScene;
+
 public class Terrain {
 
 	public static final int CHASM			= 0;
@@ -82,7 +84,7 @@ public class Terrain {
 	
 	public static final int UNSTITCHABLE	= 0x100; 
 	
-	public static final int[] flags = new int[256]; //change to 1023 for map testing
+	public static final int[] flags = new int[1023]; //change to 256
 	static {
 		flags[CHASM]		= AVOID	| PIT									| UNSTITCHABLE;
 		flags[EMPTY]		= PASSABLE;
@@ -97,6 +99,7 @@ public class Terrain {
 		flags[EMBERS]		= PASSABLE;
 		flags[LOCKED_DOOR]	= LOS_BLOCKING | SOLID 							| UNSTITCHABLE;
 		flags[PEDESTAL]		= PASSABLE 										| UNSTITCHABLE;
+
 		flags[WALL_DECO]	= flags[WALL];
 		flags[BARRICADE]	= FLAMABLE | SOLID | LOS_BLOCKING;
 		flags[EMPTY_SP]		= flags[EMPTY]									| UNSTITCHABLE;

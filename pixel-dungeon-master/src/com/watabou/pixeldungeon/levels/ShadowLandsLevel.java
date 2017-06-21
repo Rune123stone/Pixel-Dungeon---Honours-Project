@@ -9,16 +9,12 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
 import com.watabou.pixeldungeon.levels.painters.Painter;
-import com.watabou.pixeldungeon.overworld.OverworldMap;
-import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class ForestLevel extends RegularLevel {
-
+public class ShadowLandsLevel extends RegularLevel {
     {
         color1 = 0x534f3e;
         color2 = 0xb9d661;
@@ -26,36 +22,35 @@ public class ForestLevel extends RegularLevel {
         viewDistance = 6;
     }
 
-    private float chanceOfAlive = 0.50f;
+    private float chanceOfAlive = 0.45f;
 
     private ArrayList<Cavern> caverns;
     private int minCavernSize = 30;
 
-    private int deathLimit = 3;
-    private int birthLimit = 4;
+    private int deathLimit = 2;
+    private int birthLimit = 5;
 
 
     private static Cell[][] cellMap = new Cell[WIDTH][HEIGHT];
 
     /*
-    The following code is responsible for initialising the forest map and quality checking the forest (making sure it has enough empty terrain & filling caverns that are too small).
+    The following code is responsible for initialising the shadow lands map and quality checking the level (making sure it has enough empty terrain & filling caverns that are too small).
      */
-    private void buildForest() {
+    private void buildShadowLands() throws Exception {
 
         do {
             generateNoise();
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 9; i++) {
                 cellMap = doSimulationStep(cellMap);
             }
 
             initCavernMap();
             fillSmallCaverns();
             setBorderCells();
-            fillLake(8);
-            setGrassCells();
-        } while (caverns.size() > 1);
-
+            setTrapCells();
+        }
+        while ( caverns.size() != 1 );
     }
 
     private void generateNoise() {
@@ -129,7 +124,7 @@ public class ForestLevel extends RegularLevel {
 
 
     /*
-    The following code is responsible for finding caverns within the cave.
+    The following code is responsible for finding caverns within the level.
     */
     private void initCavernMap() {
 
@@ -185,9 +180,15 @@ public class ForestLevel extends RegularLevel {
         (caverns.get(cavernIndex)).AddCell( cellMap[x][y] );
 
         fillCavern(x - 1, y, cavernIndex);
+        fillCavern(x - 1, y - 1, cavernIndex);
+        fillCavern(x - 1, y + 1, cavernIndex);
+
         fillCavern(x, y - 1, cavernIndex);
         fillCavern(x, y + 1, cavernIndex);
+
         fillCavern(x + 1, y, cavernIndex);
+        fillCavern(x + 1, y - 1, cavernIndex);
+        fillCavern(x + 1, y + 1, cavernIndex);
     }
 
     private void fillSmallCaverns() {
@@ -197,80 +198,13 @@ public class ForestLevel extends RegularLevel {
                 cavern.KillCells();
     }
 
-    /*
-    The following code is responsible for generating a lake in the forest.
-     */
-    private void fillLake(int i) {
-        int k = 0;
-        startingLakeCell();
-
-        while (k < i) {
-            for (int x = 0; x < WIDTH; x++) {
-                for (int y = 0; y < HEIGHT; y++) {
-                    if (cellMap[x][y].isLake()) {
-                        if (x > 0 && !cellMap[x - 1][y].isLake() && cellMap[x - 1][y].isAlive())
-                            cellMap[x - 1][y].setTempLake();
-                        if (y > 0 && !cellMap[x][y - 1].isLake() && cellMap[x][y - 1].isAlive())
-                            cellMap[x][y - 1].setTempLake();
-                        if (x + 1 < WIDTH && !cellMap[x + 1][y].isLake() && cellMap[x + 1][y].isAlive())
-                            cellMap[x + 1][y].setTempLake();
-                        if (y + 1 < HEIGHT && !cellMap[x][y + 1].isLake() && cellMap[x][y + 1].isAlive())
-                            cellMap[x][y + 1].setTempLake();
-                    }
+    private void setTrapCells() {
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
+                if (Math.random() > 0.95 && cellMap[x][y].isAlive()) {
+                    cellMap[x][y].setTrapCell();
                 }
             }
-
-             for (int x = 0; x < WIDTH; x++) {
-                 for (int y = 0; y < HEIGHT; y++) {
-                     if (cellMap[x][y].isTempLake()) {
-                         cellMap[x][y].setLake();
-                     }
-                 }
-              }
-            k++;
-        }
-    }
-
-    private void startingLakeCell() {
-        int x, y;
-        do {
-            x = (int) (Math.random() * ((WIDTH) - 1));
-            y = (int) (Math.random() * ((WIDTH) - 1));
-        } while (cellMap[x][y].isDead());
-
-        cellMap[x][y].setLake();
-    }
-
-    /*
-    The following code is responsible for generating grass in the forest.
-     */
-    private void setGrassCells() {
-        int k = 0;
-
-        while (k < 3) {
-            for (int x = 0; x < WIDTH; x++) {
-                for (int y = 0; y < HEIGHT; y++) {
-                    if ((cellMap[x][y].isDead() || cellMap[x][y].isGrass()) && !cellMap[x][y].isLake()) {
-                        if (x > 0 && cellMap[x - 1][y].isAlive())
-                            cellMap[x - 1][y].setTempGrass();
-                        if (y > 0 && cellMap[x][y - 1].isAlive())
-                            cellMap[x][y - 1].setTempGrass();
-                        if (x + 1 < WIDTH && cellMap[x + 1][y].isAlive())
-                            cellMap[x + 1][y].setTempGrass();
-                        if (y + 1 < HEIGHT && cellMap[x][y + 1].isAlive())
-                            cellMap[x][y + 1].setTempGrass();
-                    }
-                }
-            }
-
-            for (int x = 0; x < WIDTH; x++) {
-                for (int y = 0; y < HEIGHT; y++) {
-                    if (cellMap[x][y].isTempGrass()) {
-                        cellMap[x][y].setGrass();
-                    }
-                }
-            }
-            k++;
         }
     }
 
@@ -280,7 +214,7 @@ public class ForestLevel extends RegularLevel {
         int x = pos % WIDTH;
         int y = (int) Math.floor(pos / WIDTH);
 
-        while (cellMap[x][y].isDead() || cellMap[x][y].isLake()) {
+        while (cellMap[x][y].isDead() || cellMap[x][y].isTrapCell()) {
             pos = (int) (Math.random() * (map.length));
 
             x = pos % WIDTH;
@@ -290,23 +224,24 @@ public class ForestLevel extends RegularLevel {
         return pos;
     }
 
+
     @Override
     public String tilesTex() {
         return Assets.TILES_CAVES;
-        //return Assets.TILES_FOREST;
     }
 
     @Override
     public String waterTex() {
-        return Assets.WATER_SEWERS;
+        return Assets.WATER_CAVES;
     }
 
     protected boolean[] water() {
-        return Patch.generate( feeling == Feeling.WATER ? 0.60f : 0.45f, 6 );
+        System.out.println(Level.Feeling.WATER);
+        return Patch.generate( feeling == Level.Feeling.WATER ? 0.60f : 0.45f, 6 );
     }
 
     protected boolean[] grass() {
-        return Patch.generate( feeling == Feeling.GRASS ? 0.55f : 0.35f, 3 );
+        return Patch.generate( feeling == Level.Feeling.GRASS ? 0.55f : 0.35f, 3 );
     }
 
     @Override
@@ -319,29 +254,40 @@ public class ForestLevel extends RegularLevel {
     @Override
     protected void decorate() {
         try {
-            Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to NOT pass over water (lake).
-            Terrain.flags[Terrain.WALL_DECO] = Terrain.PASSABLE; //allows the her to pass over wall decoration cells (will be grass cells).
+            Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+            Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
 
-            buildForest();
+            buildShadowLands();
         } catch (Exception e) {}
+
 
         for (int i = 0; i < LENGTH; i++) {
             int x = i % WIDTH;
             int y = (int) Math.floor(i / WIDTH);
-            if (cellMap[x][y].isAlive() && !cellMap[x][y].isGrass()) {
+            if (cellMap[x][y].isAlive()) {
                 map[i] = Terrain.EMPTY;
-            } else if (!cellMap[x][y].isGrass()) {
+            } else  {
                 map[i] = Terrain.WALL;
-            } else {
-                map[i] = Terrain.GRASS;
             }
 
-            if (cellMap[x][y].isLake()) {
-                map[i] = Terrain.WATER;
+            if (cellMap[x][y].isTrapCell()) {
+                map[i] = Terrain.CHASM;
             }
-
 
         }
+
+        while (true) {
+            int pos = roomEntrance.random();
+            if (pos != entrance) {
+                map[pos] = Terrain.SIGN;
+                break;
+            }
+        }
+
+        if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
+            return;
+        }
+
     }
 
     @Override
@@ -385,7 +331,7 @@ public class ForestLevel extends RegularLevel {
     public static void addVisuals( Level level, Scene scene ) {
         for (int i=0; i < LENGTH; i++) {
             if (level.map[i] == Terrain.WALL_DECO) {
-                scene.add( new Vein( i ) );
+                scene.add( new ShadowLandsLevel.Vein( i ) );
             }
         }
     }
@@ -416,7 +362,7 @@ public class ForestLevel extends RegularLevel {
                     delay = Random.Float();
 
                     PointF p = DungeonTilemap.tileToWorld( pos );
-                    ((Sparkle)recycle( Sparkle.class )).reset(
+                    ((CavesLevel.Sparkle)recycle( CavesLevel.Sparkle.class )).reset(
                             p.x + Random.Float( DungeonTilemap.SIZE ),
                             p.y + Random.Float( DungeonTilemap.SIZE ) );
                 }
