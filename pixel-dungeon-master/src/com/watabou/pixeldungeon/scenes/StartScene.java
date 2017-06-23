@@ -310,6 +310,7 @@ public class StartScene extends PixelScene {
 		Game.instance.deleteFile("Town");
 		Game.instance.deleteFile("Shadow Lands");
 		Game.instance.deleteFile("Castle");
+		Game.instance.deleteFile("Tier");
 
 		Game.switchScene(OverworldScene.class);
 		// *** END ***

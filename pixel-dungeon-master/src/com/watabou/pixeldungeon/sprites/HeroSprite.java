@@ -30,6 +30,7 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.overworld.OverworldHero;
+import com.watabou.pixeldungeon.overworld.OverworldHeroSprite;
 import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.utils.Callback;
@@ -60,6 +61,7 @@ public class HeroSprite extends CharSprite {
 	public void updateArmor() {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
+		OverworldHeroSprite.setTier(((Hero)ch).tier());
 
 		idle = new Animation( 1, true );
 		idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1 );

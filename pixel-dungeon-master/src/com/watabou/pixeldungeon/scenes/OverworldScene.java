@@ -19,8 +19,11 @@ import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.Toolbar;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.windows.WndOptions;
+import com.watabou.utils.Bundle;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class OverworldScene extends PixelScene {
 
@@ -112,7 +115,7 @@ public class OverworldScene extends PixelScene {
                         hero.curPos = OverworldMap.getZoneHeroPos("Cave");
                         hero.currentZone = "Cave";
                         break;
-                    case "CastleLevel":
+                    case "CityLevel":
                         hero.curPos = OverworldMap.getZoneHeroPos("Castle");
                         hero.currentZone = "Castle";
                         break;
@@ -142,11 +145,27 @@ public class OverworldScene extends PixelScene {
         heroSprite = new OverworldHeroSprite();
         int townNodePos = OverworldMap.getZonePos(hero.currentZone);
 
+        //updates the overworld hero's armor to match that of the Dungeon hero.
+        try {
+            Bundle bundle = gameBundle("Tier");
+            int tier = bundle.getInt("Tier");
+            OverworldHeroSprite.setTier(tier);
+        } catch (Exception e) {}
+
         heroSprite.placeOnOverworld(townNodePos);
         heroSprite.updateSprite();
         heroSprite.scaleSpriteToOverworld();
 
         mobs.add(heroSprite);
+    }
+
+    public static Bundle gameBundle( String fileName ) throws IOException {
+
+        InputStream input = Game.instance.openFileInput( fileName );
+        Bundle bundle = Bundle.read( input );
+        input.close();
+
+        return bundle;
     }
 
     private void createButtons() {

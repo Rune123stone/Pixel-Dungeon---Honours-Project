@@ -45,6 +45,7 @@ import com.watabou.pixeldungeon.items.scrolls.Scroll;
 import com.watabou.pixeldungeon.items.wands.Wand;
 import com.watabou.pixeldungeon.levels.*;
 import com.watabou.pixeldungeon.overworld.OverworldHero;
+import com.watabou.pixeldungeon.overworld.OverworldHeroSprite;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
@@ -128,7 +129,7 @@ public class Dungeon {
 		
 		Badges.reset();
 
-		StartScene.curClass = HeroClass.WARRIOR;
+		// StartScene.curClass = HeroClass.WARRIOR;
 		StartScene.curClass.initHero( hero );
 	}
 	
@@ -395,6 +396,8 @@ public class Dungeon {
 	private static final String SHADOWLANDSHEROGOLD = "shadowLandsHeroGold";
 	private static final String FIELDSHEROGOLD = "fieldsHeroGold";
 	private static final String CASTLEHEROGOLD = "castleHeroGold";
+
+	private static final String TIER = "Tier";
 	///
 	
 	public static String gameFile( HeroClass cl ) {
@@ -547,6 +550,7 @@ public class Dungeon {
 			Actor.fixTime();
 			saveGame( gameFile( hero.heroClass ) );
 			saveLevel();
+			saveTier();
 			
 			GamesInProgress.set( hero.heroClass, depth, hero.lvl, challenges != 0 );
 			
@@ -556,6 +560,15 @@ public class Dungeon {
 			Hero.reallyDie( WndResurrect.causeOfDeath );
 			
 		}
+	}
+
+	public static void saveTier() throws IOException {
+		Bundle bundle = new Bundle();
+		bundle.put( TIER, hero.tier());
+
+		OutputStream output = Game.instance.openFileOutput("Tier", Game.MODE_PRIVATE);
+		Bundle.write( bundle, output );
+		output.close();
 	}
 
 	public static void loadGame( HeroClass cl ) throws IOException {
@@ -628,7 +641,7 @@ public class Dungeon {
 		
 		hero = null;
 		hero = (Hero)bundle.get( HERO );
-		
+
 		QuickSlot.compress();
 		
 		gold = bundle.getInt( GOLD );
