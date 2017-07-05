@@ -24,21 +24,21 @@ public class WndKingGnoll extends WndQuest {
 
     @Override
     protected void onSelect( int index ) {
-
-        if (questItem != null) {
-            questItem.detach( Dungeon.hero.belongings.backpack );
-        }
-
-        Item reward = index == 0 ? KingGnoll.Quest.weapon : KingGnoll.Quest.armor;
-        if (reward.doPickUp( Dungeon.hero )) {
-            GLog.i( Hero.TXT_YOU_NOW_HAVE, reward.name() );
-        } else {
-            Dungeon.level.drop( reward, kingGnoll.pos ).sprite.drop();
-        }
-
-        kingGnoll.yell( "Farewell, adventurer!" );
-        kingGnoll.die( null );
-
-        KingGnoll.Quest.complete();
+//
+//        if (questItem != null) {
+//            questItem.detach( Dungeon.hero.belongings.backpack );
+//        }
+//
+//        Item reward = index == 0 ? KingGnoll.Quest.weapon : KingGnoll.Quest.armor;
+//        if (reward.doPickUp( Dungeon.hero )) {
+//            GLog.i( Hero.TXT_YOU_NOW_HAVE, reward.name() );
+//        } else {
+//            Dungeon.level.drop( reward, kingGnoll.pos ).sprite.drop();
+//        }
+//
+//        kingGnoll.yell( "Farewell, adventurer!" );
+//        kingGnoll.die( null );
+//
+//        KingGnoll.Quest.complete();
     }
 }

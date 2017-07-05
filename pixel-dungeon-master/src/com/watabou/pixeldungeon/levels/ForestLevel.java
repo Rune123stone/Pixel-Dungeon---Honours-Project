@@ -322,6 +322,7 @@ public class ForestLevel extends RegularLevel {
             Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to NOT pass over water (lake).
             Terrain.flags[Terrain.WALL_DECO] = Terrain.PASSABLE; //allows the her to pass over wall decoration cells (will be grass cells).
 
+            Level.zone = "Forest";
             buildForest();
         } catch (Exception e) {}
 

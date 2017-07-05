@@ -29,6 +29,8 @@ import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.watabou.pixeldungeon.levels.FieldsLevel;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.levels.SewerLevel;
+import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.GhostSprite;
 import com.watabou.pixeldungeon.sprites.GnollSprite;
@@ -97,7 +99,30 @@ public class KingGnoll extends NPC {
         sprite.turnTo( pos, Dungeon.hero.pos );
         Sample.INSTANCE.play( Assets.SND_BEE );
 
-        KingGnoll.Quest.type.handler.interact( this );
+//        QuestHandler.QUEST_COMPLETED_TEXT = "Yay you did it";
+//        QuestHandler.QUEST_GIVEN_TEXT = "Hey, you're not done";
+//        QuestHandler.QUEST_NOT_GIVEN_TEXT = "Hey I've got a quest for you little Billy";
+
+        //QuestHandler.fetchQuestInteract(this);
+
+        if (quest != null) {
+            QuestObjective curObjective = quest.questObjectives.get(quest.curObjective);
+            QuestHandler questHandler = new QuestHandler(curObjective);
+
+//            if (speakToQuest) {
+//                questHandler.speakToNPC(this);
+//            }
+
+//            switch (curObjective.questType) {
+//                case "FETCH":
+//                    questHandler.fetchQuestCompleteInteract(this, quest);
+//                    break;
+//            }
+        }
+
+
+
+        //KingGnoll.Quest.type.handler.interact( this );
     }
 
     @Override
@@ -137,304 +162,18 @@ public class KingGnoll extends NPC {
         b.sprite.parent.add( new AlphaTweener( b.sprite, 1, FADE_TIME ) );
     }
 
-
-    public static class Quest {
-
-        enum Type {
-            ILLEGAL( null ), ROSE( roseQuest );
-
-            public QuestHandler handler;
-            private Type( QuestHandler handler ) {
-                this.handler = handler;
-            }
-        }
-
-        private static Quest.Type type;
-
-        private static boolean spawned;
-        private static boolean given;
-        private static boolean processed;
-
-        private static int depth;
-
-        private static int left2kill;
-
-        public static Weapon weapon;
-        public static Armor armor;
-
-        public static void reset() {
-            spawned = false;
-
-            weapon = null;
-            armor = null;
-        }
-
-        private static final String NODE		= "sadGhost";
-
-        private static final String SPAWNED		= "spawned";
-        private static final String TYPE		= "type";
-        private static final String ALTERNATIVE	= "alternative";
-        private static final String LEFT2KILL	= "left2kill";
-        private static final String GIVEN		= "given";
-        private static final String PROCESSED	= "processed";
-        private static final String DEPTH		= "depth";
-        private static final String WEAPON		= "weapon";
-        private static final String ARMOR		= "armor";
-
-        public static void storeInBundle( Bundle bundle ) {
-
-            Bundle node = new Bundle();
-
-            node.put( SPAWNED, spawned );
-
-            if (spawned) {
-
-                node.put( TYPE, type.toString() );
-                if (type == Quest.Type.ROSE) {
-                    node.put( LEFT2KILL, left2kill );
-                }
-
-                node.put( GIVEN, given );
-                node.put( DEPTH, depth );
-                node.put( PROCESSED, processed );
-
-                node.put( WEAPON, weapon );
-                node.put( ARMOR, armor );
-            }
-
-            bundle.put( NODE, node );
-        }
-
-        public static void restoreFromBundle( Bundle bundle ) {
-
-            Bundle node = bundle.getBundle( NODE );
-
-            if (!node.isNull() && (spawned = node.getBoolean( SPAWNED ))) {
-
-                type = node.getEnum( TYPE, Quest.Type.class );
-                if (type == Quest.Type.ILLEGAL) {
-                    //type = node.getBoolean( ALTERNATIVE ) ? Quest.Type.RAT : Quest.Type.ROSE;
-                }
-                if (type == Quest.Type.ROSE) {
-                    left2kill = node.getInt( LEFT2KILL );
-                }
-
-                given	= node.getBoolean( GIVEN );
-                depth	= node.getInt( DEPTH );
-                processed	= node.getBoolean( PROCESSED );
-
-                weapon	= (Weapon)node.get( WEAPON );
-                armor	= (Armor)node.get( ARMOR );
-            } else {
-                reset();
-            }
-        }
-
-        public static void spawn( Level level ) {
-//            if (!spawned && Dungeon.depth > 1 && Random.Int( 5 - Dungeon.depth ) == 0) {
-            if (!spawned && Dungeon.depth == 1) {
-
-                KingGnoll kingGnoll = new KingGnoll();
-
-                do {
-                    //kingGnoll.pos = level.randomRespawnCell();
-                    //kingGnoll.pos = 105;
-                    kingGnoll.pos = FieldsLevel.spawnPos();
-                    System.out.println(kingGnoll.pos);
-                } while (kingGnoll.pos == -1);
-                level.mobs.add( kingGnoll );
-                Actor.occupyCell( kingGnoll );
-
-                spawned = true;
-                type = Type.ROSE;
-
-                given = false;
-                processed = false;
-                depth = Dungeon.depth;
-
-                for (int i=0; i < 4; i++) {
-                    Item another;
-                    do {
-                        another = (Weapon)Generator.random( Generator.Category.WEAPON );
-                    } while (another instanceof MissileWeapon);
-
-                    if (weapon == null || another.level() > weapon.level()) {
-                        weapon = (Weapon)another;
-                    }
-                }
-
-                if (Dungeon.isChallenged( Challenges.NO_ARMOR )) {
-                    armor = (Armor)new ClothArmor().degrade();
-                } else {
-                    armor = (Armor)Generator.random( Generator.Category.ARMOR );
-                    for (int i=0; i < 3; i++) {
-                        Item another = Generator.random( Generator.Category.ARMOR );
-                        if (another.level() > armor.level()) {
-                            armor = (Armor)another;
-                        }
-                    }
-                }
-
-                weapon.identify();
-                armor.identify();
-            }
-        }
-
-        public static void processSewersKill( int pos ) {
-            if (spawned && given && !processed && (depth == Dungeon.depth)) {
-                switch (type) {
-                    case ROSE:
-                        if (Random.Int( left2kill ) == 0) {
-                            Dungeon.level.drop( new DriedRose(), pos ).sprite.drop();
-                            processed = true;
-                        } else {
-                            left2kill--;
-                        }
-                        break;
-                    default:
-                }
-            }
-        }
-
-        public static void complete() {
-            weapon = null;
-            armor = null;
-
-            Journal.remove( Journal.Feature.GHOST );
-        }
+    public static void spawn(Level level, NPC npc) {
+            //KingGnoll kingGnoll = new KingGnoll();
+            do {
+                npc.pos = level.randomRespawnCell();
+                //kingGnoll.pos = 105;
+//                kingGnoll.pos = FieldsLevel.spawnPos();
+                System.out.println(npc.pos);
+            } while (npc.pos == -1);
+            level.mobs.add( npc );
+            Actor.occupyCell( npc );
     }
 
-    abstract public static class QuestHandler {
-
-        abstract public void interact(  KingGnoll kingGnoll );
-
-        protected void relocate( KingGnoll kingGnoll ) {
-            int newPos = -1;
-            for (int i=0; i < 10; i++) {
-                newPos = Dungeon.level.randomRespawnCell();
-                if (newPos != -1) {
-                    break;
-                }
-            }
-            if (newPos != -1) {
-
-                Actor.freeCell( kingGnoll.pos );
-
-                CellEmitter.get( kingGnoll.pos ).start( Speck.factory( Speck.LIGHT ), 0.2f, 3 );
-                kingGnoll.pos = newPos;
-                kingGnoll.sprite.place( kingGnoll.pos );
-                kingGnoll.sprite.visible = Dungeon.visible[kingGnoll.pos];
-            }
-        }
-    }
-
-    private static final QuestHandler roseQuest = new QuestHandler() {
-        private static final String TXT_ROSE1	=
-                "Hey man i knw this is asking alt bt cn u pls hlp.. " +
-                        "i cnt find my beatz id rly apprcte it if u culd fnd them" +
-                        "pls hlp.";
-
-        private static final String TXT_ROSE2	=
-                "It's a piece of cake to make a pretty cake";
-
-        private static final String TXT_ROSE3	=
-                "GRAB THAT SHIT IT'S YOURS, BITCH!";
-
-        public void interact( KingGnoll kingGnoll ) {
-            if (KingGnoll.Quest.given) {
-
-                Item item = Dungeon.hero.belongings.getItem( DriedRose.class );
-                if (item != null) {
-                    GameScene.show( new WndKingGnoll( kingGnoll, item, TXT_ROSE3 ) );
-                } else {
-                    GameScene.show( new WndQuest( kingGnoll, TXT_ROSE2 ) );
-                    relocate( kingGnoll );
-                }
-
-            } else {
-                GameScene.show( new WndQuest( kingGnoll, TXT_ROSE1 ) );
-                KingGnoll.Quest.given = true;
-
-                Journal.add( Journal.Feature.GHOST );
-            }
-        }
-    };
-
-    private static final QuestHandler ratQuest = new QuestHandler() {
-		private static final String TXT_RAT1	=
-			"Hello adventurer... Once I was like you - strong and confident... " +
-			"And now I'm dead... But I can't leave this place... Not until I have my revenge... " +
-			"Slay the _fetid rat_, that has taken my life...";
-
-		private static final String TXT_RAT2	=
-			"Please... Help me... _Slay the abomination_...";
-
-		private static final String TXT_RAT3	=
-			"Yes! The ugly creature is slain and I can finally rest... " +
-			"Please take one of these items, maybe they " +
-			"will be useful to you in your journey...";
-
-		public void interact( KingGnoll kingGnoll ) {
-			if (Quest.given) {
-
-				Item item = Dungeon.hero.belongings.getItem( RatSkull.class );
-				if (item != null) {
-					GameScene.show( new WndKingGnoll( kingGnoll, item, TXT_RAT3 ) );
-				} else {
-					GameScene.show( new WndQuest( kingGnoll, TXT_RAT2 ) );
-					relocate( kingGnoll );
-				}
-
-			} else {
-				GameScene.show( new WndQuest( kingGnoll, TXT_RAT1 ) );
-				Quest.given = true;
-
-				Journal.add( Journal.Feature.GHOST );
-			}
-		}
-	};
-
-	private static final QuestHandler curseQuest = new QuestHandler() {
-		private static final String TXT_CURSE1 =
-			"Hello adventurer... Once I was like you - strong and confident... " +
-			"And now I'm dead... But I can't leave this place, as I am bound by a horrid curse... " +
-			"Please... Help me... _Destroy the curse_...";
-		private static final String TXT_CURSE2 =
-			"Thank you, %s! The curse is broken and I can finally rest... " +
-			"Please take one of these items, maybe they " +
-			"will be useful to you in your journey...";
-
-		private static final String TXT_YES	= "Yes, I will do it for you";
-		private static final String TXT_NO	= "No, I can't help you";
-
-		public void interact( final KingGnoll ghost ) {
-			if (Quest.given) {
-
-				GameScene.show( new WndKingGnoll( ghost, null, Utils.format( TXT_CURSE2, Dungeon.hero.className() ) ) );
-
-			} else {
-				GameScene.show( new WndQuest( ghost, TXT_CURSE1, TXT_YES, TXT_NO ) {
-					protected void onSelect( int index ) {
-						if (index == 0) {
-							Quest.given = true;
-
-							CursePersonification d = new CursePersonification();
-							KingGnoll.replace( ghost, d );
-
-							d.sprite.emitter().burst( ShadowParticle.CURSE, 5 );
-							Sample.INSTANCE.play( Assets.SND_GHOST );
-
-							Dungeon.hero.next();
-						} else {
-							relocate( ghost );
-						}
-					};
-				} );
-
-				Journal.add( Journal.Feature.GHOST );
-			}
-		}
-	};
 
 
 

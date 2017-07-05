@@ -175,7 +175,8 @@ public class Hero extends Char {
 
 		//change to 20 when done testing - makes hero invincible
 		HP = HT = 1000;
-		STR = STARTING_STR;
+		//STR = STARTING_STR;
+		STR = 10000;
 		awareness = 0.1f;
 
 		belongings = new Belongings( this );

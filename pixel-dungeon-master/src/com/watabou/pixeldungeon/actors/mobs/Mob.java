@@ -59,6 +59,7 @@ public abstract class Mob extends Char {
 	public AiState PASSIVE		= new Passive();
 	//cams shit
 	public AiState FOLLOW = new Follow();
+	public boolean partOfKillQuest;
 	///
 	public AiState state = SLEEPEING;
 	

@@ -20,6 +20,5 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" name="json-simple-1.1" level="project" />
-    <orderEntry type="library" name="tmxloader" level="project" />
   </component>
 </module>

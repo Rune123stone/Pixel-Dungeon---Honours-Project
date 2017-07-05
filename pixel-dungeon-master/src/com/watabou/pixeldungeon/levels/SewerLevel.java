@@ -27,6 +27,9 @@ import com.watabou.pixeldungeon.DungeonTilemap;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Ghost;
 import com.watabou.pixeldungeon.actors.mobs.npcs.KingGnoll;
 import com.watabou.pixeldungeon.items.DewVial;
+import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.utils.ColorMath;
 import com.watabou.utils.PointF;
@@ -38,6 +41,7 @@ public class SewerLevel extends RegularLevel {
 		color1 = 0x48763c;
 		color2 = 0x59994a;
 	}
+
 
 	@Override
 	public String tilesTex() {
@@ -70,7 +74,7 @@ public class SewerLevel extends RegularLevel {
 	protected void decorate() {
 		Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
 		Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
-
+		Level.zone = "Dungeon";
 
 		/*
 		Randomly decorates the first row walls of the level
@@ -127,12 +131,35 @@ public class SewerLevel extends RegularLevel {
 			}
 		}
 
+
+
 	}
 	
 	@Override
 	protected void createMobs() {
 		super.createMobs();
 		//KingGnoll.spawn(this);
+		//QuestHandler questHandler = new QuestHandler();
+
+		KingGnoll kingGnoll = new KingGnoll();
+		Quest quest = new Quest("Your First Quest", 1, 1);
+		quest.addObjective(new QuestObjective("FETCH", "Fetch My Shit", "DriedRose"));
+		quest.curObjective = 0;
+
+		kingGnoll.assignQuest(quest);
+		kingGnoll.assignSpeakToQuest(true);
+		KingGnoll.spawn(this, kingGnoll);
+
+//		try {
+//			QuestHandler.spawnQuestMobs(2, "Mimic", this);
+//		} catch (Exception e) {
+//			System.out.println("There's a prablim with this method "+e.getMessage());
+//			e.printStackTrace();
+//		}
+
+
+
+
 		//KingGnoll.Quest.spawn( this );
 	}
 	

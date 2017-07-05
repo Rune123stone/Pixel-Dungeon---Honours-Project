@@ -19,10 +19,13 @@ package com.watabou.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.Char;
+import com.watabou.pixeldungeon.actors.mobs.npcs.Ghost;
 import com.watabou.pixeldungeon.effects.Speck;
 import com.watabou.pixeldungeon.items.potions.PotionOfHealing;
 import com.watabou.pixeldungeon.items.weapon.enchantments.Leech;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.sprites.BatSprite;
 import com.watabou.utils.Random;
 
@@ -58,6 +61,13 @@ public class Bat extends Mob {
 	@Override
 	public int dr() {
 		return 4;
+	}
+
+	@Override
+	public void die( Object cause ) {
+		//QuestHandler.handleKillQuest();
+
+		super.die( cause );
 	}
 	
 	@Override

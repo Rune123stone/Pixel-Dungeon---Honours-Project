@@ -21,16 +21,22 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Heap;
 import com.watabou.pixeldungeon.levels.Level;
+import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.utils.Random;
 
 public abstract class NPC extends Mob {
-	
+
+	Quest quest;
+	public boolean hasQuestItem;
+	public boolean speakToQuest;
+
 	{
 		HP = HT = 1;
 		EXP = 0;
 	
 		hostile = false;
 		state = PASSIVE;
+
 	}
 	
 	protected void throwItem() {
@@ -43,7 +49,19 @@ public abstract class NPC extends Mob {
 			Dungeon.level.drop( heap.pickUp(), n ).sprite.drop( pos );
 		}
 	}
-	
+
+	public void assignQuest(Quest quest) {
+		this.quest = quest;
+	}
+
+	public void assignQuestItem(boolean hasQuestItem) {
+		this.hasQuestItem = hasQuestItem;
+	}
+
+	public void assignSpeakToQuest(boolean speakToQuest) {
+		this.speakToQuest = speakToQuest;
+	}
+
 	@Override
 	public void beckon( int cell ) {
 	}

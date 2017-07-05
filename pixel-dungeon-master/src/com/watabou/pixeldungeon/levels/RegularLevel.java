@@ -669,7 +669,7 @@ public abstract class RegularLevel extends Level {
 		}
 	}
 	
-	protected Room randomRoom( Room.Type type, int tries ) {
+	protected  Room randomRoom( Room.Type type, int tries ) {
 		for (int i=0; i < tries; i++) {
 			Room room = Random.element( rooms );
 			if (room.type == type) {

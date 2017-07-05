@@ -19,43 +19,118 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Dungeon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/Dungeon.java">
+      <file leaf-file-name="ForestLevel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ForestLevel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="566" column="24" lean-forward="false" selection-start-line="566" selection-start-column="24" selection-end-line="566" selection-end-column="24" />
+            <state relative-caret-position="17">
+              <caret line="324" column="32" lean-forward="false" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Quest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/Quest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
               <folding>
-                <element signature="method#newLevel#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#resetLevel#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#bossLevel#1;class#Dungeon#0" expanded="false" />
-                <element signature="method#switchLevel#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#dropToChasm#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#posNeeded#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#souNeeded#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#chance#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#depthFile#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#saveLevel#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#saveAll#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#loadGame#2;class#Dungeon#0" expanded="false" />
-                <element signature="method#loadHero#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#loadLevel#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#deleteGame#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#gameBundle#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#preview#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#fail#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#win#0;class#Dungeon#0" expanded="false" />
-                <element signature="method#observe#0;class#Dungeon#0" expanded="false" />
+                <element signature="e#2063#2064#0" expanded="true" />
+                <element signature="e#2100#2101#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Hero.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/Hero.java">
+      <file leaf-file-name="KingGnoll.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/KingGnoll.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="246" column="24" lean-forward="false" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="1071">
+              <caret line="114" column="0" lean-forward="false" selection-start-line="111" selection-start-column="13" selection-end-line="114" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2411#2412#0" expanded="false" />
+                <element signature="e#2435#2436#0" expanded="false" />
+                <element signature="e#2484#2485#0" expanded="false" />
+                <element signature="e#2519#2520#0" expanded="false" />
+                <element signature="e#2561#2562#0" expanded="false" />
+                <element signature="e#2588#2589#0" expanded="false" />
+                <element signature="e#2638#2639#0" expanded="false" />
+                <element signature="e#2665#2666#0" expanded="false" />
+                <element signature="e#2834#2835#0" expanded="false" />
+                <element signature="e#2861#2862#0" expanded="false" />
+                <element signature="e#4280#4281#0" expanded="false" />
+                <element signature="e#4313#4314#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegularLevel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2941">
+              <caret line="547" column="8" lean-forward="false" selection-start-line="547" selection-start-column="8" selection-end-line="564" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#16606#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="method#initRooms#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#assignRoomType#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#paintWater#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#paintGrass#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#placeTraps#0;class#RegularLevel#0" expanded="false" />
+                <element signature="e#8225#8226#0" expanded="false" />
+                <element signature="e#8309#8310#0" expanded="false" />
+                <element signature="method#split#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#paint#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#placeDoors#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#paintDoors#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#joinRooms#0;class#RegularLevel#0" expanded="false" />
+                <element signature="e#12480#12481#0" expanded="false" />
+                <element signature="e#12533#12534#0" expanded="false" />
+                <element signature="method#randomDestination#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#createItems#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#room#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#randomDropCell#0;class#RegularLevel#0" expanded="false" />
+                <element signature="method#pitCell#0;class#RegularLevel#0" expanded="false" />
+                <element signature="e#16256#16286#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Level.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Level.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2550">
+              <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+              <folding>
+                <element signature="method#spawnNPC#0;class#Level#0" expanded="false" />
+                <element signature="method#spawnPos#0;class#Level#0" expanded="false" />
+                <element signature="method#reset#0;class#Level#0" expanded="false" />
+                <element signature="method#restoreFromBundle#0;class#Level#0" expanded="false" />
+                <element signature="method#storeInBundle#0;class#Level#0" expanded="false" />
+                <element signature="method#adjustMapSize#0;class#Level#0" expanded="false" />
+                <element signature="method#addVisuals#0;class#Level#0" expanded="false" />
+                <element signature="method#respawner#0;class#Level#0" expanded="false" />
+                <element signature="method#randomRespawnCell#0;class#Level#0" expanded="false" />
+                <element signature="method#randomDestination#0;class#Level#0" expanded="false" />
+                <element signature="method#addItemToSpawn#0;class#Level#0" expanded="false" />
+                <element signature="method#itemToSpanAsPrize#0;class#Level#0" expanded="false" />
+                <element signature="method#getWaterTile#0;class#Level#0" expanded="false" />
+                <element signature="method#destroy#0;class#Level#0" expanded="false" />
+                <element signature="method#cleanWalls#0;class#Level#0" expanded="false" />
+                <element signature="method#set#0;class#Level#0" expanded="false" />
+                <element signature="method#drop#0;class#Level#0" expanded="false" />
+                <element signature="method#plant#0;class#Level#0" expanded="false" />
+                <element signature="method#press#0;class#Level#0" expanded="false" />
+                <element signature="method#mobPress#0;class#Level#0" expanded="false" />
+                <element signature="method#updateFieldOfView#0;class#Level#0" expanded="false" />
+                <element signature="method#distance#0;class#Level#0" expanded="false" />
+                <element signature="method#adjacent#0;class#Level#0" expanded="false" />
+                <element signature="method#tileName#0;class#Level#0" expanded="false" />
+                <element signature="method#tileDesc#0;class#Level#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,99 +138,35 @@
       <file leaf-file-name="PixelDungeon.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/PixelDungeon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="152" column="24" lean-forward="false" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="24" />
+            <state relative-caret-position="374">
+              <caret line="77" column="71" lean-forward="true" selection-start-line="77" selection-start-column="71" selection-end-line="77" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/StartScene.java">
+      <file leaf-file-name="GenerateData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/story/GenerateData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="312" column="41" lean-forward="false" selection-start-line="312" selection-start-column="41" selection-end-line="312" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HeroSprite.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/sprites/HeroSprite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OverworldHeroSprite.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/OverworldHeroSprite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+            <state relative-caret-position="459">
+              <caret line="1229" column="0" lean-forward="true" selection-start-line="1229" selection-start-column="0" selection-end-line="1229" selection-end-column="0" />
               <folding>
-                <element signature="method#OverworldHeroSprite#0;class#OverworldHeroSprite#0" expanded="false" />
-                <element signature="e#2309#2310#0" expanded="true" />
-                <element signature="e#2333#2334#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#randomTemplateSelector#0;class#GenerateData#0" expanded="false" />
+                <element signature="method#createActOneXMLQuestData#0;class#GenerateData#0" expanded="false" />
+                <element signature="method#createActTwoAXMLQuestData#0;class#GenerateData#0" expanded="false" />
+                <element signature="method#createActThreeXMLQuestData#0;class#GenerateData#0" expanded="false" />
+                <element signature="method#generateStoryXMLs#0;class#GenerateData#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ghost.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost.java">
+      <file leaf-file-name="QuestObjective.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/QuestObjective.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5242">
-              <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OverworldScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/OverworldScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="99" column="30" lean-forward="false" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
-              <folding>
-                <element signature="method#setMapTerrain#0;class#OverworldScene#0" expanded="false" />
-                <element signature="method#createHero#0;class#OverworldScene#0" expanded="false" />
-                <element signature="method#createButtons#0;class#OverworldScene#0" expanded="false" />
-                <element signature="method#destroy#0;class#OverworldScene#0" expanded="false" />
-                <element signature="method#update#0;class#OverworldScene#0" expanded="false" />
-                <element signature="method#selectCell#0;class#OverworldScene#0" expanded="false" />
-                <element signature="class#OverworldButton#0;class#OverworldScene#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HeroClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/HeroClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="40" column="42" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-              <folding>
-                <element signature="method#initHero#0;class#HeroClass#0" expanded="false" />
-                <element signature="method#masteryBadge#0;class#HeroClass#0" expanded="false" />
-                <element signature="method#initWarrior#0;class#HeroClass#0" expanded="false" />
-                <element signature="method#initMage#0;class#HeroClass#0" expanded="false" />
-                <element signature="method#initRogue#0;class#HeroClass#0" expanded="false" />
-                <element signature="method#initHuntress#0;class#HeroClass#0" expanded="false" />
-                <element signature="method#spritesheet#0;class#HeroClass#0" expanded="false" />
-                <element signature="method#perks#0;class#HeroClass#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Assets.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/Assets.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="43" column="36" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="36" />
+            <state relative-caret-position="495">
+              <caret line="57" column="33" lean-forward="true" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -167,13 +178,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Toolba</find>
-      <find>TXT_DES</find>
       <find>scene</find>
       <find>GameScene</find>
       <find>sceneClass</find>
@@ -193,7 +203,6 @@
       <find>createItems</find>
       <find>mobs</find>
       <find>spawn</find>
-      <find>KingGnoll</find>
       <find>OverworldHeroSprite</find>
       <find>sprite</find>
       <find>huntressUnlocked</find>
@@ -202,6 +211,9 @@
       <find>tier</find>
       <find>ROGUE</find>
       <find>tier()</find>
+      <find>KingGnoll</find>
+      <find>createMob</find>
+      <find>kill_collect</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -212,24 +224,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/Desktop/Android-TMX-Loader-master/TMXLoader/src/davidiserovich/TMXLoader/TileMapData.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/utils.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/utils/TileMapData.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/utils/TMXHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/utils/TMXLoader.java" />
-        <option value="$PROJECT_DIR$/assets/overworldProp.json" />
-        <option value="$PROJECT_DIR$/src/com/watabou/utils/PathFinder.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/Chrome.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/sprites/CharSprite.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/OverworldCellSelector.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/TestScene.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/noosa/ui/Button.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/ui/RedButton.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/DungeonTilemap.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/FogZoneHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/ZoneNode.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/Assets.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/OverworldMap.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/GameScene.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/noosa/Game.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/PixelScene.java" />
@@ -243,26 +237,44 @@
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/PrebuiltLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/TownLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/Char.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Level.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/KingGnoll.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/PixelDungeon.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/HeroClass.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CavesLevel.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/SewerLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/FieldsLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CityLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Terrain.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ShadowLandsLevel.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Bestiary.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/painters/PoolPainter.java" />
-        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ForestLevel.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/sprites/HeroSprite.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/StartScene.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/Dungeon.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/OverworldScene.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/OverworldHeroSprite.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/Quest.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndSadGhost.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndNPC.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndKingGnoll.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndQuestNPC.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Rat.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/Mimic.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Mimic.java" />
         <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/Hero.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Bat.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/NPC.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/KingGnoll.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Mob.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/QuestHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/SewerLevel.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ForestLevel.java" />
+        <option value="$PROJECT_DIR$/res/values/ActOne.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Level.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/PixelDungeon.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/Quest.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/story/GenerateData.java" />
+        <option value="$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/QuestObjective.java" />
       </list>
     </option>
   </component>
@@ -272,10 +284,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="1934" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -419,9 +435,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -496,117 +510,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="actors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixel-dungeon-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixel-dungeon-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="watabou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixeldungeon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixel-dungeon-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixel-dungeon-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="watabou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixeldungeon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="npcs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixel-dungeon-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pixel-dungeon-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="quests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Remixed Pixel Dungeon Source Code/pixel-dungeon-remix-master/pixel-dungeon-remix-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Story Generation Tests" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2013809" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="device.picker.selection" value="261dcc7a" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master\assets" />
       <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master\src\com\watabou\pixeldungeon\overworld\utils" />
-      <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master\src\com\watabou\pixeldungeon\overworld" />
+      <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.watabou.pixeldungeon.overworld" />
       <recent name="com.watabou.pixeldungeon.overworld.utils" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master\assets" />
       <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master\src\com\watabou\pixeldungeon\overworld\utils" />
-      <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master" />
+      <recent name="C:\Users\User\Documents\Varsity\Honours\Second Year\Honours Project\Artifact\Pixel Dungeon\pixel-dungeon-master\pixel-dungeon-master\src\com\watabou\pixeldungeon\overworld" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.PixelDungeon">
@@ -1124,11 +1062,22 @@
       <workItem from="1497973661786" duration="6138000" />
       <workItem from="1498053326900" duration="13549000" />
       <workItem from="1498228259352" duration="5354000" />
+      <workItem from="1498405132695" duration="738000" />
+      <workItem from="1498490500278" duration="13736000" />
+      <workItem from="1498522880520" duration="148000" />
+      <workItem from="1498523074587" duration="8000" />
+      <workItem from="1498523121876" duration="1356000" />
+      <workItem from="1498572566048" duration="2909000" />
+      <workItem from="1498692506523" duration="4805000" />
+      <workItem from="1498772498837" duration="3587000" />
+      <workItem from="1499077931114" duration="8853000" />
+      <workItem from="1499169911635" duration="18749000" />
+      <workItem from="1499255430610" duration="6266000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431698000" />
+    <option name="totallyTimeSpent" value="492853000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1140,14 +1089,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1934" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29035753" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1155,25 +1104,25 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22647703" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.285558" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26327193" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17075774" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12686567" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22643554" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53412783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1186,7 +1135,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29035753" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1195,21 +1144,21 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22647703" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22643554" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20897156" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30227518" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17075774" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17430703" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53412783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -1223,7 +1172,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="70" />
+      <option name="time" value="74" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1232,223 +1181,88 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/ui/Toolbar.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/utils/Random.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="105" column="38" lean-forward="false" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#9447#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#2702#2703#0" expanded="false" />
-            <element signature="e#2739#2740#0" expanded="false" />
-            <element signature="e#2931#2932#0" expanded="false" />
-            <element signature="e#2969#2970#0" expanded="false" />
-            <element signature="e#3067#3068#0" expanded="false" />
-            <element signature="e#3110#3111#0" expanded="false" />
-            <element signature="class#3581:4112" expanded="false" />
-            <element signature="method#update#0;class#Toolbar#0" expanded="false" />
-            <element signature="e#5347#5348#0" expanded="false" />
-            <element signature="e#5387#5388#0" expanded="false" />
-            <element signature="class#5598:6843" expanded="false" />
-            <element signature="e#6797#6798#0" expanded="false" />
-            <element signature="e#6839#6840#0" expanded="false" />
-            <element signature="e#7423#7424#0" expanded="false" />
-            <element signature="e#7455#7456#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="425">
+          <caret line="53" column="4" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/InterlevelScene.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ShadowLandsLevel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#fall#0;class#InterlevelScene#0" expanded="false" />
-            <element signature="method#ascend#0;class#InterlevelScene#0" expanded="false" />
-            <element signature="method#returnTo#0;class#InterlevelScene#0" expanded="false" />
-            <element signature="method#restore#0;class#InterlevelScene#0" expanded="false" />
-            <element signature="method#resurrect#0;class#InterlevelScene#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="952">
+          <caret line="216" column="67" lean-forward="false" selection-start-line="216" selection-start-column="67" selection-end-line="216" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Cell.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/traps/SummoningTrap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+        <state relative-caret-position="17">
+          <caret line="1" column="5" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/ZoneNode.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Bestiary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="918">
+          <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/overworldProp.tmx">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/painters/PoolPainter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        <state relative-caret-position="816">
+          <caret line="74" column="103" lean-forward="false" selection-start-line="74" selection-start-column="103" selection-end-line="74" selection-end-column="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/overworld.json">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Piranha.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        <state relative-caret-position="17">
+          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/PrebuiltLevel.java" />
-    <entry file="file://$PROJECT_DIR$/assets/townMap.json">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/items/armor/Armor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="191">
+          <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/Actor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/sprites/CharSprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="140">
+          <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/overworldProp.json">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/Assets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="459">
+          <caret line="43" column="36" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/TownLevel.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/StartScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="102" column="48" lean-forward="false" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
-          <folding>
-            <element signature="method#getTileMap#0;class#TownLevel#0" expanded="false" />
-            <element signature="method#integerTileMap#0;class#TownLevel#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="4556">
+          <caret line="312" column="41" lean-forward="false" selection-start-line="312" selection-start-column="41" selection-end-line="312" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/tiles_town.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/NPC.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/OverworldScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+        <state relative-caret-position="1071">
+          <caret line="99" column="30" lean-forward="false" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Mob.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/HeroClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6256">
-          <caret line="423" column="4" lean-forward="false" selection-start-line="423" selection-start-column="4" selection-end-line="423" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#13560#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6183#6184#0" expanded="false" />
-            <element signature="e#6254#6255#0" expanded="false" />
-            <element signature="e#6918#6919#0" expanded="false" />
-            <element signature="e#6934#6935#0" expanded="false" />
-            <element signature="e#7318#7319#0" expanded="false" />
-            <element signature="e#7374#7375#0" expanded="false" />
-            <element signature="e#7653#7654#0" expanded="false" />
-            <element signature="e#7670#7671#0" expanded="false" />
-            <element signature="e#8464#8465#0" expanded="false" />
-            <element signature="e#8514#8515#0" expanded="false" />
-            <element signature="e#9298#9299#0" expanded="false" />
-            <element signature="e#9317#9318#0" expanded="false" />
-            <element signature="e#9476#9477#0" expanded="false" />
-            <element signature="e#9524#9525#0" expanded="false" />
-            <element signature="e#9550#9551#0" expanded="false" />
-            <element signature="e#9575#9576#0" expanded="false" />
-            <element signature="e#9611#9612#0" expanded="false" />
-            <element signature="e#9652#9653#0" expanded="false" />
-            <element signature="e#10513#10514#0" expanded="false" />
-            <element signature="e#10572#10573#0" expanded="false" />
-            <element signature="e#11279#11280#0" expanded="false" />
-            <element signature="e#11339#11340#0" expanded="false" />
-            <element signature="e#12024#12025#0" expanded="false" />
-            <element signature="e#12082#12083#0" expanded="false" />
-            <element signature="e#12656#12657#0" expanded="false" />
-            <element signature="e#12714#12715#0" expanded="false" />
-            <element signature="e#12995#12996#0" expanded="false" />
-            <element signature="e#13053#13054#0" expanded="false" />
-            <element signature="e#13498#13499#0" expanded="false" />
-            <element signature="e#13553#13554#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="40" column="42" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/KingGnoll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3145">
-          <caret line="242" column="52" lean-forward="false" selection-start-line="242" selection-start-column="52" selection-end-line="242" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#KingGnoll#0;class#KingGnoll#0" expanded="false" />
-            <element signature="e#2303#2304#0" expanded="false" />
-            <element signature="e#2327#2328#0" expanded="false" />
-            <element signature="e#2376#2377#0" expanded="false" />
-            <element signature="e#2411#2412#0" expanded="false" />
-            <element signature="e#2453#2454#0" expanded="false" />
-            <element signature="e#2480#2481#0" expanded="false" />
-            <element signature="e#2530#2531#0" expanded="false" />
-            <element signature="e#2557#2558#0" expanded="false" />
-            <element signature="e#2726#2727#0" expanded="false" />
-            <element signature="e#2753#2754#0" expanded="false" />
-            <element signature="e#3221#3231#0" expanded="false" />
-            <element signature="e#3393#3394#0" expanded="false" />
-            <element signature="e#3426#3427#0" expanded="false" />
-            <element signature="e#4188#4189#0" expanded="false" />
-            <element signature="e#4242#4243#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/Blacksmith.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="313" column="29" lean-forward="false" selection-start-line="313" selection-start-column="24" selection-end-line="313" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Cavern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/PrisonBossLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="315" column="53" lean-forward="false" selection-start-line="315" selection-start-column="53" selection-end-line="315" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Skeleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-670">
-          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/tiles0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/tiles1.png">
@@ -1456,68 +1270,250 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/tiles2.png">
+    <entry file="file://$PROJECT_DIR$/assets/tiles0.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/utils/PathFinder.java">
+    <entry file="file://$PROJECT_DIR$/assets/toolbar.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/Quest.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/sprites/HeroSprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        <state relative-caret-position="343">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/OverworldHeroSprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/Dungeon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-263">
+          <caret line="116" column="8" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/utils/Highlighter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndKingGnoll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndQuest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Acidic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Mimic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="41" column="15" lean-forward="false" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/Mimic.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Mimic.java" />
+    <entry file="file://$PROJECT_DIR$/hello.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndQuestNPC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/OverworldMap.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/windows/WndSadGhost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="204">
+          <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Rat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="57" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="244" column="0" lean-forward="false" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Terrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="93" column="28" lean-forward="false" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="510" column="16" lean-forward="false" selection-start-line="510" selection-start-column="16" selection-end-line="510" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="835">
+          <caret line="333" column="29" lean-forward="false" selection-start-line="333" selection-start-column="29" selection-end-line="333" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/NPC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="61" column="41" lean-forward="false" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../Story Generation Tests/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Mob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="61" column="11" lean-forward="false" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/SewerLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="76" column="31" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="31" />
           <folding>
-            <element signature="method#createOverworld#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setRandomActOneZones#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setRandomActTwoZones#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setRandomActThreeZones#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setFogTileData#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setNoFogTileData#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#getTileMap#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setPassableTiles#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setZoneTiles#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#integerTileMap#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#getZoneHeroPos#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#setZoneNodes#0;class#OverworldMap#0" expanded="false" />
-            <element signature="method#getZonePos#0;class#OverworldMap#0" expanded="false" />
+            <element signature="e#0#6584#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1643#1644#0" expanded="false" />
+            <element signature="e#1676#1677#0" expanded="false" />
+            <element signature="e#1716#1717#0" expanded="false" />
+            <element signature="e#1749#1750#0" expanded="false" />
+            <element signature="e#1842#1843#0" expanded="false" />
+            <element signature="e#1917#1918#0" expanded="false" />
+            <element signature="e#2010#2011#0" expanded="false" />
+            <element signature="e#2085#2086#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/Char.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Bat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="77" column="15" lean-forward="false" selection-start-line="77" selection-start-column="15" selection-end-line="77" selection-end-column="15" />
+        <state relative-caret-position="612">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/KingGnoll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="111" selection-start-column="13" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2411#2412#0" expanded="false" />
+            <element signature="e#2435#2436#0" expanded="false" />
+            <element signature="e#2484#2485#0" expanded="false" />
+            <element signature="e#2519#2520#0" expanded="false" />
+            <element signature="e#2561#2562#0" expanded="false" />
+            <element signature="e#2588#2589#0" expanded="false" />
+            <element signature="e#2638#2639#0" expanded="false" />
+            <element signature="e#2665#2666#0" expanded="false" />
+            <element signature="e#2834#2835#0" expanded="false" />
+            <element signature="e#2861#2862#0" expanded="false" />
+            <element signature="e#4280#4281#0" expanded="false" />
+            <element signature="e#4313#4314#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2941">
+          <caret line="547" column="8" lean-forward="false" selection-start-line="547" selection-start-column="8" selection-end-line="564" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#16606#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="method#initRooms#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#assignRoomType#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#paintWater#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#paintGrass#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#placeTraps#0;class#RegularLevel#0" expanded="false" />
+            <element signature="e#8225#8226#0" expanded="false" />
+            <element signature="e#8309#8310#0" expanded="false" />
+            <element signature="method#split#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#paint#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#placeDoors#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#paintDoors#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#joinRooms#0;class#RegularLevel#0" expanded="false" />
+            <element signature="e#12480#12481#0" expanded="false" />
+            <element signature="e#12533#12534#0" expanded="false" />
+            <element signature="method#randomDestination#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#createItems#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#room#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#randomDropCell#0;class#RegularLevel#0" expanded="false" />
+            <element signature="method#pitCell#0;class#RegularLevel#0" expanded="false" />
+            <element signature="e#16256#16286#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/ActOne.xml" />
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="79" lean-forward="false" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CavesLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="312" column="12" lean-forward="false" selection-start-line="312" selection-start-column="12" selection-end-line="313" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/CityLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="69" column="128" lean-forward="false" selection-start-line="69" selection-start-column="128" selection-end-line="69" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/ActOne.xml" />
     <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Level.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="428" column="17" lean-forward="false" selection-start-line="428" selection-start-column="17" selection-end-line="428" selection-end-column="17" />
+        <state relative-caret-position="2550">
+          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
           <folding>
+            <element signature="method#spawnNPC#0;class#Level#0" expanded="false" />
+            <element signature="method#spawnPos#0;class#Level#0" expanded="false" />
             <element signature="method#reset#0;class#Level#0" expanded="false" />
             <element signature="method#restoreFromBundle#0;class#Level#0" expanded="false" />
             <element signature="method#storeInBundle#0;class#Level#0" expanded="false" />
@@ -1545,316 +1541,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/Terrain.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/QuestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="101" column="8" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/SewerLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="71" selection-end-column="128" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/FieldsLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="302" column="13" lean-forward="false" selection-start-line="302" selection-start-column="13" selection-end-line="302" selection-end-column="13" />
+        <state relative-caret-position="441">
+          <caret line="134" column="34" lean-forward="false" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#generateNoise#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#doSimulationStep#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#countAliveNeighbours#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#setBorderCells#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#initCavernMap#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#getPrimaryCavern#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#fillCavern#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#fillSmallCaverns#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#setWindmillMap#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#setWindmillCells#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#water#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#spawnPos#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#assignRoomType#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#tileName#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#tileDesc#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#addVisuals#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="method#addVisuals#1;class#FieldsLevel#0" expanded="false" />
-            <element signature="class#Vein#0;class#FieldsLevel#0" expanded="false" />
-            <element signature="class#Sparkle#0;class#FieldsLevel#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#fetchQuestCompleteInteract#0;class#QuestHandler#0" expanded="false" />
+            <element signature="method#fetchQuestItemFromNPC#0;class#QuestHandler#0" expanded="false" />
+            <element signature="method#spawnQuestItem#0;class#QuestHandler#0" expanded="false" />
+            <element signature="method#killQuestCompleteInteract#0;class#QuestHandler#0" expanded="false" />
+            <element signature="method#handleKillFetchQuest#0;class#QuestHandler#0" expanded="false" />
+            <element signature="method#speakToNPC#0;class#QuestHandler#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/utils/Random.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="53" column="4" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ShadowLandsLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="216" column="67" lean-forward="false" selection-start-line="216" selection-start-column="67" selection-end-line="216" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#buildShadowLands#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#generateNoise#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#doSimulationStep#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#countAliveNeighbours#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#setBorderCells#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#initCavernMap#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#getPrimaryCavern#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#fillCavern#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#fillSmallCaverns#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#setTrapCells#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="e#6541#6542#0" expanded="false" />
-            <element signature="e#6582#6583#0" expanded="false" />
-            <element signature="e#6628#6629#0" expanded="false" />
-            <element signature="e#6669#6670#0" expanded="false" />
-            <element signature="e#6878#6879#0" expanded="false" />
-            <element signature="e#6968#6969#0" expanded="false" />
-            <element signature="method#tileName#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#tileDesc#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#addVisuals#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="method#addVisuals#1;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="class#Vein#0;class#ShadowLandsLevel#0" expanded="false" />
-            <element signature="class#Sparkle#0;class#ShadowLandsLevel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/traps/SummoningTrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="5" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Bestiary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#7011#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="method#isBoss#0;class#Bestiary#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/RegularLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5423">
-          <caret line="525" column="15" lean-forward="false" selection-start-line="525" selection-start-column="15" selection-end-line="525" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#16605#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="method#initRooms#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#assignRoomType#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#paintWater#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#paintGrass#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#placeTraps#0;class#RegularLevel#0" expanded="false" />
-            <element signature="e#8225#8226#0" expanded="false" />
-            <element signature="e#8309#8310#0" expanded="false" />
-            <element signature="method#randomDestination#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#createItems#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#randomRoom#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#room#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#randomDropCell#0;class#RegularLevel#0" expanded="false" />
-            <element signature="method#pitCell#0;class#RegularLevel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/painters/PoolPainter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="74" column="103" lean-forward="false" selection-start-line="74" selection-start-column="103" selection-end-line="74" selection-end-column="103" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ForestLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="321" column="129" lean-forward="false" selection-start-line="321" selection-start-column="129" selection-end-line="321" selection-end-column="129" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#buildForest#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#generateNoise#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#doSimulationStep#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#countAliveNeighbours#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#setBorderCells#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#initCavernMap#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#getPrimaryCavern#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#fillCavern#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#fillSmallCaverns#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#fillLake#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#startingLakeCell#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#setGrassCells#0;class#ForestLevel#0" expanded="false" />
-            <element signature="method#spawnPos#0;class#ForestLevel#0" expanded="false" />
-            <element signature="e#9172#9173#0" expanded="false" />
-            <element signature="e#9214#9215#0" expanded="false" />
-            <element signature="e#9368#9369#0" expanded="false" />
-            <element signature="e#9452#9453#0" expanded="false" />
-            <element signature="method#assignRoomType#0;class#ForestLevel#0" expanded="false" />
-            <element signature="class#Vein#0;class#ForestLevel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/Piranha.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/items/armor/Armor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/sprites/CharSprite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/Assets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="43" column="36" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/PixelDungeon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="152" column="24" lean-forward="false" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="24" />
+        <state relative-caret-position="374">
+          <caret line="77" column="71" lean-forward="true" selection-start-line="77" selection-start-column="71" selection-end-line="77" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/StartScene.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/levels/ForestLevel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="312" column="41" lean-forward="false" selection-start-line="312" selection-start-column="41" selection-end-line="312" selection-end-column="41" />
+        <state relative-caret-position="17">
+          <caret line="324" column="32" lean-forward="false" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/Dungeon.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/Quest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="566" column="24" lean-forward="false" selection-start-line="566" selection-start-column="24" selection-end-line="566" selection-end-column="24" />
+        <state relative-caret-position="459">
+          <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
           <folding>
-            <element signature="method#newLevel#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#resetLevel#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#bossLevel#1;class#Dungeon#0" expanded="false" />
-            <element signature="method#switchLevel#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#dropToChasm#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#posNeeded#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#souNeeded#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#chance#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#depthFile#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#saveLevel#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#saveAll#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#loadGame#2;class#Dungeon#0" expanded="false" />
-            <element signature="method#loadHero#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#loadLevel#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#deleteGame#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#gameBundle#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#preview#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#fail#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#win#0;class#Dungeon#0" expanded="false" />
-            <element signature="method#observe#0;class#Dungeon#0" expanded="false" />
+            <element signature="e#2063#2064#0" expanded="true" />
+            <element signature="e#2100#2101#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/overworld/OverworldHeroSprite.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/quests/QuestObjective.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
-          <folding>
-            <element signature="method#OverworldHeroSprite#0;class#OverworldHeroSprite#0" expanded="false" />
-            <element signature="e#2309#2310#0" expanded="true" />
-            <element signature="e#2333#2334#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/mobs/npcs/Ghost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5242">
-          <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        <state relative-caret-position="495">
+          <caret line="57" column="33" lean-forward="true" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/scenes/OverworldScene.java">
+    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/story/GenerateData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="99" column="30" lean-forward="false" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
+        <state relative-caret-position="459">
+          <caret line="1229" column="0" lean-forward="true" selection-start-line="1229" selection-start-column="0" selection-end-line="1229" selection-end-column="0" />
           <folding>
-            <element signature="method#setMapTerrain#0;class#OverworldScene#0" expanded="false" />
-            <element signature="method#createHero#0;class#OverworldScene#0" expanded="false" />
-            <element signature="method#createButtons#0;class#OverworldScene#0" expanded="false" />
-            <element signature="method#destroy#0;class#OverworldScene#0" expanded="false" />
-            <element signature="method#update#0;class#OverworldScene#0" expanded="false" />
-            <element signature="method#selectCell#0;class#OverworldScene#0" expanded="false" />
-            <element signature="class#OverworldButton#0;class#OverworldScene#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#randomTemplateSelector#0;class#GenerateData#0" expanded="false" />
+            <element signature="method#createActOneXMLQuestData#0;class#GenerateData#0" expanded="false" />
+            <element signature="method#createActTwoAXMLQuestData#0;class#GenerateData#0" expanded="false" />
+            <element signature="method#createActThreeXMLQuestData#0;class#GenerateData#0" expanded="false" />
+            <element signature="method#generateStoryXMLs#0;class#GenerateData#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/HeroClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="40" column="42" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-          <folding>
-            <element signature="method#initHero#0;class#HeroClass#0" expanded="false" />
-            <element signature="method#masteryBadge#0;class#HeroClass#0" expanded="false" />
-            <element signature="method#initWarrior#0;class#HeroClass#0" expanded="false" />
-            <element signature="method#initMage#0;class#HeroClass#0" expanded="false" />
-            <element signature="method#initRogue#0;class#HeroClass#0" expanded="false" />
-            <element signature="method#initHuntress#0;class#HeroClass#0" expanded="false" />
-            <element signature="method#spritesheet#0;class#HeroClass#0" expanded="false" />
-            <element signature="method#perks#0;class#HeroClass#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/sprites/HeroSprite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/watabou/pixeldungeon/actors/hero/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="246" column="24" lean-forward="false" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1867,7 +1616,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.2013809" />
               </list>
             </option>
           </splitter-proportions>
@@ -1875,7 +1624,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>Android (pixel-dungeon-master)|Android</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1934,7 +1683,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>tmxloader</last-edited>
+          <last-edited>PD-classes-master</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

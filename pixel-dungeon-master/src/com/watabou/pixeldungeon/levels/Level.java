@@ -17,6 +17,7 @@
  */
 package com.watabou.pixeldungeon.levels;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -41,8 +42,11 @@ import com.watabou.pixeldungeon.actors.buffs.MindVision;
 import com.watabou.pixeldungeon.actors.buffs.Shadows;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
+import com.watabou.pixeldungeon.actors.mobs.Bat;
 import com.watabou.pixeldungeon.actors.mobs.Bestiary;
+import com.watabou.pixeldungeon.actors.mobs.Crab;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
+import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
 import com.watabou.pixeldungeon.effects.particles.FlowParticle;
 import com.watabou.pixeldungeon.effects.particles.WindParticle;
 import com.watabou.pixeldungeon.items.Generator;
@@ -64,9 +68,14 @@ import com.watabou.pixeldungeon.levels.features.HighGrass;
 import com.watabou.pixeldungeon.levels.painters.Painter;
 import com.watabou.pixeldungeon.levels.traps.*;
 import com.watabou.pixeldungeon.mechanics.ShadowCaster;
+import com.watabou.pixeldungeon.overworld.OverworldHero;
 import com.watabou.pixeldungeon.plants.Plant;
+import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
+import com.watabou.pixeldungeon.story.GenerateData;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
@@ -121,7 +130,7 @@ public abstract class Level implements Bundlable {
 	public int entrance;
 	public int exit;
 	
-	public HashSet<Mob> mobs;
+	public static HashSet<Mob> mobs;
 	public SparseArray<Heap> heaps;
 	public HashMap<Class<? extends Blob>,Blob> blobs;
 	public SparseArray<Plant> plants;
@@ -143,6 +152,8 @@ public abstract class Level implements Bundlable {
 	private static final String PLANTS		= "plants";
 	private static final String MOBS		= "mobs";
 	private static final String BLOBS		= "blobs";
+
+	public static String zone;
 	
 	public void create() {
 		
@@ -209,10 +220,122 @@ public abstract class Level implements Bundlable {
 
 			createMobs();
 			createItems();
+
+
+			QuestHandler questHandler = new QuestHandler(new QuestObjective("FETCH", "Fetch me that shit", "DriedRose"));
+			//questHandler.spawnKillQuestMobs(this);
+			createQuests();
+
+			GenerateData generateData = GenerateData.getInstance();
+
+
 		}
 
 
 	}
+
+	// **** START of Quest Spawn Methods ****
+	public void createQuests() {
+		//for every quest in an xml file. (will use dummy variable for now).
+
+		try {
+			String questName = "First quest - Act 1";
+			int questReward = 1;
+			int associatedAct = 1;
+
+			String questGiverName = "KingGnoll";
+			String questGiverZone = "Forest";
+
+			NPC questGiverNPC = (NPC)spawnNPC(questGiverName).newInstance();
+
+			if (OverworldScene.hero.currentZone.equals(questGiverZone)) {
+				questGiverNPC.pos = spawnPos(questGiverZone);
+				mobs.add(questGiverNPC);
+				Actor.occupyCell(questGiverNPC);
+			}
+			Quest firstQuest = new Quest(questName, questReward, associatedAct);
+
+			String questType = "???";
+
+			QuestObjective firstObjective = new QuestObjective("KILL", "kill these bats plox", 7, "Bat");
+			String mobPackage = "com.watabou.pixeldungeon.actors.mobs.";
+			String mobClassName = mobPackage.concat(firstObjective.enemy);
+			Class<?> enemy = Class.forName(mobClassName);
+
+//			Field field = enemy.getField("partOfKillQuest");
+//			field.setBoolean(enemy, true);
+
+			QuestHandler questHandler = new QuestHandler(firstObjective);
+			questHandler.spawnKillQuestMobs(this);
+			System.out.println(OverworldScene.hero.currentZone);
+
+
+//			String questGiverName = "KingGnoll";
+//			String npcPackage = "com.watabou.pixeldungeon.actors.mobs.npcs.";
+//			String npcClassName = npcPackage.concat(questGiverName);
+//			Class<?> npc = Class.forName(npcClassName);
+//
+//			NPC questGiver = (NPC)npc.newInstance();
+//			questGiver.pos = randomRespawnCell();
+//			mobs.add(questGiver);
+//			Actor.occupyCell(questGiver);
+//
+//			questGiver.assignQuest(firstQuest);
+
+
+		} catch (Exception e) {
+			System.out.println("Error in method: createQuests()");
+			e.printStackTrace();
+		}
+
+
+
+	}
+
+	public Class<?> spawnNPC(String npcName) {
+		Class<?> npc = null;
+
+		try {
+			String npcPackage = "com.watabou.pixeldungeon.actors.mobs.npcs.";
+			String npcClassName = npcPackage.concat(npcName);
+			npc = Class.forName(npcClassName);
+		} catch (Exception e) {
+			System.out.println("Error in method: spawnNPC");
+			e.printStackTrace();
+		}
+
+		return npc;
+	}
+
+	public int spawnPos(String zone) {
+
+		int pos = 0;
+
+		switch (zone) {
+			case "Cave":
+				pos = CavesLevel.spawnPos();
+				break;
+			case "Fields":
+				pos = FieldsLevel.spawnPos();
+				break;
+			case "Dungeon":
+				pos = randomRespawnCell();
+				break;
+			case "Forest":
+				pos = ForestLevel.spawnPos();
+				break;
+			case "Castle":
+				pos = randomRespawnCell();
+				break;
+			case "Shadow Lands":
+				pos = ShadowLandsLevel.spawnPos();
+				break;
+		}
+
+		return pos;
+	}
+	// **** END of Quest Spawn Methods ****
+
 
 	public boolean isTownLevel() {
 		return OverworldScene.hero.currentZone.equals("Town");
