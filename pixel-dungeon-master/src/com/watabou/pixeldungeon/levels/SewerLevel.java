@@ -142,13 +142,13 @@ public class SewerLevel extends RegularLevel {
 		//QuestHandler questHandler = new QuestHandler();
 
 		KingGnoll kingGnoll = new KingGnoll();
-		Quest quest = new Quest("Your First Quest", 1, 1);
-		quest.addObjective(new QuestObjective("FETCH", "Fetch My Shit", "DriedRose"));
-		quest.curObjective = 0;
-
-		kingGnoll.assignQuest(quest);
-		kingGnoll.assignSpeakToQuest(true);
-		KingGnoll.spawn(this, kingGnoll);
+//		Quest quest = new Quest("Your First Quest", 1, 1);
+//		quest.addObjective(new QuestObjective("FETCH", "Fetch My Shit", "DriedRose"));
+//		quest.curObjective = 0;
+//
+//		kingGnoll.assignQuest(quest);
+//		kingGnoll.assignSpeakToQuest(true);
+//		KingGnoll.spawn(this, kingGnoll);
 
 //		try {
 //			QuestHandler.spawnQuestMobs(2, "Mimic", this);

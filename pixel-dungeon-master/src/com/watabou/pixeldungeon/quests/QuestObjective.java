@@ -25,7 +25,7 @@ public class QuestObjective {
     public String itemName;
 
     //speakTo quest variables
-    public NPC speakToNPC;
+    public String speakToNPC;
 
 
     //kill quest constructor
@@ -37,46 +37,77 @@ public class QuestObjective {
         this.level = level;
     }
 
-    //fetch/collect quest constructor OR travel quest
+    //travel quest
     public QuestObjective(String questType, String questObjectiveName, String other) {
-
         if (questType.equals("travel")) { //travel
             this.questType = questType;
             this.questObjectiveName = questObjectiveName;
             level = other;
-        } else { //collect
-            this.questType = questType;
-            this.questObjectiveName = questObjectiveName;
-            itemName = other;
         }
     }
 
-    //fetch/collect quest from NPC constructor OR speak to quest
-    public QuestObjective(String questType, String questObjectiveName, String itemName, NPC speakToNPC) {
-        this.questType = questType;
-        this.questObjectiveName = questObjectiveName;
-        this.itemName = itemName;
-        this.speakToNPC = speakToNPC;
-    }
+    //speakTo + use item + fight + collect quest constructor
+    public QuestObjective(String questType, String questObjectiveName, String varOne, String varTwo) {
+        switch (questType) {
+            case "speak":
+                this.questType = questType;
+                this.questObjectiveName = questObjectiveName;
+                speakToNPC = varOne;
+                level = varTwo;
+                break;
+            case "use_item":
+                this.questType = questType;
+                this.questObjectiveName = questObjectiveName;
+                itemName = varOne;
+                level = varTwo;
+                break;
+            case "fight":
+                this.questType = questType;
+                this.questObjectiveName = questObjectiveName;
+                enemy = varOne;
+                level = varTwo;
+                break;
+            case "collect":
+                this.questType = questType;
+                this.questObjectiveName = questObjectiveName;
+                itemName = varOne;
+                level = varTwo;
+            }
+        }
 
-    //speakTo quest constructor
-    public QuestObjective(String questType, String questObjectiveName, NPC speakToNPC) {
-        this.questType = questType;
-        this.questObjectiveName = questObjectiveName;
-        this.speakToNPC = speakToNPC;
+    //speakTo + Collect from NPC
+    public QuestObjective(String questType, String questObjectiveName, String varOne, String varTwo, String varThree) {
+        if (questType.equals("speak_collect")) { //assigns speak_collect variables
+            this.questType = questType;
+            this.questObjectiveName = questObjectiveName;
+            speakToNPC = varOne;
+            level = varTwo;
+            itemName = varThree;
+        } else { //assigns rescue variables
+            this.questType = questType;
+            this.questObjectiveName = questObjectiveName;
+            enemy = varOne;
+            speakToNPC = varTwo;
+            level = varThree;
+        }
     }
 
     //kill + fetch/collect constructor
-    public QuestObjective(String questType, String questObjectiveName, String itemName, String enemy, int maxEnemies) {
+    public QuestObjective(String questType, String questObjectiveName, String questItem, String enemy, int maxEnemies, String level) {
         this.questType = questType;
         this.questObjectiveName = questObjectiveName;
-        this.itemName = itemName;
+        itemName = questItem;
         this.enemy = enemy;
+        this.level = level;
 
         //will generate a random number of enemy's. When all of them are killed, the item will drop.
         Random random = new Random();
 
-        leftToKill = random.nextInt((maxEnemies - 4) + 1) + 4;
+        if (maxEnemies == 1) { //if item drops from boss type enemy
+            leftToKill = 1;
+        } else {
+            leftToKill = random.nextInt((maxEnemies - 4) + 1) + 4;
+        }
     }
 
 

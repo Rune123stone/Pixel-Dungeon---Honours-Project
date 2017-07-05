@@ -39,9 +39,9 @@ public class GenerateData {
         return generateData;
     }
 
-    public static ArrayList<Quest> actOneQuests;
-    public static ArrayList<Quest> actTwoQuests;
-    public static ArrayList<Quest> actThreeQuests;
+    public static ArrayList<Quest> actOneQuests = new ArrayList<>();
+    public static ArrayList<Quest> actTwoQuests = new ArrayList<>();
+    public static ArrayList<Quest> actThreeQuests = new ArrayList<>();
 
     public int randomTemplateSelector() {
         Random random = new Random();
@@ -59,6 +59,7 @@ public class GenerateData {
         return "";
     }
 
+    //creates the xml file containing the information such as quests, npc's etc. for Act One based on chosen template.
     public void createActOneXMLQuestData() {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -108,6 +109,10 @@ public class GenerateData {
                     Element questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    Element questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     Element questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
                     questObjective.appendChild(questType);
@@ -150,6 +155,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("collect"));
                     questObjective.appendChild(questType);
@@ -164,6 +173,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -213,8 +226,12 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
-                    questType.appendChild(doc.createTextNode("use item"));
+                    questType.appendChild(doc.createTextNode("use_item"));
                     questObjective.appendChild(questType);
 
                     questItem = doc.createElement("quest_item");
@@ -255,6 +272,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("kill"));
                     questObjective.appendChild(questType);
@@ -273,6 +294,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -322,6 +347,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("travel"));
                     questObjective.appendChild(questType);
@@ -332,6 +361,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("collect"));
@@ -348,8 +381,12 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
-                    questType.appendChild(doc.createTextNode("use item"));
+                    questType.appendChild(doc.createTextNode("use_item"));
                     questObjective.appendChild(questType);
 
                     questItem = doc.createElement("quest_item");
@@ -382,6 +419,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("collect"));
                     questObjective.appendChild(questType);
@@ -396,6 +437,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -449,6 +494,7 @@ public class GenerateData {
         }
     }
 
+    //creates the xml file containing the information such as quests, npc's etc. for Act Two based on chosen template.
     public void createActTwoAXMLQuestData() {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -503,6 +549,10 @@ public class GenerateData {
                     Element questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    Element questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     Element questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
                     questObjective.appendChild(questType);
@@ -518,6 +568,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("collect"));
                     questObjective.appendChild(questType);
@@ -532,6 +586,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -574,8 +632,20 @@ public class GenerateData {
                     questNotGivenDialogue.appendChild(doc.createTextNode("seekingTheWise_not_given.txt"));
                     quest.appendChild(questNotGivenDialogue);
 
+                    questGivenDialogue = doc.createElement("quest_given_dialogue");
+                    questGivenDialogue.appendChild(doc.createTextNode("seekingTheWise_given.txt"));
+                    quest.appendChild(questGivenDialogue);
+
+                    questCompletedDialogue = doc.createElement("quest_completed_dialogue");
+                    questCompletedDialogue.appendChild(doc.createTextNode("seekingTheWise_not_given.txt"));
+                    quest.appendChild(questCompletedDialogue);
+
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -591,6 +661,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -634,11 +708,15 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("fight"));
                     questObjective.appendChild(questType);
 
-                    questNPC = doc.createElement("quest_npc");
+                    questNPC = doc.createElement("enemy");
                     questNPC.appendChild(doc.createTextNode("item_info_npc"));
                     questObjective.appendChild(questNPC);
 
@@ -648,6 +726,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("collect"));
@@ -663,6 +745,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -716,6 +802,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
                     questObjective.appendChild(questType);
@@ -758,6 +848,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("kill_collect"));
                     questObjective.appendChild(questType);
@@ -780,6 +874,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -833,6 +931,7 @@ public class GenerateData {
         }
     }
 
+    //creates the xml file containing the information such as quests, npc's etc. for Act Three based on chosen template.
     public void createActThreeXMLQuestData() {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -878,6 +977,10 @@ public class GenerateData {
                     Element questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    Element questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     Element questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
                     questObjective.appendChild(questType);
@@ -892,6 +995,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("kill"));
@@ -911,6 +1018,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -956,6 +1067,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
                     questObjective.appendChild(questType);
@@ -970,6 +1085,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("kill_collect"));
@@ -994,8 +1113,12 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
-                    questType.appendChild(doc.createTextNode("use item"));
+                    questType.appendChild(doc.createTextNode("use_item"));
                     questObjective.appendChild(questType);
 
                     questItem = doc.createElement("quest_item");
@@ -1008,6 +1131,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -1053,6 +1180,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("kill"));
                     questObjective.appendChild(questType);
@@ -1072,6 +1203,10 @@ public class GenerateData {
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
 
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
                     questObjective.appendChild(questType);
@@ -1086,6 +1221,10 @@ public class GenerateData {
 
                     questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
 
                     questType = doc.createElement("quest_type");
                     questType.appendChild(doc.createTextNode("speak"));
@@ -1138,16 +1277,7 @@ public class GenerateData {
         }
     }
 
-    public void generateStoryXMLs() {
-        String chosenStory = randomStorySelector();
-
-        if (chosenStory.equals("Mentor_Story")) {
-            createActOneXMLQuestData();
-            createActTwoAXMLQuestData();
-            createActThreeXMLQuestData();
-        }
-    }
-
+    //creates Act One's quests and their objectives based on the Act One xml file.
     public void createActOneQuests() {
         try {
 
@@ -1166,8 +1296,6 @@ public class GenerateData {
 
             for (int i = 0; i < questList.getLength(); i++) {
                 Node curQuestNode = questList.item(i);
-
-                System.out.println("Current element: " +curQuestNode.getNodeName());
 
                 //obtain quest elements for each quest in the list
                 if (curQuestNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -1218,6 +1346,7 @@ public class GenerateData {
 
                                     questObjective = new QuestObjective("travel", questObjectiveName, questObjectiveLocation);
                                     quest.addObjective(questObjective);
+
                                     break;
                                 case "kill":
                                     questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
@@ -1234,13 +1363,72 @@ public class GenerateData {
                                     break;
                                 case "speak":
                                     questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
-                                    String speakToNPC = questObjectiveElement.getElementsByTagName("speak_to_npc").item(0).getTextContent();
+                                    String speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
                                     questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("speak", questObjectiveName, speakToNPC, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
                                     break;
                                 case "collect":
                                     questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
-                                    String itemName = "insert_get_item_name_method";
-                                    questObjectiveLocation = "insert_get_item_collectable_location";
+                                    String questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("collect", questObjectiveName, questItem, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "speak_collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("speak_collect", questObjectiveName, speakToNPC, questObjectiveLocation, questItem);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "kill_collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+
+                                    amountToKillString = questObjectiveElement.getElementsByTagName("amount_to_kill").item(0).getTextContent();
+                                    amountToKill = Integer.parseInt(amountToKillString);
+
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("kill_collect", questObjectiveName, questItem, enemy, amountToKill, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "rescue":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+                                    speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("rescue", questObjectiveName, enemy, speakToNPC, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "use_item":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("use_item", questObjectiveName, questItem, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "fight":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("fight", questObjectiveName, enemy, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
                                     break;
 
                             }
@@ -1254,6 +1442,399 @@ public class GenerateData {
             e.printStackTrace();
         }
 
+    }
+
+    //creates Act Two's quests and their objectives based on the Act Two xml file.
+    public void createActTwoQuests() {
+        try {
+
+            //get location of XML file
+            String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Data/";
+            File file = new File(fullPath, "ActTwo.xml");
+
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(file);
+
+            doc.getDocumentElement().normalize();
+
+            //get list of quests in the Act
+            NodeList questList = doc.getElementsByTagName("quest");
+
+            for (int i = 0; i < questList.getLength(); i++) {
+                Node curQuestNode = questList.item(i);
+
+                //obtain quest elements for each quest in the list
+                if (curQuestNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element questElement = (Element)curQuestNode;
+
+                    String questName = questElement.getElementsByTagName("quest_name").item(0).getTextContent();
+                    String questGiver = questElement.getElementsByTagName("quest_giver").item(0).getTextContent();
+                    String questReward = questElement.getElementsByTagName("quest_reward").item(0).getTextContent();
+
+                    Quest quest;
+
+                    if (questGiver.equals("none")) {
+                        String questDialogue = questElement.getElementsByTagName("quest_dialogue").item(0).getTextContent();
+
+                        quest = new Quest(questName, questGiver, questReward, 2, questDialogue);
+
+                    } else {
+                        String questNotGivenDialogue = questElement.getElementsByTagName("quest_not_given_dialogue").item(0).getTextContent();
+                        String questGivenDialogue = questElement.getElementsByTagName("quest_given_dialogue").item(0).getTextContent();
+                        String questCompletedDialogue = questElement.getElementsByTagName("quest_completed_dialogue").item(0).getTextContent();
+
+                        quest = new Quest(questName, questGiver, questReward, 2, questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+                    }
+
+                    actTwoQuests.add(quest);
+
+                    //get the list of quest objectives for the current quest
+                    NodeList questObjectiveList = questElement.getElementsByTagName("quest_objective");
+
+                    for (int j = 0; j < questObjectiveList.getLength(); j++) {
+                        Node curQuestObjectiveNode = questObjectiveList.item(j);
+
+                        //obtain quest objective elements for each quest in the list
+                        if (curQuestObjectiveNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element questObjectiveElement = (Element)curQuestObjectiveNode;
+
+                            String questObjectiveType = questObjectiveElement.getElementsByTagName("quest_type").item(0).getTextContent();
+
+                            QuestObjective questObjective;
+
+                            //cater for each type of quest (different types will require different variables
+                            switch (questObjectiveType) {
+                                case "travel":
+                                    String questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("travel", questObjectiveName, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "kill":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+
+                                    String amountToKillString = questObjectiveElement.getElementsByTagName("amount_to_kill").item(0).getTextContent();
+                                    Integer amountToKill = Integer.parseInt(amountToKillString);
+
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("kill", questObjectiveName, enemy, amountToKill, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "speak":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("speak", questObjectiveName, speakToNPC, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("collect", questObjectiveName, questItem, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "speak_collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("speak_collect", questObjectiveName, speakToNPC, questObjectiveLocation, questItem);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "kill_collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+
+                                    amountToKillString = questObjectiveElement.getElementsByTagName("amount_to_kill").item(0).getTextContent();
+                                    amountToKill = Integer.parseInt(amountToKillString);
+
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("kill_collect", questObjectiveName, questItem, enemy, amountToKill, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "rescue":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+                                    speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("rescue", questObjectiveName, enemy, speakToNPC, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "use_item":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("use_item", questObjectiveName, questItem, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "fight":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("fight", questObjectiveName, enemy, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error in method: createActTwoQuests(), Class GenerateData");
+            e.printStackTrace();
+        }
+
+    }
+
+    //creates Act Three's quests and their objectives based on the Act Three xml file.
+    public void createActThreeQuests() {
+        try {
+
+            //get location of XML file
+            String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Data/";
+            File file = new File(fullPath, "ActThree.xml");
+
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(file);
+
+            doc.getDocumentElement().normalize();
+
+            //get list of quests in the Act
+            NodeList questList = doc.getElementsByTagName("quest");
+
+            for (int i = 0; i < questList.getLength(); i++) {
+                Node curQuestNode = questList.item(i);
+
+                //obtain quest elements for each quest in the list
+                if (curQuestNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element questElement = (Element)curQuestNode;
+
+                    String questName = questElement.getElementsByTagName("quest_name").item(0).getTextContent();
+                    String questGiver = questElement.getElementsByTagName("quest_giver").item(0).getTextContent();
+                    String questReward = questElement.getElementsByTagName("quest_reward").item(0).getTextContent();
+
+                    Quest quest;
+
+                    if (questGiver.equals("none")) {
+                        String questDialogue = questElement.getElementsByTagName("quest_dialogue").item(0).getTextContent();
+
+                        quest = new Quest(questName, questGiver, questReward, 3, questDialogue);
+
+                    } else {
+                        String questNotGivenDialogue = questElement.getElementsByTagName("quest_not_given_dialogue").item(0).getTextContent();
+                        String questGivenDialogue = questElement.getElementsByTagName("quest_given_dialogue").item(0).getTextContent();
+                        String questCompletedDialogue = questElement.getElementsByTagName("quest_completed_dialogue").item(0).getTextContent();
+
+                        quest = new Quest(questName, questGiver, questReward, 3, questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+                    }
+
+                    actThreeQuests.add(quest);
+
+                    //get the list of quest objectives for the current quest
+                    NodeList questObjectiveList = questElement.getElementsByTagName("quest_objective");
+
+                    for (int j = 0; j < questObjectiveList.getLength(); j++) {
+                        Node curQuestObjectiveNode = questObjectiveList.item(j);
+
+                        //obtain quest objective elements for each quest in the list
+                        if (curQuestObjectiveNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element questObjectiveElement = (Element)curQuestObjectiveNode;
+
+                            String questObjectiveType = questObjectiveElement.getElementsByTagName("quest_type").item(0).getTextContent();
+
+                            QuestObjective questObjective;
+
+                            //cater for each type of quest (different types will require different variables
+                            switch (questObjectiveType) {
+                                case "travel":
+                                    String questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("travel", questObjectiveName, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "kill":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+
+                                    String amountToKillString = questObjectiveElement.getElementsByTagName("amount_to_kill").item(0).getTextContent();
+                                    Integer amountToKill = Integer.parseInt(amountToKillString);
+
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("kill", questObjectiveName, enemy, amountToKill, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "speak":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("speak", questObjectiveName, speakToNPC, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    String questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("collect", questObjectiveName, questItem, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "speak_collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("speak_collect", questObjectiveName, speakToNPC, questObjectiveLocation, questItem);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "kill_collect":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+
+                                    amountToKillString = questObjectiveElement.getElementsByTagName("amount_to_kill").item(0).getTextContent();
+                                    amountToKill = Integer.parseInt(amountToKillString);
+
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("kill_collect", questObjectiveName, questItem, enemy, amountToKill, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "rescue":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+                                    speakToNPC = questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("rescue", questObjectiveName, enemy, speakToNPC, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "use_item":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    questItem = questObjectiveElement.getElementsByTagName("quest_item").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("use_item", questObjectiveName, questItem, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                                case "fight":
+                                    questObjectiveName = questObjectiveElement.getElementsByTagName("quest_objective_name").item(0).getTextContent();
+                                    enemy = questObjectiveElement.getElementsByTagName("enemy").item(0).getTextContent();
+                                    questObjectiveLocation = questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent();
+
+                                    questObjective = new QuestObjective("fight", questObjectiveName, enemy, questObjectiveLocation);
+                                    quest.addObjective(questObjective);
+
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error in method: createActOneQuests(), Class GenerateData");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void generateStoryXMLs() {
+        String chosenStory = randomStorySelector();
+
+        if (chosenStory.equals("Mentor_Story")) {
+            createActOneXMLQuestData();
+            createActTwoAXMLQuestData();
+            createActThreeXMLQuestData();
+        }
+    }
+
+    public void createQuests() {
+        createActOneQuests();
+        createActTwoQuests();
+        createActThreeQuests();
+    }
+
+    public void displayQuests() {
+        System.out.println("***** ACT ONE *****");
+        for (Quest quest: actOneQuests) {
+            System.out.println("-----------QUEST----------");
+            System.out.println("Quest Name: " +quest.questName);
+            System.out.println("Quest Act: " +quest.associatedAct);
+            System.out.println("Quest Reward: " +quest.reward);
+            System.out.println("Quest Giver: " +quest.questGiver);
+            System.out.println();
+
+            //quest.displayObjectives();
+            quest.displayObjectivesInSentence();
+        }
+
+        System.out.println("***** ACT TWO *****");
+
+        for (Quest quest: actTwoQuests) {
+            System.out.println("-----------QUEST----------");
+            System.out.println("Quest Name: " +quest.questName);
+            System.out.println("Quest Act: " +quest.associatedAct);
+            System.out.println("Quest Reward: " +quest.reward);
+            System.out.println("Quest Giver: " +quest.questGiver);
+            System.out.println();
+
+            //quest.displayObjectives();
+            quest.displayObjectivesInSentence();
+        }
+
+        System.out.println("***** ACT THREE *****");
+
+        for (Quest quest: actThreeQuests) {
+            System.out.println("-----------QUEST----------");
+            System.out.println("Quest Name: " +quest.questName);
+            System.out.println("Quest Act: " +quest.associatedAct);
+            System.out.println("Quest Reward: " +quest.reward);
+            System.out.println("Quest Giver: " +quest.questGiver);
+            System.out.println();
+
+            //quest.displayObjectives();
+            quest.displayObjectivesInSentence();
+        }
     }
 
 }

@@ -253,20 +253,20 @@ public abstract class Level implements Bundlable {
 				mobs.add(questGiverNPC);
 				Actor.occupyCell(questGiverNPC);
 			}
-			Quest firstQuest = new Quest(questName, questReward, associatedAct);
+			//Quest firstQuest = new Quest(questName, questReward, associatedAct);
 
 			String questType = "???";
 
-			QuestObjective firstObjective = new QuestObjective("KILL", "kill these bats plox", 7, "Bat");
+			//QuestObjective firstObjective = new QuestObjective("KILL", "kill these bats plox", 7, "Bat");
 			String mobPackage = "com.watabou.pixeldungeon.actors.mobs.";
-			String mobClassName = mobPackage.concat(firstObjective.enemy);
-			Class<?> enemy = Class.forName(mobClassName);
+			//String mobClassName = mobPackage.concat(firstObjective.enemy);
+			//Class<?> enemy = Class.forName(mobClassName);
 
 //			Field field = enemy.getField("partOfKillQuest");
 //			field.setBoolean(enemy, true);
 
-			QuestHandler questHandler = new QuestHandler(firstObjective);
-			questHandler.spawnKillQuestMobs(this);
+			//QuestHandler questHandler = new QuestHandler(firstObjective);
+			//questHandler.spawnKillQuestMobs(this);
 			System.out.println(OverworldScene.hero.currentZone);
 
 

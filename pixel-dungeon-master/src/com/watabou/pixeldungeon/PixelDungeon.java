@@ -48,7 +48,8 @@ public class PixelDungeon extends Game {
 
 		GenerateData generateData = GenerateData.getInstance();
 		generateData.generateStoryXMLs();
-		generateData.createActOneQuests();
+		generateData.createQuests();
+		generateData.displayQuests();
 
 		com.watabou.utils.Bundle.addAlias(
 			com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade.class,
