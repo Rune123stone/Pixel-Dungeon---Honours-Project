@@ -89,6 +89,93 @@ public class Item implements Bundlable {
 	public boolean cursedKnown;
 	
 	public boolean unique = false;
+
+	//Cameron methods & variables
+	public static String collectable;
+	public static String collectable_location;
+	public static String collecatble_enemy;
+	public static String collectable_mini_boss;
+	public static String collectable_mini_boss_location;
+
+	public static String info_npc;
+	public static String info_npc_location;
+	public static String info;
+	public static String info_location;
+
+	public static String boss_npc;
+	public static String boss_location;
+
+
+
+	public static void setItemQuestVariables(String itemName) {
+		switch (itemName) {
+			case "Knuckles":
+				collectable = "Bear Fur";
+				collectable_location = "Forest";
+				collecatble_enemy = "Bears";
+				collectable_mini_boss = "Giant Bear";
+				collectable_mini_boss_location = "Forest";
+
+				info_npc = "SeaMan";
+				info_npc_location = "Cave";
+				info = "Mr. Bear's Diary";
+				info_location = "Cave";
+
+				boss_npc = "The Biggest Bear in the Universe";
+				boss_location = "Shadow Lands";
+
+				break;
+			case "Mace":
+				collectable = "Rocks";
+				collectable_location = "Fields";
+				collecatble_enemy = "Vultures";
+				collectable_mini_boss = "Giant Vulture";
+				collectable_mini_boss_location = "Fields";
+
+				info_npc = "Mole Man";
+				info_npc_location = "Cave";
+				info = "Mole Man's Mushrooms";
+				info_location = "Cave";
+
+				boss_npc = "Goffrey";
+				boss_location = "Castle";
+
+				break;
+			case "Spear":
+				collectable = "Sharp Rocks";
+				collectable_location = "Cave";
+				collecatble_enemy = "Big Rocks";
+				collectable_mini_boss = "Giant Rock";
+				collectable_mini_boss_location = "Cave";
+
+				info_npc = "Shaka Zulu";
+				info_npc_location = "Forest";
+				info = "Piece of Wood";
+				info_location = "Forest";
+
+				boss_npc = "Scary Ghost Man";
+				boss_location = "Shadow Lands";
+
+				break;
+			case "WarHammer":
+				collectable = "Hammer";
+				collectable_location = "Castle";
+				collecatble_enemy = "Knight";
+				collectable_mini_boss = "Giant Knight";
+				collectable_mini_boss_location = "Castle";
+
+				info_npc = "Farmer Joe";
+				info_npc_location = "Fields";
+				info = "Bread";
+				info_location = "Fields";
+
+				boss_npc = "Forest King";
+				boss_location = "Forest";
+
+				break;
+		}
+	}
+	///
 	
 	private static Comparator<Item> itemComparator = new Comparator<Item>() {	
 		@Override

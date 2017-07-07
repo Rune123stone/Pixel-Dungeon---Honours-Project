@@ -149,6 +149,48 @@ public class Quest {
         }
     }
 
+    public void displayObjectivesInSentence2() {
+
+        int i = 1;
+        System.out.println("---QUEST OBJECTIVES---");
+        for (QuestObjective questObjective: questObjectives) {
+
+//            System.out.println("Quest Type: " +questObjective.questType);
+//            System.out.println("Quest Objective Name: " +questObjective.questObjectiveName);
+
+            switch (questObjective.questType) {
+                case "speak":
+                    System.out.println(i+") Speak To: " +questObjective.speakToNPC+ " in the " +questObjective.level+ " zone.");
+                    break;
+                case "kill":
+                    System.out.println(i+") Kill " +questObjective.leftToKill+ " " +questObjective.enemy+ " in the " +questObjective.level+ " zone.");
+                    break;
+                case "collect":
+                    System.out.println(i+") Collect " +questObjective.itemName+ " from somewhere in the " +questObjective.level+ " zone.");
+                    break;
+                case "kill_collect":
+                    System.out.println(i+") Collect " +questObjective.itemName+ " by killing " +questObjective.leftToKill+ " " +questObjective.enemy+ " in the " +questObjective.level+ " zone.");
+                    break;
+                case "rescue":
+                    System.out.println(i+") Rescue " +questObjective.speakToNPC+ " from " +questObjective.enemy+ " in the " +questObjective.level+ " zone.");
+                    break;
+                case "use_item":
+                    System.out.println(i+") Use the " +questObjective.itemName+ " in the " +questObjective.level+ " zone.");
+                    break;
+                case "travel":
+                    System.out.println(i+") Travel to the " +questObjective.level+ " zone.");
+                    break;
+                case "speak_collect":
+                    System.out.println(i+") Collect " +questObjective.itemName+ " from " +questObjective.speakToNPC+ " in the " +questObjective.level+ " zone.");
+                    break;
+                case "fight":
+                    System.out.println(i+") Fight " +questObjective.enemy+ " in the " +questObjective.level+ " zone.");
+                    break;
+            }
+            i++;
+        }
+    }
+
 
 
 
