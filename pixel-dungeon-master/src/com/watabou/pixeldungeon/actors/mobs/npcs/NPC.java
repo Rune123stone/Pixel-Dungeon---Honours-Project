@@ -22,11 +22,13 @@ import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Heap;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.utils.Random;
 
 public abstract class NPC extends Mob {
 
 	Quest quest;
+	QuestHandler questHandler;
 	public boolean hasQuestItem;
 	public boolean speakToQuest;
 

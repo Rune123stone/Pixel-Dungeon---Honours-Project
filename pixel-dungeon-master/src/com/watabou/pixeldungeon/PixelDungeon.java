@@ -29,16 +29,10 @@ import android.view.View;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
-import com.watabou.pixeldungeon.overworld.OverworldMap;
-import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.scenes.GameScene;
-import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.scenes.TitleScene;
-import com.watabou.pixeldungeon.story.GenerateData;
-
-import java.io.IOException;
-import java.io.InputStream;
+import com.watabou.pixeldungeon.story.DataHandler;
 
 public class PixelDungeon extends Game {
 
@@ -46,10 +40,10 @@ public class PixelDungeon extends Game {
 		super( TitleScene.class );
 		// super(OverworldScene.class);
 
-		GenerateData generateData = GenerateData.getInstance();
-		generateData.generateStoryXMLs();
-		generateData.createQuests();
-		generateData.displayQuests();
+		DataHandler dataHandler = DataHandler.getInstance();
+		dataHandler.generateStoryXMLs();
+		dataHandler.createQuests();
+		dataHandler.displayQuests();
 
 		com.watabou.utils.Bundle.addAlias(
 			com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade.class,

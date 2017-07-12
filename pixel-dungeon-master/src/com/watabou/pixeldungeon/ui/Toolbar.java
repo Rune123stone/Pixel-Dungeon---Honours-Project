@@ -25,7 +25,6 @@ import com.watabou.noosa.ui.Component;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
-import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Heap;
@@ -37,6 +36,7 @@ import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
+import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.windows.WndCatalogus;
 import com.watabou.pixeldungeon.windows.WndHero;
 import com.watabou.pixeldungeon.windows.WndInfoCell;
@@ -111,7 +111,15 @@ public class Toolbar extends Component {
 				}
 				Dungeon.hero = null;
 				Actor.removeAll();
-				OverworldScene.previousZone = OverworldScene.hero.currentZone;
+
+				//ensures that a null error is not thrown when starting new game. OverworldScene.hero = null if new game since the player spawns in a level scene, not the overworld scene,
+				// thus OverworldScene.hero is not created yet.
+				try {
+					OverworldScene.previousZone = OverworldScene.hero.currentZone;
+				} catch (Exception e) {
+					OverworldScene.previousZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+				}
+
 				InterlevelScene.mode = InterlevelScene.Mode.OVERWORLD;
 				Game.switchScene(InterlevelScene.class);
 			}

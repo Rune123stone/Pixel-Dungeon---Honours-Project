@@ -34,7 +34,6 @@ import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.GamesInProgress;
 import com.watabou.pixeldungeon.PixelDungeon;
-import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.Speck;
@@ -299,6 +298,7 @@ public class StartScene extends PixelScene {
 	
 	private void startNewGame() {
 		Dungeon.hero = null;
+		//InterlevelScene.mode = InterlevelScene.Mode.OVERWORLD;
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 		WndBackgroundStory.setStoryTold(false);
 
@@ -312,7 +312,11 @@ public class StartScene extends PixelScene {
 		Game.instance.deleteFile("Castle");
 		Game.instance.deleteFile("Tier");
 
-		Game.switchScene(OverworldScene.class);
+		Game.switchScene(InterlevelScene.class);
+
+
+
+
 		// *** END ***
 
 		//uncomment to restore to normal

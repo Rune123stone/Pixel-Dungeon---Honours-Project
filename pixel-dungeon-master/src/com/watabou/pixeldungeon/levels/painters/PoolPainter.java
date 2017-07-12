@@ -72,16 +72,16 @@ public class PoolPainter extends Painter {
 
 		level.addItemToSpawn(new PotionOfInvisibility());
 
-		if (!(OverworldScene.hero.currentZone.equals("Forest"))) { //removes pirahnas from forest lake.
-			for (int i = 0; i < NPIRANHAS; i++) {
-				Piranha piranha = new Piranha();
-				do {
-					piranha.pos = room.random();
-				} while (level.map[piranha.pos] != Terrain.WATER || Actor.findChar(piranha.pos) != null);
-				level.mobs.add(piranha);
-				Actor.occupyCell(piranha);
-			}
-		}
+		//if (!(OverworldScene.hero.currentZone.equals("Forest"))) { //removes pirahnas from forest lake.
+//			for (int i = 0; i < NPIRANHAS; i++) {
+//				Piranha piranha = new Piranha();
+//				do {
+//					piranha.pos = room.random();
+//				} while (level.map[piranha.pos] != Terrain.WATER || Actor.findChar(piranha.pos) != null);
+//				level.mobs.add(piranha);
+//				Actor.occupyCell(piranha);
+//			}
+		//}
 	}
 	
 	private static Item prize( Level level ) {

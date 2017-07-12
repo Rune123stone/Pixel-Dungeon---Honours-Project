@@ -44,12 +44,11 @@ import com.watabou.pixeldungeon.items.rings.Ring;
 import com.watabou.pixeldungeon.items.scrolls.Scroll;
 import com.watabou.pixeldungeon.items.wands.Wand;
 import com.watabou.pixeldungeon.levels.*;
-import com.watabou.pixeldungeon.overworld.OverworldHero;
-import com.watabou.pixeldungeon.overworld.OverworldHeroSprite;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.scenes.StartScene;
+import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.ui.QuickSlot;
 import com.watabou.pixeldungeon.utils.BArray;
 import com.watabou.pixeldungeon.utils.Utils;
@@ -85,6 +84,7 @@ public class Dungeon {
 	public static boolean nightMode;
 	
 	public static SparseArray<ArrayList<Item>> droppedItems;
+
 	
 	public static void init() {
 
@@ -156,7 +156,21 @@ public class Dungeon {
 		Arrays.fill( visible, false );
 		Level level;
 
-		switch(OverworldScene.hero.currentZone) {
+		String currentZone;
+
+		//ensures that a null error is not thrown when starting a new game. OverworldScene.hero = null if new game since the player spawns in a level scene, not the overworld scene,
+		// thus OverworldScene.hero is not created yet.
+		if (OverworldScene.hero == null) {
+			currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+		} else {
+			currentZone = OverworldScene.hero.currentZone;
+		}
+
+		if (currentZone.equals("Caves")) {
+			currentZone = "Cave";
+		}
+
+		switch(currentZone) {
 			case "Forest":
 				level = new ForestLevel();
 				break;
@@ -299,12 +313,13 @@ public class Dungeon {
 		}
 		
 		hero.pos = pos != -1 ? pos : level.exit;
-		
+
 		Light light = hero.buff( Light.class );
 		hero.viewDistance = light == null ? level.viewDistance : Math.max( Light.DISTANCE, level.viewDistance );
 		
 		observe();
 	}
+
 
 	public static void dropToChasm( Item item ) {
 		int depth = Dungeon.depth + 1;
@@ -494,7 +509,27 @@ public class Dungeon {
 		// *** Saves individual levels as well as the hero's position, gold, and items in those specific levels. ***
 		OutputStream output = null;
 
-		switch (OverworldScene.hero.currentZone) {
+		String currentZone;
+
+		//ensures that a null error is not thrown when startinga new game. OverworldScene.hero = null if new game since the player spawns in a level scene, not the overworld scene,
+		// thus OverworldScene.hero is not ceeated yet.
+		if (InterlevelScene.mode == InterlevelScene.Mode.NEWGAME) {
+			currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+		} else {
+			try {
+				currentZone = OverworldScene.hero.currentZone;
+			} catch (Exception e) {
+				currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+
+			}
+		}
+
+
+		if (currentZone.equals("Caves")) {
+			currentZone = "Cave";
+		}
+
+		switch (currentZone) {
 			case "Forest":
 				bundle.put( FORESTHERO, hero);
 				bundle.put( FORESTHEROGOLD, gold );

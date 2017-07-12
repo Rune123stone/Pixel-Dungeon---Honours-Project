@@ -43,7 +43,7 @@ public class Relative extends NPC{
 
         switch (selector) {
             case 1:
-                kidnapLocation = "Cave";
+                kidnapLocation = "Caves";
                 break;
             case 2:
                 kidnapLocation = "Fields";

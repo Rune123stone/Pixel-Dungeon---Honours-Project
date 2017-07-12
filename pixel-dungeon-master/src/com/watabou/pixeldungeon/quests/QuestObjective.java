@@ -46,7 +46,7 @@ public class QuestObjective {
         }
     }
 
-    //speakTo + use item + fight + collect quest constructor
+    //speakTo + use item + fight + fetch quest constructor
     public QuestObjective(String questType, String questObjectiveName, String varOne, String varTwo) {
         switch (questType) {
             case "speak":
@@ -67,7 +67,7 @@ public class QuestObjective {
                 enemy = varOne;
                 level = varTwo;
                 break;
-            case "collect":
+            case "fetch":
                 this.questType = questType;
                 this.questObjectiveName = questObjectiveName;
                 itemName = varOne;
@@ -75,9 +75,9 @@ public class QuestObjective {
             }
         }
 
-    //speakTo + Collect from NPC
+    //speakTo + fetch from NPC
     public QuestObjective(String questType, String questObjectiveName, String varOne, String varTwo, String varThree) {
-        if (questType.equals("speak_collect")) { //assigns speak_collect variables
+        if (questType.equals("speak_fetch")) { //assigns speak_fetch variables
             this.questType = questType;
             this.questObjectiveName = questObjectiveName;
             speakToNPC = varOne;
@@ -92,7 +92,7 @@ public class QuestObjective {
         }
     }
 
-    //kill + fetch/collect constructor
+    //kill + fetch constructor
     public QuestObjective(String questType, String questObjectiveName, String questItem, String enemy, int maxEnemies, String level) {
         this.questType = questType;
         this.questObjectiveName = questObjectiveName;

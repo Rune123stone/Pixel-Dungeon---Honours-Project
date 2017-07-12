@@ -1,31 +1,34 @@
 package com.watabou.pixeldungeon.quests;
 
-import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
-
 import java.util.ArrayList;
 
 public class Quest {
 
     public String questName; //name of the quest
     public String questGiver; //name of the quest giver NPC
-    public String reward; //tier values for armor. From 0 to 6.
+    public String reward; //tier values for armor. From 0 to 6
+    public String questGiverLevel; //level that the quest giver NPC is in
     public boolean given; //has the quest been given to the player
     public ArrayList<QuestObjective> questObjectives;
     public int curObjective;
     public boolean questCompleted; //is the quest completed?
     public int associatedAct; //which act is the quest in?
 
+    public String prerequisiteQuestName; //the name of the quest required to be completed before this quest can take place.
+
     public String QUEST_NOT_GIVEN_TEXT; //NPC dialogue if the quest hasn't been given to the player. (Quest Dialogue)
     public String QUEST_GIVEN_TEXT; //NPC dialogue if the quest has been given to the player.
     public String QUEST_COMPLETED_TEXT; //NPC dialogue if the quest has been completed.
 
-    public Quest(String questName, String questGiver, String reward, int associatedAct, String QUEST_NOT_GIVEN_TEXT, String QUEST_GIVEN_TEXT, String QUEST_COMPLETED_TEXT) {
+    public Quest(String questName, String questGiver, String reward, String questGiverLevel, int associatedAct, String prerequisiteQuestName, String QUEST_NOT_GIVEN_TEXT, String QUEST_GIVEN_TEXT, String QUEST_COMPLETED_TEXT) {
         this.questName = questName;
         this.questGiver = questGiver;
         this.reward = reward;
+        this.questGiverLevel = questGiverLevel;
         questObjectives = new ArrayList<>();
         curObjective = 0;
         this.associatedAct = associatedAct;
+        this.prerequisiteQuestName = prerequisiteQuestName;
 
         questCompleted = false;
 
@@ -34,13 +37,15 @@ public class Quest {
         this.QUEST_COMPLETED_TEXT = QUEST_COMPLETED_TEXT;
     }
 
-    public Quest(String questName, String questGiver, String reward, int associatedAct, String QUEST_GIVEN_TEXT) {
+    public Quest(String questName, String questGiver, String reward, String questGiverLevel, int associatedAct, String prerequisiteQuestName, String QUEST_GIVEN_TEXT) {
         this.questName = questName;
         this.questGiver = questGiver;
         this.reward = reward;
+        this.questGiverLevel = questGiverLevel;
         questObjectives = new ArrayList<>();
         curObjective = 0;
         this.associatedAct = associatedAct;
+        this.prerequisiteQuestName = prerequisiteQuestName;
 
         questCompleted = false;
 
@@ -118,15 +123,15 @@ public class Quest {
 
             switch (questObjective.questType) {
                 case "speak":
-                    System.out.println(i+") Speak To: " +questObjective.speakToNPC+ " in the " +questObjective.level+ " zone.");
+                    System.out.println(i+") Speak to " +questObjective.speakToNPC+ " in the " +questObjective.level+ " zone.");
                     break;
                 case "kill":
                     System.out.println(i+") Kill " +questObjective.leftToKill+ " " +questObjective.enemy+ " in the " +questObjective.level+ " zone.");
                     break;
-                case "collect":
+                case "fetch":
                     System.out.println(i+") Collect " +questObjective.itemName+ " from somewhere in the " +questObjective.level+ " zone.");
                     break;
-                case "kill_collect":
+                case "kill_fetch":
                     System.out.println(i+") Collect " +questObjective.itemName+ " by killing " +questObjective.leftToKill+ " " +questObjective.enemy+ " in the " +questObjective.level+ " zone.");
                     break;
                 case "rescue":
@@ -138,7 +143,7 @@ public class Quest {
                 case "travel":
                     System.out.println(i+") Travel to the " +questObjective.level+ " zone.");
                     break;
-                case "speak_collect":
+                case "speak_fetch":
                     System.out.println(i+") Collect " +questObjective.itemName+ " from " +questObjective.speakToNPC+ " in the " +questObjective.level+ " zone.");
                     break;
                 case "fight":
@@ -190,10 +195,6 @@ public class Quest {
             i++;
         }
     }
-
-
-
-
 
 
 }

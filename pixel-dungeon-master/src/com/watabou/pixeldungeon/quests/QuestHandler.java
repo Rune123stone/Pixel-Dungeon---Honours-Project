@@ -19,45 +19,72 @@ public class QuestHandler {
         this.questObjective = questObjective;
     }
 
+    //handles interaction with NPC if the NPC has a quest for the player
+    public void handleNPCInteraction(NPC npc, Quest quest) {
+        String objectiveType = questObjective.questType;
+
+        if (npc.speakToQuest) { //if the NPC being interacted with is part of a "speak" quest or "speak_fetch" quest, handle it using these interaction methods
+            switch (objectiveType) {
+                case "speak":
+                    handleSpeakQuest(npc, quest);
+                    break;
+                case "speak_fetch":
+                    handleSpeakFetchQuest(npc, quest);
+                    break;
+            }
+
+        } else {
+
+            switch (objectiveType) {
+                case "kill":
+                    killQuestInteract(npc, quest);
+                    break;
+                case "fetch":
+                    fetchQuestInteract(npc, quest);
+                    break;
+                case "kill_fetch":
+                    fetchQuestInteract(npc, quest);
+                    break;
+            }
+        }
+    }
+
     /**
-     *FETCH quest methods & variables
+     * FETCH quest methods & variables
      */
     //handles the interaction of FETCH quests. Works for KILL + FETCH quests as well.
-    public  void fetchQuestCompleteInteract(NPC npc, Quest quest) { //take in item as well.
+    public void fetchQuestInteract(NPC npc, Quest quest) { //take in item as well.
 
         if (quest.given) {
-            Item item = Dungeon.hero.belongings.getItem(DriedRose.class); //checks if a hero has this item. DriedRose is used as an example in the mean time.
+            //Item item = Dungeon.hero.belongings.getItem(DriedRose.class); //checks if a hero has this item. DriedRose is used as an example in the mean time.
+
+            Item item = null;
+
+            // *** obtains item using reflection ***
+            String itemPackage = "com.watabou.pixeldungeon.items.";
+            String itemName = questObjective.itemName;
+            String itemClassName = itemPackage.concat(itemName);
+
+            try {
+                Class<?> itemClass = Class.forName(itemClassName);
+                Item questItem = (Item) itemClass.newInstance();
+
+                // checks to see if item is in hero's inventory
+                item = Dungeon.hero.belongings.getItem(questItem.getClass());
+            } catch (Exception e) {
+                System.out.println("Error in method: fetchQuestInteract, class: QuestHandler");
+                e.printStackTrace();
+            }
+
             if (item != null) {
                 GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
                 quest.curObjective++;
             } else {
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT ));
+                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
             }
         } else {
             GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
             quest.given = true;
-        }
-    }
-
-    public void fetchQuestItemFromNPC(NPC npc) {
-        try {
-
-            String itemPackage = "com.watabou.pixeldungeon.items.quest.";
-            String itemClassName = itemPackage.concat(questObjective.itemName);
-            Class<?> item = Class.forName(itemClassName);
-
-            questObjective.QUEST_GIVEN_TEXT = "Ey Boi, I got something 4 u..";
-
-            if (npc.hasQuestItem) {
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT ));
-
-                Dungeon.level.drop((Item)item.newInstance(), Dungeon.hero.pos).sprite.drop();
-                npc.assignQuestItem(false);
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error in method: fetchQuestItemFromNPC");
-            e.printStackTrace();
         }
     }
 
@@ -92,7 +119,7 @@ public class QuestHandler {
                     break;
             }
 
-            Dungeon.level.drop((Item)item.newInstance(), randomPos);
+            Dungeon.level.drop((Item) item.newInstance(), randomPos);
 
 
         } catch (Exception e) {
@@ -102,11 +129,11 @@ public class QuestHandler {
     }
 
     /**
-     * KILL quest methods & variables
+     * kill quest methods & variables
      */
     public boolean killedAll = false;
 
-    //works for KILL + FETCH quests as well
+    //works for kill + fetch quests as well
     public void spawnKillQuestMobs(Level level) {
         try {
 
@@ -114,7 +141,7 @@ public class QuestHandler {
             String mobPackage = "com.watabou.pixeldungeon.actors.mobs.";
             String mobClassName = mobPackage.concat(questObjective.enemy);
             Class<?> enemy = Class.forName(mobClassName);
-            System.out.println("Enemy type: " +enemy.getSimpleName());
+            System.out.println("Enemy type: " + enemy.getSimpleName());
 
             for (int i = 0; i < questObjective.leftToKill; i++) { //for all enemies that need to spawn
                 Mob enemyMob = (Mob) enemy.newInstance(); //spawn new enemy
@@ -123,7 +150,7 @@ public class QuestHandler {
                 SewerLevel.mobs.add(enemyMob); //adds the enemy to the level
                 Actor.occupyCell(enemyMob);
 
-                System.out.println("spawned mob "+i+ " at position " +enemyMob.pos);
+                System.out.println("spawned mob " + i + " at position " + enemyMob.pos);
             }
         } catch (Exception e) {
             System.out.println("spawnKillQuestMobs: ");
@@ -133,7 +160,7 @@ public class QuestHandler {
 
     //gets called when quest enemy is killed
     public void handleKillQuest() {
-        if (questObjective.leftToKill != 0) {
+        if (questObjective.leftToKill != 1) {
             questObjective.leftToKill--;
         } else {
             killedAll = true;
@@ -141,14 +168,14 @@ public class QuestHandler {
     }
 
     //gets called when interacting with quest giver of Kill Quest
-    public void killQuestCompleteInteract(NPC npc, Quest quest) {
+    public void killQuestInteract(NPC npc, Quest quest) {
 
         if (quest.given) {
             if (questObjective.leftToKill == 0) { //checks if a hero has killed all necessary enemies
                 GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_COMPLETED_TEXT));
                 quest.curObjective++;
             } else {
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT ));
+                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
             }
         } else {
             GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
@@ -157,7 +184,7 @@ public class QuestHandler {
     }
 
     /**
-     * SPECIAL CASE: KILL + FETCH quest
+     * SPECIAL CASE: kill + fetch quest
      */
     public void handleKillFetchQuest(Mob curMob) {
 
@@ -170,7 +197,7 @@ public class QuestHandler {
             if (questObjective.leftToKill != 1) {
                 questObjective.leftToKill--;
             } else {
-                Dungeon.level.drop((Item)item.newInstance(), curMob.pos).sprite.drop();
+                Dungeon.level.drop((Item) item.newInstance(), curMob.pos).sprite.drop();
             }
 
         } catch (Exception e) {
@@ -182,17 +209,98 @@ public class QuestHandler {
     /**
      * SpeakTo NPC quest
      */
-    public void speakToNPC(NPC npc, Quest quest) {
-        if (npc.speakToQuest) {
-            GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT ));
-            quest.curObjective++;
-            npc.assignSpeakToQuest(false);
+    //gets called when speaking to an NPC you must speak to as part of the speak quest.
+    public void handleSpeakQuest(NPC npc, Quest quest) {
+
+        GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
+        quest.curObjective++;
+        npc.assignSpeakToQuest(false);
+
+    }
+
+    //gets called when when interacting with quest giver, not the NPC you must speak to
+    public void speakQuestInteract(NPC npc, Quest quest) {
+        if (quest.given) {
+            GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_GIVEN_TEXT));
+        } else {
+            GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+            quest.given = true;
         }
+    }
+
+    /**
+     * SPECIAL CASE: SpeakTo NPC + Fetch quest
+     */
+    //gets called when speaking to an NPC you must speak to as part of the speak_fetch quest. NPC will give you an item.
+    public void handleSpeakFetchQuest(NPC npc, Quest quest) {
+
+        GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
+
+        String itemPackage = "com.watabou.pixeldungeon.items.";
+        String itemName = questObjective.itemName;
+        String itemClassName = itemPackage.concat(itemName);
+
+        try {
+            Class<?> itemClass = Class.forName(itemClassName);
+
+            Item questItem = (Item) itemClass.newInstance();
+
+            questItem.doPickUp(Dungeon.hero);
+
+        } catch (Exception e) {
+            System.out.println("Error in method: handleSpeakFetchQuest, class: QuestHandler");
+            e.printStackTrace();
+        }
+
+        quest.curObjective++;
+        npc.assignSpeakToQuest(false);
+
     }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //other methods - thought of a better way to do this
+
+    public void fetchQuestItemFromNPC(NPC npc) {
+        try {
+
+            String itemPackage = "com.watabou.pixeldungeon.items.quest.";
+            String itemClassName = itemPackage.concat(questObjective.itemName);
+            Class<?> item = Class.forName(itemClassName);
+
+            questObjective.QUEST_GIVEN_TEXT = "Ey Boi, I got something 4 u..";
+
+            if (npc.hasQuestItem) {
+                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
+
+                Dungeon.level.drop((Item) item.newInstance(), Dungeon.hero.pos).sprite.drop();
+                npc.assignQuestItem(false);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error in method: fetchQuestItemFromNPC");
+            e.printStackTrace();
+        }
+    }
 
 
 }

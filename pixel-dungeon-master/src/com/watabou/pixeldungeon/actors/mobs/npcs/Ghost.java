@@ -46,6 +46,8 @@ import com.watabou.pixeldungeon.items.quest.RatSkull;
 import com.watabou.pixeldungeon.items.weapon.Weapon;
 import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.watabou.pixeldungeon.levels.SewerLevel;
+import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.GhostSprite;
 import com.watabou.pixeldungeon.utils.Utils;
@@ -108,8 +110,27 @@ public class Ghost extends NPC {
 	public void interact() {
 		sprite.turnTo( pos, Dungeon.hero.pos );
 		Sample.INSTANCE.play( Assets.SND_GHOST );
+
+//		if (quest != null) {
+//			System.out.println("Ey boi! I've been assigned a quest for you.");
+//		} else {
+//			System.out.println("Nope, I don't got no quest, I'm just a simple Blacksmith.");
+//		}
+
+		if (quest != null) {
+			int curObjective = quest.curObjective;
+			QuestObjective objective = quest.questObjectives.get(curObjective);
+
+			questHandler = new com.watabou.pixeldungeon.quests.QuestHandler(objective);
+
+			objective.QUEST_GIVEN_TEXT = "IVE GIVEN YOU A QUEST!!!!";
+			objective.QUEST_NOT_GIVEN_TEXT = "IVE GOT A QUEST!!!!";
+			questHandler.handleNPCInteraction(this, quest);
+		} else {
+			System.out.println("I dont got no quest");
+		}
 		
-		Quest.type.handler.interact( this );
+		//Quest.type.handler.interact( this );
 	}
 	
 	@Override
