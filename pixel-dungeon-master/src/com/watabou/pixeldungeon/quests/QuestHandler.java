@@ -1,6 +1,7 @@
 package com.watabou.pixeldungeon.quests;
 
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.Journal;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
@@ -44,6 +45,9 @@ public class QuestHandler {
                     break;
                 case "kill_fetch":
                     fetchQuestInteract(npc, quest);
+                    break;
+                case "speak":
+                    speakQuestInteract(npc, quest);
                     break;
             }
         }
@@ -179,6 +183,19 @@ public class QuestHandler {
             }
         } else {
             GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+
+            // **** Adds quest to the quest journal ***
+            String journalEntry;
+
+            if (questObjective.leftToKill > 1) {
+                journalEntry = "Kill " +questObjective.leftToKill+ " " +questObjective.enemy+ "'s in the " +questObjective.level;
+            } else {
+                journalEntry = "Kill " +questObjective.leftToKill+ " " +questObjective.enemy+ " in the " +questObjective.level;
+            }
+
+            Journal.addQuestEntry(journalEntry);
+            // **** ****
+
             quest.given = true;
         }
     }
@@ -224,6 +241,13 @@ public class QuestHandler {
             GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_GIVEN_TEXT));
         } else {
             GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+
+            // **** adds quest to quest journal ****
+            String journalEntry = "Speak to " +npc.name+ " in the " +questObjective.level;
+
+            Journal.addQuestEntry(journalEntry);
+            // **** ****
+
             quest.given = true;
         }
     }

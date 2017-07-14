@@ -17,7 +17,9 @@ import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.Toolbar;
+import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.GLog;
+import com.watabou.pixeldungeon.windows.WndJournal;
 import com.watabou.pixeldungeon.windows.WndOptions;
 import com.watabou.utils.Bundle;
 
@@ -246,6 +248,7 @@ public class OverworldScene extends PixelScene {
         btnJournal = new OverworldButton( TXT_JOURNAL ) {
             @Override
             protected void onClick() {
+                show(new WndJournal());
                 System.out.println(hero.currentZone);
                 System.out.println(hero.curPos);
             }
@@ -304,6 +307,11 @@ public class OverworldScene extends PixelScene {
 //        btnActThree.setRect(0, Game.height / 2 + 230, Game.width, 40);
 //        btnActThree.setPos(0, Game.height / 2 + 230);
 
+    }
+
+    public static void show( Window wnd ) {
+        //cancelCellSelector();
+        scene.add( wnd );
     }
 
     public void destroy() {

@@ -44,6 +44,7 @@ import com.watabou.pixeldungeon.items.rings.Ring;
 import com.watabou.pixeldungeon.items.scrolls.Scroll;
 import com.watabou.pixeldungeon.items.wands.Wand;
 import com.watabou.pixeldungeon.levels.*;
+import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
@@ -126,7 +127,7 @@ public class Dungeon {
 		
 		hero = new Hero();
 		hero.live();
-		
+
 		Badges.reset();
 
 		// StartScene.curClass = HeroClass.WARRIOR;
@@ -513,17 +514,22 @@ public class Dungeon {
 
 		//ensures that a null error is not thrown when startinga new game. OverworldScene.hero = null if new game since the player spawns in a level scene, not the overworld scene,
 		// thus OverworldScene.hero is not ceeated yet.
-		if (InterlevelScene.mode == InterlevelScene.Mode.NEWGAME) {
+//		if (InterlevelScene.mode == InterlevelScene.Mode.NEWGAME) {
+//			currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+//		} else {
+//			try {
+//				currentZone = OverworldScene.hero.currentZone;
+//			} catch (Exception e) {
+//				currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+//
+//			}
+//		}
+
+		if (OverworldScene.hero == null) {
 			currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
 		} else {
-			try {
-				currentZone = OverworldScene.hero.currentZone;
-			} catch (Exception e) {
-				currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
-
-			}
+			currentZone = OverworldScene.hero.currentZone;
 		}
-
 
 		if (currentZone.equals("Caves")) {
 			currentZone = "Cave";

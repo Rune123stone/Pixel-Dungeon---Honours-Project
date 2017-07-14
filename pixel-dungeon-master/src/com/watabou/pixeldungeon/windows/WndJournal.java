@@ -32,7 +32,8 @@ import com.watabou.pixeldungeon.ui.Window;
 
 public class WndJournal extends Window {
 	
-	private static final int WIDTH		= 112;
+	//private static final int WIDTH		= 112;
+	private static final int WIDTH		= 128;
 	private static final int HEIGHT_P	= 160;
 	private static final int HEIGHT_L	= 144;
 	
@@ -59,13 +60,25 @@ public class WndJournal extends Window {
 		Collections.sort( Journal.records );
 		
 		float pos = 0;
+
+		// *** uses listItem, not questList item. Uncomment if things start to go wrong with journal. ***
+//		for (Journal.Record rec : Journal.records) {
+//			ListItem item = new ListItem( rec.feature, rec.depth );
+//			item.setRect( 0, pos, WIDTH, ITEM_HEIGHT );
+//			content.add( item );
+//
+//			pos += item.height();
+//		}
+
+		// *** uses listQuestItem, not listItem item. Comment if things start to go wrong with journal. ***
 		for (Journal.Record rec : Journal.records) {
-			ListItem item = new ListItem( rec.feature, rec.depth );
+			ListQuestItem item = new ListQuestItem( rec.questEntry, rec.depth );
 			item.setRect( 0, pos, WIDTH, ITEM_HEIGHT );
 			content.add( item );
-			
+
 			pos += item.height();
 		}
+
 		
 		content.setSize( WIDTH, pos );
 		
@@ -119,6 +132,54 @@ public class WndJournal extends Window {
 			
 			icon.y = depth.y - 1;
 			
+			feature.y = PixelScene.align( depth.y + depth.baseLine() - feature.baseLine() );
+		}
+	}
+
+	// **** quest item list ***
+	private static class ListQuestItem extends Component {
+		private BitmapText feature;
+		private BitmapText depth;
+
+		private Image icon;
+
+		public ListQuestItem( String questEntry, int d ) {
+			super();
+
+			feature.text( questEntry );
+			feature.measure();
+
+			depth.text( Integer.toString( d ) );
+			depth.measure();
+
+			if (d == Dungeon.depth) {
+				feature.hardlight( TITLE_COLOR );
+				depth.hardlight( TITLE_COLOR );
+			}
+		}
+
+		@Override
+		protected void createChildren() {
+			feature = PixelScene.createText( 9 );
+			add( feature );
+
+			depth = new BitmapText( PixelScene.font1x );
+			add( depth );
+
+			icon = Icons.get( Icons.DEPTH );
+			add( icon );
+		}
+
+		@Override
+		protected void layout() {
+
+			icon.x = width - icon.width;
+
+			depth.x = icon.x - 1 - depth.width();
+			depth.y = PixelScene.align( y + (height - depth.height()) / 2 );
+
+			icon.y = depth.y - 1;
+
 			feature.y = PixelScene.align( depth.y + depth.baseLine() - feature.baseLine() );
 		}
 	}

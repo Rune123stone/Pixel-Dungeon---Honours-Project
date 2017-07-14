@@ -32,19 +32,20 @@ public class Journal {
 		ALCHEMY					( "Alchemy pot" ),
 		GARDEN					( "Garden" ),
 		STATUE					( "Animated statue" ),
-		
+
 		GHOST					( "Sad ghost" ),
 		WANDMAKER				( "Old wandmaker" ),
 		TROLL					( "Troll blacksmith" ),
-		IMP						( "Ambitious imp" );
-		
+		IMP						( "Ambitious imp" ),
+		QUEST					( "Kill bats and collect money" );
+
 		public String desc;
-		
+
 		private Feature( String desc ) {
 			this.desc = desc;
 		}
 	};
-	
+
 	public static class Record implements Comparable<Record>, Bundlable {
 		
 		private static final String FEATURE	= "feature";
@@ -52,12 +53,19 @@ public class Journal {
 		
 		public Feature feature;
 		public int depth;
-		
+
+		public String questEntry;
+
 		public Record() {
 		}
 		
 		public Record( Feature feature, int depth ) {
 			this.feature = feature;
+			this.depth = depth;
+		}
+
+		public Record( String questEntry, int depth) {
+			this.questEntry = questEntry;
 			this.depth = depth;
 		}
 
@@ -108,6 +116,10 @@ public class Journal {
 		}
 		
 		records.add( new Record( feature, Dungeon.depth ) );
+	}
+
+	public static void addQuestEntry(String questEntry) {
+		records.add( new Record( questEntry, Dungeon.depth ) );
 	}
 	
 	public static void remove( Feature feature ) {

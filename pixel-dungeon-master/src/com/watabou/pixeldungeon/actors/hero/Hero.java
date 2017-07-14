@@ -174,7 +174,7 @@ public class Hero extends Char {
 		name = "you";
 
 		//change to 20 when done testing - makes hero invincible
-		HP = HT = 1000;
+		HP = HT = 10000;
 		//STR = STARTING_STR;
 		STR = 10000;
 		awareness = 0.1f;

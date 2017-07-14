@@ -21,10 +21,7 @@ import java.util.*;
 
 import com.watabou.noosa.Scene;
 import com.watabou.noosa.audio.Sample;
-import com.watabou.pixeldungeon.Assets;
-import com.watabou.pixeldungeon.Challenges;
-import com.watabou.pixeldungeon.Dungeon;
-import com.watabou.pixeldungeon.Statistics;
+import com.watabou.pixeldungeon.*;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.blobs.Alchemy;
@@ -144,8 +141,11 @@ public abstract class Level implements Bundlable {
     private static final String PLANTS = "plants";
     private static final String MOBS = "mobs";
     private static final String BLOBS = "blobs";
+    private static final String GIVENQUESTS = "given quests";
 
     public static String zone;
+    public ArrayList<Quest> givenQuests = new ArrayList<>();
+
 
     public void create() {
 
@@ -235,6 +235,7 @@ public abstract class Level implements Bundlable {
 
         String npcPackage = "com.watabou.pixeldungeon.actors.mobs.npcs.";
 
+
         String questGiverLevel;
         String questGiverLevelClassName;
         int currentAct = DataHandler.getInstance().currentAct;
@@ -292,7 +293,18 @@ public abstract class Level implements Bundlable {
                             questGiver.pos = spawnPos(questGiverLevel); //assigns the NPC a specific position depnding on the Level, eg. if Forest level, use Forest.spawnPos.
                             mobs.add(questGiver);
                             Actor.occupyCell(questGiver);
+
+                           // questGiver.viewDistance = 1000;
+                            Dungeon.hero.viewDistance = 1000;
+                            System.out.println(questGiver.pos);
                         } else {
+
+                            for (Quest givenQuest : givenQuests) {
+                                if (npcName.equals(givenQuest.questGiver)) {
+                                    questGiver.assignQuest(givenQuest);
+                                }
+                            }
+
                             System.out.println("NPC has already been spawned.");
                         }
 
@@ -302,6 +314,8 @@ public abstract class Level implements Bundlable {
 
                         if (prerequisiteQuestCompleted) { //is the current quest's prerequisite quest completed? if yes, assign the quest to the quest giver, else do not.
                             questGiver.assignQuest(curQuest);
+
+                            givenQuests.add(curQuest);
 
                             System.out.println("Succesfully spawned Quest Giver and assigned it a quest.");
                         } else {
@@ -453,6 +467,7 @@ public abstract class Level implements Bundlable {
         bundle.put(PLANTS, plants.values());
         bundle.put(MOBS, mobs);
         bundle.put(BLOBS, blobs.values());
+        //bundle.put(GIVENQUESTS, givenQuests.;
     }
 
     public int tunnelTile() {
