@@ -319,7 +319,7 @@ public class ForestLevel extends RegularLevel {
     @Override
     protected void decorate() {
         try {
-            Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the hero to NOT pass over water (lake).
+           // Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the hero to NOT pass over water (lake).
             Terrain.flags[Terrain.WALL_DECO] = Terrain.PASSABLE; //allows the hero to pass over wall decoration cells (will be grass cells).
 
             Level.zone = "Forest";

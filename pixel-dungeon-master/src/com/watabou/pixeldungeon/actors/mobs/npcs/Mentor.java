@@ -31,13 +31,13 @@ public class Mentor extends NPC {
 
         switch (selector) {
             case 1:
-                location = "Caves";
+                location = "Forest";
                 break;
             case 2:
                 location = "Forest";
                 break;
             case 3:
-                location = "Dungeon";
+                location = "Forest";
                 break;
         }
 

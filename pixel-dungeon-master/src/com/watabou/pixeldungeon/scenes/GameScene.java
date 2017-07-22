@@ -55,11 +55,14 @@ import com.watabou.pixeldungeon.levels.RegularLevel;
 import com.watabou.pixeldungeon.levels.features.Chasm;
 import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.plants.Plant;
+import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.sprites.DiscardedItemSprite;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.sprites.PlantSprite;
+import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.ui.AttackIndicator;
 import com.watabou.pixeldungeon.ui.Banner;
 import com.watabou.pixeldungeon.ui.BusyIndicator;
@@ -71,11 +74,8 @@ import com.watabou.pixeldungeon.ui.Toast;
 import com.watabou.pixeldungeon.ui.Toolbar;
 import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.GLog;
-import com.watabou.pixeldungeon.windows.WndBackgroundStory;
+import com.watabou.pixeldungeon.windows.*;
 import com.watabou.pixeldungeon.windows.WndBag.Mode;
-import com.watabou.pixeldungeon.windows.WndGame;
-import com.watabou.pixeldungeon.windows.WndBag;
-import com.watabou.pixeldungeon.windows.WndStory;
 import com.watabou.utils.Random;
 
 public class GameScene extends PixelScene {
@@ -106,7 +106,7 @@ public class GameScene extends PixelScene {
 	private Group ripples;
 	private Group plants;
 	private Group heaps;
-	private Group mobs;
+	public static Group mobs;
 	private Group emitters;
 	private Group effects;
 	private Group gases;
@@ -268,20 +268,22 @@ public class GameScene extends PixelScene {
 //				break;
 //			}
 
-			switch (Dungeon.hero.heroBackground) {
-				case CRIMINAL:
-					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_CRIMINAL);
-					break;
-				case KNIGHT:
-					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_KNIGHT);
-					break;
-				case OUTSIDER:
-					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_OUTSIDER);
-					break;
-				case PEASANT:
-					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_PEASANT);
-					break;
-			}
+//			switch (Dungeon.hero.heroBackground) {
+//				case CRIMINAL:
+//					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_CRIMINAL);
+//					break;
+//				case KNIGHT:
+//					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_KNIGHT);
+//					break;
+//				case OUTSIDER:
+//					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_OUTSIDER);
+//					break;
+//				case PEASANT:
+//					WndBackgroundStory.showBackgroundStory(WndBackgroundStory.ID_PEASANT);
+//					break;
+//			}
+
+
 
 			if (Dungeon.hero.isAlive() && Dungeon.depth != 22) {
 				Badges.validateNoKilling();
@@ -289,7 +291,9 @@ public class GameScene extends PixelScene {
 			break;
 		default:
 		}
-		
+
+
+
 		ArrayList<Item> dropped = Dungeon.droppedItems.get( Dungeon.depth );
 		if (dropped != null) {
 			for (Item item : dropped) {
@@ -337,6 +341,15 @@ public class GameScene extends PixelScene {
 			InterlevelScene.mode = InterlevelScene.Mode.NONE;
 
 			fadeIn();
+		}
+
+		for (Quest quest : DataHandler.getInstance().questList) {
+			if (quest.questGiver.equals("none") && !quest.given) {
+				WndNoQuestGiver.showQuestDialogue(quest.QUEST_NOT_GIVEN_TEXT);
+
+				QuestHandler.addToQuestJournal(quest);
+
+			}
 		}
 	}
 	
@@ -599,7 +612,6 @@ public class GameScene extends PixelScene {
 	}
 	
 	public static void selectCell( CellSelector.Listener listener ) {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!I'm being called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		cellSelector.listener = listener;
 		scene.prompt(listener.prompt());
 	}

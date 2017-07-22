@@ -96,6 +96,7 @@ import com.watabou.pixeldungeon.levels.features.Chasm;
 import com.watabou.pixeldungeon.levels.features.Sign;
 import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.plants.Earthroot;
+import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
@@ -166,9 +167,11 @@ public class Hero extends Char {
 	
 	public int lvl = 1;
 	public int exp = 0;
-	
-	private ArrayList<Mob> visibleEnemies; 
-	
+
+	private ArrayList<Mob> visibleEnemies;
+
+	public ArrayList<Quest> givenQuests = new ArrayList<>();
+
 	public Hero() {
 		super();
 		name = "you";

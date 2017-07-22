@@ -36,9 +36,12 @@ import com.watabou.pixeldungeon.effects.Wound;
 import com.watabou.pixeldungeon.items.Generator;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.levels.Level;
+import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
+import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
@@ -82,6 +85,10 @@ public abstract class Mob extends Char {
 	
 	private static final String STATE	= "state";
 	private static final String TARGET	= "target";
+
+
+	private static final String QUEST = "quest";
+	public Quest quest;
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -102,6 +109,8 @@ public abstract class Mob extends Char {
 			bundle.put( STATE, Follow.TAG);
 		}
 		bundle.put( TARGET, target );
+
+		bundle.put(QUEST, quest);
 	}
 	
 	@Override
@@ -125,6 +134,12 @@ public abstract class Mob extends Char {
 		}
 
 		target = bundle.getInt( TARGET );
+
+		Bundlable bundlable = bundle.get(QUEST);
+
+		if (bundlable != null) {
+			quest = (Quest) bundlable;
+		}
 	}
 	
 	public CharSprite sprite() {
@@ -161,7 +176,10 @@ public abstract class Mob extends Char {
 		return state.act( enemyInFOV, justAlerted );
 	}
 
-	
+	public void assignQuest(Quest quest) {
+		this.quest = quest;
+	}
+
 	protected Char chooseEnemy() {
 		
 		if (buff( Amok.class ) != null) {
@@ -374,6 +392,12 @@ public abstract class Mob extends Char {
 
 		if (Dungeon.hero.isAlive() && !Dungeon.visible[pos]) {	
 			GLog.i( TXT_DIED );
+		}
+
+		if (quest != null) {
+			QuestHandler questHandler = new QuestHandler(quest.getCurObjective());
+
+			questHandler.handleKillQuest(quest);
 		}
 	}
 	

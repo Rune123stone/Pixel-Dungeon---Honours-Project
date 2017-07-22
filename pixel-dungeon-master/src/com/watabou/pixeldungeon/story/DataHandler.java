@@ -1,13 +1,18 @@
 package com.watabou.pixeldungeon.story;
 
 import android.os.Environment;
+import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Mentor;
+import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Relative;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Wizard;
 import com.watabou.pixeldungeon.items.Item;
+import com.watabou.pixeldungeon.levels.ForestLevel;
 import com.watabou.pixeldungeon.levels.Level;
+import com.watabou.pixeldungeon.levels.SewerLevel;
 import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.pixeldungeon.quests.QuestObjective;
+import com.watabou.pixeldungeon.scenes.OverworldScene;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -25,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Random;
 
 public class DataHandler {
@@ -46,6 +52,10 @@ public class DataHandler {
     public ArrayList<Quest> actThreeQuests = new ArrayList<>();
     public String chosenItem = "";
     public String story = "";
+
+
+    public ArrayList<Quest> givenQuests = new ArrayList<>();
+    public ArrayList<Quest> questList = new ArrayList<>();
 
     public int currentAct = 1;
 
@@ -114,13 +124,13 @@ public class DataHandler {
                     questName.appendChild(doc.createTextNode("Call to Power"));
                     quest.appendChild(questName);
 
-//                    Element questGiver = doc.createElement("quest_giver");
-//                    questGiver.appendChild(doc.createTextNode("none"));
-//                    quest.appendChild(questGiver);
-
                     Element questGiver = doc.createElement("quest_giver");
-                    questGiver.appendChild(doc.createTextNode("MENTOR"));
+                    questGiver.appendChild(doc.createTextNode("none"));
                     quest.appendChild(questGiver);
+
+//                    Element questGiver = doc.createElement("quest_giver");
+//                    questGiver.appendChild(doc.createTextNode("MENTOR"));
+//                    quest.appendChild(questGiver);
 
                     Element questReward = doc.createElement("quest_reward");
                     questReward.appendChild(doc.createTextNode("40xp"));
@@ -134,21 +144,21 @@ public class DataHandler {
                     prerequisiteQuestName.appendChild(doc.createTextNode("none"));
                     quest.appendChild(prerequisiteQuestName);
 
-//                    Element questDialogue = doc.createElement("quest_dialogue");
-//                    questDialogue.appendChild(doc.createTextNode("callToPower.txt"));
-//                    quest.appendChild(questDialogue);
+                    Element questDialogue = doc.createElement("quest_dialogue");
+                    questDialogue.appendChild(doc.createTextNode("callToPower.txt"));
+                    quest.appendChild(questDialogue);
 
-                    Element questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
-                    questNotGivenDialogue.appendChild(doc.createTextNode("rescueMission_not_given.txt"));
-                    quest.appendChild(questNotGivenDialogue);
-
-                    Element questGivenDialogue = doc.createElement("quest_given_dialogue");
-                    questGivenDialogue.appendChild(doc.createTextNode("rescueMission_given.txt"));
-                    quest.appendChild(questGivenDialogue);
-
-                    Element questCompletedDialogue = doc.createElement("quest_completed_dialogue");
-                    questCompletedDialogue.appendChild(doc.createTextNode("rescueMission_completed.txt"));
-                    quest.appendChild(questCompletedDialogue);
+//                    Element questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
+//                    questNotGivenDialogue.appendChild(doc.createTextNode("rescueMission_not_given.txt"));
+//                    quest.appendChild(questNotGivenDialogue);
+//
+//                    Element questGivenDialogue = doc.createElement("quest_given_dialogue");
+//                    questGivenDialogue.appendChild(doc.createTextNode("rescueMission_given.txt"));
+//                    quest.appendChild(questGivenDialogue);
+//
+//                    Element questCompletedDialogue = doc.createElement("quest_completed_dialogue");
+//                    questCompletedDialogue.appendChild(doc.createTextNode("rescueMission_completed.txt"));
+//                    quest.appendChild(questCompletedDialogue);
 
                     Element questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
@@ -158,16 +168,32 @@ public class DataHandler {
                     questObjective.appendChild(questObjectiveName);
 
                     Element questType = doc.createElement("quest_type");
-                    questType.appendChild(doc.createTextNode("speak"));
+                    questType.appendChild(doc.createTextNode("kill"));
                     questObjective.appendChild(questType);
 
-                    Element questNPC = doc.createElement("quest_npc");
-                    questNPC.appendChild(doc.createTextNode("MENTOR"));
-                    questObjective.appendChild(questNPC);
+                    Element enemy = doc.createElement("enemy");
+                    enemy.appendChild(doc.createTextNode("kidnap_enemy"));
+                    questObjective.appendChild(enemy);
+
+                    Element amountToKill = doc.createElement("amount_to_kill");
+                    amountToKill.appendChild(doc.createTextNode("6"));
+                    questObjective.appendChild(amountToKill);
 
                     Element questLocation = doc.createElement("quest_location");
-                    questLocation.appendChild(doc.createTextNode("mentor_location"));
+                    questLocation.appendChild(doc.createTextNode("mentor_kidnap_location"));
                     questObjective.appendChild(questLocation);
+
+//                    Element questType = doc.createElement("quest_type");
+//                    questType.appendChild(doc.createTextNode("speak"));
+//                    questObjective.appendChild(questType);
+//
+//                    Element questNPC = doc.createElement("quest_npc");
+//                    questNPC.appendChild(doc.createTextNode("MENTOR"));
+//                    questObjective.appendChild(questNPC);
+//
+//                    Element questLocation = doc.createElement("quest_location");
+//                    questLocation.appendChild(doc.createTextNode("mentor_location"));
+//                    questObjective.appendChild(questLocation);
 
                     quest = doc.createElement("quest");
                     firstTemplate.appendChild(quest);
@@ -192,15 +218,15 @@ public class DataHandler {
                     prerequisiteQuestName.appendChild(doc.createTextNode("Call to Power"));
                     quest.appendChild(prerequisiteQuestName);
 
-                    questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
+                     Element questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
                     questNotGivenDialogue.appendChild(doc.createTextNode("findingTheSource_not_given.txt"));
                     quest.appendChild(questNotGivenDialogue);
 
-                    questGivenDialogue = doc.createElement("quest_given_dialogue");
+                    Element questGivenDialogue = doc.createElement("quest_given_dialogue");
                     questGivenDialogue.appendChild(doc.createTextNode("findingTheSource_given.txt"));
                     quest.appendChild(questGivenDialogue);
 
-                    questCompletedDialogue = doc.createElement("quest_completed_dialogue");
+                    Element questCompletedDialogue = doc.createElement("quest_completed_dialogue");
                     questCompletedDialogue.appendChild(doc.createTextNode("findingTheSource_completed.txt"));
                     quest.appendChild(questCompletedDialogue);
 
@@ -234,7 +260,7 @@ public class DataHandler {
                     questType.appendChild(doc.createTextNode("speak"));
                     questObjective.appendChild(questType);
 
-                    questNPC = doc.createElement("quest_npc");
+                    Element questNPC = doc.createElement("quest_npc");
                     questNPC.appendChild(doc.createTextNode("MENTOR"));
                     questObjective.appendChild(questNPC);
 
@@ -302,11 +328,11 @@ public class DataHandler {
                     questType.appendChild(doc.createTextNode("kill"));
                     questObjective.appendChild(questType);
 
-                    Element enemy = doc.createElement("enemy");
-                    enemy.appendChild(doc.createTextNode("kidnap_enemey"));
+                    enemy = doc.createElement("enemy");
+                    enemy.appendChild(doc.createTextNode("kidnap_enemy"));
                     questObjective.appendChild(enemy);
 
-                    Element amountToKill = doc.createElement("amount_to_kill");
+                    amountToKill = doc.createElement("amount_to_kill");
                     amountToKill.appendChild(doc.createTextNode("3"));
                     questObjective.appendChild(amountToKill);
 
@@ -370,7 +396,7 @@ public class DataHandler {
                     prerequisiteQuestName.appendChild(doc.createTextNode("none"));
                     quest.appendChild(prerequisiteQuestName);
 
-                    Element questDialogue = doc.createElement("quest_dialogue");
+                    questDialogue = doc.createElement("quest_dialogue");
                     questDialogue.appendChild(doc.createTextNode("homeBound.txt"));
                     quest.appendChild(questDialogue);
 
@@ -1495,7 +1521,10 @@ public class DataHandler {
                                     String speakToNPC = getVariableInfo(questObjectiveElement.getElementsByTagName("quest_npc").item(0).getTextContent());
                                     questObjectiveLocation =  getVariableInfo(questObjectiveElement.getElementsByTagName("quest_location").item(0).getTextContent());
 
-                                    questObjective = new QuestObjective("speak", questObjectiveName, speakToNPC, questObjectiveLocation);
+                                    //questObjective = new QuestObjective("speak", questObjectiveName, speakToNPC, questObjectiveLocation);
+
+                                    questObjective = new QuestObjective("speak", questObjectiveName, "Blacksmith", "Caves");
+
                                     quest.addObjective(questObjective);
 
                                     break;
@@ -2115,9 +2144,11 @@ public class DataHandler {
             case "item_collectable_boss_location":
                 return Item.collectable_mini_boss_location;
             case "item_information":
-                return Item.info;
+               // return Item.info;
+                return "PhantomFish";
             case "item_information_location":
-                return Item.info_location;
+                //return Item.info_location;
+                return "Forest";
             case "item_info_npc":
                 return Item.info_npc;
             case "item_info_npc_location":
@@ -2127,6 +2158,8 @@ public class DataHandler {
             case "item_boss_location":
                 return Item.boss_location;
 
+            case "kidnap_enemy":
+                return "Shaman";
 
             //mentor variables
             case "MENTOR":
@@ -2135,7 +2168,8 @@ public class DataHandler {
             case "mentor_location":
                 return Mentor.location;
             case "mentor_kidnap_location":
-                return Mentor.kidnapLocation;
+                //return Mentor.kidnapLocation;
+                return "Forest";
             case "missing_mentor_letter_location":
                 return "TBA";
 
@@ -2243,27 +2277,135 @@ public class DataHandler {
     //based on the quest's name, check if it's prerequisite quest has been completed.
     public boolean prerequisiteQuestCompleted(String questName) {
 
+        if (questName.equals("none")) {
+            return true;
+        }
+
         Quest curQuest = getQuest(questName);
 
         if (curQuest.prerequisiteQuestName.equals("none")) {
+            System.out.println("returning true on 'none'");
             return true;
         }
 
         Quest prerequisiteQuest = getQuest(curQuest.prerequisiteQuestName);
 
-        return prerequisiteQuest.questCompleted;
+        return prerequisiteQuest.questComplete;
     }
 
     //finds quest based on quest's name
-    public Quest getQuest(String questName) {
+    public Quest getQuest(String thisQuestName) {
         for (Quest quest : actOneQuests) {
-            if (quest.questName.equals(questName)) {
+            if (quest.questName.equals(thisQuestName)) {
                 return quest;
             }
         }
 
         return null;
     }
+
+
+    /**
+     * The following methods are used for returning instances of classes using reflection.
+     */
+
+    public Level getLevel(String levelName) {
+        Class<?> level;
+
+        String levelPackage = "com.watabou.pixeldungeon.levels.";
+        String levelClassName = levelPackage.concat(levelName).concat("Level");
+
+        try {
+            level = Class.forName(levelClassName);
+
+            return (Level)level.newInstance();
+        } catch (Exception e) {
+            System.out.println("Error in getLevel");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public NPC newNPC(String npcName) {
+        Class<?> npc;
+
+        String npcPackage = "com.watabou.pixeldungeon.actors.mobs.npcs.";
+        String npcClassName = npcPackage.concat(npcName);
+
+        try {
+            npc = Class.forName(npcClassName);
+
+            return (NPC)npc.newInstance();
+        } catch (Exception e) {
+            System.out.println("Error in getNPC");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Item newItem(String itemName) {
+        Class<?> item;
+
+        String itemPackage = "com.watabou.pixeldungeon.items.quest";
+        String itemClassName = itemPackage.concat(itemName);
+
+        try {
+
+            item = Class.forName(itemClassName);
+
+            return (Item)item.newInstance();
+
+
+        } catch (Exception e) {
+            System.out.println("Error in newItem");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public String getCurrentLevel() {
+        String currentZone;
+
+        if (OverworldScene.hero == null) {
+            currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+        } else {
+            currentZone = OverworldScene.hero.currentZone;
+        }
+
+        if (currentZone.equals("Caves")) {
+            currentZone = "Cave";
+        }
+
+        return currentZone;
+
+    }
+
+    public void displayMobs() {
+        try {
+            System.out.println("Forset Mobs:");
+            display(ForestLevel.mobs);
+
+            System.out.println("Dungeon Mobs:");
+            display(SewerLevel.mobs);
+        } catch (Exception e) {}
+    }
+
+    public void display(HashSet<Mob> hashset) {
+        for (Mob mob : hashset) {
+            System.out.println(mob.getClass().getSimpleName());
+        }
+    }
+
+
+
+
+
+
+
+
 
 
 }

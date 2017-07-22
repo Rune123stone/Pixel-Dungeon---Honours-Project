@@ -28,6 +28,7 @@ import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
+import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Generator;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.story.DataHandler;
@@ -306,13 +307,21 @@ public class InterlevelScene extends PixelScene {
 
         Dungeon.loadGame(StartScene.curClass);
 
+        Level level = Dungeon.loadLevel(StartScene.curClass);
+
         if (Dungeon.depth == -1) {
             Dungeon.depth = Statistics.deepestFloor;
-            Dungeon.switchLevel(Dungeon.loadLevel(StartScene.curClass), -1);
+            //Dungeon.switchLevel(Dungeon.loadLevel(StartScene.curClass), -1);
+            Dungeon.switchLevel(level, -1);
         } else {
-            Level level = Dungeon.loadLevel(StartScene.curClass);
+            //Level level = Dungeon.loadLevel(StartScene.curClass);
             Dungeon.switchLevel(level, Level.resizingNeeded ? level.adjustPos(Dungeon.hero.pos) : Dungeon.hero.pos);
         }
+
+        level.spawnQuestGiverNPCs();
+        level.spawnSpeakToQuestNPCS();
+        level.spawnFetchItems();
+        level.spawnKillQuestMobs();
     }
 
     private void resurrect() throws Exception {

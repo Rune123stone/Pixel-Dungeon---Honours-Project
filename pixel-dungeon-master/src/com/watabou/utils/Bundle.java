@@ -29,6 +29,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import com.watabou.pixeldungeon.quests.Quest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -102,6 +103,7 @@ public class Bundle {
 			}
 			
 			Class<?> cl = Class.forName( clName );
+
 			if (cl != null) {
 				Bundlable object = (Bundlable)cl.newInstance();
 				object.restoreFromBundle( this );
@@ -110,7 +112,7 @@ public class Bundle {
 				return null;
 			}
 		} catch (Exception e) {
-			e = null;
+			e.printStackTrace();
 			return null;
 		}	
 	}

@@ -121,6 +121,15 @@ public class Journal {
 	public static void addQuestEntry(String questEntry) {
 		records.add( new Record( questEntry, Dungeon.depth ) );
 	}
+
+	public static void removeQuestEntry(String givenQuestEntry) {
+		for (Record record : records) {
+			if (record.questEntry.equals(givenQuestEntry)) {
+				records.remove(record);
+				break;
+			}
+		}
+	}
 	
 	public static void remove( Feature feature ) {
 		int size = records.size();

@@ -27,6 +27,7 @@ import com.watabou.pixeldungeon.Journal;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.buffs.Buff;
 import com.watabou.pixeldungeon.actors.hero.Hero;
+import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.EquipableItem;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.quest.DarkGold;
@@ -34,6 +35,7 @@ import com.watabou.pixeldungeon.items.quest.Pickaxe;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.watabou.pixeldungeon.levels.Room;
 import com.watabou.pixeldungeon.levels.Room.Type;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.BlacksmithSprite;
 import com.watabou.pixeldungeon.utils.GLog;
@@ -82,79 +84,98 @@ public class Blacksmith extends NPC {
 	public void interact() {
 		
 		sprite.turnTo( pos, Dungeon.hero.pos );
-		
-		if (!Quest.given) {
-			
-			GameScene.show( new WndQuest( this, 
-				Quest.alternative ? TXT_BLOOD_1 : TXT_GOLD_1 ) {
-				
-				@Override
-				public void onBackPressed() {
-					super.onBackPressed();
-					
-					Quest.given = true;
-					Quest.completed = false;
-					
-					Pickaxe pick = new Pickaxe();
-					if (pick.doPickUp( Dungeon.hero )) {
-						GLog.i( Hero.TXT_YOU_NOW_HAVE, pick.name() );
-					} else {
-						Dungeon.level.drop( pick, Dungeon.hero.pos ).sprite.drop();
-					}
-				};
-			} );
-			
-			Journal.add( Journal.Feature.TROLL );
-			
-		} else if (!Quest.completed) {
-			if (Quest.alternative) {
-				
-				Pickaxe pick = Dungeon.hero.belongings.getItem( Pickaxe.class );
-				if (pick == null) {
-					tell( TXT2 );
-				} else if (!pick.bloodStained) {
-					tell( TXT4 );
-				} else {
-					if (pick.isEquipped( Dungeon.hero )) {
-						pick.doUnequip( Dungeon.hero, false );
-					}
-					pick.detach( Dungeon.hero.belongings.backpack );
-					tell( TXT_COMPLETED );
-					
-					Quest.completed = true;
-					Quest.reforged = false;
-				}
-				
-			} else {
-				
-				Pickaxe pick = Dungeon.hero.belongings.getItem( Pickaxe.class );
-				DarkGold gold = Dungeon.hero.belongings.getItem( DarkGold.class );
-				if (pick == null) {
-					tell( TXT2 );
-				} else if (gold == null || gold.quantity() < 15) {
-					tell( TXT3 );
-				} else {
-					if (pick.isEquipped( Dungeon.hero )) {
-						pick.doUnequip( Dungeon.hero, false );
-					}
-					pick.detach( Dungeon.hero.belongings.backpack );
-					gold.detachAll( Dungeon.hero.belongings.backpack );
-					tell( TXT_COMPLETED );
-					
-					Quest.completed = true;
-					Quest.reforged = false;
-				}
-				
+
+		System.out.println("Speak to quest: " +speakToQuest);
+		System.out.println("Quest Giver: " +questGiver);
+		System.out.println(quest);
+
+		if (!questGiver) {
+			if (quest != null) {
+
+				questHandler = new QuestHandler(quest.getCurObjective());
+
+				System.out.println(quest.getCurObjective().questType);
+
+				quest.getCurObjective().QUEST_COMPLETED_TEXT = "YAAAAY, now go speak to the Ghost again in the Forest";
+
+				questHandler.handleNPCInteraction(this, quest);
 			}
-		} else if (!Quest.reforged) {
-			
-			GameScene.show( new WndBlacksmith( this, Dungeon.hero ) );
-			
-		} else {
-			
-			tell( TXT_GET_LOST );
-			
+
 		}
+
+//
+//		if (!Quest.given) {
+//
+//			GameScene.show( new WndQuest( this,
+//				Quest.alternative ? TXT_BLOOD_1 : TXT_GOLD_1 ) {
+//
+//				@Override
+//				public void onBackPressed() {
+//					super.onBackPressed();
+//
+//					Quest.given = true;
+//					Quest.completed = false;
+//
+//					Pickaxe pick = new Pickaxe();
+//					if (pick.doPickUp( Dungeon.hero )) {
+//						GLog.i( Hero.TXT_YOU_NOW_HAVE, pick.name() );
+//					} else {
+//						Dungeon.level.drop( pick, Dungeon.hero.pos ).sprite.drop();
+//					}
+//				};
+//			} );
+//
+//			Journal.add( Journal.Feature.TROLL );
+//
+//		} else if (!Quest.completed) {
+//			if (Quest.alternative) {
+//
+//				Pickaxe pick = Dungeon.hero.belongings.getItem( Pickaxe.class );
+//				if (pick == null) {
+//					tell( TXT2 );
+//				} else if (!pick.bloodStained) {
+//					tell( TXT4 );
+//				} else {
+//					if (pick.isEquipped( Dungeon.hero )) {
+//						pick.doUnequip( Dungeon.hero, false );
+//					}
+//					pick.detach( Dungeon.hero.belongings.backpack );
+//					tell( TXT_COMPLETED );
+//
+//					Quest.completed = true;
+//					Quest.reforged = false;
+//				}
+//
+//			} else {
+//
+//				Pickaxe pick = Dungeon.hero.belongings.getItem( Pickaxe.class );
+//				DarkGold gold = Dungeon.hero.belongings.getItem( DarkGold.class );
+//				if (pick == null) {
+//					tell( TXT2 );
+//				} else if (gold == null || gold.quantity() < 15) {
+//					tell( TXT3 );
+//				} else {
+//					if (pick.isEquipped( Dungeon.hero )) {
+//						pick.doUnequip( Dungeon.hero, false );
+//					}
+//					pick.detach( Dungeon.hero.belongings.backpack );
+//					gold.detachAll( Dungeon.hero.belongings.backpack );
+//					tell( TXT_COMPLETED );
+//
+//					Quest.completed = true;
+//					Quest.reforged = false;
+//				}
+//
+//			}
+//		} else if (!Quest.reforged) {
+//
+//			GameScene.show( new WndBlacksmith( this, Dungeon.hero ) );
+//
+//		} else {
+//
+//			tell( TXT_GET_LOST );
+//
+//		}
 	}
 	
 	private void tell( String text ) {

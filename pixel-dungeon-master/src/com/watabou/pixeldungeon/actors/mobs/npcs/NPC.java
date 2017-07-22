@@ -23,14 +23,25 @@ import com.watabou.pixeldungeon.items.Heap;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.utils.Bundlable;
+import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
 public abstract class NPC extends Mob {
 
 	Quest quest;
+
 	QuestHandler questHandler;
 	public boolean hasQuestItem;
+
 	public boolean speakToQuest;
+	public boolean questGiver; //allows for the assigning of the same quest to multiple NPC's for interaction handling without interfering with who gives you the quest.
+
+	//Bundle TAGS
+	public static final String SPEAKTOQUEST = "speakToQuest";
+	public static final String QUESTGIVER = "questGiver";
+	public static final String QUEST = "Quest";
+
 
 	{
 		HP = HT = 1;
@@ -41,8 +52,37 @@ public abstract class NPC extends Mob {
 
 	}
 
+	@Override
+	public void storeInBundle( Bundle bundle ) {
 
-	
+		super.storeInBundle( bundle );
+
+		bundle.put( SPEAKTOQUEST, speakToQuest );
+		bundle.put( QUESTGIVER, questGiver );
+		bundle.put( QUEST, quest);
+	}
+
+	@Override
+	public void restoreFromBundle( Bundle bundle ) {
+
+		super.restoreFromBundle( bundle );
+
+		speakToQuest = bundle.getBoolean(SPEAKTOQUEST);
+		questGiver = bundle.getBoolean(QUESTGIVER);
+
+		Bundlable bundlable = bundle.get(QUEST);
+
+		if (bundlable != null) {
+			System.out.println("bundlable is not null");
+			quest = (Quest) bundlable;
+		} else {
+			System.out.println("Fuck you");
+		}
+
+		//quest.displayObjectives();
+	}
+
+
 	protected void throwItem() {
 		Heap heap = Dungeon.level.heaps.get( pos );
 		if (heap != null) {
@@ -58,6 +98,10 @@ public abstract class NPC extends Mob {
 		this.quest = quest;
 	}
 
+	public void removeQuest() {
+		quest = null;
+	}
+
 	public void assignQuestItem(boolean hasQuestItem) {
 		this.hasQuestItem = hasQuestItem;
 	}
@@ -66,9 +110,15 @@ public abstract class NPC extends Mob {
 		this.speakToQuest = speakToQuest;
 	}
 
+	public void setQuestGiver(boolean questGiver) {
+		this.questGiver = questGiver;
+	}
+
 	@Override
 	public void beckon( int cell ) {
 	}
 	
 	abstract public void interact();
+
+
 }

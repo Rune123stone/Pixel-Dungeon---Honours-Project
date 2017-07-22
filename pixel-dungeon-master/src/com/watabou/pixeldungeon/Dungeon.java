@@ -33,10 +33,8 @@ import com.watabou.pixeldungeon.actors.buffs.Light;
 import com.watabou.pixeldungeon.actors.buffs.Rage;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
-import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
-import com.watabou.pixeldungeon.actors.mobs.npcs.Imp;
-import com.watabou.pixeldungeon.actors.mobs.npcs.Ghost;
-import com.watabou.pixeldungeon.actors.mobs.npcs.Wandmaker;
+import com.watabou.pixeldungeon.actors.mobs.Mob;
+import com.watabou.pixeldungeon.actors.mobs.npcs.*;
 import com.watabou.pixeldungeon.items.Ankh;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.potions.Potion;
@@ -45,6 +43,7 @@ import com.watabou.pixeldungeon.items.scrolls.Scroll;
 import com.watabou.pixeldungeon.items.wands.Wand;
 import com.watabou.pixeldungeon.levels.*;
 import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
@@ -133,6 +132,14 @@ public class Dungeon {
 		// StartScene.curClass = HeroClass.WARRIOR;
 		StartScene.curClass.initHero( hero );
 	}
+
+	//makes everything visible
+	public static void setAllVisible() {
+		for (int i = 0; i < visible.length; i++) {
+			visible[i] = true;
+		}
+	}
+
 	
 	public static boolean isChallenged( int mask ) {
 		return (challenges & mask) != 0;
@@ -270,11 +277,11 @@ public class Dungeon {
 //			level = new DeadEndLevel();
 //			Statistics.deepestFloor--;
 //		}
-		
+
 		level.create();
 
 		Statistics.qualifiedForNoKilling = !bossLevel();
-		
+
 		return level;
 	}
 
@@ -701,6 +708,8 @@ public class Dungeon {
 				droppedItems.put( i, dropped );
 			}
 		}
+
+
 	}
 
 	//loads hero gold and items
@@ -811,7 +820,39 @@ public class Dungeon {
 				input = Game.instance.openFileInput("Fields");
 				break;
 		}
+
+
+
+//		for (Mob mob : level.mobs) {
+//			if (mob.getClass().getSimpleName().equals("Blacksmith")) {
+//				((NPC)mob).assignQuest(DataHandler.getInstance().actOneQuests.get(0));
+//				System.out.println("assigned quest");
+//			}
+//		}
+
+//		for (Quest quest : DataHandler.getInstance().givenQuests) {
+//			if (quest.getCurObjective().questType.equals("speak")) {
+//
+//
+//				for (Mob mob : level.mobs) {
+//
+//					String npcName = mob.getClass().getSimpleName();
+//
+//					if (level.isSpawned(npcName)) {
+//
+//					}
+//
+//
+//
+//				}
+//
+//
+//
+//			}
+//		}
 		// *** END ***
+
+
 
 
 		Bundle bundle = Bundle.read( input );

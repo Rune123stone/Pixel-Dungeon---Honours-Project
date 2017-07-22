@@ -60,10 +60,15 @@ import com.watabou.pixeldungeon.levels.traps.*;
 import com.watabou.pixeldungeon.mechanics.ShadowCaster;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.utils.GLog;
+import com.watabou.pixeldungeon.windows.WndBackgroundStory;
+import com.watabou.pixeldungeon.windows.WndNoQuestGiver;
+import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
@@ -142,9 +147,12 @@ public abstract class Level implements Bundlable {
     private static final String MOBS = "mobs";
     private static final String BLOBS = "blobs";
     private static final String GIVENQUESTS = "given quests";
+    private static final String QUESTLIST = "quest list";
 
     public static String zone;
     public ArrayList<Quest> givenQuests = new ArrayList<>();
+    public ArrayList<Quest> questList = new ArrayList<>();
+
 
 
     public void create() {
@@ -213,7 +221,17 @@ public abstract class Level implements Bundlable {
             createMobs();
             createItems();
 
-            spawnQuestNPC();
+
+
+            setQuestList();
+            handleNoQuestGiver();
+
+
+            spawnQuestGiverNPCs();
+            spawnSpeakToQuestNPCS();
+            spawnFetchItems();
+            spawnKillQuestMobs();
+
 
             //QuestHandler questHandler = new QuestHandler(new QuestObjective("FETCH", "Fetch me that shit", "DriedRose"));
             //questHandler.spawnKillQuestMobs(this);
@@ -224,62 +242,70 @@ public abstract class Level implements Bundlable {
 
         }
 
-
     }
 
     // **** START of Quest Spawn Methods ****
+    public void setQuestList() {
+
+        int currentAct = DataHandler.getInstance().currentAct;
+
+        switch (currentAct) {
+            case 1:
+                DataHandler.getInstance().questList = DataHandler.getInstance().actOneQuests;
+                break;
+            case 2:
+                DataHandler.getInstance().questList = DataHandler.getInstance().actTwoQuests;
+                break;
+            case 3:
+                DataHandler.getInstance().questList = DataHandler.getInstance().actThreeQuests;
+                break;
+        }
+    }
+
+    public void handleNoQuestGiver() {
+
+        for (Quest quest : DataHandler.getInstance().questList) {
+
+            if (quest.questGiver.equals("none")) {
+
+                quest.given = true;
+                QuestHandler.addToQuestJournal(quest);
+            }
+
+        }
+
+    }
 
     //spawns an NPC in a level IF the quest giver level is the same as the entered level AND if a quest can be assigned to the NPC
-    public void spawnQuestNPC() {
+    public void spawnQuestGiverNPCs() {
         Class<?> npc;
 
         String npcPackage = "com.watabou.pixeldungeon.actors.mobs.npcs.";
 
-
         String questGiverLevel;
         String questGiverLevelClassName;
-        int currentAct = DataHandler.getInstance().currentAct;
-        ArrayList<Quest> questList = new ArrayList<>();
 
-        switch (currentAct) {
-            case 1:
-                questList = DataHandler.getInstance().actOneQuests;
-                break;
-            case 2:
-                questList = DataHandler.getInstance().actTwoQuests;
-                break;
-            case 3:
-                questList = DataHandler.getInstance().actThreeQuests;
-                break;
-        }
+        for (Quest quest : DataHandler.getInstance().questList) {
 
-        for (int i = 0; i < questList.size(); i++) {
+            //Quest curQuest = DataHandler.getInstance().questList.get(i);
 
-            Quest curQuest = questList.get(i);
+            //String questGiverName = DataHandler.getInstance().questList.get(i).questGiver;
 
-            String npcName = questList.get(i).questGiver;
+            String questGiverName = quest.questGiver;
 
-            if (npcName.equals("none")) {
+            if (questGiverName.equals("none")) {
+
+                //WndNoQuestGiver.showQuestDialogue(quest.QUEST_NOT_GIVEN_TEXT);
+
+
                 System.out.println("No quest giver to spawn.");
+
             } else {
                 try {
-                    String npcClassName = npcPackage.concat(npcName);
-                    npc = Class.forName(npcClassName);
+                    String questGiverClassName = npcPackage.concat(questGiverName);
+                    npc = Class.forName(questGiverClassName);
 
-                    questGiverLevel = curQuest.questGiverLevel; //the name of the level the quest giver is in
-
-                    if (questGiverLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
-                        questGiverLevel = "City";
-                    }
-
-                    if (questGiverLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
-                        questGiverLevel = "Sewer";
-                    }
-
-                    if (questGiverLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-                        questGiverLevel = "ShadowLands";
-                    }
-
+                    questGiverLevel = quest.questGiverLevel; //the name of the level the quest giver is in
                     questGiverLevelClassName = questGiverLevel.concat("Level"); //the name of the Level Class the quest giver is in
 
                     //**** responsible for spawning the NPC ****
@@ -288,39 +314,31 @@ public abstract class Level implements Bundlable {
                         NPC questGiver = null;
 
                         //checks if the given NPC has already been spawned - prevents same NPC from being spawned twice if it's name appears more than once in quest list
-                        if (!isSpawned(curQuest.questGiver)) {
+                        if (!isMobSpawned(quest.questGiver)) {
                             questGiver = (NPC) npc.newInstance();
-                            questGiver.pos = spawnPos(questGiverLevel); //assigns the NPC a specific position depnding on the Level, eg. if Forest level, use Forest.spawnPos.
+                            questGiver.pos = spawnPos(questGiverLevel); //assigns the NPC a specific position depending on the Level, eg. if Forest level, use Forest.spawnPos.
                             mobs.add(questGiver);
                             Actor.occupyCell(questGiver);
 
-                           // questGiver.viewDistance = 1000;
-                            Dungeon.hero.viewDistance = 1000;
-                            System.out.println(questGiver.pos);
-                        } else {
-
-                            for (Quest givenQuest : givenQuests) {
-                                if (npcName.equals(givenQuest.questGiver)) {
-                                    questGiver.assignQuest(givenQuest);
-                                }
-                            }
-
-                            System.out.println("NPC has already been spawned.");
+                            System.out.println("Quest giver " +questGiverName+ " spawned at position " +questGiver.pos);
                         }
-
+//
                         // **** responsible for assigning a quest to the NPC if necessary ****
-                        String questName = curQuest.questName;
+                        String questName = quest.questName;
                         boolean prerequisiteQuestCompleted = DataHandler.getInstance().prerequisiteQuestCompleted(questName); //whether the current quest's prerequisite quest is completed or not.
 
-                        if (prerequisiteQuestCompleted) { //is the current quest's prerequisite quest completed? if yes, assign the quest to the quest giver, else do not.
-                            questGiver.assignQuest(curQuest);
+                        if (prerequisiteQuestCompleted && !quest.questComplete) { //is the current quest's prerequisite quest completed and has this quest not been completed? if yes, assign the quest to the quest giver, else do not.
 
-                            givenQuests.add(curQuest);
+                            questGiver = getNPCFromMobList(questGiverName);
 
-                            System.out.println("Succesfully spawned Quest Giver and assigned it a quest.");
+                            questGiver.assignQuest(quest);
+                            questGiver.setQuestGiver(true);
+
+                            System.out.println("Succesfully spawned Quest Giver and assigned it a quest with name " +quest.questName);
                         } else {
-                            System.out.println("Quest with the name " +curQuest.questName+ " cannot be assigned to " +curQuest.questGiver+ " as it's prerequisite quest, " +curQuest.prerequisiteQuestName+
-                            ", has not been completed yet.");
+                            System.out.println("Quest with the name " +quest.questName+ " cannot be assigned to " +quest.questGiver+ ".");
+                            System.out.println("Prerequisite quest completed: " +prerequisiteQuestCompleted);
+                            System.out.println("Quest completed: " +quest.questComplete);
                         }
 
                     } else {
@@ -335,10 +353,211 @@ public abstract class Level implements Bundlable {
         }
     }
 
-    //checks if the given NPC has already been spawned - prevents same NPC from being spawned twice if it's name appears more than once in quest list
-    public boolean isSpawned(String npcName) {
+    public void spawnSpeakToQuestNPCS() {
 
-        Iterator iterator = mobs.iterator();
+        for (Quest quest : DataHandler.getInstance().questList) {
+
+            for (QuestObjective questObjective : quest.questObjectives) {
+
+                NPC npc = null;
+
+                String levelName = questObjective.level;
+                String levelClassName = levelName.concat("Level");
+
+                if (this.getClass().getSimpleName().equals(levelClassName) && questObjective.questType.equals("speak")) {
+
+                    String speakToNPCName = questObjective.speakToNPC;
+
+                    try {
+
+                        if (!isMobSpawned(speakToNPCName)) {
+
+                            npc = DataHandler.getInstance().newNPC(speakToNPCName);
+
+                            npc.pos = spawnPos(levelName);
+                            mobs.add(npc);
+                            Actor.occupyCell(npc);
+
+                            System.out.println(speakToNPCName + " spawned at position " + npc.pos);
+
+                            if (DataHandler.getInstance().prerequisiteQuestCompleted(quest.questName) && !quest.questComplete) {
+
+                                npc.assignQuest(quest);
+                                System.out.println(quest);
+                                npc.setQuestGiver(false);
+                            }
+
+                            if (quest.given && !quest.questComplete) {
+                                System.out.println("mob not spawned, assigning speak to quest " +quest.questName);
+                                npc.assignSpeakToQuest(true);
+                            }
+
+
+                        } else {
+
+                            npc = getNPCFromMobList(speakToNPCName);
+
+                            if (DataHandler.getInstance().prerequisiteQuestCompleted(quest.questName) && !quest.questComplete) {
+
+                                npc.assignQuest(quest);
+                                npc.setQuestGiver(false);
+                            }
+
+                            if (quest.given && !quest.questComplete) {
+
+                                System.out.println("mob is spawned, assigning quest: " +quest.questName);
+                                npc.assignSpeakToQuest(true);
+                            }
+                        }
+
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }
+    }
+
+    public void spawnFetchItems() {
+
+        for (Quest quest : DataHandler.getInstance().questList) {
+
+            if (quest.given) {
+
+                for (QuestObjective questObjective : quest.questObjectives) {
+
+                    String levelName = questObjective.level;
+
+                    if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                        levelName = "City";
+                    }
+
+                    if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                        levelName = "Sewer";
+                    }
+
+                    if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                        levelName = "ShadowLands";
+                    }
+
+                    String levelClassName = levelName.concat("Level");
+
+                    if (this.getClass().getSimpleName().equals(levelClassName) &&  questObjective.questType.equals("fetch") && !quest.questItemDropped) {
+
+                        String itemName = questObjective.itemName;
+
+                        QuestHandler.spawnQuestItem(itemName, this);
+                        questItemDroppped(itemName);
+
+                    } else {
+                        System.out.println("wrong level to spawn q item");
+                    }
+
+                }
+            } else {
+                System.out.println(quest.questName+ " has not been given yet.");
+            }
+
+
+
+        }
+    }
+
+    public void spawnKillQuestMobs() {
+
+        for (Quest quest : DataHandler.getInstance().questList) {
+
+            if (quest.given) {
+
+                for (QuestObjective questObjective : quest.questObjectives) {
+
+                    String levelName = questObjective.level;
+
+                    if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                        levelName = "City";
+                    }
+
+                    if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                        levelName = "Sewer";
+                    }
+
+                    if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                        levelName = "ShadowLands";
+                    }
+
+                    String levelClassName = levelName.concat("Level");
+
+                    if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("kill") || questObjective.questType.equals("kill_fetch"))) {
+
+                        if (!isMobSpawned(questObjective.enemy)) {
+
+                            System.out.println("spawning mobs");
+                            QuestHandler.spawnKillQuestMobs(quest, this);
+                        } else {
+
+                            System.out.println("assigning quest to mobs");
+                            assignQuestToEnemyMobs(quest, questObjective.enemy);
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    public void questItemDroppped(String givenItemName) {
+
+        for (Quest quest : DataHandler.getInstance().questList) {
+
+            for (QuestObjective questObjective : quest.questObjectives) {
+
+                if (questObjective.questType.contains("fetch")) {
+
+                    if (questObjective.itemName.equals(givenItemName)) {
+
+                        quest.questItemDropped = true;
+                    }
+                }
+
+            }
+
+        }
+    }
+
+
+    public NPC getNPCFromMobList(String npcName) {
+
+        for (Mob mob : mobs) {
+
+            String mobName = mob.getClass().getSimpleName();
+
+            if (mobName.equals(npcName)) {
+                return (NPC)mob;
+            }
+        }
+
+        return null;
+    }
+
+
+
+    public void assignQuestToEnemyMobs(Quest quest, String mobName) {
+
+        for (Mob mob : mobs) {
+
+            if (mob.getClass().getSimpleName().equals(mobName)) {
+                System.out.println("assining questqwdqwdqwdqw");
+                mob.assignQuest(quest);
+            }
+        }
+    }
+
+    //checks if the given NPC has already been spawned - prevents same NPC from being spawned twice if it's name appears more than once in quest list
+    public boolean isMobSpawned(String npcName) {
+
+        Iterator iterator = this.mobs.iterator();
 
         while (iterator.hasNext()) {
             String curMobName = iterator.next().getClass().getSimpleName();
@@ -351,9 +570,22 @@ public abstract class Level implements Bundlable {
         return false;
     }
 
+
     public int spawnPos(String zone) {
 
         int pos = 0;
+
+        if (zone.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+            zone = "City";
+        }
+
+        if (zone.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+            zone = "Sewer";
+        }
+
+        if (zone.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+            zone = "ShadowLands";
+        }
 
         switch (zone) {
             case "Caves":
@@ -443,6 +675,8 @@ public abstract class Level implements Bundlable {
                     mob.pos = adjustPos(mob.pos);
                 }
                 mobs.add(mob);
+
+                System.out.println("Mob name: " +mob.getClass().getSimpleName()+ " with code: " +mob);
             }
         }
 
@@ -450,6 +684,18 @@ public abstract class Level implements Bundlable {
         for (Bundlable b : collection) {
             Blob blob = (Blob) b;
             blobs.put(blob.getClass(), blob);
+        }
+
+//        collection = bundle.getCollection(QUESTLIST);
+//        for (Bundlable b : collection) {
+//            questList.add((Quest)b);
+//            System.out.println("displaying q's");
+//            ((Quest) b).displayQuest();
+//        }
+
+        for (Quest quest : DataHandler.getInstance().questList) {
+            System.out.println("displaying q's");
+            quest.displayQuest();
         }
 
         buildFlagMaps();
@@ -467,7 +713,7 @@ public abstract class Level implements Bundlable {
         bundle.put(PLANTS, plants.values());
         bundle.put(MOBS, mobs);
         bundle.put(BLOBS, blobs.values());
-        //bundle.put(GIVENQUESTS, givenQuests.;
+        //bundle.put(QUESTLIST, questList);
     }
 
     public int tunnelTile() {
