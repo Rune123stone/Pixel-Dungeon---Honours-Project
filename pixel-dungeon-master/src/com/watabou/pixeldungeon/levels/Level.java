@@ -287,16 +287,9 @@ public abstract class Level implements Bundlable {
 
         for (Quest quest : DataHandler.getInstance().questList) {
 
-            //Quest curQuest = DataHandler.getInstance().questList.get(i);
-
-            //String questGiverName = DataHandler.getInstance().questList.get(i).questGiver;
-
             String questGiverName = quest.questGiver;
 
             if (questGiverName.equals("none")) {
-
-                //WndNoQuestGiver.showQuestDialogue(quest.QUEST_NOT_GIVEN_TEXT);
-
 
                 System.out.println("No quest giver to spawn.");
 
@@ -353,6 +346,7 @@ public abstract class Level implements Bundlable {
         }
     }
 
+    //spawns npc's that are part of the "speak" type objectives.
     public void spawnSpeakToQuestNPCS() {
 
         for (Quest quest : DataHandler.getInstance().questList) {
@@ -364,7 +358,7 @@ public abstract class Level implements Bundlable {
                 String levelName = questObjective.level;
                 String levelClassName = levelName.concat("Level");
 
-                if (this.getClass().getSimpleName().equals(levelClassName) && questObjective.questType.equals("speak")) {
+                if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("speak") || questObjective.questType.equals("speak_fetch"))) {
 
                     String speakToNPCName = questObjective.speakToNPC;
 
@@ -417,6 +411,7 @@ public abstract class Level implements Bundlable {
         }
     }
 
+    //spawns items that need to be fetched from a level.
     public void spawnFetchItems() {
 
         for (Quest quest : DataHandler.getInstance().questList) {
@@ -441,16 +436,21 @@ public abstract class Level implements Bundlable {
 
                     String levelClassName = levelName.concat("Level");
 
-                    if (this.getClass().getSimpleName().equals(levelClassName) &&  questObjective.questType.equals("fetch") && !quest.questItemDropped) {
+                    System.out.println(questObjective.itemName);
+                    System.out.println(questObjective.questItemDropped);
+
+                    if (this.getClass().getSimpleName().equals(levelClassName) &&  questObjective.questType.equals("fetch") && !questObjective.questItemDropped) {
 
                         String itemName = questObjective.itemName;
 
-                        QuestHandler.spawnQuestItem(itemName, this);
-                        questItemDroppped(itemName);
+                        QuestHandler.spawnQuestItem(itemName, this, quest);
+                        setQuestItemDroppped(itemName);
 
                     } else {
+
                         System.out.println("wrong level to spawn q item");
                     }
+
 
                 }
             } else {
@@ -462,6 +462,7 @@ public abstract class Level implements Bundlable {
         }
     }
 
+    //spawns the mobs that need to be killed as part of a kill quest.
     public void spawnKillQuestMobs() {
 
         for (Quest quest : DataHandler.getInstance().questList) {
@@ -485,16 +486,12 @@ public abstract class Level implements Bundlable {
                     }
 
                     String levelClassName = levelName.concat("Level");
-
                     if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("kill") || questObjective.questType.equals("kill_fetch"))) {
 
                         if (!isMobSpawned(questObjective.enemy)) {
 
-                            System.out.println("spawning mobs");
                             QuestHandler.spawnKillQuestMobs(quest, this);
                         } else {
-
-                            System.out.println("assigning quest to mobs");
                             assignQuestToEnemyMobs(quest, questObjective.enemy);
                         }
 
@@ -504,10 +501,8 @@ public abstract class Level implements Bundlable {
         }
     }
 
-
-
-
-    public void questItemDroppped(String givenItemName) {
+    //indicates that the quest item has dropped and it should'nt spawn again.
+    public void setQuestItemDroppped(String givenItemName) {
 
         for (Quest quest : DataHandler.getInstance().questList) {
 
@@ -517,7 +512,7 @@ public abstract class Level implements Bundlable {
 
                     if (questObjective.itemName.equals(givenItemName)) {
 
-                        quest.questItemDropped = true;
+                        questObjective.questItemDropped = true;
                     }
                 }
 
@@ -598,7 +593,8 @@ public abstract class Level implements Bundlable {
                 pos = randomRespawnCell();
                 break;
             case "Forest":
-                pos = ForestLevel.spawnPos();
+                //pos = ForestLevel.spawnPos();
+                pos = randomRespawnCell();
                 break;
             case "City": //Castle
                 pos = randomRespawnCell();

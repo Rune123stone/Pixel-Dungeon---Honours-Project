@@ -38,6 +38,8 @@ import com.watabou.pixeldungeon.items.wands.Wand;
 import com.watabou.pixeldungeon.items.weapon.Weapon;
 import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.watabou.pixeldungeon.mechanics.Ballistica;
+import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.scenes.CellSelector;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.CharSprite;
@@ -71,12 +73,14 @@ public class Item implements Bundlable {
 	
 	public static final String AC_DROP		= "DROP";
 	public static final String AC_THROW		= "THROW";
+	public static final String AC_USEQUESTITEM = "USE QUEST ITEM";
+
+	public boolean questItemUsed = false;
 	
 	public String defaultAction;
 	
 	protected String name = "smth";
 	protected int image = 0;
-	
 
 	public boolean stackable = false;
 	protected int quantity = 1;
@@ -89,6 +93,7 @@ public class Item implements Bundlable {
 	public boolean cursedKnown;
 	
 	public boolean unique = false;
+	public Quest quest = null;
 
 	//Cameron methods & variables
 	public static String collectable;
@@ -104,8 +109,6 @@ public class Item implements Bundlable {
 
 	public static String boss_npc;
 	public static String boss_location;
-
-
 
 	public static void setItemQuestVariables(String itemName) {
 		switch (itemName) {
@@ -193,6 +196,13 @@ public class Item implements Bundlable {
 	
 	public boolean doPickUp( Hero hero ) {
 		if (collect( hero.belongings.backpack )) {
+
+			if (quest != null) {
+
+				if (quest.getCurObjective().questType.equals("fetch")) {
+					QuestHandler.completeQuest(null, quest);
+				}
+			}
 			
 			GameScene.pickUp( this );
 			Sample.INSTANCE.play( Assets.SND_ITEM );
@@ -212,7 +222,17 @@ public class Item implements Bundlable {
 	public void doThrow( Hero hero ) {
 		GameScene.selectCell( thrower );
 	}
-	
+
+	public void assignQuest(Quest quest) {
+		this.quest = quest;
+	}
+
+	public void useQuestItem() {
+		questItemUsed = true;
+
+		QuestHandler.useQuestItem(quest);
+	}
+
 	public void execute( Hero hero, String action ) {
 		
 		curUser = hero;
@@ -226,6 +246,10 @@ public class Item implements Bundlable {
 			
 			doThrow( hero );
 			
+		} else if (action.equals(AC_USEQUESTITEM)) {
+
+			useQuestItem();
+
 		}
 	}
 	

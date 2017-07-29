@@ -42,6 +42,7 @@ import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.armor.Armor;
 import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.quest.DriedRose;
+import com.watabou.pixeldungeon.items.quest.Letter;
 import com.watabou.pixeldungeon.items.quest.RatSkull;
 import com.watabou.pixeldungeon.items.weapon.Weapon;
 import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
@@ -51,6 +52,7 @@ import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.GhostSprite;
 import com.watabou.pixeldungeon.utils.Utils;
+import com.watabou.pixeldungeon.windows.WndNoQuestGiver;
 import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.pixeldungeon.windows.WndSadGhost;
 import com.watabou.utils.Bundle;
@@ -112,6 +114,7 @@ public class Ghost extends NPC {
 		sprite.turnTo( pos, Dungeon.hero.pos );
 		Sample.INSTANCE.play( Assets.SND_GHOST );
 
+
 //		if (quest != null) {
 //			System.out.println("Ey boi! I've been assigned a quest for you.");
 //		} else {
@@ -129,6 +132,13 @@ public class Ghost extends NPC {
 			objective.QUEST_COMPLETED_TEXT = "YOU'VE DONE IT!!!!!";
 			System.out.println(quest.given);
 			System.out.println(quest.questName);
+
+			if (quest.questComplete) {
+				WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
+				return;
+			}
+
+
 			questHandler.handleNPCInteraction(this, quest);
 		} else {
 			System.out.println("I dont got no quest");

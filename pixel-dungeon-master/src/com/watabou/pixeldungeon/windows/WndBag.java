@@ -412,7 +412,6 @@ public class WndBag extends WndTabbed {
 		@Override
 		protected void onClick() {
 			if (listener != null) {
-				
 				hide();
 				listener.onSelect( item );
 				

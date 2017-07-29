@@ -21,6 +21,7 @@ import com.watabou.pixeldungeon.ui.Window;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.windows.WndJournal;
 import com.watabou.pixeldungeon.windows.WndOptions;
+import com.watabou.pixeldungeon.windows.WndQuestJournal;
 import com.watabou.utils.Bundle;
 
 import java.io.File;
@@ -51,7 +52,7 @@ public class OverworldScene extends PixelScene {
 
     //UI buttons
     private static OverworldButton btnEnterLevel; private String TXT_ENTER = "Enter Level";
-    private static OverworldButton btnJournal; private String TXT_JOURNAL = "Journal";
+    private static OverworldButton btnJournal; private String TXT_JOURNAL = "Quest Journal";
 
     public static Level level;
 
@@ -248,9 +249,7 @@ public class OverworldScene extends PixelScene {
         btnJournal = new OverworldButton( TXT_JOURNAL ) {
             @Override
             protected void onClick() {
-                show(new WndJournal());
-                System.out.println(hero.currentZone);
-                System.out.println(hero.curPos);
+                show(new WndQuestJournal());
             }
         };
         add(btnJournal);

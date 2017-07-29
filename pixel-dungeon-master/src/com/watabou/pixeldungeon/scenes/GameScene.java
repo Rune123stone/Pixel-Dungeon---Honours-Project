@@ -344,10 +344,13 @@ public class GameScene extends PixelScene {
 		}
 
 		for (Quest quest : DataHandler.getInstance().questList) {
-			if (quest.questGiver.equals("none") && !quest.given) {
+			if (quest.questGiver.equals("none")) {
 				WndNoQuestGiver.showQuestDialogue(quest.QUEST_NOT_GIVEN_TEXT);
 
-				QuestHandler.addToQuestJournal(quest);
+				//QuestHandler.setQuestGiven(DataHandler.getInstance().questList, quest.questName);
+				//quest.given = true;
+
+				//QuestHandler.addToQuestJournal(quest);
 
 			}
 		}
@@ -441,7 +444,7 @@ public class GameScene extends PixelScene {
 		}
 	}
 	
-	private void addMobSprite( Mob mob ) {
+	public static void addMobSprite( Mob mob ) {
 		CharSprite sprite = mob.sprite();
 		sprite.visible = Dungeon.visible[mob.pos];
 		mobs.add( sprite );

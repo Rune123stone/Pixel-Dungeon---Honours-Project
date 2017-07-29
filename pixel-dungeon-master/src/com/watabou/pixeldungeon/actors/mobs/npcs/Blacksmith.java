@@ -40,6 +40,7 @@ import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.BlacksmithSprite;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.windows.WndBlacksmith;
+import com.watabou.pixeldungeon.windows.WndNoQuestGiver;
 import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
@@ -97,6 +98,10 @@ public class Blacksmith extends NPC {
 				System.out.println(quest.getCurObjective().questType);
 
 				quest.getCurObjective().QUEST_COMPLETED_TEXT = "YAAAAY, now go speak to the Ghost again in the Forest";
+
+				if (quest.questComplete) {
+					WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
+				}
 
 				questHandler.handleNPCInteraction(this, quest);
 			}

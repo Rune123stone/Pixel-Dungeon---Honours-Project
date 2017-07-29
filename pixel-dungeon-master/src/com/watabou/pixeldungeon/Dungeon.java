@@ -38,6 +38,7 @@ import com.watabou.pixeldungeon.actors.mobs.npcs.*;
 import com.watabou.pixeldungeon.items.Ankh;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.potions.Potion;
+import com.watabou.pixeldungeon.items.quest.Letter;
 import com.watabou.pixeldungeon.items.rings.Ring;
 import com.watabou.pixeldungeon.items.scrolls.Scroll;
 import com.watabou.pixeldungeon.items.wands.Wand;
@@ -101,7 +102,7 @@ public class Dungeon {
 		
 		Statistics.reset();
 		Journal.reset();
-		
+
 		depth = 0;
 		gold = 0;
 		
@@ -126,6 +127,8 @@ public class Dungeon {
 		
 		hero = new Hero();
 		hero.live();
+
+
 
 		Badges.reset();
 
@@ -451,6 +454,7 @@ public class Dungeon {
 	
 	public static void saveGame( String fileName ) throws IOException {
 		try {
+
 			Bundle bundle = new Bundle();
 			
 			bundle.put( VERSION, Game.version );
@@ -462,7 +466,8 @@ public class Dungeon {
 			for (int d : droppedItems.keyArray()) {
 				bundle.put( String.format( DROPPED, d ), droppedItems.get( d ) );
 			}
-			
+
+
 			bundle.put( POS, potionOfStrength );
 			bundle.put( SOU, scrollsOfUpgrade );
 			bundle.put( SOE, scrollsOfEnchantment );
@@ -481,28 +486,29 @@ public class Dungeon {
 			Blacksmith	.Quest.storeInBundle( quests );
 			Imp			.Quest.storeInBundle( quests );
 			bundle.put( QUESTS, quests );
-			
+
 			Room.storeRoomsInBundle( bundle );
-			
+
 			Statistics.storeInBundle( bundle );
 			Journal.storeInBundle( bundle );
-			
+
 			QuickSlot.save( bundle );
-			
+
 			Scroll.save( bundle );
 			Potion.save( bundle );
 			Wand.save( bundle );
 			Ring.save( bundle );
-			
+
 			Bundle badges = new Bundle();
 			Badges.saveLocal( badges );
 			bundle.put( BADGES, badges );
-			
+
 			OutputStream output = Game.instance.openFileOutput( fileName, Game.MODE_PRIVATE );
 			Bundle.write( bundle, output );
 			output.close();
 			
 		} catch (Exception e) {
+
 
 			GamesInProgress.setUnknown( hero.heroClass );
 		}
@@ -771,7 +777,7 @@ public class Dungeon {
 
 		switch (OverworldScene.hero.currentZone) {
 			case "Forest":
-				Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to NOT pass over water (lake).
+				//Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to NOT pass over water (lake).
 				Terrain.flags[Terrain.WALL_DECO] = Terrain.PASSABLE; //allows the her to pass over wall decoration cells (will be grass cells).
 
 				posKey = FORESTHEROPOS;

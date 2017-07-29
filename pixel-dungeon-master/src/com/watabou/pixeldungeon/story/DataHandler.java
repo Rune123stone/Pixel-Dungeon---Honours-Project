@@ -59,6 +59,13 @@ public class DataHandler {
 
     public int currentAct = 1;
 
+    public void nextAct() {
+
+        if (currentAct < 3) {
+            currentAct++;
+        }
+    }
+
     public int randomTemplateSelector() {
         Random random = new Random();
 
@@ -98,7 +105,7 @@ public class DataHandler {
             Element rootElement = doc.createElement("act_one_template");
             doc.appendChild(rootElement);
 
-//            int template = randomTemplateSelector();
+           //int template = randomTemplateSelector();
             int template = 1;
             System.out.println(template);
 
@@ -124,13 +131,13 @@ public class DataHandler {
                     questName.appendChild(doc.createTextNode("Call to Power"));
                     quest.appendChild(questName);
 
-                    Element questGiver = doc.createElement("quest_giver");
-                    questGiver.appendChild(doc.createTextNode("none"));
-                    quest.appendChild(questGiver);
-
 //                    Element questGiver = doc.createElement("quest_giver");
-//                    questGiver.appendChild(doc.createTextNode("MENTOR"));
+//                    questGiver.appendChild(doc.createTextNode("none"));
 //                    quest.appendChild(questGiver);
+
+                    Element questGiver = doc.createElement("quest_giver");
+                    questGiver.appendChild(doc.createTextNode("MENTOR"));
+                    quest.appendChild(questGiver);
 
                     Element questReward = doc.createElement("quest_reward");
                     questReward.appendChild(doc.createTextNode("40xp"));
@@ -144,21 +151,20 @@ public class DataHandler {
                     prerequisiteQuestName.appendChild(doc.createTextNode("none"));
                     quest.appendChild(prerequisiteQuestName);
 
-                    Element questDialogue = doc.createElement("quest_dialogue");
-                    questDialogue.appendChild(doc.createTextNode("callToPower.txt"));
-                    quest.appendChild(questDialogue);
+//                    Element questDialogue = doc.createElement("quest_dialogue");
+//                    questDialogue.appendChild(doc.createTextNode("callToPower.txt"));
+//                    quest.appendChild(questDialogue);
+                    Element questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
+                    questNotGivenDialogue.appendChild(doc.createTextNode("findingTheSource_not_given.txt"));
+                    quest.appendChild(questNotGivenDialogue);
 
-//                    Element questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
-//                    questNotGivenDialogue.appendChild(doc.createTextNode("rescueMission_not_given.txt"));
-//                    quest.appendChild(questNotGivenDialogue);
-//
-//                    Element questGivenDialogue = doc.createElement("quest_given_dialogue");
-//                    questGivenDialogue.appendChild(doc.createTextNode("rescueMission_given.txt"));
-//                    quest.appendChild(questGivenDialogue);
-//
-//                    Element questCompletedDialogue = doc.createElement("quest_completed_dialogue");
-//                    questCompletedDialogue.appendChild(doc.createTextNode("rescueMission_completed.txt"));
-//                    quest.appendChild(questCompletedDialogue);
+                    Element questGivenDialogue = doc.createElement("quest_given_dialogue");
+                    questGivenDialogue.appendChild(doc.createTextNode("findingTheSource_given.txt"));
+                    quest.appendChild(questGivenDialogue);
+
+                    Element questCompletedDialogue = doc.createElement("quest_completed_dialogue");
+                    questCompletedDialogue.appendChild(doc.createTextNode("findingTheSource_completed.txt"));
+                    quest.appendChild(questCompletedDialogue);
 
                     Element questObjective = doc.createElement("quest_objective");
                     quest.appendChild(questObjective);
@@ -168,20 +174,36 @@ public class DataHandler {
                     questObjective.appendChild(questObjectiveName);
 
                     Element questType = doc.createElement("quest_type");
-                    questType.appendChild(doc.createTextNode("kill"));
+                    questType.appendChild(doc.createTextNode("fetch"));
                     questObjective.appendChild(questType);
 
-                    Element enemy = doc.createElement("enemy");
-                    enemy.appendChild(doc.createTextNode("kidnap_enemy"));
-                    questObjective.appendChild(enemy);
-
-                    Element amountToKill = doc.createElement("amount_to_kill");
-                    amountToKill.appendChild(doc.createTextNode("6"));
-                    questObjective.appendChild(amountToKill);
+                    Element questItem = doc.createElement("quest_item");
+                    questItem.appendChild(doc.createTextNode("Letter"));
+                    questObjective.appendChild(questItem);
 
                     Element questLocation = doc.createElement("quest_location");
-                    questLocation.appendChild(doc.createTextNode("mentor_kidnap_location"));
+                    questLocation.appendChild(doc.createTextNode("Fields"));
                     questObjective.appendChild(questLocation);
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("use_item"));
+                    questObjective.appendChild(questType);
+
+                    questItem = doc.createElement("quest_item");
+                    questItem.appendChild(doc.createTextNode("Letter"));
+                    questObjective.appendChild(questItem);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("mentor_location"));
+                    questObjective.appendChild(questLocation);
+
 
 //                    Element questType = doc.createElement("quest_type");
 //                    questType.appendChild(doc.createTextNode("speak"));
@@ -218,15 +240,15 @@ public class DataHandler {
                     prerequisiteQuestName.appendChild(doc.createTextNode("Call to Power"));
                     quest.appendChild(prerequisiteQuestName);
 
-                     Element questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
+                    questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
                     questNotGivenDialogue.appendChild(doc.createTextNode("findingTheSource_not_given.txt"));
                     quest.appendChild(questNotGivenDialogue);
 
-                    Element questGivenDialogue = doc.createElement("quest_given_dialogue");
+                    questGivenDialogue = doc.createElement("quest_given_dialogue");
                     questGivenDialogue.appendChild(doc.createTextNode("findingTheSource_given.txt"));
                     quest.appendChild(questGivenDialogue);
 
-                    Element questCompletedDialogue = doc.createElement("quest_completed_dialogue");
+                    questCompletedDialogue = doc.createElement("quest_completed_dialogue");
                     questCompletedDialogue.appendChild(doc.createTextNode("findingTheSource_completed.txt"));
                     quest.appendChild(questCompletedDialogue);
 
@@ -245,7 +267,7 @@ public class DataHandler {
                     questLocation.appendChild(doc.createTextNode("item_information_location"));
                     questObjective.appendChild(questLocation);
 
-                    Element questItem = doc.createElement("quest_item");
+                    questItem = doc.createElement("quest_item");
                     questItem.appendChild(doc.createTextNode("item_information"));
                     questObjective.appendChild(questItem);
 
@@ -328,11 +350,11 @@ public class DataHandler {
                     questType.appendChild(doc.createTextNode("kill"));
                     questObjective.appendChild(questType);
 
-                    enemy = doc.createElement("enemy");
+                    Element enemy = doc.createElement("enemy");
                     enemy.appendChild(doc.createTextNode("kidnap_enemy"));
                     questObjective.appendChild(enemy);
 
-                    amountToKill = doc.createElement("amount_to_kill");
+                    Element amountToKill = doc.createElement("amount_to_kill");
                     amountToKill.appendChild(doc.createTextNode("3"));
                     questObjective.appendChild(amountToKill);
 
@@ -396,7 +418,7 @@ public class DataHandler {
                     prerequisiteQuestName.appendChild(doc.createTextNode("none"));
                     quest.appendChild(prerequisiteQuestName);
 
-                    questDialogue = doc.createElement("quest_dialogue");
+                    Element questDialogue = doc.createElement("quest_dialogue");
                     questDialogue.appendChild(doc.createTextNode("homeBound.txt"));
                     quest.appendChild(questDialogue);
 
@@ -2134,17 +2156,20 @@ public class DataHandler {
 
             //item variables
             case "item_collectable":
-                return Item.collectable;
+                //return Item.collectable;
+                return "PhantomFish";
             case "item_collectable_location":
-                return Item.collectable_location;
+                //return Item.collectable_location;
+                return "Forest";
             case "item_collectable_enemy":
-                return Item.collecatble_enemy;
+                return "Golem";
+                //return Item.collecatble_enemy;
             case "item_collectable_boss":
                 return Item.collectable_mini_boss;
             case "item_collectable_boss_location":
                 return Item.collectable_mini_boss_location;
             case "item_information":
-               // return Item.info;
+               //return Item.info;
                 return "PhantomFish";
             case "item_information_location":
                 //return Item.info_location;
@@ -2163,8 +2188,8 @@ public class DataHandler {
 
             //mentor variables
             case "MENTOR":
-//                return Mentor.name;
-                return "Ghost";
+               //return Mentor.name;
+               return "Ghost";
             case "mentor_location":
                 return Mentor.location;
             case "mentor_kidnap_location":
@@ -2181,7 +2206,7 @@ public class DataHandler {
 
             //relative variables
             case "RELATIVE":
-//                return Relative.name;
+             //return Relative.name;
                 return "Ghost";
             case "relative_location":
                 return Mentor.location;

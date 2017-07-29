@@ -47,7 +47,7 @@ public class WndHero extends WndTabbed {
 	private static final String TXT_GOLD	= "Gold Collected";
 	private static final String TXT_DEPTH	= "Maximum Depth";
 	
-	private static final int WIDTH		= 100;
+	private static final int WIDTH		= 125;
 	private static final int TAB_WIDTH	= 40;
 	
 	private StatsTab stats;
@@ -95,6 +95,7 @@ public class WndHero extends WndTabbed {
 		private static final String TXT_TITLE		= "Level %d %s";
 		private static final String TXT_CATALOGUS	= "Catalogus";
 		private static final String TXT_JOURNAL		= "Journal";
+		private static final String QUEST_JOURNAL   = "Quest Journal";
 		
 		private static final int GAP = 5;
 		
@@ -128,9 +129,21 @@ public class WndHero extends WndTabbed {
 				}
 			};
 			btnJournal.setRect( 
-				btnCatalogus.right() + 1, btnCatalogus.top(), 
+				btnCatalogus.right() + 2, btnCatalogus.top(),
 				btnJournal.reqWidth() + 2, btnJournal.reqHeight() + 2 );
 			add( btnJournal );
+
+			RedButton btnQuestJournal = new RedButton( QUEST_JOURNAL ) {
+				@Override
+				protected void onClick() {
+					hide();
+					GameScene.show( new WndQuestJournal() );
+				}
+			};
+			btnQuestJournal.setRect(
+					btnJournal.right() + 2, btnJournal.top(),
+					btnQuestJournal.reqWidth() + 2, btnQuestJournal.reqHeight() + 2 );
+			add( btnQuestJournal );
 			
 			pos = btnCatalogus.bottom() + GAP;
 			

@@ -19,9 +19,6 @@ public class Quest implements Bundlable{
     public boolean questComplete; //is the quest completed?
     public int associatedAct; //which act is the quest in?
 
-    public boolean questItemDropped = false;
-
-
     public String questDescription; //the description of the quest that will be displayed in the quest journal.
 
     public String prerequisiteQuestName; //the name of the quest required to be completed before this quest can take place.

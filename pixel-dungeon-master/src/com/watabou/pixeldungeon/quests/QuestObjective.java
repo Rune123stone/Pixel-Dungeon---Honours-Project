@@ -25,6 +25,7 @@ public class QuestObjective implements Bundlable {
 
     //fetch quest variables
     public String itemName;
+    public boolean questItemDropped;
 
     //speakTo quest variables
     public String speakToNPC;

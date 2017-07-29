@@ -397,7 +397,19 @@ public abstract class Mob extends Char {
 		if (quest != null) {
 			QuestHandler questHandler = new QuestHandler(quest.getCurObjective());
 
-			questHandler.handleKillQuest(quest);
+			switch (quest.getCurObjective().questType) {
+
+				case "kill":
+					questHandler.handleKillQuest(quest);
+					break;
+				case "kill_fetch":
+					questHandler.handleKillFetchQuest(this);
+					break;
+
+
+			}
+
+//			questHandler.handleKillQuest(quest);
 		}
 	}
 	
