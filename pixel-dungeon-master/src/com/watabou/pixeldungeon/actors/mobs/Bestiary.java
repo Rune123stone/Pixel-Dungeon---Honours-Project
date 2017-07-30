@@ -203,7 +203,8 @@ public class Bestiary {
 				break;
 			case "Fields":
 				chances = new float[]{ 1, 1, 1};
-				classes = new Class<?>[]{ Bandit.class, Scorpio.class, Thief.class};
+				//classes = new Class<?>[]{ Bandit.class, Scorpio.class, Thief.class};
+				classes = new Class<?>[]{ Gnoll.class, Rat.class, Rat.class};
 				break;
 			case "Dungeon":
 				chances = new float[]{ 1, 1, 1};

@@ -30,7 +30,7 @@ import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Generator;
-import com.watabou.pixeldungeon.levels.Level;
+import com.watabou.pixeldungeon.levels.*;
 import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.ui.GameLog;
 import com.watabou.pixeldungeon.windows.WndError;
@@ -38,7 +38,8 @@ import com.watabou.pixeldungeon.windows.WndStory;
 
 public class InterlevelScene extends PixelScene {
 
-    private static final float TIME_TO_FADE = 0.3f;
+    //private static final float TIME_TO_FADE = 0.3f;
+    private static final float TIME_TO_FADE = 0.8f;
 
     //private static final String TXT_DESCENDING	= "Descending...";
     private static final String TXT_DESCENDING = "Travelling...";
@@ -48,13 +49,14 @@ public class InterlevelScene extends PixelScene {
     private static final String TXT_RETURNING = "Returning...";
     private static final String TXT_FALLING = "Falling...";
     private static final String TXT_OVERWORLD = "Travelling to Overworld...";
-    private static final String TXT_NEWGAME = "Preparing Adventure...";
+    private static final String TXT_NEXTACT = "Next Act...";
+    private static final String TXT_CREDITS = "Amazing!";
 
     private static final String ERR_FILE_NOT_FOUND = "File not found. For some reason.";
     private static final String ERR_GENERIC = "Something went wrong...";
 
     public static enum Mode {
-        DESCEND, ASCEND, CONTINUE, RESURRECT, RETURN, FALL, OVERWORLD, NONE
+        DESCEND, ASCEND, CONTINUE, RESURRECT, RETURN, FALL, OVERWORLD, NONE, NEXTACT, CREDITS;
     }
 
     ;
@@ -107,6 +109,11 @@ public class InterlevelScene extends PixelScene {
             case OVERWORLD:
                 text = TXT_OVERWORLD;
                 break;
+            case NEXTACT:
+                text = TXT_NEXTACT;
+                break;
+            case CREDITS:
+                text = TXT_CREDITS;
             default:
         }
 
@@ -149,6 +156,11 @@ public class InterlevelScene extends PixelScene {
                         case OVERWORLD:
                             overworld();
                             break;
+                        case NEXTACT:
+                            switchAct();
+                            break;
+                        case CREDITS:
+                            credits();
                         default:
                     }
 
@@ -309,6 +321,11 @@ public class InterlevelScene extends PixelScene {
 
         Level level = Dungeon.loadLevel(StartScene.curClass);
 
+        level.spawnQuestGiverNPCs();
+        level.spawnSpeakToQuestNPCS();
+        level.spawnFetchItems();
+        level.spawnKillQuestMobs();
+
         if (Dungeon.depth == -1) {
             Dungeon.depth = Statistics.deepestFloor;
             //Dungeon.switchLevel(Dungeon.loadLevel(StartScene.curClass), -1);
@@ -318,10 +335,47 @@ public class InterlevelScene extends PixelScene {
             Dungeon.switchLevel(level, Level.resizingNeeded ? level.adjustPos(Dungeon.hero.pos) : Dungeon.hero.pos);
         }
 
-        level.spawnQuestGiverNPCs();
-        level.spawnSpeakToQuestNPCS();
-        level.spawnFetchItems();
-        level.spawnKillQuestMobs();
+
+    }
+
+    private void switchAct() throws Exception {
+
+        Actor.fixTime();
+
+        GameLog.wipe();
+
+        Dungeon.loadGame(StartScene.curClass);
+
+        Level level = null;
+
+        try {
+
+            level = Dungeon.nextActLevel(StartScene.curClass);
+
+            level.spawnQuestGiverNPCs();
+            level.spawnSpeakToQuestNPCS();
+            level.spawnFetchItems();
+            level.spawnKillQuestMobs();
+
+            Dungeon.switchLevel(level, level.randomRespawnCell());
+
+        } catch (Exception e) {
+
+            System.out.println("Caught the error");
+            Dungeon.switchingActs = true;
+            level = Dungeon.newLevel();
+            System.out.println("LEVEL IS: " + level.getClass().getSimpleName());
+            Dungeon.switchLevel(level, level.randomRespawnCell());
+            Dungeon.switchingActs = false;
+        }
+
+
+    }
+
+    private void credits() throws Exception {
+        Actor.fixTime();
+
+        Game.switchScene(TitleScene.class);
     }
 
     private void resurrect() throws Exception {

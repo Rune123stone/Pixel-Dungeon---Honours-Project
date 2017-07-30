@@ -226,9 +226,9 @@ public abstract class Level implements Bundlable {
             setQuestList();
             handleNoQuestGiver();
 
-
-            spawnQuestGiverNPCs();
             spawnSpeakToQuestNPCS();
+            spawnQuestGiverNPCs();
+
             spawnFetchItems();
             spawnKillQuestMobs();
 
@@ -245,7 +245,7 @@ public abstract class Level implements Bundlable {
     }
 
     // **** START of Quest Spawn Methods ****
-    public void setQuestList() {
+    public static void setQuestList() {
 
         int currentAct = DataHandler.getInstance().currentAct;
 
@@ -299,6 +299,19 @@ public abstract class Level implements Bundlable {
                     npc = Class.forName(questGiverClassName);
 
                     questGiverLevel = quest.questGiverLevel; //the name of the level the quest giver is in
+
+                    if (questGiverLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                        questGiverLevel = "City";
+                    }
+
+                    if (questGiverLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                        questGiverLevel = "Sewer";
+                    }
+
+                    if (questGiverLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                        questGiverLevel = "ShadowLands";
+                    }
+
                     questGiverLevelClassName = questGiverLevel.concat("Level"); //the name of the Level Class the quest giver is in
 
                     //**** responsible for spawning the NPC ****
@@ -356,6 +369,20 @@ public abstract class Level implements Bundlable {
                 NPC npc = null;
 
                 String levelName = questObjective.level;
+
+                if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                    levelName = "City";
+                }
+
+                if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                    levelName = "Sewer";
+                }
+
+                if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                    levelName = "ShadowLands";
+                }
+
+
                 String levelClassName = levelName.concat("Level");
 
                 if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("speak") || questObjective.questType.equals("speak_fetch"))) {
@@ -377,8 +404,9 @@ public abstract class Level implements Bundlable {
                             if (DataHandler.getInstance().prerequisiteQuestCompleted(quest.questName) && !quest.questComplete) {
 
                                 npc.assignQuest(quest);
-                                System.out.println(quest);
                                 npc.setQuestGiver(false);
+                                System.out.println("assigned quest " +quest.questName+ " to " +speakToNPCName);
+                                System.out.println("setting quest giver for " +npc.getClass().getSimpleName()+ "to false at line: 409");
                             }
 
                             if (quest.given && !quest.questComplete) {
@@ -395,6 +423,7 @@ public abstract class Level implements Bundlable {
 
                                 npc.assignQuest(quest);
                                 npc.setQuestGiver(false);
+                                System.out.println("setting quest giver for " +npc.getClass().getSimpleName()+ "to false at line: 426");
                             }
 
                             if (quest.given && !quest.questComplete) {
@@ -406,6 +435,8 @@ public abstract class Level implements Bundlable {
 
                     } catch (Exception e) {
                     }
+                } else {
+                    System.out.println("No speak to NPC's in this level");
                 }
             }
         }
@@ -469,34 +500,63 @@ public abstract class Level implements Bundlable {
 
             if (quest.given) {
 
-                for (QuestObjective questObjective : quest.questObjectives) {
+                QuestObjective curObjective = quest.getCurObjective();
 
-                    String levelName = questObjective.level;
+                String levelName = curObjective.level;
 
-                    if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
-                        levelName = "City";
-                    }
-
-                    if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
-                        levelName = "Sewer";
-                    }
-
-                    if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-                        levelName = "ShadowLands";
-                    }
-
-                    String levelClassName = levelName.concat("Level");
-                    if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("kill") || questObjective.questType.equals("kill_fetch"))) {
-
-                        if (!isMobSpawned(questObjective.enemy)) {
-
-                            QuestHandler.spawnKillQuestMobs(quest, this);
-                        } else {
-                            assignQuestToEnemyMobs(quest, questObjective.enemy);
-                        }
-
-                    }
+                if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                    levelName = "City";
                 }
+
+                if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                    levelName = "Sewer";
+                }
+
+                if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                    levelName = "ShadowLands";
+                }
+
+                String levelClassName = levelName.concat("Level");
+                if (this.getClass().getSimpleName().equals(levelClassName) && (curObjective.questType.equals("kill") || curObjective.questType.equals("kill_fetch"))) {
+
+                    if (!isMobSpawned(curObjective.enemy)) {
+
+                        QuestHandler.spawnKillQuestMobs(quest, this);
+                    } else {
+                        assignQuestToEnemyMobs(quest, curObjective.enemy);
+                    }
+
+                }
+//
+//
+//                for (QuestObjective questObjective : quest.questObjectives) {
+//
+//                    String levelName = questObjective.level;
+//
+//                    if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+//                        levelName = "City";
+//                    }
+//
+//                    if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+//                        levelName = "Sewer";
+//                    }
+//
+//                    if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+//                        levelName = "ShadowLands";
+//                    }
+//
+//                    String levelClassName = levelName.concat("Level");
+//                    if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("kill") || questObjective.questType.equals("kill_fetch"))) {
+//
+//                        if (!isMobSpawned(questObjective.enemy)) {
+//
+//                            QuestHandler.spawnKillQuestMobs(quest, this);
+//                        } else {
+//                            assignQuestToEnemyMobs(quest, questObjective.enemy);
+//                        }
+//
+//                    }
+//                }
             }
         }
     }
@@ -521,7 +581,6 @@ public abstract class Level implements Bundlable {
         }
     }
 
-
     public NPC getNPCFromMobList(String npcName) {
 
         for (Mob mob : mobs) {
@@ -536,14 +595,11 @@ public abstract class Level implements Bundlable {
         return null;
     }
 
-
-
     public void assignQuestToEnemyMobs(Quest quest, String mobName) {
 
         for (Mob mob : mobs) {
 
             if (mob.getClass().getSimpleName().equals(mobName)) {
-                System.out.println("assining questqwdqwdqwdqw");
                 mob.assignQuest(quest);
             }
         }
@@ -578,9 +634,9 @@ public abstract class Level implements Bundlable {
             zone = "Sewer";
         }
 
-        if (zone.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-            zone = "ShadowLands";
-        }
+//        if (zone.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+//            zone = "Shadow Lands";
+//        }
 
         switch (zone) {
             case "Caves":
@@ -593,13 +649,13 @@ public abstract class Level implements Bundlable {
                 pos = randomRespawnCell();
                 break;
             case "Forest":
-                //pos = ForestLevel.spawnPos();
-                pos = randomRespawnCell();
+                pos = ForestLevel.spawnPos();
+                //pos = randomRespawnCell();
                 break;
             case "City": //Castle
                 pos = randomRespawnCell();
                 break;
-            case "Shadow Lands":
+            case "ShadowLands":
                 pos = ShadowLandsLevel.spawnPos();
                 break;
         }

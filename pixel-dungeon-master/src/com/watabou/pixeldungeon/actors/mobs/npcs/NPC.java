@@ -73,13 +73,8 @@ public abstract class NPC extends Mob {
 		Bundlable bundlable = bundle.get(QUEST);
 
 		if (bundlable != null) {
-			System.out.println("bundlable is not null");
 			quest = (Quest) bundlable;
-		} else {
-			System.out.println("Fuck you");
 		}
-
-		//quest.displayObjectives();
 	}
 
 

@@ -112,7 +112,6 @@ public class Bundle {
 				return null;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}	
 	}

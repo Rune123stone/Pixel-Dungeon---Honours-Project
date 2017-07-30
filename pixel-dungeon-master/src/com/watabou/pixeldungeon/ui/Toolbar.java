@@ -106,6 +106,7 @@ public class Toolbar extends Component {
 			protected void onClick() {
 				try {
 					Dungeon.saveAll();
+					System.out.println("Saving all...");
 				} catch (IOException e) {
 					System.out.println(e.getMessage());
 				}

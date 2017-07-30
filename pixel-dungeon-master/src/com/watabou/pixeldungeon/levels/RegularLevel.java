@@ -547,7 +547,7 @@ public abstract class RegularLevel extends Level {
 		//ensures that a null error is not thrown when starting a new game. OverworldScene.hero = null if new game since the player spawns in a level scene, not the overworld scene,
 		// thus OverworldScene.hero is not created yet.
 		if (OverworldScene.hero == null) {
-			currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+			currentZone = DataHandler.getInstance().questList.get(0).questGiverLevel;
 		} else {
 			currentZone = OverworldScene.hero.currentZone;
 		}

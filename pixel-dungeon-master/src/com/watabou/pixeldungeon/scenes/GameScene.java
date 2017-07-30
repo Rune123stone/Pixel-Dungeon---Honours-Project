@@ -171,6 +171,7 @@ public class GameScene extends PixelScene {
 		
 		for (Mob mob : Dungeon.level.mobs) {
 			addMobSprite( mob );
+			System.out.println(mob.getClass().getSimpleName());
 			if (Statistics.amuletObtained) {
 				mob.beckon( Dungeon.hero.pos );
 			}

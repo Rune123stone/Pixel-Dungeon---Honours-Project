@@ -133,10 +133,15 @@ public class Ghost extends NPC {
 			System.out.println(quest.given);
 			System.out.println(quest.questName);
 
-			if (quest.questComplete) {
-				WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
-				return;
-			}
+
+			System.out.println(quest.getCurObjective().questType);
+			System.out.println("quest giver? : " +questGiver);
+			System.out.println("speak to npc? : " +speakToQuest);
+
+//			if (quest.questComplete) {
+//				WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
+//				return;
+//			}
 
 
 			questHandler.handleNPCInteraction(this, quest);

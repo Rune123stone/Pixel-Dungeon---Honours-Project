@@ -615,6 +615,7 @@ public class Item implements Bundlable {
 	private static final String CURSED			= "cursed";
 	private static final String CURSED_KNOWN	= "cursedKnown";
 	private static final String DURABILITY		= "durability";
+	private static final String QUEST			= "quest";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -623,6 +624,7 @@ public class Item implements Bundlable {
 		bundle.put( LEVEL_KNOWN, levelKnown );
 		bundle.put( CURSED, cursed );
 		bundle.put( CURSED_KNOWN, cursedKnown );
+		bundle.put( QUEST, quest );
 		if (isUpgradable()) {
 			bundle.put( DURABILITY, durability );
 		}
@@ -634,7 +636,13 @@ public class Item implements Bundlable {
 		quantity	= bundle.getInt( QUANTITY );
 		levelKnown	= bundle.getBoolean( LEVEL_KNOWN );
 		cursedKnown	= bundle.getBoolean( CURSED_KNOWN );
-		
+
+		Bundlable bundlable = bundle.get(QUEST);
+
+		if (bundlable != null) {
+			quest = (Quest) bundlable;
+		}
+
 		int level = bundle.getInt( LEVEL );
 		if (level > 0) {
 			upgrade( level );

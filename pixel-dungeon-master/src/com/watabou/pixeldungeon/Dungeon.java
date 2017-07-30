@@ -86,6 +86,8 @@ public class Dungeon {
 	
 	public static SparseArray<ArrayList<Item>> droppedItems;
 
+	public static boolean switchingActs = false;
+
 	
 	public static void init() {
 
@@ -152,29 +154,39 @@ public class Dungeon {
 		
 		Dungeon.level = null;
 		Actor.clear();
-		
-		depth++;
-		if (depth > Statistics.deepestFloor) {
-			Statistics.deepestFloor = depth;
-			
-			if (Statistics.qualifiedForNoKilling) {
-				Statistics.completedWithNoKilling = true;
-			} else {
-				Statistics.completedWithNoKilling = false;
-			}
-		}
+
+		depth = 1;
+//		depth++;
+//		if (depth > Statistics.deepestFloor) {
+//			Statistics.deepestFloor = depth;
+//
+//			if (Statistics.qualifiedForNoKilling) {
+//				Statistics.completedWithNoKilling = true;
+//			} else {
+//				Statistics.completedWithNoKilling = false;
+//			}
+//		}
 		
 		Arrays.fill( visible, false );
 		Level level;
+
 
 		String currentZone;
 
 		//ensures that a null error is not thrown when starting a new game. OverworldScene.hero = null if new game since the player spawns in a level scene, not the overworld scene,
 		// thus OverworldScene.hero is not created yet.
-		if (OverworldScene.hero == null) {
-			currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+		if (OverworldScene.hero == null || switchingActs) {
+
+			if (DataHandler.getInstance().questList.size() == 0) {
+				Level.setQuestList();
+			}
+
+			currentZone = DataHandler.getInstance().questList.get(0).questGiverLevel;
+
 		} else {
+
 			currentZone = OverworldScene.hero.currentZone;
+
 		}
 
 		if (currentZone.equals("Caves")) {
@@ -539,7 +551,7 @@ public class Dungeon {
 //		}
 
 		if (OverworldScene.hero == null) {
-			currentZone = DataHandler.getInstance().actOneQuests.get(0).questGiverLevel;
+			currentZone = DataHandler.getInstance().questList.get(0).questGiverLevel;
 		} else {
 			currentZone = OverworldScene.hero.currentZone;
 		}
@@ -547,6 +559,8 @@ public class Dungeon {
 		if (currentZone.equals("Caves")) {
 			currentZone = "Cave";
 		}
+
+		System.out.println("Saving " +currentZone);
 
 		switch (currentZone) {
 			case "Forest":
@@ -871,6 +885,117 @@ public class Dungeon {
 
 
 		return (Level)bundle.get( "level" );
+	}
+
+	public static Level nextActLevel( HeroClass cl ) {
+		Dungeon.level = null;
+		Actor.clear();
+
+		Level level = null;
+		//InputStream input = Game.instance.openFileInput( Utils.format( depthFile( cl ), depth ) ) ; //uncomment to restore back to normal
+
+		// *** Loads individual levels as well as the hero's position in those levels. ***
+		try {
+			InputStream input = null;
+			String posKey = "";
+
+			String levelName = DataHandler.getInstance().questList.get(0).questGiverLevel;
+
+
+			switch (levelName) {
+				case "Forest":
+					//Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to NOT pass over water (lake).
+					Terrain.flags[Terrain.WALL_DECO] = Terrain.PASSABLE; //allows the her to pass over wall decoration cells (will be grass cells).
+
+					posKey = FORESTHEROPOS;
+					input = Game.instance.openFileInput("Forest");
+					break;
+				case "Dungeon":
+					Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+					Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+					posKey = DUNGEONHEROPOS;
+					input = Game.instance.openFileInput("Dungeon");
+					break;
+				case "Cave":
+					Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+					Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+					posKey = CAVESHEROPOS;
+					input = Game.instance.openFileInput("Caves");
+					break;
+				case "Castle":
+					Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+					Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+					posKey = CASTLEHEROPOS;
+					input = Game.instance.openFileInput("Castle");
+					break;
+				case "Shadow Lands":
+					Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+					Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+					posKey = SHADOWLANDSHEROPOS;
+					input = Game.instance.openFileInput("Shadow Lands");
+					break;
+				case "Town":
+					Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+					Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+					posKey = TOWNHEROPOS;
+					input = Game.instance.openFileInput("Town");
+					break;
+				case "Fields":
+					Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+					Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+					posKey = FIELDSHEROPOS;
+					input = Game.instance.openFileInput("Fields");
+					break;
+			}
+
+
+			Bundle bundle = Bundle.read(input);
+
+			// *** sets the hero's pos to where it was in the specified level. ***
+			hero.pos = bundle.getInt(posKey);
+			// *** END ***
+
+			input.close();
+
+			level = (Level)bundle.get("level");
+
+		} catch (Exception e) {
+
+			String levelName = DataHandler.getInstance().questList.get(0).questGiverLevel;
+
+			switch (levelName) {
+				case "Forest":
+					level = new ForestLevel();
+					break;
+				case "Dungeon":
+					level = new SewerLevel();
+					break;
+				case "Cave":
+					level = new CavesLevel();
+					break;
+				case "Castle":
+					level = new CityLevel();
+					break;
+				case "Shadow Lands":
+					level = new ShadowLandsLevel();
+					break;
+				case "Town":
+					level = new TownLevel();
+					break;
+				case "Fields":
+					level = new FieldsLevel();
+					break;
+
+			}
+		}
+
+		return level;
 	}
 
 	public static void deleteGame( HeroClass cl, boolean deleteLevels ) {

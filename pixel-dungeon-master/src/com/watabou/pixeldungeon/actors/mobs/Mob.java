@@ -403,7 +403,7 @@ public abstract class Mob extends Char {
 					questHandler.handleKillQuest(quest);
 					break;
 				case "kill_fetch":
-					questHandler.handleKillFetchQuest(this);
+					questHandler.handleKillFetchQuest(this, quest);
 					break;
 
 

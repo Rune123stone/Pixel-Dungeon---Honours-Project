@@ -18,6 +18,7 @@ import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.pixeldungeon.windows.WndQuestNPC;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +31,12 @@ public class QuestHandler {
         this.questObjective = questObjective;
     }
 
-    //handles interaction with NPC if the NPC has a quest for the player
+
+
+    /**
+     *  handles interaction with NPC if the NPC has a quest for the player
+     */
+
     public void handleNPCInteraction(NPC npc, Quest quest) {
         String objectiveType = questObjective.questType;
 
@@ -58,39 +64,31 @@ public class QuestHandler {
                     break;
                 case "speak":
                     speakQuestInteract(npc, quest);
-
-                    //if the quest giver level is the same as the speakTo NPC level
-                    if (DataHandler.getInstance().getCurrentLevel().equals(questObjective.level)) {
-                        setSpeakToQuestNPC(questObjective.speakToNPC);
-                    }
-
                     break;
                 case "speak_fetch":
                     speakQuestInteract(npc, quest);
-
-                    if (DataHandler.getInstance().getCurrentLevel().equals(questObjective.level)) {
-                        setSpeakToQuestNPC(questObjective.speakToNPC);
-                    }
-
+                    break;
             }
         }
 
     }
 
+
+
     /**
-     * USE ITEM quest methods & variables
+     * use_item objective logic
      */
+
     public static void useQuestItem(Quest quest) {
 
         try {
+
             completeQuest(null, quest);
 
         } catch (Exception e) {
             System.out.println("Error in useQuestITem");
             e.printStackTrace();
         }
-
-
     }
 
     public static void setUseItemQuest(Item item) {
@@ -115,9 +113,12 @@ public class QuestHandler {
         }
     }
 
+
+
     /**
-     * FETCH quest methods & variables
+     * fetch objective logic
      */
+
     //handles the interaction of FETCH quests. Works for KILL + FETCH quests as well.
     public void fetchQuestInteract(NPC npc, Quest quest) {
 
@@ -230,13 +231,15 @@ public class QuestHandler {
         }
     }
 
+
+
     /**
-     * kill quest methods & variables
+     * kill & kill_fetch objective logic
      */
-    //public boolean killedAll = false;
 
     //spawns mobs for kill and kill_fetch quest types if quest giver is in a different level to that of quest_location.
     public static void spawnKillQuestMobs(Quest quest, Level level) {
+
         try {
 
             String mobPackage = "com.watabou.pixeldungeon.actors.mobs.";
@@ -263,6 +266,7 @@ public class QuestHandler {
 
     //spawns mobs for kill and kill_fetch quest types if quest giver is in the same level as quest_location.
     public static void spawnKillQuestMobsInSameLevelAsHero(Quest quest, Level level) {
+
         try {
 
             String mobPackage = "com.watabou.pixeldungeon.actors.mobs.";
@@ -288,13 +292,15 @@ public class QuestHandler {
     //gets called when quest enemy is killed
     public void handleKillQuest(Quest quest) {
         if (questObjective.leftToKill != 1) {
+
+            removeFromQuestJournal(quest);
+
             questObjective.leftToKill--;
 
             addToQuestJournal(quest);
         } else {
-            System.out.println("YEAHH BOIIIIIIII");
-            //setQuestComplete(DataHandler.getInstance().questList, quest.questName);
-            //killedAll = true;
+
+            completeQuest(null, quest);
         }
     }
 
@@ -345,10 +351,7 @@ public class QuestHandler {
         }
     }
 
-    /**
-     * SPECIAL CASE: kill + fetch quest
-     */
-    public void handleKillFetchQuest(Mob curMob) {
+    public void handleKillFetchQuest(Mob curMob, Quest quest) {
 
         try {
 
@@ -364,6 +367,8 @@ public class QuestHandler {
             } else {
                 Dungeon.level.drop(questItem, curMob.pos).sprite.drop();
                 setUseItemQuest(questItem);
+
+                completeQuest(null, quest);
             }
 
         } catch (Exception e) {
@@ -440,9 +445,12 @@ public class QuestHandler {
 
     }
 
+
+
     /**
-     * SpeakTo NPC quest
+     * speak & speak_fetch objective logic
      */
+
     //gets called when speaking to an NPC you must speak to as part of the speak quest.
     public void handleSpeakQuest(NPC npc, Quest quest) {
         System.out.println("handle speak to quest");
@@ -450,18 +458,6 @@ public class QuestHandler {
 
         quest.getCurObjective().objectiveCompleted();
 
-//        if (quest.curObjective == (quest.questObjectives.size() - 1)) {
-//            System.out.println("quest completed");
-//            quest.questCompleted();
-//            setQuestComplete(DataHandler.getInstance().questList, quest.questName);
-//
-//            String journalEntry = "Speak to " +quest.getCurObjective().speakToNPC+ " in the " +questObjective.level;
-//            //Journal.removeQuestEntry(journalEntry);
-//
-//            npc.removeQuest();
-//        } else {
-//            quest.curObjective++;
-//        }
 
         completeQuest(npc, quest);
 
@@ -485,28 +481,33 @@ public class QuestHandler {
             setQuestGiven(DataHandler.getInstance().questList, quest.questName);
             quest.given = true;
 
-        }
-    }
+            String questGiverLevel = quest.questGiverLevel;
 
-    public static void setQuestGiven(ArrayList<Quest> questList, String givenQuestName) {
-        for (Quest quest : questList) {
-            if (givenQuestName.equals(quest.questName)) {
-                quest.given = true;
+            if (questGiverLevel.equals(questObjective.level)) {
+                setSpeakToQuestNPC(questObjective.speakToNPC);
             }
         }
     }
 
-    public static void setQuestComplete(ArrayList<Quest> questList, String givenQuestName) {
-        for (Quest quest : questList) {
-            if (givenQuestName.equals(quest.questName)) {
-                quest.questCompleted();
+    public static void setSpeakToQuestNPC(String npcName) {
+
+        for (Mob mob : Dungeon.level.mobs) {
+            String curNPCName = mob.getClass().getSimpleName();
+
+            if (curNPCName.equals(npcName)) {
+                NPC speakToNPC = (NPC)mob;
+                System.out.println(speakToNPC.getClass().getSimpleName());
+                speakToNPC.assignSpeakToQuest(true);
+                System.out.println("SETTING SPEAK TO NPC");
+
+                return;
+            } else {
+                System.out.println("NOT WORKING HERE");
             }
         }
+
     }
 
-    /**
-     * SPECIAL CASE: SpeakTo NPC + Fetch quest
-     */
     //gets called when speaking to an NPC you must speak to as part of the speak_fetch quest. NPC will give you an item.
     public void handleSpeakFetchQuest(NPC npc, Quest quest) {
 
@@ -534,27 +535,52 @@ public class QuestHandler {
     }
 
 
+
     /**
-     * The following methods will handle the spawning of quest npc's, enemies, and items if said variables are in the same level as the quest giver.
-     * These get will get called on interaction with the quest giver npc.
+     * "helper/misc" methods
      */
 
-    public static void setSpeakToQuestNPC(String npcName) {
+    //if the current objective's "speak to npc" is in the same zone as the next objective's item/mob/npc, spawn that item/mob/npc.
+    public static void nextObjectiveSpawnHelper(Quest quest) {
 
-        for (Mob mob : Dungeon.level.mobs) {
-            String curNPCName = mob.getClass().getSimpleName();
+        QuestObjective currentObjective = quest.getCurObjective();
 
-            if (curNPCName.equals(npcName)) {
-                NPC speakToNPC = (NPC)mob;
-                speakToNPC.assignSpeakToQuest(true);
+        if (currentObjective.level.equals(DataHandler.getInstance().getCurrentLevel())) {
 
-                return;
+            switch (currentObjective.questType) {
+
+                case "kill":
+                case "kill_fetch":
+                    spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
+                    break;
+                case "fetch":
+                    spawnQuestItem(currentObjective.itemName, Dungeon.level, quest);
+                case "speak":
+                case "speak_fetch":
+                    setSpeakToQuestNPC(currentObjective.speakToNPC);
+                    break;
+
             }
-        }
 
+        }
     }
 
 
+    public static void setQuestGiven(ArrayList<Quest> questList, String givenQuestName) {
+        for (Quest quest : questList) {
+            if (givenQuestName.equals(quest.questName)) {
+                quest.given = true;
+            }
+        }
+    }
+
+    public static void setQuestComplete(ArrayList<Quest> questList, String givenQuestName) {
+        for (Quest quest : questList) {
+            if (givenQuestName.equals(quest.questName)) {
+                quest.questCompleted();
+            }
+        }
+    }
 
     public static void addToQuestJournal(Quest quest) {
 
@@ -631,7 +657,6 @@ public class QuestHandler {
     public static void completeQuest(NPC npc, Quest quest) {
 
         if (quest.curObjective == (quest.questObjectives.size() - 1)) {
-            System.out.println("quest completed");
             quest.questCompleted();
 
             setQuestComplete(DataHandler.getInstance().questList, quest.questName);
@@ -640,18 +665,44 @@ public class QuestHandler {
 
             if (actComplete()) {
 
+                try {
+//
+//                    ForestLevel.mobs.clear();
+//                    ShadowLandsLevel.mobs.clear();
+//                    CavesLevel.mobs.clear();
+//                    FieldsLevel.mobs.clear();
+//                    SewerLevel.mobs.clear();
+//                    CityLevel.mobs.clear();
+
+                    Dungeon.saveAll();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+               //Dungeon.hero = null;
+               // Actor.removeAll();
+
                 DataHandler.getInstance().nextAct();
 
                 int currentAct = DataHandler.getInstance().currentAct;
 
-                if (currentAct == 2) {
-                    DataHandler.getInstance().questList = DataHandler.getInstance().actTwoQuests;
-                } else {
-                    DataHandler.getInstance().questList = DataHandler.getInstance().actThreeQuests;
+                switch (currentAct) {
+
+                    case 2:
+                        DataHandler.getInstance().questList = DataHandler.getInstance().actTwoQuests;
+                        break;
+                    case 3:
+                        DataHandler.getInstance().questList = DataHandler.getInstance().actThreeQuests;
+                        break;
+                    case 4:
+                        InterlevelScene.mode = InterlevelScene.Mode.CREDITS;
+                        Game.switchScene(InterlevelScene.class);
+                        return;
                 }
 
-                InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
+
+                InterlevelScene.mode = InterlevelScene.Mode.NEXTACT;
                 Game.switchScene(InterlevelScene.class);
+
             }
 
 
@@ -663,6 +714,10 @@ public class QuestHandler {
         } else {
             removeFromQuestJournal(quest);
             quest.curObjective++;
+
+            nextObjectiveSpawnHelper(quest);
+
+
             addToQuestJournal(quest);
         }
     }
@@ -679,71 +734,6 @@ public class QuestHandler {
         return true;
     }
 
-
-    public static void assignQuest(Quest quest, String npcName) {
-        for (Mob mob : Dungeon.level.mobs) {
-            String curNPCName = mob.getClass().getSimpleName();
-
-            if (curNPCName.equals(npcName)) {
-                NPC speakToNPC = (NPC)mob;
-
-                speakToNPC.assignQuest(quest);
-
-                return;
-            }
-        }
-    }
-
-    public static void assignNotQuestGiver(String npcName) {
-        for (Mob mob : Dungeon.level.mobs) {
-            String curNPCName = mob.getClass().getSimpleName();
-
-            if (curNPCName.equals(npcName)) {
-                NPC speakToNPC = (NPC)mob;
-
-                speakToNPC.setQuestGiver(false);
-
-                return;
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //other methods - thought of a better way to do this
-
-    public void fetchQuestItemFromNPC(NPC npc) {
-        try {
-
-            String itemPackage = "com.watabou.pixeldungeon.items.quest.";
-            String itemClassName = itemPackage.concat(questObjective.itemName);
-            Class<?> item = Class.forName(itemClassName);
-
-            questObjective.QUEST_GIVEN_TEXT = "Ey Boi, I got something 4 u..";
-
-            if (npc.hasQuestItem) {
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
-
-                Dungeon.level.drop((Item) item.newInstance(), Dungeon.hero.pos).sprite.drop();
-                npc.assignQuestItem(false);
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error in method: fetchQuestItemFromNPC");
-            e.printStackTrace();
-        }
-    }
 
 
 }
