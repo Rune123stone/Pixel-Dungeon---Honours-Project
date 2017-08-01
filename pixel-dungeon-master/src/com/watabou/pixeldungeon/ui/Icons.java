@@ -51,7 +51,7 @@ public enum Icons {
     CHALLENGE_OFF,
     CHALLENGE_ON,
     RESUME,
-    FOREST;
+    QUESTHANDIN;
 
     public Image get() {
         return get(this);
@@ -144,8 +144,8 @@ public enum Icons {
             case RESUME:
                 icon.frame(icon.texture.uvRect(114, 0, 126, 11));
                 break;
-            case FOREST:
-                icon.frame(icon.texture.uvRect(74, 52, 85, 69));
+            case QUESTHANDIN:
+                icon.frame(icon.texture.uvRect(63, 45, 71, 53));
                 break;
         }
         return icon;

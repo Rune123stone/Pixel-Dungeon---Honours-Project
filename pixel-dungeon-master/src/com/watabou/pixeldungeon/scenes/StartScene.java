@@ -38,6 +38,7 @@ import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.Speck;
 import com.watabou.pixeldungeon.effects.BannerSprites.Type;
+import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.Icons;
@@ -299,6 +300,9 @@ public class StartScene extends PixelScene {
 	private void startNewGame() {
 		Dungeon.hero = null;
 		//InterlevelScene.mode = InterlevelScene.Mode.OVERWORLD;
+
+		DataHandler.getInstance().actStarting = true;
+
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 		WndBackgroundStory.setStoryTold(false);
 

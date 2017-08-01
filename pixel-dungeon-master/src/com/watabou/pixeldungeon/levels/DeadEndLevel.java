@@ -82,7 +82,7 @@ public class DeadEndLevel extends Level {
 	}
 
 	@Override
-	protected void createMobs() {
+	public void createMobs() {
 	}
 
 	@Override

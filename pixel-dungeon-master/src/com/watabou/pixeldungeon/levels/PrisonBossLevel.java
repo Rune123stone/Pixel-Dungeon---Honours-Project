@@ -274,7 +274,7 @@ public class PrisonBossLevel extends RegularLevel {
 	}
 	
 	@Override
-	protected void createMobs() {
+	public void createMobs() {
 	}
 	
 	public Actor respawner() {

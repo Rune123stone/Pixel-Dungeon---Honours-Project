@@ -118,6 +118,7 @@ public class Quest implements Bundlable{
         this.associatedAct = associatedAct;
         this.prerequisiteQuestName = prerequisiteQuestName;
 
+        given = false;
         questComplete = false;
 
         this.QUEST_NOT_GIVEN_TEXT = QUEST_NOT_GIVEN_TEXT;
@@ -135,6 +136,7 @@ public class Quest implements Bundlable{
         this.associatedAct = associatedAct;
         this.prerequisiteQuestName = prerequisiteQuestName;
 
+        given = false;
         questComplete = false;
 
         this.QUEST_NOT_GIVEN_TEXT = QUEST_NOT_GIVEN_TEXT;

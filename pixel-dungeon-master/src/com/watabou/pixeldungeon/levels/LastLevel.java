@@ -79,7 +79,7 @@ public class LastLevel extends Level {
 	}
 
 	@Override
-	protected void createMobs() {
+	public void createMobs() {
 	}
 
 	@Override

@@ -74,6 +74,8 @@ public class Ghost extends NPC {
 		super();
 
 		Sample.INSTANCE.load( Assets.SND_GHOST );
+
+
 	}
 	
 	@Override
@@ -99,6 +101,7 @@ public class Ghost extends NPC {
 	@Override
 	public void damage( int dmg, Object src ) {
 	}
+
 	
 	@Override
 	public void add( Buff buff ) {
@@ -111,6 +114,7 @@ public class Ghost extends NPC {
 	
 	@Override
 	public void interact() {
+		super.interact();
 		sprite.turnTo( pos, Dungeon.hero.pos );
 		Sample.INSTANCE.play( Assets.SND_GHOST );
 
@@ -121,34 +125,35 @@ public class Ghost extends NPC {
 //			System.out.println("Nope, I don't got no quest, I'm just a simple Blacksmith.");
 //		}
 
-		if (quest != null) {
-			int curObjective = quest.curObjective;
-			QuestObjective objective = quest.questObjectives.get(curObjective);
-
-			questHandler = new com.watabou.pixeldungeon.quests.QuestHandler(objective);
-
-			objective.QUEST_GIVEN_TEXT = "IVE GIVEN YOU A QUEST!!!!";
-			objective.QUEST_NOT_GIVEN_TEXT = "IVE GOT A QUEST!!!!";
-			objective.QUEST_COMPLETED_TEXT = "YOU'VE DONE IT!!!!!";
-			System.out.println(quest.given);
-			System.out.println(quest.questName);
-
-
-			System.out.println(quest.getCurObjective().questType);
-			System.out.println("quest giver? : " +questGiver);
-			System.out.println("speak to npc? : " +speakToQuest);
-
-//			if (quest.questComplete) {
-//				WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
-//				return;
-//			}
-
-
-			questHandler.handleNPCInteraction(this, quest);
-		} else {
-			System.out.println("I dont got no quest");
-		}
-		
+//		if (quest != null) {
+//
+//			int curObjective = quest.curObjective;
+//			QuestObjective objective = quest.questObjectives.get(curObjective);
+//
+//			questHandler = new com.watabou.pixeldungeon.quests.QuestHandler(objective);
+//
+//			objective.QUEST_GIVEN_TEXT = "IVE GIVEN YOU A QUEST!!!!";
+//			objective.QUEST_NOT_GIVEN_TEXT = "IVE GOT A QUEST!!!!";
+//			objective.QUEST_COMPLETED_TEXT = "YOU'VE DONE IT!!!!!";
+//			System.out.println(quest.given);
+//			System.out.println(quest.questName);
+//
+//
+//			System.out.println(quest.getCurObjective().questType);
+//			System.out.println("quest giver? : " +questGiver);
+//			System.out.println("speak to npc? : " +speakToQuest);
+//
+////			if (quest.questComplete) {
+////				WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
+////				return;
+////			}
+//
+//
+//			questHandler.handleNPCInteraction(this, quest);
+//		} else {
+//			System.out.println("I dont got no quest");
+//		}
+//
 		//Quest.type.handler.interact( this );
 	}
 	

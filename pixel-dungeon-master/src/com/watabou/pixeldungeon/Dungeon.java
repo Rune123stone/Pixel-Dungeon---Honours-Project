@@ -842,39 +842,6 @@ public class Dungeon {
 		}
 
 
-
-//		for (Mob mob : level.mobs) {
-//			if (mob.getClass().getSimpleName().equals("Blacksmith")) {
-//				((NPC)mob).assignQuest(DataHandler.getInstance().actOneQuests.get(0));
-//				System.out.println("assigned quest");
-//			}
-//		}
-
-//		for (Quest quest : DataHandler.getInstance().givenQuests) {
-//			if (quest.getCurObjective().questType.equals("speak")) {
-//
-//
-//				for (Mob mob : level.mobs) {
-//
-//					String npcName = mob.getClass().getSimpleName();
-//
-//					if (level.isSpawned(npcName)) {
-//
-//					}
-//
-//
-//
-//				}
-//
-//
-//
-//			}
-//		}
-		// *** END ***
-
-
-
-
 		Bundle bundle = Bundle.read( input );
 
 		// *** sets the hero's pos to where it was in the specified level. ***
@@ -885,6 +852,89 @@ public class Dungeon {
 
 
 		return (Level)bundle.get( "level" );
+	}
+
+	//for deleting mobs method
+	public static Level loadSpecificLevel(String level) throws Exception {
+
+		Dungeon.level = null;
+		Actor.clear();
+
+		//InputStream input = Game.instance.openFileInput( Utils.format( depthFile( cl ), depth ) ) ; //uncomment to restore back to normal
+
+		// *** Loads individual levels as well as the hero's position in those levels. ***
+		InputStream input = null;
+		String posKey = "";
+
+		switch (level) {
+			case "Forest":
+				//Terrain.flags[Terrain.WATER] = Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to NOT pass over water (lake).
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.PASSABLE; //allows the her to pass over wall decoration cells (will be grass cells).
+
+				posKey = FORESTHEROPOS;
+				input = Game.instance.openFileInput("Forest");
+				break;
+			case "Dungeon":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+				posKey = DUNGEONHEROPOS;
+				input = Game.instance.openFileInput("Dungeon");
+				break;
+			case "Cave":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+				posKey = CAVESHEROPOS;
+				input = Game.instance.openFileInput("Caves");
+				break;
+			case "Castle":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+				posKey = CASTLEHEROPOS;
+				input = Game.instance.openFileInput("Castle");
+				break;
+			case "Shadow Lands":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+				posKey = SHADOWLANDSHEROPOS;
+				input = Game.instance.openFileInput("Shadow Lands");
+				break;
+			case "Town":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+				posKey = TOWNHEROPOS;
+				input = Game.instance.openFileInput("Town");
+				break;
+			case "Fields":
+				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
+				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
+
+				posKey = FIELDSHEROPOS;
+				input = Game.instance.openFileInput("Fields");
+				break;
+		}
+
+
+		Bundle bundle = Bundle.read( input );
+
+		// *** sets the hero's pos to where it was in the specified level. ***
+//		hero.pos = bundle.getInt(posKey);
+		// *** END ***
+
+		if (input != null) {
+			input.close();
+		}
+
+		if ((Level)bundle.get("level") != null) {
+			return (Level)bundle.get( "level" );
+		}
+
+
+		return null;
 	}
 
 	public static Level nextActLevel( HeroClass cl ) {

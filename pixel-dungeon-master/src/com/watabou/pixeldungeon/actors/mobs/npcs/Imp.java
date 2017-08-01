@@ -115,24 +115,24 @@ public class Imp extends NPC {
 	
 	@Override
 	public void interact() {
-		
+		super.interact();
 		sprite.turnTo( pos, Dungeon.hero.pos );
-		if (Quest.given) {
-			
-			DwarfToken tokens = Dungeon.hero.belongings.getItem( DwarfToken.class );
-			if (tokens != null && (tokens.quantity() >= 8 || (!Quest.alternative && tokens.quantity() >= 6))) {
-				GameScene.show( new WndImp( this, tokens ) );
-			} else {
-				tell( Quest.alternative ? TXT_MONKS2 : TXT_GOLEMS2, Dungeon.hero.className() );
-			}
-			
-		} else {
-			tell( Quest.alternative ? TXT_MONKS1 : TXT_GOLEMS1 );
-			Quest.given = true;
-			Quest.completed = false;
-			
-			Journal.add( Journal.Feature.IMP );
-		}
+//		if (Quest.given) {
+//
+//			DwarfToken tokens = Dungeon.hero.belongings.getItem( DwarfToken.class );
+//			if (tokens != null && (tokens.quantity() >= 8 || (!Quest.alternative && tokens.quantity() >= 6))) {
+//				GameScene.show( new WndImp( this, tokens ) );
+//			} else {
+//				tell( Quest.alternative ? TXT_MONKS2 : TXT_GOLEMS2, Dungeon.hero.className() );
+//			}
+//
+//		} else {
+//			tell( Quest.alternative ? TXT_MONKS1 : TXT_GOLEMS1 );
+//			Quest.given = true;
+//			Quest.completed = false;
+//
+//			Journal.add( Journal.Feature.IMP );
+//		}
 	}
 	
 	private void tell( String format, Object...args ) {

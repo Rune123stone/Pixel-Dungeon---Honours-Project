@@ -199,7 +199,7 @@ public class Item implements Bundlable {
 
 			if (quest != null) {
 
-				if (quest.getCurObjective().questType.equals("fetch")) {
+				if (quest.getCurObjective().questType.equals("fetch") || quest.getCurObjective().questType.equals("kill_fetch") || quest.getCurObjective().questType.equals("speak_fetch")) {
 					QuestHandler.completeQuest(null, quest);
 				}
 			}

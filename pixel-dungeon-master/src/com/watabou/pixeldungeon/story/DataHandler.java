@@ -1,6 +1,8 @@
 package com.watabou.pixeldungeon.story;
 
 import android.os.Environment;
+import com.watabou.noosa.Game;
+import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Mentor;
 import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
@@ -27,6 +29,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,6 +56,7 @@ public class DataHandler {
     public String chosenItem = "";
     public String story = "";
 
+    public boolean actStarting = false;
 
     public ArrayList<Quest> givenQuests = new ArrayList<>();
     public ArrayList<Quest> questList = new ArrayList<>();
@@ -176,11 +180,11 @@ public class DataHandler {
                     questObjective.appendChild(questType);
 
                     Element questNPC = doc.createElement("quest_npc");
-                    questNPC.appendChild(doc.createTextNode("Blacksmith"));
+                    questNPC.appendChild(doc.createTextNode("Ghost"));
                     questObjective.appendChild(questNPC);
 
                     Element questLocation = doc.createElement("quest_location");
-                    questLocation.appendChild(doc.createTextNode("Caves"));
+                    questLocation.appendChild(doc.createTextNode("Forest"));
                     questObjective.appendChild(questLocation);
 
                     questObjective = doc.createElement("quest_objective");
@@ -205,6 +209,137 @@ public class DataHandler {
                     questLocation = doc.createElement("quest_location");
                     questLocation.appendChild(doc.createTextNode("Forest"));
                     questObjective.appendChild(questLocation);
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("speak"));
+                    questObjective.appendChild(questType);
+
+                    questNPC = doc.createElement("quest_npc");
+                    questNPC.appendChild(doc.createTextNode("Blacksmith"));
+                    questObjective.appendChild(questNPC);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Caves"));
+                    questObjective.appendChild(questLocation);
+
+                    quest = doc.createElement("quest");
+                    firstTemplate.appendChild(quest);
+
+                    questName = doc.createElement("quest_name");
+                    questName.appendChild(doc.createTextNode("This is the second quest"));
+                    quest.appendChild(questName);
+
+//                    Element questGiver = doc.createElement("quest_giver");
+//                    questGiver.appendChild(doc.createTextNode("none"));
+//                    quest.appendChild(questGiver);
+
+                    questGiver = doc.createElement("quest_giver");
+                    questGiver.appendChild(doc.createTextNode("MENTOR"));
+                    quest.appendChild(questGiver);
+
+                    questReward = doc.createElement("quest_reward");
+                    questReward.appendChild(doc.createTextNode("40xp"));
+                    quest.appendChild(questReward);
+
+                    questGiverLevel = doc.createElement("quest_giver_level");
+                    questGiverLevel.appendChild(doc.createTextNode("mentor_location"));
+                    quest.appendChild(questGiverLevel);
+
+                    prerequisiteQuestName = doc.createElement("prerequisite_quest_name");
+                    prerequisiteQuestName.appendChild(doc.createTextNode("Call to Power"));
+                    quest.appendChild(prerequisiteQuestName);
+
+//                    Element questDialogue = doc.createElement("quest_dialogue");
+//                    questDialogue.appendChild(doc.createTextNode("callToPower.txt"));
+//                    quest.appendChild(questDialogue);
+                    questNotGivenDialogue = doc.createElement("quest_not_given_dialogue");
+                    questNotGivenDialogue.appendChild(doc.createTextNode("findingTheSource_not_given.txt"));
+                    quest.appendChild(questNotGivenDialogue);
+
+                    questGivenDialogue = doc.createElement("quest_given_dialogue");
+                    questGivenDialogue.appendChild(doc.createTextNode("findingTheSource_given.txt"));
+                    quest.appendChild(questGivenDialogue);
+
+                    questCompletedDialogue = doc.createElement("quest_completed_dialogue");
+                    questCompletedDialogue.appendChild(doc.createTextNode("findingTheSource_completed.txt"));
+                    quest.appendChild(questCompletedDialogue);
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("speak"));
+                    questObjective.appendChild(questType);
+
+                    questNPC = doc.createElement("quest_npc");
+                    questNPC.appendChild(doc.createTextNode("Imp"));
+                    questObjective.appendChild(questNPC);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Forest"));
+                    questObjective.appendChild(questLocation);
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("kill_fetch"));
+                    questObjective.appendChild(questType);
+
+                    enemy = doc.createElement("enemy");
+                    enemy.appendChild(doc.createTextNode("Elemental"));
+                    questObjective.appendChild(enemy);
+
+                    amountToKill = doc.createElement("amount_to_kill");
+                    amountToKill.appendChild(doc.createTextNode("1"));
+                    questObjective.appendChild(amountToKill);
+
+                    Element questItem = doc.createElement("quest_item");
+                    questItem.appendChild(doc.createTextNode("DriedRose"));
+                    questObjective.appendChild(questItem);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Fields"));
+                    questObjective.appendChild(questLocation);
+
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("speak_fetch"));
+                    questObjective.appendChild(questType);
+
+                    questNPC = doc.createElement("quest_npc");
+                    questNPC.appendChild(doc.createTextNode("Imp"));
+                    questObjective.appendChild(questNPC);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Shadow Lands"));
+                    questObjective.appendChild(questLocation);
+
+                    questItem = doc.createElement("quest_item");
+                    questItem.appendChild(doc.createTextNode("DwarfToken"));
+                    questObjective.appendChild(questItem);
 
 //                    questObjective = doc.createElement("quest_objective");
 //                    quest.appendChild(questObjective);
@@ -469,7 +604,7 @@ public class DataHandler {
                     questType.appendChild(doc.createTextNode("fetch"));
                     questObjective.appendChild(questType);
 
-                    Element questItem = doc.createElement("quest_item");
+                    questItem = doc.createElement("quest_item");
                     questItem.appendChild(doc.createTextNode("letter_item"));
                     questObjective.appendChild(questItem);
 
@@ -681,6 +816,52 @@ public class DataHandler {
                     questLocation.appendChild(doc.createTextNode("Forest"));
                     questObjective.appendChild(questLocation);
 
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("speak_fetch"));
+                    questObjective.appendChild(questType);
+
+                    questNPC = doc.createElement("quest_npc");
+                    questNPC.appendChild(doc.createTextNode("Ghost"));
+                    questObjective.appendChild(questNPC);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Dungeon"));
+                    questObjective.appendChild(questLocation);
+
+                    Element questItem = doc.createElement("quest_item");
+                    questItem.appendChild(doc.createTextNode("DwarfToken"));
+                    questObjective.appendChild(questItem);
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("kill"));
+                    questObjective.appendChild(questType);
+
+                    Element enemy = doc.createElement("enemy");
+                    enemy.appendChild(doc.createTextNode("Shaman"));
+                    questObjective.appendChild(enemy);
+
+                    Element amountToKill = doc.createElement("amount_to_kill");
+                    amountToKill.appendChild(doc.createTextNode("3"));
+                    questObjective.appendChild(amountToKill);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Castle"));
+                    questObjective.appendChild(questLocation);
+
 //                    questObjective = doc.createElement("quest_objective");
 //                    quest.appendChild(questObjective);
 //
@@ -867,7 +1048,7 @@ public class DataHandler {
                     questType.appendChild(doc.createTextNode("fetch"));
                     questObjective.appendChild(questType);
 
-                    Element questItem = doc.createElement("quest_item");
+                    questItem = doc.createElement("quest_item");
                     questItem.appendChild(doc.createTextNode("item_collectable"));
                     questObjective.appendChild(questItem);
 
@@ -1004,11 +1185,11 @@ public class DataHandler {
                     questType.appendChild(doc.createTextNode("kill_fetch"));
                     questObjective.appendChild(questType);
 
-                    Element enemy = doc.createElement("enemy");
+                    enemy = doc.createElement("enemy");
                     enemy.appendChild(doc.createTextNode("item_collectable_boss"));
                     questObjective.appendChild(enemy);
 
-                    Element amountToKill = doc.createElement("amount_to_kill");
+                    amountToKill = doc.createElement("amount_to_kill");
                     amountToKill.appendChild(doc.createTextNode("1"));
                     questObjective.appendChild(amountToKill);
 
@@ -1111,7 +1292,7 @@ public class DataHandler {
                     quest.appendChild(questName);
 
                     Element questGiver = doc.createElement("quest_giver");
-                    questGiver.appendChild(doc.createTextNode("MENTOR"));
+                    questGiver.appendChild(doc.createTextNode("Blacksmith"));
                     quest.appendChild(questGiver);
 
                     Element questReward = doc.createElement("quest_reward");
@@ -1183,6 +1364,45 @@ public class DataHandler {
                     Element questLocation = doc.createElement("quest_location");
                     questLocation.appendChild(doc.createTextNode("Forest"));
                     questObjective.appendChild(questLocation);
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("fetch"));
+                    questObjective.appendChild(questType);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Forest"));
+                    questObjective.appendChild(questLocation);
+
+                    Element questItem = doc.createElement("quest_item");
+                    questItem.appendChild(doc.createTextNode("Letter"));
+                    questObjective.appendChild(questItem);
+
+                    questObjective = doc.createElement("quest_objective");
+                    quest.appendChild(questObjective);
+
+                    questObjectiveName = doc.createElement("quest_objective_name");
+                    questObjectiveName.appendChild(doc.createTextNode("objective name"));
+                    questObjective.appendChild(questObjectiveName);
+
+                    questType = doc.createElement("quest_type");
+                    questType.appendChild(doc.createTextNode("use_item"));
+                    questObjective.appendChild(questType);
+
+                    questItem = doc.createElement("quest_item");
+                    questItem.appendChild(doc.createTextNode("Letter"));
+                    questObjective.appendChild(questItem);
+
+                    questLocation = doc.createElement("quest_location");
+                    questLocation.appendChild(doc.createTextNode("Forest"));
+                    questObjective.appendChild(questLocation);
+
 
 //                    questObjective = doc.createElement("quest_objective");
 //                    quest.appendChild(questObjective);
@@ -1278,7 +1498,7 @@ public class DataHandler {
                     amountToKill.appendChild(doc.createTextNode("5"));
                     questObjective.appendChild(amountToKill);
 
-                    Element questItem = doc.createElement("quest_item");
+                    questItem = doc.createElement("quest_item");
                     questItem.appendChild(doc.createTextNode("item_collectable"));
                     questObjective.appendChild(questItem);
 
@@ -2443,15 +2663,78 @@ public class DataHandler {
 
     }
 
-    public void displayMobs() {
-        try {
-            System.out.println("Forset Mobs:");
-            display(ForestLevel.mobs);
+    public void clearAllMobs() throws Exception {
 
-            System.out.println("Dungeon Mobs:");
-            display(SewerLevel.mobs);
-        } catch (Exception e) {}
+        Level level = null;
+        File file;
+
+        //Forest mobs
+        file = Game.instance.getFileStreamPath("Forest");
+
+        if (file.exists()) {
+            level = Dungeon.loadSpecificLevel("Forest");
+            level.mobs.clear();
+
+            System.out.println(level.mobs.size());
+        } else {
+            System.out.println("Forest file does not exist");
+        }
+
+        //Dungeon mobs
+        file = Game.instance.getFileStreamPath("Dungeon");
+
+        if (file.exists()) {
+            level = Dungeon.loadSpecificLevel("Dungeon");
+            level.mobs.clear();
+        } else {
+            System.out.println("Dungeon file does not exist");
+        }
+
+        //Caves mobs
+        file = Game.instance.getFileStreamPath("Caves");
+
+        if (file.exists()) {
+            level = Dungeon.loadSpecificLevel("Cave");
+            level.mobs.clear();
+
+            System.out.println("amount of mobs in cave:" +level.mobs.size());
+
+        } else {
+            System.out.println("Caves file does not exist");
+        }
+
+        //Castle mobs
+        file = Game.instance.getFileStreamPath("Castle");
+
+        if (file.exists()) {
+            level = Dungeon.loadSpecificLevel("Castle");
+            level.mobs.clear();
+        } else {
+            System.out.println("Castle file does not exist");
+        }
+
+        //Shadow Lands mobs
+        file = Game.instance.getFileStreamPath("Shadow Lands");
+
+        if (file.exists()) {
+            level = Dungeon.loadSpecificLevel("Shadow Lands");
+            level.mobs.clear();
+        } else {
+            System.out.println("Shadow Lands file does not exist");
+        }
+
+        //Fields mobs
+        file = Game.instance.getFileStreamPath("Fields");
+
+        if (file.exists()) {
+            level = Dungeon.loadSpecificLevel("Fields");
+            level.mobs.clear();
+        } else {
+            System.out.println("Fields file does not exist");
+        }
+
     }
+
 
     public void display(HashSet<Mob> hashset) {
         for (Mob mob : hashset) {

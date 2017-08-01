@@ -28,9 +28,11 @@ public class EmoIcon extends Image {
 
 	protected float maxSize = 2;
 	protected float timeScale = 1;
-	
-	protected boolean growing	= true;
-	
+
+	protected boolean growing = true;
+
+	public boolean questIcon = false;
+
 	protected CharSprite owner;
 	
 	public EmoIcon( CharSprite owner ) {
@@ -44,7 +46,7 @@ public class EmoIcon extends Image {
 	public void update() {
 		super.update();
 		
-		if (visible) {
+		if (visible && !questIcon) {
 			if (growing) {
 				scale.set( scale.x + Game.elapsed * timeScale );
 				if (scale.x > maxSize) {
@@ -59,6 +61,11 @@ public class EmoIcon extends Image {
 			
 			x = owner.x + owner.width - width / 2;
 			y = owner.y - height;
+		} else {
+
+			x = owner.x + owner.width - width / 2;
+			y = owner.y - height;
+
 		}
 	}
 	
@@ -88,7 +95,43 @@ public class EmoIcon extends Image {
 			
 			maxSize = 1.3f;
 			timeScale = 2;
-			
+
+			origin.set( 2.5f, height - 2.5f );
+			scale.set( Random.Float( 1, maxSize ) );
+		}
+	}
+
+	public static class QuestIcon extends EmoIcon {
+
+		public QuestIcon( CharSprite owner ) {
+
+			super( owner );
+
+			copy( Icons.get( Icons.ALERT ) );
+
+			questIcon = true;
+
+			maxSize = 1.3f;
+			timeScale = 2;
+
+			origin.set( 2.5f, height - 2.5f );
+			scale.set( Random.Float( 1, maxSize ) );
+		}
+	}
+
+	public static class QuestHandInIcon extends EmoIcon {
+
+		public QuestHandInIcon( CharSprite owner ) {
+
+			super( owner );
+
+			copy( Icons.get( Icons.QUESTHANDIN ) );
+
+			questIcon = true;
+
+			maxSize = 1.3f;
+			timeScale = 2;
+
 			origin.set( 2.5f, height - 2.5f );
 			scale.set( Random.Float( 1, maxSize ) );
 		}

@@ -186,7 +186,7 @@ public class CavesBossLevel extends Level {
 	}
 	
 	@Override
-	protected void createMobs() {	
+	public void createMobs() {
 	}
 	
 	public Actor respawner() {

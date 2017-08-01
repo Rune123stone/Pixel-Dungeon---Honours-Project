@@ -39,6 +39,7 @@ import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.blobs.Blob;
 import com.watabou.pixeldungeon.actors.hero.HeroBackground;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
+import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
 import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.BlobEmitter;
 import com.watabou.pixeldungeon.effects.EmoIcon;
@@ -57,6 +58,7 @@ import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.sprites.DiscardedItemSprite;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
@@ -344,19 +346,56 @@ public class GameScene extends PixelScene {
 			fadeIn();
 		}
 
-		for (Quest quest : DataHandler.getInstance().questList) {
-			if (quest.questGiver.equals("none")) {
-				WndNoQuestGiver.showQuestDialogue(quest.QUEST_NOT_GIVEN_TEXT);
+//		for (Quest quest : DataHandler.getInstance().questList) {
+//			if (quest.questGiver.equals("none")) {
+//				WndNoQuestGiver.showQuestDialogue(quest.QUEST_NOT_GIVEN_TEXT);
+//
+//				//QuestHandler.setQuestGiven(DataHandler.getInstance().questList, quest.questName);
+//				//quest.given = true;
+//
+//				//QuestHandler.addToQuestJournal(quest);
+//
+//			}
+//		}
 
-				//QuestHandler.setQuestGiven(DataHandler.getInstance().questList, quest.questName);
-				//quest.given = true;
+		if (DataHandler.getInstance().actStarting) {
+			WndNoQuestGiver.showQuestDialogue("The act has just started, quiet down now!");
+			DataHandler.getInstance().actStarting = false;
+		}
 
-				//QuestHandler.addToQuestJournal(quest);
+
+		for (Mob mob : Dungeon.level.mobs) {
+
+			if (mob instanceof NPC) {
+
+				NPC curNPC = (NPC)mob;
+
+				Quest curQuest = curNPC.quest;
+
+				if (curQuest != null)
+
+					if (!(curQuest.given) && curNPC.questGiver) {
+
+						curNPC.sprite.showQuestIcon();
+						System.out.println("showing quest icon");
+
+					} else {
+
+						if (curNPC.speakToQuest) {
+
+							curNPC.sprite.showQuestHandInIcon();
+							System.out.println("showing quest hand in icon");
+
+						}
+
+					}
 
 			}
 		}
+
 	}
-	
+
+
 	public void destroy() {
 		
 		scene = null;

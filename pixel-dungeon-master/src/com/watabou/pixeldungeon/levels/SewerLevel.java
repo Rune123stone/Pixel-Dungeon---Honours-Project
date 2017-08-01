@@ -136,7 +136,7 @@ public class SewerLevel extends RegularLevel {
 	}
 	
 	@Override
-	protected void createMobs() {
+	public void createMobs() {
 		super.createMobs();
 		//KingGnoll.spawn(this);
 		//QuestHandler questHandler = new QuestHandler();

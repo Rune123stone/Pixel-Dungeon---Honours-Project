@@ -86,19 +86,19 @@ public class WndQuestJournal extends Window {
             feature = PixelScene.createText( 9 );
             add( feature );
 
-            icon = Icons.get( Icons.FOREST );
+            //icon = Icons.get( Icons.FOREST );
             //add ( icon );
         }
 
         @Override
         protected void layout() {
 
-          icon.x = width - icon.width;
+//          icon.x = width - icon.width;
 //
 //            depth.x = icon.x - 1 - depth.width();
 //            depth.y = PixelScene.align( y + (height - depth.height()) / 2 );
 //
-            icon.y = feature.baseLine() / 2;
+          //  icon.y = feature.baseLine() / 2;
 
             System.out.println(feature.baseLine());
             feature.y = PixelScene.align(  feature.baseLine() );

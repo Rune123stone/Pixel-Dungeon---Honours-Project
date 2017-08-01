@@ -176,7 +176,7 @@ public class SewerBossLevel extends RegularLevel {
 	
 	
 	@Override
-	protected void createMobs() {
+	public void createMobs() {
 		Mob mob = Bestiary.mob( Dungeon.depth );
 		mob.pos = roomExit.random();
 		mobs.add( mob );

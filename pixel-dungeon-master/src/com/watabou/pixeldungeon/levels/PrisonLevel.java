@@ -66,7 +66,7 @@ public class PrisonLevel extends RegularLevel {
 	}
 	
 	@Override
-	protected void createMobs() {
+	public void createMobs() {
 		super.createMobs();
 		
 		Wandmaker.Quest.spawn( this, roomEntrance );

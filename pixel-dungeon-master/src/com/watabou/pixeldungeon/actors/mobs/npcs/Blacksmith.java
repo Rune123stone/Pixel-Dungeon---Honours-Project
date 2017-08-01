@@ -83,30 +83,30 @@ public class Blacksmith extends NPC {
 	
 	@Override
 	public void interact() {
-		
+		super.interact();
 		sprite.turnTo( pos, Dungeon.hero.pos );
 
-		System.out.println("Speak to quest: " +speakToQuest);
-		System.out.println("Quest Giver: " +questGiver);
-		System.out.println(quest);
-
-		if (!questGiver) {
-			if (quest != null) {
-
-				questHandler = new QuestHandler(quest.getCurObjective());
-
-				System.out.println(quest.getCurObjective().questType);
-
-				quest.getCurObjective().QUEST_COMPLETED_TEXT = "YAAAAY, now go speak to the Ghost again in the Forest";
-
-				if (quest.questComplete) {
-					WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
-				}
-
-				questHandler.handleNPCInteraction(this, quest);
-			}
-
-		}
+//		System.out.println("Speak to quest: " +speakToQuest);
+//		System.out.println("Quest Giver: " +questGiver);
+//		System.out.println(quest);
+//
+//		if (!questGiver) {
+//			if (quest != null) {
+//
+//				questHandler = new QuestHandler(quest.getCurObjective());
+//
+//				System.out.println(quest.getCurObjective().questType);
+//
+//				quest.getCurObjective().QUEST_COMPLETED_TEXT = "YAAAAY, now go speak to the Ghost again in the Forest";
+//
+//				if (quest.questComplete) {
+//					WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
+//				}
+//
+//				questHandler.handleNPCInteraction(this, quest);
+//			}
+//
+//		}
 
 //
 //		if (!Quest.given) {

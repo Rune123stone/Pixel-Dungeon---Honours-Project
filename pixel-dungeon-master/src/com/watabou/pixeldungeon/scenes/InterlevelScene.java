@@ -319,12 +319,20 @@ public class InterlevelScene extends PixelScene {
 
         Dungeon.loadGame(StartScene.curClass);
 
+
+
         Level level = Dungeon.loadLevel(StartScene.curClass);
+
+        if (level.mobs.size() <= 3) {
+            level.createMobs();
+        }
 
         level.spawnQuestGiverNPCs();
         level.spawnSpeakToQuestNPCS();
         level.spawnFetchItems();
         level.spawnKillQuestMobs();
+
+
 
         if (Dungeon.depth == -1) {
             Dungeon.depth = Statistics.deepestFloor;
@@ -334,7 +342,6 @@ public class InterlevelScene extends PixelScene {
             //Level level = Dungeon.loadLevel(StartScene.curClass);
             Dungeon.switchLevel(level, Level.resizingNeeded ? level.adjustPos(Dungeon.hero.pos) : Dungeon.hero.pos);
         }
-
 
     }
 
@@ -348,9 +355,18 @@ public class InterlevelScene extends PixelScene {
 
         Level level = null;
 
+        DataHandler.getInstance().clearAllMobs();
+
         try {
 
+            //DataHandler.getInstance().clearAllMobs();
+
             level = Dungeon.nextActLevel(StartScene.curClass);
+
+            Dungeon.switchingActs = true;
+
+//            level.mobs.clear();
+//            level.createMobs();
 
             level.spawnQuestGiverNPCs();
             level.spawnSpeakToQuestNPCS();
@@ -359,14 +375,45 @@ public class InterlevelScene extends PixelScene {
 
             Dungeon.switchLevel(level, level.randomRespawnCell());
 
+            Dungeon.switchingActs = false;
+
         } catch (Exception e) {
 
             System.out.println("Caught the error");
             Dungeon.switchingActs = true;
             level = Dungeon.newLevel();
             System.out.println("LEVEL IS: " + level.getClass().getSimpleName());
+
             Dungeon.switchLevel(level, level.randomRespawnCell());
             Dungeon.switchingActs = false;
+        }
+
+
+        switch (level.getClass().getSimpleName()) {
+
+            case "ForestLevel":
+                OverworldScene.hero.currentZone = "Forest";
+                break;
+            case "CavesLevel":
+                OverworldScene.hero.currentZone = "Caves";
+                break;
+            case "ShadowLandsLevel":
+                OverworldScene.hero.currentZone = "Shadow Lands";
+                break;
+            case "FieldsLevel":
+                OverworldScene.hero.currentZone = "Fields";
+                break;
+            case "CityLevel":
+                OverworldScene.hero.currentZone = "Castle";
+                break;
+            case "SewerLevel":
+                OverworldScene.hero.currentZone = "Dungeon";
+                break;
+            case "TownLevel":
+                OverworldScene.hero.currentZone = "Town";
+                break;
+
+
         }
 
 

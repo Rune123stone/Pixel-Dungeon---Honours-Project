@@ -23,13 +23,16 @@ import com.watabou.pixeldungeon.items.Heap;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.pixeldungeon.quests.QuestHandler;
+import com.watabou.pixeldungeon.quests.QuestObjective;
+import com.watabou.pixeldungeon.scenes.GameScene;
+import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
-public abstract class NPC extends Mob {
+public class NPC extends Mob {
 
-	Quest quest;
+	public Quest quest;
 
 	QuestHandler questHandler;
 	public boolean hasQuestItem;
@@ -77,7 +80,6 @@ public abstract class NPC extends Mob {
 		}
 	}
 
-
 	protected void throwItem() {
 		Heap heap = Dungeon.level.heaps.get( pos );
 		if (heap != null) {
@@ -109,11 +111,59 @@ public abstract class NPC extends Mob {
 		this.questGiver = questGiver;
 	}
 
+	public void showQuestAlert() {
+		if (quest != null) {
+			if (!quest.given) {
+				System.out.println("trying to show alert");
+				sprite.showAlert();
+			}
+		}
+	}
+
 	@Override
 	public void beckon( int cell ) {
 	}
 	
-	abstract public void interact();
+	public void interact() {
+
+		if (quest != null) {
+
+			int curObjective = quest.curObjective;
+			//QuestObjective objective = quest.questObjectives.get(curObjective);
+
+			QuestObjective objective = quest.getCurObjective();
+
+			questHandler = new com.watabou.pixeldungeon.quests.QuestHandler(objective);
+
+			objective.QUEST_GIVEN_TEXT = "IVE GIVEN YOU A QUEST!!!!";
+			objective.QUEST_NOT_GIVEN_TEXT = "IVE GOT A QUEST!!!!";
+			objective.QUEST_COMPLETED_TEXT = "YOU'VE DONE IT!!!!!";
+//			System.out.println(quest.given);
+//			System.out.println(quest.questName);
+//
+//
+//			System.out.println(quest.getCurObjective().questType);
+//			System.out.println("quest giver? : " +questGiver);
+//			System.out.println("speak to npc? : " +speakToQuest);
+
+//			if (quest.questComplete) {
+//				WndNoQuestGiver.showQuestDialogue(quest.questName+ " complete.");
+//				return;
+//			}
+			this.sprite.hideQuestIcon();
+			this.sprite.hideQuestHandInIcon();
+
+			questHandler.handleNPCInteraction(this, quest);
+
+
+
+		} else {
+			GameScene.show(new WndQuest(this, "Beat it kid"));
+		}
+
+
+
+	}
 
 
 }

@@ -124,7 +124,8 @@ public abstract class Level implements Bundlable {
     public int entrance;
     public int exit;
 
-    public static HashSet<Mob> mobs;
+    //public static HashSet<Mob> mobs;
+    public HashSet<Mob> mobs;
     public SparseArray<Heap> heaps;
     public HashMap<Class<? extends Blob>, Blob> blobs;
     public SparseArray<Plant> plants;
@@ -339,6 +340,7 @@ public abstract class Level implements Bundlable {
 
                             questGiver.assignQuest(quest);
                             questGiver.setQuestGiver(true);
+                            //questGiver.showQuestAlert();
 
                             System.out.println("Succesfully spawned Quest Giver and assigned it a quest with name " +quest.questName);
                         } else {
@@ -409,7 +411,7 @@ public abstract class Level implements Bundlable {
                                 System.out.println("setting quest giver for " +npc.getClass().getSimpleName()+ "to false at line: 409");
                             }
 
-                            if (quest.given && !quest.questComplete) {
+                            if (quest.given && !quest.questComplete && !questObjective.objectiveComplete) {
                                 System.out.println("mob not spawned, assigning speak to quest " +quest.questName);
                                 npc.assignSpeakToQuest(true);
                             }
@@ -426,7 +428,7 @@ public abstract class Level implements Bundlable {
                                 System.out.println("setting quest giver for " +npc.getClass().getSimpleName()+ "to false at line: 426");
                             }
 
-                            if (quest.given && !quest.questComplete) {
+                            if (quest.given && !quest.questComplete && !questObjective.objectiveComplete) {
 
                                 System.out.println("mob is spawned, assigning quest: " +quest.questName);
                                 npc.assignSpeakToQuest(true);
@@ -821,7 +823,7 @@ public abstract class Level implements Bundlable {
 
     abstract protected void decorate();
 
-    abstract protected void createMobs();
+    abstract public void createMobs();
 
     abstract protected void createItems();
 

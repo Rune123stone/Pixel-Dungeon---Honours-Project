@@ -143,7 +143,7 @@ public class CityBossLevel extends Level {
 	}
 	
 	@Override
-	protected void createMobs() {	
+	public void createMobs() {
 	}
 	
 	public Actor respawner() {

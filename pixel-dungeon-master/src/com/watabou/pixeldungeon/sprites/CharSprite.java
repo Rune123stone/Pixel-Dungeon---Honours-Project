@@ -374,7 +374,48 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 				emo.killAndErase();
 			}
 			emo = new EmoIcon.Alert( this );
+
 		}
+	}
+
+	public void showQuestHandInIcon() {
+
+		if (emo instanceof EmoIcon.QuestHandInIcon) {
+
+		} else {
+
+			emo = new EmoIcon.QuestHandInIcon( this );
+		}
+
+	}
+
+	public void hideQuestHandInIcon() {
+
+		if (emo instanceof EmoIcon.QuestHandInIcon) {
+			emo.killAndErase();
+			emo = null;
+		}
+
+	}
+
+	public void showQuestIcon() {
+
+		if (emo instanceof EmoIcon.QuestIcon) {
+
+		} else {
+
+			emo = new EmoIcon.QuestIcon( this );
+		}
+
+	}
+
+	public void hideQuestIcon() {
+
+		if (emo instanceof EmoIcon.QuestIcon) {
+			emo.killAndErase();
+			emo = null;
+		}
+
 	}
 	
 	public void hideAlert() {
