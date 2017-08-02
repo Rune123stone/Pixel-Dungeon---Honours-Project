@@ -48,7 +48,7 @@ public class FieldsLevel extends RegularLevel {
             initCavernMap();
             fillSmallCaverns();
             setBorderCells();
-            setWindmillMap();
+            setWindmillMap2();
         } while (caverns.size() > 1);
 
     }
@@ -100,9 +100,11 @@ public class FieldsLevel extends RegularLevel {
                 int neighbour_x = x + col;
                 int neighbour_y = y + row;
 
-                if (row == 0 && col == 0) {}
-                else if (neighbour_x < 0 || neighbour_y < 0 || neighbour_x >= LENGTH || neighbour_y >= cellMap[0].length || neighbour_x >= WIDTH || neighbour_y >= HEIGHT) {}
-                else if (cellMap[neighbour_x][neighbour_y].isAlive()) {count++;}
+                if (row == 0 && col == 0) {
+                } else if (neighbour_x < 0 || neighbour_y < 0 || neighbour_x >= LENGTH || neighbour_y >= cellMap[0].length || neighbour_x >= WIDTH || neighbour_y >= HEIGHT) {
+                } else if (cellMap[neighbour_x][neighbour_y].isAlive()) {
+                    count++;
+                }
             }
         }
         return count;
@@ -112,12 +114,12 @@ public class FieldsLevel extends RegularLevel {
 
         for (int x = 0; x < WIDTH; x++) {
             (cellMap[x][0]).setBorder();
-            (cellMap[x][HEIGHT-1]).setBorder();
+            (cellMap[x][HEIGHT - 1]).setBorder();
         }
 
         for (int y = 0; y < HEIGHT; y++) {
             (cellMap[0][y]).setBorder();
-            (cellMap[WIDTH-1][y]).setBorder();
+            (cellMap[WIDTH - 1][y]).setBorder();
         }
 
     }
@@ -134,18 +136,18 @@ public class FieldsLevel extends RegularLevel {
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
 
-                if ( (cellMap[x][y]).needsCavern() ) {
-                    caverns.add( new Cavern() );
-                    fillCavern(x, y, caverns.size() - 1 );
+                if ((cellMap[x][y]).needsCavern()) {
+                    caverns.add(new Cavern());
+                    fillCavern(x, y, caverns.size() - 1);
                 }
             }
         }
 
         System.out.println("Processed cavern map.");
 
-        int primarySize = ( getPrimaryCavern() ).getSize();
+        int primarySize = (getPrimaryCavern()).getSize();
 
-        System.out.println("Found "+caverns.size()+" caverns, the largest having a size of "+primarySize+" cells.");
+        System.out.println("Found " + caverns.size() + " caverns, the largest having a size of " + primarySize + " cells.");
 
     }
 
@@ -154,7 +156,7 @@ public class FieldsLevel extends RegularLevel {
         Cavern primary = new Cavern();
         int primarySize = 0;
 
-        for ( Cavern check : caverns ) {
+        for (Cavern check : caverns) {
             if (check.getSize() >= primarySize)
                 primary = check;
         }
@@ -171,12 +173,12 @@ public class FieldsLevel extends RegularLevel {
             return;
 
         // Stop condition: when this cell is not both alive and unassigned (-1)
-        if ( (cellMap[x][y]).hasCavern() ) {
+        if ((cellMap[x][y]).hasCavern()) {
             return;
         }
 
-        (cellMap[x][y]).assignCavern( cavernIndex );
-        (caverns.get(cavernIndex)).AddCell( cellMap[x][y] );
+        (cellMap[x][y]).assignCavern(cavernIndex);
+        (caverns.get(cavernIndex)).AddCell(cellMap[x][y]);
 
         fillCavern(x - 1, y, cavernIndex);
         fillCavern(x, y - 1, cavernIndex);
@@ -224,6 +226,27 @@ public class FieldsLevel extends RegularLevel {
         }
     }
 
+    public void setWindmillMap2() {
+
+        boolean windmillSet = false;
+
+        while (!windmillSet) {
+            int x = (int) (Math.random() * (40));
+            int y = (int) (Math.random() * (40));
+
+            if (allNeighboursEmpty(x, y) && allNeighboursEmpty(x, y - 1) && allNeighboursEmpty(x - 1, y) && allNeighboursEmpty(x - 1, y - 1)) {
+
+                setWindmillCells(x, y);
+                setWindmillCells(x, y - 1);
+                setWindmillCells(x - 1, y);
+                setWindmillCells(x - 1, y - 1);
+
+                windmillSet = true;
+            }
+        }
+
+    }
+
     //returns true if all neighbours of a cell are empty (alive). Used for setting "Windmill" cells.
     public boolean allNeighboursEmpty(int x, int y) {
         return countAliveNeighbours(cellMap, x, y) == 8;
@@ -232,24 +255,25 @@ public class FieldsLevel extends RegularLevel {
     //sets all the cells around the given cell, including the given cell,  to be windmill cells.
     public void setWindmillCells(int x, int y) {
         //top cells
-        cellMap[x-1][y-1].setWindmillCell();
-        cellMap[x][y-1].setWindmillCell();
-        cellMap[x+1][y-1].setWindmillCell();
+        cellMap[x - 1][y - 1].setWindmillCell();
+        cellMap[x][y - 1].setWindmillCell();
+        cellMap[x + 1][y - 1].setWindmillCell();
 
         //middle cells
-        cellMap[x-1][y].setWindmillCell();
+        cellMap[x - 1][y].setWindmillCell();
         cellMap[x][y].setWindmillCell();
-        cellMap[x+1][y].setWindmillCell();
+        cellMap[x + 1][y].setWindmillCell();
 
         //bottom cells
-        cellMap[x-1][y+1].setWindmillCell();
-        cellMap[x][y+1].setWindmillCell();
-        cellMap[x+1][y+1].setWindmillCell();
+        cellMap[x - 1][y + 1].setWindmillCell();
+        cellMap[x][y + 1].setWindmillCell();
+        cellMap[x + 1][y + 1].setWindmillCell();
+
     }
 
     @Override
     public String tilesTex() {
-        return Assets.TILES_CAVES;
+        return Assets.TILES_FIELDS;
         //return Assets.TILES_FOREST;
     }
 
@@ -260,11 +284,11 @@ public class FieldsLevel extends RegularLevel {
 
     protected boolean[] water() {
         System.out.println(Level.Feeling.WATER);
-        return Patch.generate( feeling == Level.Feeling.WATER ? 0.60f : 0.45f, 6 );
+        return Patch.generate(feeling == Level.Feeling.WATER ? 0.60f : 0.45f, 6);
     }
 
     protected boolean[] grass() {
-        return Patch.generate( feeling == Level.Feeling.GRASS ? 0.55f : 0.35f, 3 );
+        return Patch.generate(feeling == Level.Feeling.GRASS ? 0.55f : 0.35f, 3);
     }
 
     public static int spawnPos() {
@@ -287,7 +311,7 @@ public class FieldsLevel extends RegularLevel {
     protected void assignRoomType() {
         super.assignRoomType();
 
-        Blacksmith.Quest.spawn( rooms );
+        Blacksmith.Quest.spawn(rooms);
     }
 
 
@@ -298,6 +322,8 @@ public class FieldsLevel extends RegularLevel {
 //
 //    }
 
+
+
     @Override
     protected void decorate() {
         try {
@@ -306,7 +332,11 @@ public class FieldsLevel extends RegularLevel {
 
 
             buildFields();
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
+
+        int terrain = 12;
+        int rowCounter = 1;
 
         for (int i = 0; i < LENGTH; i++) {
             int x = i % WIDTH;
@@ -319,17 +349,35 @@ public class FieldsLevel extends RegularLevel {
                 map[i] = Terrain.WALL_DECO;
             }
 
+
             if (cellMap[x][y].isWindmillCell()) {
-                map[i] = Terrain.BOOKSHELF;
+
+
+                map[i] = terrain;
+
+                Terrain.flags[terrain] = Terrain.flags[Terrain.WALL];
+
+                System.out.println("terrain: " +terrain);
+
+
+                if (rowCounter == 4) {
+                    rowCounter = 1;
+                    terrain = (terrain - 3) + 16;
+                } else {
+
+                    terrain++;
+
+                    rowCounter++;
+                }
+
             }
 
         }
     }
 
 
-
     @Override
-    public String tileName( int tile ) {
+    public String tileName(int tile) {
         switch (tile) {
             case Terrain.GRASS:
                 return "Fluorescent moss";
@@ -338,12 +386,12 @@ public class FieldsLevel extends RegularLevel {
             case Terrain.WATER:
                 return "Freezing cold water.";
             default:
-                return super.tileName( tile );
+                return super.tileName(tile);
         }
     }
 
     @Override
-    public String tileDesc( int tile ) {
+    public String tileDesc(int tile) {
         switch (tile) {
             case Terrain.ENTRANCE:
                 return "The ladder leads up to the upper depth.";
@@ -356,20 +404,20 @@ public class FieldsLevel extends RegularLevel {
             case Terrain.BOOKSHELF:
                 return "Who would need a bookshelf in a cave?";
             default:
-                return super.tileDesc( tile );
+                return super.tileDesc(tile);
         }
     }
 
     @Override
-    public void addVisuals( Scene scene ) {
-        super.addVisuals( scene );
-        addVisuals( this, scene );
+    public void addVisuals(Scene scene) {
+        super.addVisuals(scene);
+        addVisuals(this, scene);
     }
 
-    public static void addVisuals( Level level, Scene scene ) {
-        for (int i=0; i < LENGTH; i++) {
+    public static void addVisuals(Level level, Scene scene) {
+        for (int i = 0; i < LENGTH; i++) {
             if (level.map[i] == Terrain.WALL_DECO) {
-                scene.add( new FieldsLevel.Vein( i ) );
+                scene.add(new FieldsLevel.Vein(i));
             }
         }
     }
@@ -380,12 +428,12 @@ public class FieldsLevel extends RegularLevel {
 
         private float delay;
 
-        public Vein( int pos ) {
+        public Vein(int pos) {
             super();
 
             this.pos = pos;
 
-            delay = Random.Float( 2 );
+            delay = Random.Float(2);
         }
 
         @Override
@@ -399,10 +447,10 @@ public class FieldsLevel extends RegularLevel {
 
                     delay = Random.Float();
 
-                    PointF p = DungeonTilemap.tileToWorld( pos );
-                    ((ForestLevel.Sparkle)recycle( ForestLevel.Sparkle.class )).reset(
-                            p.x + Random.Float( DungeonTilemap.SIZE ),
-                            p.y + Random.Float( DungeonTilemap.SIZE ) );
+                    PointF p = DungeonTilemap.tileToWorld(pos);
+                    ((ForestLevel.Sparkle) recycle(ForestLevel.Sparkle.class)).reset(
+                            p.x + Random.Float(DungeonTilemap.SIZE),
+                            p.y + Random.Float(DungeonTilemap.SIZE));
                 }
             }
         }
@@ -410,7 +458,7 @@ public class FieldsLevel extends RegularLevel {
 
     public static final class Sparkle extends PixelParticle {
 
-        public void reset( float x, float y ) {
+        public void reset(float x, float y) {
             revive();
 
             this.x = x;
@@ -424,7 +472,7 @@ public class FieldsLevel extends RegularLevel {
             super.update();
 
             float p = left / lifespan;
-            size( (am = p < 0.5f ? p * 2 : (1 - p) * 2) * 2 );
+            size((am = p < 0.5f ? p * 2 : (1 - p) * 2) * 2);
         }
     }
 }

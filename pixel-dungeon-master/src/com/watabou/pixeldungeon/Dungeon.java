@@ -329,13 +329,50 @@ public class Dungeon {
 		
 		Dungeon.level = level;
 		Actor.init();
-		
-		Actor respawner = level.respawner();
-		if (respawner != null) {
-			Actor.add( level.respawner() );
+
+		if (!Dungeon.level.isTownLevel()) {
+			Actor respawner = level.respawner();
+			if (respawner != null) {
+				Actor.add(level.respawner());
+			}
 		}
-		
-		hero.pos = pos != -1 ? pos : level.exit;
+
+		String currentZone;
+
+		if (OverworldScene.hero == null || Dungeon.switchingActs) {
+			currentZone = DataHandler.getInstance().questList.get(0).questGiverLevel;
+		} else {
+			currentZone = OverworldScene.hero.currentZone;
+		}
+
+		if (currentZone.equals("Caves")) {
+			currentZone = "Cave";
+		}
+
+		switch (currentZone) {
+			case "Cave":
+				hero.pos = CavesLevel.spawnPos();
+				break;
+			case "Fields":
+				hero.pos = FieldsLevel.spawnPos();
+				break;
+			case "Dungeon":
+				hero.pos = Dungeon.level.randomRespawnCell();
+				break;
+			case "Forest":
+				hero.pos = ForestLevel.spawnPos();
+				break;
+			case "Castle":
+				hero.pos = Dungeon.level.randomRespawnCell();
+				break;
+			case "Shadow Lands":
+				hero.pos = ShadowLandsLevel.spawnPos();
+				break;
+			case "Town":
+				hero.pos = 820;
+		}
+
+		//hero.pos = pos != -1 ? pos : level.exit;
 
 		Light light = hero.buff( Light.class );
 		hero.viewDistance = light == null ? level.viewDistance : Math.max( Light.DISTANCE, level.viewDistance );

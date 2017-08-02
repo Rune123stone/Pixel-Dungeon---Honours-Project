@@ -24,6 +24,7 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.mobs.Bestiary;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
+import com.watabou.pixeldungeon.actors.mobs.npcs.Shopkeeper;
 import com.watabou.pixeldungeon.items.Generator;
 import com.watabou.pixeldungeon.items.Heap;
 import com.watabou.pixeldungeon.items.Item;
@@ -556,6 +557,7 @@ public abstract class RegularLevel extends Level {
 			currentZone = "Cave";
 		}
 
+
 		for (int i=0; i < nMobs; i++) {
 
 			Mob mob = Bestiary.mob( currentZone );
@@ -595,6 +597,8 @@ public abstract class RegularLevel extends Level {
 		System.out.println("The number of mobs is: " +mobs.size());
 
 	}
+
+
 	
 	@Override
 	public int randomRespawnCell() {
@@ -642,7 +646,7 @@ public abstract class RegularLevel extends Level {
 	
 	@Override
 	protected void createItems() {
-		
+
 		int nItems = 3;
 		while (Random.Float() < 0.4f) {
 			nItems++;

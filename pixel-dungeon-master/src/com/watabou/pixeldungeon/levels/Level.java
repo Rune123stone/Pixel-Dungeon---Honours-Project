@@ -36,7 +36,7 @@ import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.actors.mobs.Bestiary;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
-import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
+import com.watabou.pixeldungeon.actors.mobs.npcs.*;
 import com.watabou.pixeldungeon.effects.particles.FlowParticle;
 import com.watabou.pixeldungeon.effects.particles.WindParticle;
 import com.watabou.pixeldungeon.items.Generator;
@@ -214,34 +214,84 @@ public abstract class Level implements Bundlable {
         } while (!build());
         decorate();
 
+
+        buildFlagMaps();
+        cleanWalls();
+
         if (!isTownLevel()) {
-
-            buildFlagMaps();
-            cleanWalls();
-
             createMobs();
             createItems();
-
-
-
-            setQuestList();
-            handleNoQuestGiver();
-
-            spawnSpeakToQuestNPCS();
-            spawnQuestGiverNPCs();
-
-            spawnFetchItems();
-            spawnKillQuestMobs();
-
-
-            //QuestHandler questHandler = new QuestHandler(new QuestObjective("FETCH", "Fetch me that shit", "DriedRose"));
-            //questHandler.spawnKillQuestMobs(this);
-            //createQuests();
-
-            //GenerateData generateData = GenerateData.getInstance();
-
-
+        } else {
+            populateTown();
         }
+
+        setQuestList();
+        handleNoQuestGiver();
+
+        spawnSpeakToQuestNPCS();
+        spawnQuestGiverNPCs();
+
+        spawnFetchItems();
+        spawnKillQuestMobs();
+//
+//        if (!isTownLevel()) {
+//
+//            buildFlagMaps();
+//            cleanWalls();
+//
+//            createMobs();
+//            createItems();
+//
+//
+//
+//            setQuestList();
+//            handleNoQuestGiver();
+//
+//            spawnSpeakToQuestNPCS();
+//            spawnQuestGiverNPCs();
+//
+//            spawnFetchItems();
+//            spawnKillQuestMobs();
+//
+//
+//            //QuestHandler questHandler = new QuestHandler(new QuestObjective("FETCH", "Fetch me that shit", "DriedRose"));
+//            //questHandler.spawnKillQuestMobs(this);
+//            //createQuests();
+//
+//            //GenerateData generateData = GenerateData.getInstance();
+//
+//
+//        }
+
+    }
+
+    public void populateTown() {
+
+        Shopkeeper shopkeeper = new Shopkeeper();
+
+        shopkeeper.pos = 808;
+        mobs.add(shopkeeper);
+        Actor.occupyCell(shopkeeper);
+
+        Wandmaker wandmaker = new Wandmaker();
+
+        wandmaker.pos = 1128;
+        mobs.add(wandmaker);
+        Actor.occupyCell(wandmaker);
+
+        Blacksmith blacksmith = new Blacksmith();
+
+        blacksmith.pos = 831;
+        mobs.add(blacksmith);
+        Actor.occupyCell(blacksmith);
+
+        ImpShopkeeper impShopkeeper = new ImpShopkeeper();
+
+        impShopkeeper.pos = 1151;
+        mobs.add(impShopkeeper);
+        Actor.occupyCell(impShopkeeper);
+
+
 
     }
 
@@ -443,6 +493,8 @@ public abstract class Level implements Bundlable {
             }
         }
     }
+
+
 
     //spawns items that need to be fetched from a level.
     public void spawnFetchItems() {
@@ -738,6 +790,8 @@ public abstract class Level implements Bundlable {
             case "ShadowLands":
                 pos = ShadowLandsLevel.spawnPos();
                 break;
+            case "Town":
+                pos = 820;
         }
 
         return pos;

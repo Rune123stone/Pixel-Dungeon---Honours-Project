@@ -508,7 +508,7 @@ public abstract class Mob extends Char {
 		}
 	}
 	
-	private class Wandering implements AiState {
+	public class Wandering implements AiState {
 		
 		public static final String TAG	= "WANDERING";
 		

@@ -271,7 +271,7 @@ public class ShadowLandsLevel extends RegularLevel {
             }
 
             if (cellMap[x][y].isTrapCell()) {
-                map[i] = Terrain.CHASM;
+                map[i] = Terrain.TOXIC_TRAP;
             }
 
         }
