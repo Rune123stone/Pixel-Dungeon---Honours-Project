@@ -292,8 +292,8 @@ public class ForestLevel extends RegularLevel {
 
     @Override
     public String tilesTex() {
-        return Assets.TILES_CAVES;
-        //return Assets.TILES_FOREST;
+        //return Assets.TILES_CAVES;
+        return Assets.TILES_FOREST;
     }
 
     @Override

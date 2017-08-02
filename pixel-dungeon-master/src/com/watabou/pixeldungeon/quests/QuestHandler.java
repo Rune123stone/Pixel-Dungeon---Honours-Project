@@ -15,6 +15,7 @@ import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.sprites.BlacksmithSprite;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.story.DataHandler;
+import com.watabou.pixeldungeon.windows.WndMessage;
 import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.pixeldungeon.windows.WndQuestNPC;
 
@@ -143,7 +144,8 @@ public class QuestHandler {
             }
 
             if (item != null) {
-                GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
+                //GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
+                GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
 
                 completeQuest(npc, quest);
 
@@ -309,7 +311,7 @@ public class QuestHandler {
 
         if (quest.given) {
             if (questObjective.leftToKill == 0) { //checks if a hero has killed all necessary enemies
-                GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_COMPLETED_TEXT));
+                GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
 
                 completeQuest(npc, quest);
 
@@ -401,7 +403,8 @@ public class QuestHandler {
             }
 
             if (item != null) {
-                GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
+                //GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
+                GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
 
                 completeQuest(npc, quest);
 
@@ -472,9 +475,9 @@ public class QuestHandler {
     //gets called when when interacting with quest giver, not the NPC you must speak to
     public void speakQuestInteract(NPC npc, Quest quest) {
         if (quest.given) {
-            GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_GIVEN_TEXT));
+            GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
         } else {
-            GameScene.show(new WndQuestNPC(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+            GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
 
             DataHandler.getInstance().givenQuests.add(quest);
 
@@ -502,7 +505,7 @@ public class QuestHandler {
 
             if (curNPCName.equals(npcName)) {
                 NPC speakToNPC = (NPC)mob;
-                speakToNPC.questGiver = false;
+                //speakToNPC.questGiver = false;
                 speakToNPC.assignSpeakToQuest(true);
 
                 return;
@@ -692,10 +695,56 @@ public class QuestHandler {
 
     }
 
+    public static void showNextObjectiveMessage(Quest quest) {
+
+        QuestObjective previousObjective = quest.questObjectives.get(quest.curObjective - 1);
+
+        //not needed for these types of quests because the speak to npc will tell you what to do next.
+        if (previousObjective.questType.equals("speak") || previousObjective.questType.equals("speak_fetch")) {
+            return;
+        }
+
+        String objectiveDescription = "";
+
+        QuestObjective objective = quest.getCurObjective();
+
+        switch (objective.questType) {
+
+            case "speak":
+                objectiveDescription = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
+                break;
+            case "speak_fetch":
+                objectiveDescription = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
+                break;
+            case "kill":
+                if (objective.leftToKill > 1) {
+                    objectiveDescription = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
+                } else {
+                    objectiveDescription = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
+                }
+                break;
+            case "kill_fetch":
+                objectiveDescription = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
+                break;
+            case "fetch":
+                objectiveDescription = "Collect a " +objective.itemName+ " from the " +objective.level;
+                break;
+            case "use_item":
+                objectiveDescription = "Use " +objective.itemName;
+                break;
+        }
+
+        GameScene.show(new WndMessage(objectiveDescription));
+    }
+
     public static void completeQuest(NPC npc, Quest quest) {
+
+        System.out.println("Is it the final quest and objective? " +isFinalQuest(quest, quest.getCurObjective()));
 
         if (quest.curObjective == (quest.questObjectives.size() - 1)) {
             quest.questCompleted();
+
+            showCompleteQuestWindow(quest);
 
             setQuestComplete(DataHandler.getInstance().questList, quest.questName);
             removeFromQuestJournal(quest);
@@ -745,6 +794,8 @@ public class QuestHandler {
         } else {
             removeFromQuestJournal(quest);
             quest.curObjective++;
+
+            showNextObjectiveMessage(quest);
 
             nextObjectiveSpawnHelper(quest);
 
@@ -797,5 +848,34 @@ public class QuestHandler {
         }
     }
 
+    public static boolean isFinalQuest(Quest givenQuest, QuestObjective givenObjective) {
 
+        int questListSize = DataHandler.getInstance().questList.size();
+
+        Quest finalQuest = DataHandler.getInstance().questList.get(questListSize - 1);
+
+        int objectiveListSize = finalQuest.questObjectives.size();
+
+        QuestObjective finalQuestObjective = finalQuest.questObjectives.get(objectiveListSize - 1);
+
+        if (givenQuest == finalQuest && givenObjective == finalQuestObjective) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void showCompleteQuestWindow(Quest quest) {
+
+//        if (isFinalQuest(quest, quest.getCurObjective())) {
+//
+//
+//        }
+
+        String questGiverName = quest.questGiver;
+        NPC questGiver = DataHandler.getInstance().newNPC(questGiverName);
+
+        GameScene.show(new WndQuestNPC(questGiver, quest.QUEST_COMPLETED_TEXT));
+
+    }
 }

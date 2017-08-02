@@ -331,6 +331,7 @@ public class InterlevelScene extends PixelScene {
         level.spawnSpeakToQuestNPCS();
         level.spawnFetchItems();
         level.spawnKillQuestMobs();
+        //level.removeUnessessaryNPCs();
 
 
 
@@ -372,6 +373,7 @@ public class InterlevelScene extends PixelScene {
             level.spawnSpeakToQuestNPCS();
             level.spawnFetchItems();
             level.spawnKillQuestMobs();
+            //level.removeUnessessaryNPCs();
 
             Dungeon.switchLevel(level, level.randomRespawnCell());
 
@@ -379,10 +381,8 @@ public class InterlevelScene extends PixelScene {
 
         } catch (Exception e) {
 
-            System.out.println("Caught the error");
             Dungeon.switchingActs = true;
             level = Dungeon.newLevel();
-            System.out.println("LEVEL IS: " + level.getClass().getSimpleName());
 
             Dungeon.switchLevel(level, level.randomRespawnCell());
             Dungeon.switchingActs = false;

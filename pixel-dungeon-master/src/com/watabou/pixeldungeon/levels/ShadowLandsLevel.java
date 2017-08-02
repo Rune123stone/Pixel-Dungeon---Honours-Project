@@ -227,7 +227,7 @@ public class ShadowLandsLevel extends RegularLevel {
 
     @Override
     public String tilesTex() {
-        return Assets.TILES_CAVES;
+        return Assets.TILES_SHADOW_LANDS;
     }
 
     @Override

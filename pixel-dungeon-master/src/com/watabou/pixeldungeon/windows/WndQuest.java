@@ -75,6 +75,7 @@ public class WndQuest extends Window {
 			resize( width, (int)hl.bottom() );
 		}
 	}
-	
+
+
 	protected void onSelect( int index ) {};
 }

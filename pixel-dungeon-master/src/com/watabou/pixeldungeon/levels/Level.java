@@ -623,6 +623,84 @@ public abstract class Level implements Bundlable {
         return false;
     }
 
+    //look at
+    public void removeUnessessaryNPCs() {
+
+        Iterator iterator = mobs.iterator();
+
+        while (iterator.hasNext()) {
+
+            Mob curMob = (Mob)iterator.next();
+
+            if (curMob instanceof NPC) {
+
+                NPC curNPC = (NPC)curMob;
+
+                if (curNPC.questGiver) {
+
+//                    String questGiverLevel = curNPC.quest.questGiverLevel;
+//
+//                    if (questGiverLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+//                        questGiverLevel = "City";
+//                    }
+//
+//                    if (questGiverLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+//                        questGiverLevel = "Sewer";
+//                    }
+//
+//                    if (questGiverLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+//                        questGiverLevel = "ShadowLands";
+//                    }
+//
+//                    String questGiverLevelClass = questGiverLevel.concat("Level");
+//
+//                    if (this.getClass().getSimpleName().equals(questGiverLevelClass)) {
+//                        return;
+//                    } else if (curNPC.speakToQuest) {
+//                        return;
+//                    } else if ()
+//
+
+
+                    return;
+                }
+
+                if (curNPC.speakToQuest) {
+                    return;
+                }
+
+                iterator.remove();
+                System.out.println("Removed: " +curNPC.getClass().getSimpleName());
+
+            }
+
+        }
+//
+//        for (Mob mob : mobs) {
+//
+//            if (mob instanceof NPC) {
+//
+//                NPC curNPC = (NPC)mob;
+//
+//                if (curNPC.questGiver) {
+//                    return;
+//                }
+//
+//                if (curNPC.speakToQuest) {
+//                    return;
+//                }
+//
+//                mobs.remove(curNPC);
+//                System.out.println("Removed: " +curNPC.getClass().getSimpleName());
+//            }
+//
+//        }
+
+
+
+
+    }
+
 
     public int spawnPos(String zone) {
 

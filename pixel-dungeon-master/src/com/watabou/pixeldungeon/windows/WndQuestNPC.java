@@ -1,10 +1,16 @@
 package com.watabou.pixeldungeon.windows;
 
+import com.watabou.pixeldungeon.Challenges;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Ghost;
 import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
+import com.watabou.pixeldungeon.items.Generator;
 import com.watabou.pixeldungeon.items.Item;
+import com.watabou.pixeldungeon.items.armor.Armor;
+import com.watabou.pixeldungeon.items.armor.ClothArmor;
+import com.watabou.pixeldungeon.items.weapon.Weapon;
+import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.watabou.pixeldungeon.utils.GLog;
 
 public class WndQuestNPC extends WndQuest{
@@ -14,6 +20,9 @@ public class WndQuestNPC extends WndQuest{
 
     private NPC npc;
     private Item questItem;
+
+    Weapon weapon = null;
+    Armor armor = null;
 
     public WndQuestNPC( final NPC npc, final Item item, String text ) {
 
@@ -32,24 +41,68 @@ public class WndQuestNPC extends WndQuest{
     @Override
     protected void onSelect( int index ) {
 
-        if (questItem != null) {
-            questItem.detach( Dungeon.hero.belongings.backpack );
+        for (int i=0; i < 4; i++) {
+            Item another;
+            do {
+                another = (Weapon) Generator.random( Generator.Category.WEAPON );
+            } while (another instanceof MissileWeapon);
+
+            if (weapon == null || another.level() > weapon.level()) {
+                weapon = (Weapon)another;
+            }
         }
 
+        if (Dungeon.isChallenged( Challenges.NO_ARMOR )) {
+            armor = (Armor)new ClothArmor().degrade();
+        } else {
+            armor = (Armor)Generator.random( Generator.Category.ARMOR );
+            for (int i=0; i < 3; i++) {
+                Item another = Generator.random( Generator.Category.ARMOR );
+                if (another.level() > armor.level()) {
+                    armor = (Armor)another;
+                }
+            }
+        }
+
+        weapon.identify();
+        armor.identify();
+
+
         try {
-            Item reward = index == 0 ? Ghost.Quest.weapon : Ghost.Quest.armor;
+            Item reward = index == 0 ? weapon : armor;
             if (reward.doPickUp(Dungeon.hero)) {
                 GLog.i(Hero.TXT_YOU_NOW_HAVE, reward.name());
             } else {
                 Dungeon.level.drop(reward, npc.pos).sprite.drop();
             }
-
-            npc.yell("Farewell, adventurer!");
-            npc.die(null);
-
-            Ghost.Quest.complete();
+//
+//            npc.yell("Farewell, adventurer!");
+//            npc.die(null);
+//
+//            Ghost.Quest.complete();
         } catch (Exception e) {
 
         }
+
+
+//        if (questItem != null) {
+//            questItem.detach( Dungeon.hero.belongings.backpack );
+//        }
+//
+//        try {
+//            Item reward = index == 0 ? Ghost.Quest.weapon : Ghost.Quest.armor;
+//            if (reward.doPickUp(Dungeon.hero)) {
+//                GLog.i(Hero.TXT_YOU_NOW_HAVE, reward.name());
+//            } else {
+//                Dungeon.level.drop(reward, npc.pos).sprite.drop();
+//            }
+//
+//            npc.yell("Farewell, adventurer!");
+//            npc.die(null);
+//
+//            Ghost.Quest.complete();
+//        } catch (Exception e) {
+//
+//        }
     }
 }
