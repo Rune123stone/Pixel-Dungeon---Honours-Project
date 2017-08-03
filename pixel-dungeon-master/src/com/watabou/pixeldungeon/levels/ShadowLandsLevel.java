@@ -276,17 +276,17 @@ public class ShadowLandsLevel extends RegularLevel {
 
         }
 
-        while (true) {
-            int pos = roomEntrance.random();
-            if (pos != entrance) {
-                map[pos] = Terrain.SIGN;
-                break;
-            }
-        }
+//        while (true) {
+//            int pos = roomEntrance.random();
+//            if (pos != entrance) {
+//                map[pos] = Terrain.SIGN;
+//                break;
+//            }
+//        }
 
-        if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
-            return;
-        }
+//        if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
+//            return;
+//        }
 
     }
 

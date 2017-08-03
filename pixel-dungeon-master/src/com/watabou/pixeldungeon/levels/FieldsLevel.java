@@ -335,7 +335,7 @@ public class FieldsLevel extends RegularLevel {
         } catch (Exception e) {
         }
 
-        int terrain = 12;
+        int terrain = 16;
         int rowCounter = 1;
 
         for (int i = 0; i < LENGTH; i++) {
@@ -362,7 +362,7 @@ public class FieldsLevel extends RegularLevel {
 
                 if (rowCounter == 4) {
                     rowCounter = 1;
-                    terrain = (terrain - 3) + 16;
+                    terrain = (terrain - 3) + 20;
                 } else {
 
                     terrain++;

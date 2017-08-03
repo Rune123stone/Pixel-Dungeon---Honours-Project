@@ -131,6 +131,8 @@ public class SewerLevel extends RegularLevel {
 			}
 		}
 
+		//Terrain.flags[Terrain.HIGH_GRASS] = Terrain.flags[Terrain.HIGH_GRASS];
+
 
 
 	}

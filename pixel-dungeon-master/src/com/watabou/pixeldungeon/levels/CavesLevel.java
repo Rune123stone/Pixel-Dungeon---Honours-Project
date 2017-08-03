@@ -316,52 +316,52 @@ public class CavesLevel extends RegularLevel {
 			buildCave();
 		} catch (Exception e) {}
 
-
-		for (Room room : rooms) {
-			if (room.type != Room.Type.STANDARD) {
-				continue;
-			}
-
-			if (room.width() <= 3 || room.height() <= 3) {
-				continue;
-			}
-
-			int s = room.square();
-
-			if (Random.Int( s ) > 8) {
-				int corner = (room.left + 1) + (room.top + 1) * WIDTH;
-				if (map[corner - 1] == Terrain.WALL && map[corner - WIDTH] == Terrain.WALL) {
-					//map[corner] = Terrain.WALL;
-				}
-			}
-
-			if (Random.Int( s ) > 8) {
-				int corner = (room.right - 1) + (room.top + 1) * WIDTH;
-				if (map[corner + 1] == Terrain.WALL && map[corner - WIDTH] == Terrain.WALL) {
-					//map[corner] = Terrain.WALL;
-				}
-			}
-
-			if (Random.Int( s ) > 8) {
-				int corner = (room.left + 1) + (room.bottom - 1) * WIDTH;
-				if (map[corner - 1] == Terrain.WALL && map[corner + WIDTH] == Terrain.WALL) {
-					//map[corner] = Terrain.WALL;
-				}
-			}
-
-			if (Random.Int( s ) > 8) {
-				int corner = (room.right - 1) + (room.bottom - 1) * WIDTH;
-				if (map[corner + 1] == Terrain.WALL && map[corner + WIDTH] == Terrain.WALL) {
-					//map[corner] = Terrain.WALL;
-				}
-			}
-
-			for (Room n : room.connected.keySet()) {
-				if ((n.type == Room.Type.STANDARD || n.type == Room.Type.TUNNEL) && Random.Int( 3 ) == 0) {
-					Painter.set( this, room.connected.get( n ), Terrain.EMPTY_DECO );
-				}
-			}
-		}
+//
+//		for (Room room : rooms) {
+//			if (room.type != Room.Type.STANDARD) {
+//				continue;
+//			}
+//
+//			if (room.width() <= 3 || room.height() <= 3) {
+//				continue;
+//			}
+//
+//			int s = room.square();
+//
+//			if (Random.Int( s ) > 8) {
+//				int corner = (room.left + 1) + (room.top + 1) * WIDTH;
+//				if (map[corner - 1] == Terrain.WALL && map[corner - WIDTH] == Terrain.WALL) {
+//					//map[corner] = Terrain.WALL;
+//				}
+//			}
+//
+//			if (Random.Int( s ) > 8) {
+//				int corner = (room.right - 1) + (room.top + 1) * WIDTH;
+//				if (map[corner + 1] == Terrain.WALL && map[corner - WIDTH] == Terrain.WALL) {
+//					//map[corner] = Terrain.WALL;
+//				}
+//			}
+//
+//			if (Random.Int( s ) > 8) {
+//				int corner = (room.left + 1) + (room.bottom - 1) * WIDTH;
+//				if (map[corner - 1] == Terrain.WALL && map[corner + WIDTH] == Terrain.WALL) {
+//					//map[corner] = Terrain.WALL;
+//				}
+//			}
+//
+//			if (Random.Int( s ) > 8) {
+//				int corner = (room.right - 1) + (room.bottom - 1) * WIDTH;
+//				if (map[corner + 1] == Terrain.WALL && map[corner + WIDTH] == Terrain.WALL) {
+//					//map[corner] = Terrain.WALL;
+//				}
+//			}
+//
+//			for (Room n : room.connected.keySet()) {
+//				if ((n.type == Room.Type.STANDARD || n.type == Room.Type.TUNNEL) && Random.Int( 3 ) == 0) {
+//					Painter.set( this, room.connected.get( n ), Terrain.EMPTY_DECO );
+//				}
+//			}
+//		}
 
 		for (int i = 0; i < LENGTH; i++) {
 			int x = i % WIDTH;
@@ -409,18 +409,18 @@ public class CavesLevel extends RegularLevel {
 //				map[i] = Terrain.WALL_DECO;
 //			}
 //		}
-
-		while (true) {
-			int pos = roomEntrance.random();
-			if (pos != entrance) {
-				map[pos] = Terrain.SIGN;
-				break;
-			}
-		}
-
-		if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
-			return;
-		}
+//
+//		while (true) {
+//			int pos = roomEntrance.random();
+//			if (pos != entrance) {
+//				map[pos] = Terrain.SIGN;
+//				break;
+//			}
+//		}
+//
+//		if (Dungeon.bossLevel( Dungeon.depth + 1 )) {
+//			return;
+//		}
 
 //		for (Room r : rooms) {
 //			if (r.type == Type.STANDARD) {

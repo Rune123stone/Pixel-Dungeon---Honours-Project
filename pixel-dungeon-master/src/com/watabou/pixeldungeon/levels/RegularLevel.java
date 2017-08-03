@@ -138,7 +138,30 @@ public abstract class RegularLevel extends Level {
 		}
 		assignRoomType();
 
-		paint();
+		String currentZone;
+
+		if (OverworldScene.hero == null || Dungeon.switchingActs) {
+			currentZone = DataHandler.getInstance().questList.get(0).questGiverLevel;
+		} else {
+			currentZone = OverworldScene.hero.currentZone;
+		}
+
+		if (currentZone.equals("Caves")) {
+			currentZone = "Cave";
+		}
+
+
+		switch (currentZone) {
+
+			case "Dungeon":
+			case "Castle":
+//				assignRoomType();
+				paint();
+				placeTraps();
+				break;
+		}
+
+		//paint();
 
 		//ensures that the following methods are only used on levels/zones other than "Town".
 		if (!isTownLevel()) {
@@ -147,7 +170,7 @@ public abstract class RegularLevel extends Level {
 			paintWater();
 			paintGrass();
 
-			placeTraps();
+			//placeTraps();
 		}
 
 		return true;

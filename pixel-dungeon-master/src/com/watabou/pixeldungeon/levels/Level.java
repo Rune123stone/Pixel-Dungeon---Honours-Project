@@ -1029,7 +1029,7 @@ public abstract class Level implements Bundlable {
         }
     }
 
-    private void buildFlagMaps() {
+    public void buildFlagMaps() {
 
         for (int i = 0; i < LENGTH; i++) {
             try {
