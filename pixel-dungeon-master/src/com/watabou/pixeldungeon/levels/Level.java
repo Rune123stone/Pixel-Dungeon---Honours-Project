@@ -434,7 +434,6 @@ public abstract class Level implements Bundlable {
                     levelName = "ShadowLands";
                 }
 
-
                 String levelClassName = levelName.concat("Level");
 
                 if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("speak") || questObjective.questType.equals("speak_fetch"))) {

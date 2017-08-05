@@ -90,6 +90,7 @@ public class Wandmaker extends NPC {
 	
 	@Override
 	public void interact() {
+		super.interact();
 		sprite.turnTo( pos, Dungeon.hero.pos );
 //		Quest.type.handler.interact( this );
 	}

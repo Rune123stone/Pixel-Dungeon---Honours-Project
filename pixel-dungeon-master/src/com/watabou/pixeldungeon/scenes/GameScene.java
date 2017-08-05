@@ -65,6 +65,7 @@ import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.sprites.PlantSprite;
 import com.watabou.pixeldungeon.story.DataHandler;
+import com.watabou.pixeldungeon.story.StoryVariables;
 import com.watabou.pixeldungeon.ui.AttackIndicator;
 import com.watabou.pixeldungeon.ui.Banner;
 import com.watabou.pixeldungeon.ui.BusyIndicator;
@@ -359,7 +360,7 @@ public class GameScene extends PixelScene {
 //		}
 
 		if (DataHandler.getInstance().actStarting) {
-			WndNoQuestGiver.showQuestDialogue("The act has just started, quiet down now!");
+			WndNoQuestGiver.showQuestDialogue(StoryVariables.getInstance().firstStory);
 			DataHandler.getInstance().actStarting = false;
 		}
 

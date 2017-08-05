@@ -145,15 +145,15 @@ public class QuestHandler {
 
             if (item != null) {
                 //GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
+                GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
                 completeQuest(npc, quest);
 
             } else {
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
+                GameScene.show(new WndQuest(npc, quest.QUEST_GIVEN_TEXT));
             }
         } else {
-            GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+            GameScene.show(new WndQuest(npc, quest.QUEST_NOT_GIVEN_TEXT));
 
             //**** START if the quest giver is in the same level as the quest item, spawn the item in the level when the quest is given to the player ***
             String questGiverLevel = quest.questGiverLevel;
@@ -311,15 +311,15 @@ public class QuestHandler {
 
         if (quest.given) {
             if (questObjective.leftToKill == 0) { //checks if a hero has killed all necessary enemies
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
+                GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
                 completeQuest(npc, quest);
 
             } else {
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
+                GameScene.show(new WndQuest(npc, quest.QUEST_GIVEN_TEXT));
             }
         } else {
-            GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+            GameScene.show(new WndQuest(npc, quest.QUEST_NOT_GIVEN_TEXT));
 
             //**** START if the quest giver is in the same level as the kill enemies, spawn the enemies in the level when the quest is given to the player ***
             String questGiverLevel = quest.questGiverLevel;
@@ -404,16 +404,16 @@ public class QuestHandler {
 
             if (item != null) {
                 //GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
+                GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
                 completeQuest(npc, quest);
 
             } else {
-                GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
+                GameScene.show(new WndQuest(npc, quest.QUEST_GIVEN_TEXT));
             }
         } else {
 
-            GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+            GameScene.show(new WndQuest(npc, quest.QUEST_NOT_GIVEN_TEXT));
 
             //**** START if the quest giver is in the same level as the kill enemies, spawn the enemies in the level when the quest is given to the player ***
             String questGiverLevel = quest.questGiverLevel;
@@ -458,7 +458,7 @@ public class QuestHandler {
     //gets called when speaking to an NPC you must speak to as part of the speak quest.
     public void handleSpeakQuest(NPC npc, Quest quest) {
         System.out.println("handle speak to quest");
-        GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
+        GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
         quest.getCurObjective().objectiveCompleted();
 
@@ -475,9 +475,9 @@ public class QuestHandler {
     //gets called when when interacting with quest giver, not the NPC you must speak to
     public void speakQuestInteract(NPC npc, Quest quest) {
         if (quest.given) {
-            GameScene.show(new WndQuest(npc, questObjective.QUEST_GIVEN_TEXT));
+            GameScene.show(new WndQuest(npc, quest.QUEST_GIVEN_TEXT));
         } else {
-            GameScene.show(new WndQuest(npc, questObjective.QUEST_NOT_GIVEN_TEXT));
+            GameScene.show(new WndQuest(npc, quest.QUEST_NOT_GIVEN_TEXT));
 
             DataHandler.getInstance().givenQuests.add(quest);
 
@@ -533,11 +533,12 @@ public class QuestHandler {
             questLevel = "ShadowLands";
         }
 
+
         String questLevelClass = questLevel.concat("Level");
 
         if (Dungeon.level.getClass().getSimpleName().equals(questLevelClass)) {
 
-            GameScene.show(new WndQuest(npc, questObjective.QUEST_COMPLETED_TEXT));
+            GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
             String itemPackage = "com.watabou.pixeldungeon.items.quest.";
             String itemName = questObjective.itemName;
@@ -549,6 +550,8 @@ public class QuestHandler {
                 Item questItem = (Item) itemClass.newInstance();
 
                 questItem.doPickUp(Dungeon.hero);
+
+                questItem.assignQuest(quest);
 
             } catch (Exception e) {
                 System.out.println("Error in method: handleSpeakFetchQuest, class: QuestHandler");

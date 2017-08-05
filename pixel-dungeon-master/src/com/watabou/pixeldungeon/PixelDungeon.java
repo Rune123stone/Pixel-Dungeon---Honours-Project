@@ -16,6 +16,7 @@ import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.scenes.TitleScene;
 import com.watabou.pixeldungeon.story.DataHandler;
+import com.watabou.pixeldungeon.story.StoryVariables;
 
 public class PixelDungeon extends Game {
 
@@ -23,10 +24,17 @@ public class PixelDungeon extends Game {
 		super( TitleScene.class );
 		// super(OverworldScene.class);
 
+		StoryVariables storyVariables = StoryVariables.getInstance();
+
+		storyVariables.doStoryStuff();
+
 		DataHandler dataHandler = DataHandler.getInstance();
+
 		dataHandler.generateStoryXMLs();
 		dataHandler.createQuests();
 		dataHandler.displayQuests();
+
+
 
 		com.watabou.utils.Bundle.addAlias(
 			com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade.class,

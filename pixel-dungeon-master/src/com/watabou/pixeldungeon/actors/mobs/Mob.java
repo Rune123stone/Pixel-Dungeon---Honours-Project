@@ -65,6 +65,8 @@ public abstract class Mob extends Char {
 	public boolean partOfKillQuest;
 	///
 	public AiState state = SLEEPEING;
+
+	public String catasprophe;
 	
 	public Class<? extends CharSprite> spriteClass;
 	

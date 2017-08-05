@@ -135,9 +135,9 @@ public class NPC extends Mob {
 
 			questHandler = new com.watabou.pixeldungeon.quests.QuestHandler(objective);
 
-			objective.QUEST_GIVEN_TEXT = "IVE GIVEN YOU A QUEST!!!!";
-			objective.QUEST_NOT_GIVEN_TEXT = "IVE GOT A QUEST!!!!";
-			objective.QUEST_COMPLETED_TEXT = "YOU'VE DONE IT!!!!!";
+//			objective.QUEST_GIVEN_TEXT = "IVE GIVEN YOU A QUEST!!!!";
+//			objective.QUEST_NOT_GIVEN_TEXT = "IVE GOT A QUEST!!!!";
+//			objective.QUEST_COMPLETED_TEXT = "YOU'VE DONE IT!!!!!";
 //			System.out.println(quest.given);
 //			System.out.println(quest.questName);
 //
