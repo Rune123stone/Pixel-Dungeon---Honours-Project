@@ -363,6 +363,10 @@ public abstract class Level implements Bundlable {
                         questGiverLevel = "ShadowLands";
                     }
 
+                    if (questGiverLevel.equals("Cave")) {
+                        questGiverLevel = "Caves";
+                    }
+
                     questGiverLevelClassName = questGiverLevel.concat("Level"); //the name of the Level Class the quest giver is in
 
                     //**** responsible for spawning the NPC ****
@@ -470,11 +474,20 @@ public abstract class Level implements Bundlable {
 
                             npc = getNPCFromMobList(speakToNPCName);
 
-                            if (DataHandler.getInstance().prerequisiteQuestCompleted(quest.questName) && !quest.questComplete) {
+                            if (!quest.given && npc.questGiver) {
 
                                 npc.assignQuest(quest);
-                                npc.setQuestGiver(false);
-                                System.out.println("setting quest giver for " +npc.getClass().getSimpleName()+ "to false at line: 426");
+                                npc.setQuestGiver(true);
+                                npc.speakToQuest = false;
+
+                            } else {
+
+                                if (DataHandler.getInstance().prerequisiteQuestCompleted(quest.questName) && !quest.questComplete) {
+
+                                    npc.assignQuest(quest);
+                                    npc.setQuestGiver(false);
+                                    System.out.println("setting quest giver for " + npc.getClass().getSimpleName() + "to false at line: 426");
+                                }
                             }
 
                             if (quest.given && !quest.questComplete && !questObjective.objectiveComplete) {
@@ -555,61 +568,37 @@ public abstract class Level implements Bundlable {
 
                 QuestObjective curObjective = quest.getCurObjective();
 
-                String levelName = curObjective.level;
+                if (!curObjective.objectiveComplete) {
 
-                if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
-                    levelName = "City";
-                }
+                    System.out.println("curQuest objective is: " + curObjective.questType);
 
-                if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
-                    levelName = "Sewer";
-                }
 
-                if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-                    levelName = "ShadowLands";
-                }
+                    String levelName = curObjective.level;
 
-                String levelClassName = levelName.concat("Level");
-                if (this.getClass().getSimpleName().equals(levelClassName) && (curObjective.questType.equals("kill") || curObjective.questType.equals("kill_fetch"))) {
-
-                    if (!isMobSpawned(curObjective.enemy)) {
-
-                        QuestHandler.spawnKillQuestMobs(quest, this);
-                    } else {
-                        assignQuestToEnemyMobs(quest, curObjective.enemy);
+                    if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                        levelName = "City";
                     }
 
+                    if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                        levelName = "Sewer";
+                    }
+
+                    if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                        levelName = "ShadowLands";
+                    }
+
+                    String levelClassName = levelName.concat("Level");
+                    if (this.getClass().getSimpleName().equals(levelClassName) && (curObjective.questType.equals("kill") || curObjective.questType.equals("kill_fetch"))) {
+
+                        if (!isMobSpawned(curObjective.enemy)) {
+
+                            QuestHandler.spawnKillQuestMobs(quest, this);
+                        } else {
+                            assignQuestToEnemyMobs(quest, curObjective.enemy);
+                        }
+
+                    }
                 }
-//
-//
-//                for (QuestObjective questObjective : quest.questObjectives) {
-//
-//                    String levelName = questObjective.level;
-//
-//                    if (levelName.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
-//                        levelName = "City";
-//                    }
-//
-//                    if (levelName.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
-//                        levelName = "Sewer";
-//                    }
-//
-//                    if (levelName.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-//                        levelName = "ShadowLands";
-//                    }
-//
-//                    String levelClassName = levelName.concat("Level");
-//                    if (this.getClass().getSimpleName().equals(levelClassName) && (questObjective.questType.equals("kill") || questObjective.questType.equals("kill_fetch"))) {
-//
-//                        if (!isMobSpawned(questObjective.enemy)) {
-//
-//                            QuestHandler.spawnKillQuestMobs(quest, this);
-//                        } else {
-//                            assignQuestToEnemyMobs(quest, questObjective.enemy);
-//                        }
-//
-//                    }
-//                }
             }
         }
     }

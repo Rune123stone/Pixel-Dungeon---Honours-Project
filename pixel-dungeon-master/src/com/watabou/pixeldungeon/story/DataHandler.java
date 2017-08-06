@@ -128,30 +128,13 @@ public class DataHandler {
                     firstTemplate.appendChild(actTwoPlotDescription);
 
                     // ** START first quest **
-                    Element quest = doc.createElement("quest");
-                    firstTemplate.appendChild(quest);
+                    Element questOne = doc.createElement("quest");
+                    firstTemplate.appendChild(questOne);
 
-//                    createQuestWithQuestGiver(quest, doc, "Call to Power", "MENTOR", "40xp", "mentor_location", "none", "i have a quest", "i gave you a quest", "you did the quest");
-//
-//                    createSpeakFetchObjective(quest, doc, "fetch this from someone", "Imp", "Letter", "Forest");
-//
-//                    createUseItemObjective(quest, doc, "read the letter", "Letter", "Forest");
-//
-//
-//                    quest = doc.createElement("quest");
-//                    firstTemplate.appendChild(quest);
+                    Element questTwo = doc.createElement("quest");
+                    firstTemplate.appendChild(questTwo);
 
-//                    createQuestWithQuestGiver(quest, doc, "Finding the Source", "MENTOR", "40xp", "mentor_location", "Call to Power", "i have a quest", "i gave you a quest", "you did the quest");
-//
-//                    createKillObjective(quest, doc, "kill some shit", "Crab", "4", "Dungeon");
-//
-//                    createSpeakObjective(quest, doc, "speak to someone", "Blacksmith", "Caves", "I'm the blacksmith, fuck you");
-//
-//                    createKillFetchObjective(quest, doc, "kill and fetch this for me plox", "Elemental", "5", "PhantomFish", "Shadow Lands");
-
-                    //storyVariables.setFirstQuest(quest, doc);
-
-                    storyVariables.createActOne(quest, doc);
+                    storyVariables.createActOne(questOne, questTwo, doc);
 
                     break;
 
@@ -168,8 +151,8 @@ public class DataHandler {
                     actTwoPlotDescription.appendChild(doc.createTextNode("secondTemplateActTwoPlotDescrip.txt"));
                     secondTemplate.appendChild(actTwoPlotDescription);
 
-                    quest = doc.createElement("quest");
-                    secondTemplate.appendChild(quest);
+//                    quest = doc.createElement("quest");
+//                    secondTemplate.appendChild(quest);
 
                     break;
 
@@ -185,9 +168,9 @@ public class DataHandler {
                     actTwoPlotDescription = doc.createElement("act_two_plot_description");
                     actTwoPlotDescription.appendChild(doc.createTextNode("thirdTemplateActTwoPlotDescrip.txt"));
                     thirdTemplate.appendChild(actTwoPlotDescription);
-
-                    quest = doc.createElement("quest");
-                    thirdTemplate.appendChild(quest);
+//
+//                    quest = doc.createElement("quest");
+//                    thirdTemplate.appendChild(quest);
 
                     break;
             }
@@ -226,6 +209,7 @@ public class DataHandler {
 
 
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
     }
@@ -256,16 +240,21 @@ public class DataHandler {
                     firstTemplate.appendChild(actTwoPlotDescription);
 
                     // ** START first quest **
-                    Element quest = doc.createElement("quest");
-                    firstTemplate.appendChild(quest);
+                    Element questOne = doc.createElement("quest");
+                    firstTemplate.appendChild(questOne);
 
-                    createQuestWithQuestGiver(quest, doc, "Seeking Power", "MENTOR", "tier 2", "mentor_location", "none", "blah", "blah blah", "blah blah blah");
+                    Element questTwo = doc.createElement("quest");
+                    firstTemplate.appendChild(questTwo);
 
-                    createSpeakObjective(quest, doc, "speak to bs", "Blacksmith", "Forest", "oh hi mark");
-
-                    createSpeakFetchObjective(quest, doc, "fet", "Ghost", "DwarfToken", "Dungeon");
-
-                    createKillObjective(quest, doc, "kill stuff", "Shaman", "3", "Castle");
+                    storyVariables.createActTwo(questOne, questTwo, doc);
+//
+//                    createQuestWithQuestGiver(quest, doc, "Seeking Power", "MENTOR", "tier 2", "mentor_location", "none", "blah", "blah blah", "blah blah blah");
+//
+//                    createSpeakObjective(quest, doc, "speak to bs", "Blacksmith", "Forest", "oh hi mark");
+//
+//                    createSpeakFetchObjective(quest, doc, "fet", "Ghost", "DwarfToken", "Dungeon");
+//
+//                    createKillObjective(quest, doc, "kill stuff", "Shaman", "3", "Castle");
 
 
                     break;
@@ -279,8 +268,8 @@ public class DataHandler {
                     actTwoPlotDescription.appendChild(doc.createTextNode("secondTemplateActTwoPlotDescrip.txt"));
                     secondTemplate.appendChild(actTwoPlotDescription);
 
-                    quest = doc.createElement("quest");
-                    secondTemplate.appendChild(quest);
+//                    quest = doc.createElement("quest");
+//                    secondTemplate.appendChild(quest);
 
                     break;
 
@@ -292,9 +281,9 @@ public class DataHandler {
                     actTwoPlotDescription = doc.createElement("act_two_plot_description");
                     actTwoPlotDescription.appendChild(doc.createTextNode("thirdTemplateActTwoPlotDescrip.txt"));
                     thirdTemplate.appendChild(actTwoPlotDescription);
-
-                    quest = doc.createElement("quest");
-                    thirdTemplate.appendChild(quest);
+//
+//                    quest = doc.createElement("quest");
+//                    thirdTemplate.appendChild(quest);
 
                     break;
             }
@@ -334,6 +323,7 @@ public class DataHandler {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -361,44 +351,52 @@ public class DataHandler {
                     firstTemplate.appendChild(actThreePlotDescription);
 
                     // ** START first quest **
-                    Element quest = doc.createElement("quest");
-                    firstTemplate.appendChild(quest);
+                    Element questOne = doc.createElement("quest");
+                    firstTemplate.appendChild(questOne);
 
-                    createQuestWithQuestGiver(quest, doc, "Justice has Come", "Blacksmith", "tier 18", "Shadow Lands", "none", "wfwef", "wefw", "ef");
+                    Element questTwo = doc.createElement("quest");
+                    firstTemplate.appendChild(questTwo);
 
-                    createKillObjective(quest, doc, "kill em all", "Bat", "4", "Forest");
+                    storyVariables.createActThree(questOne, questTwo, doc);
 
-                    createFetchObjective(quest, doc, "fetch letter", "Letter", "Forest");
-
-                    createUseItemObjective(quest, doc, "use letter", "Letter", "Forest");
+//                    Element quest = doc.createElement("quest");
+//                    firstTemplate.appendChild(quest);
+//
+//                    createQuestWithQuestGiver(quest, doc, "Justice has Come", "Blacksmith", "tier 18", "Shadow Lands", "none", "wfwef", "wefw", "ef");
+//
+//                    createKillObjective(quest, doc, "kill em all", "Bat", "4", "Forest");
+//
+//                    createFetchObjective(quest, doc, "fetch letter", "Letter", "Forest");
+//
+//                    createUseItemObjective(quest, doc, "use letter", "Letter", "Forest");
 
                     break;
 
                 // *** IF 2nd template is chosen, generate the following XML data ***
                 case 2:
-                    Element secondTemplate = doc.createElement("second_template");
-                    rootElement.appendChild(secondTemplate);
-
-                    actThreePlotDescription = doc.createElement("act_three_plot_description");
-                    actThreePlotDescription.appendChild(doc.createTextNode("secondTemplateActThreePlotDescrip.txt"));
-                    secondTemplate.appendChild(actThreePlotDescription);
-
-                    quest = doc.createElement("quest");
-                    secondTemplate.appendChild(quest);
+//                    Element secondTemplate = doc.createElement("second_template");
+//                    rootElement.appendChild(secondTemplate);
+//
+//                    actThreePlotDescription = doc.createElement("act_three_plot_description");
+//                    actThreePlotDescription.appendChild(doc.createTextNode("secondTemplateActThreePlotDescrip.txt"));
+//                    secondTemplate.appendChild(actThreePlotDescription);
+//
+//                    quest = doc.createElement("quest");
+//                    secondTemplate.appendChild(quest);
 
                     break;
 
                 // *** IF 3rd template is chosen, generate the following XML data ***
                 case 3:
-                    Element thirdTemplate = doc.createElement("third_template");
-                    rootElement.appendChild(thirdTemplate);
-
-                    actThreePlotDescription = doc.createElement("act_three_plot_description");
-                    actThreePlotDescription.appendChild(doc.createTextNode("thirdTemplateActThreePlotDescrip.txt"));
-                    thirdTemplate.appendChild(actThreePlotDescription);
-
-                    quest = doc.createElement("quest");
-                    thirdTemplate.appendChild(quest);
+//                    Element thirdTemplate = doc.createElement("third_template");
+//                    rootElement.appendChild(thirdTemplate);
+//
+//                    actThreePlotDescription = doc.createElement("act_three_plot_description");
+//                    actThreePlotDescription.appendChild(doc.createTextNode("thirdTemplateActThreePlotDescrip.txt"));
+//                    thirdTemplate.appendChild(actThreePlotDescription);
+//
+//                    quest = doc.createElement("quest");
+//                    thirdTemplate.appendChild(quest);
 
                     break;
             }
@@ -437,6 +435,7 @@ public class DataHandler {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

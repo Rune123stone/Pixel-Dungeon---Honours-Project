@@ -171,7 +171,24 @@ public class QuestHandler {
             }
 
             String questGiverLevelClassName = questGiverLevel.concat("Level");
+
+            if (questObjective.level.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                questObjective.level = "City";
+            }
+
+            if (questObjective.level.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                questObjective.level = "Sewer";
+            }
+
+            if (questObjective.level.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                questObjective.level = "ShadowLands";
+            }
+
+
             String questObjectiveLevelClassName = questObjective.level.concat("Level");
+
+            System.out.println("questGiverClass name: " +questGiverLevelClassName);
+            System.out.println("objectiveClassName: " +questObjectiveLevelClassName);
 
             if (questObjectiveLevelClassName.equals(questGiverLevelClassName)) {
                 spawnQuestItem(questObjective.itemName, Dungeon.level, quest);
@@ -223,6 +240,7 @@ public class QuestHandler {
             //level.drop((Item) item.newInstance(), randomPos);
             level.drop(questItem, randomPos);
 
+
             setUseItemQuest(questItem);
 
             quest.getCurObjective().questItemDropped = true;
@@ -271,6 +289,8 @@ public class QuestHandler {
 
         try {
 
+            System.out.println("WEOIFHWEIOFHIOWEHFIOWHEFIOHWEIFHIOWEHFIFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+
             String mobPackage = "com.watabou.pixeldungeon.actors.mobs.";
             String mobClassName = mobPackage.concat(quest.getCurObjective().enemy);
             Class<?> enemy = Class.forName(mobClassName);
@@ -303,6 +323,7 @@ public class QuestHandler {
         } else {
 
             completeQuest(null, quest);
+            System.out.println("completing kill quest");
         }
     }
 
@@ -322,23 +343,25 @@ public class QuestHandler {
             GameScene.show(new WndQuest(npc, quest.QUEST_NOT_GIVEN_TEXT));
 
             //**** START if the quest giver is in the same level as the kill enemies, spawn the enemies in the level when the quest is given to the player ***
-            String questGiverLevel = quest.questGiverLevel;
+            QuestObjective curObjective = quest.getCurObjective();
 
-            if (questGiverLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
-                questGiverLevel = "City";
+            String objectiveLevel = curObjective.level;
+
+            if (objectiveLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                objectiveLevel = "City";
             }
 
-            if (questGiverLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
-                questGiverLevel = "Sewer";
+            if (objectiveLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                objectiveLevel = "Sewer";
             }
 
-            if (questGiverLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-                questGiverLevel = "ShadowLands";
+            if (objectiveLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                objectiveLevel = "ShadowLands";
             }
 
-            String questGiverLevelClassName = questGiverLevel.concat("Level");
+            String questObjectiveLevelClassName = objectiveLevel.concat("Level");
 
-            if (Dungeon.level.getClass().getSimpleName().equals(questGiverLevelClassName)) {
+            if (Dungeon.level.getClass().getSimpleName().equals(questObjectiveLevelClassName)) {
                 spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
                 //spawnKillQuestMobs(quest, Dungeon.level);
             }
@@ -416,23 +439,25 @@ public class QuestHandler {
             GameScene.show(new WndQuest(npc, quest.QUEST_NOT_GIVEN_TEXT));
 
             //**** START if the quest giver is in the same level as the kill enemies, spawn the enemies in the level when the quest is given to the player ***
-            String questGiverLevel = quest.questGiverLevel;
+            QuestObjective curObjective = quest.getCurObjective();
 
-            if (questGiverLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
-                questGiverLevel = "City";
+            String objectiveLevel = curObjective.level;
+
+            if (objectiveLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                objectiveLevel = "City";
             }
 
-            if (questGiverLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
-                questGiverLevel = "Sewer";
+            if (objectiveLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                objectiveLevel = "Sewer";
             }
 
-            if (questGiverLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-                questGiverLevel = "ShadowLands";
+            if (objectiveLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                objectiveLevel = "ShadowLands";
             }
 
-            String questGiverLevelClassName = questGiverLevel.concat("Level");
+            String questObjectiveLevelClassName = objectiveLevel.concat("Level");
 
-            if (Dungeon.level.getClass().getSimpleName().equals(questGiverLevelClassName)) {
+            if (Dungeon.level.getClass().getSimpleName().equals(questObjectiveLevelClassName)) {
                 spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
                 //spawnKillQuestMobs(quest, Dungeon.level);
             }
@@ -469,6 +494,7 @@ public class QuestHandler {
         npc.sprite.hideQuestHandInIcon();
 
         npc.assignSpeakToQuest(false);
+        npc.setQuestGiver(true);
 
     }
 
@@ -585,13 +611,39 @@ public class QuestHandler {
 
         QuestObjective currentObjective = quest.getCurObjective();
 
+        System.out.println("current objective is: " +currentObjective.questType);
         if (currentObjective.level.equals(DataHandler.getInstance().getCurrentLevel())) {
 
             switch (currentObjective.questType) {
 
                 case "kill":
                 case "kill_fetch":
-                    spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
+
+                    QuestObjective curObjective = quest.getCurObjective();
+
+                    String objectiveLevel = curObjective.level;
+
+                    if (objectiveLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
+                        objectiveLevel = "City";
+                    }
+
+                    if (objectiveLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
+                        objectiveLevel = "Sewer";
+                    }
+
+                    if (objectiveLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
+                        objectiveLevel = "ShadowLands";
+                    }
+
+                    String questObjectiveLevelClassName = objectiveLevel.concat("Level");
+
+                    if (Dungeon.level.getClass().getSimpleName().equals(questObjectiveLevelClassName)) {
+                        spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
+                        //spawnKillQuestMobs(quest, Dungeon.level);
+                    }
+
+
+                    //spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
                     break;
                 case "fetch":
                     spawnQuestItem(currentObjective.itemName, Dungeon.level, quest);
@@ -616,6 +668,21 @@ public class QuestHandler {
                 quest.given = true;
             }
         }
+    }
+
+    public static void setQuestObjectiveComplete(ArrayList<Quest> questList, String givenQuestName) {
+
+        for (Quest quest : questList) {
+
+            if (givenQuestName.equals(quest.questName)) {
+
+                quest.getCurObjective().objectiveComplete = true;
+
+            }
+
+        }
+
+
     }
 
     public static void setQuestComplete(ArrayList<Quest> questList, String givenQuestName) {
@@ -753,7 +820,7 @@ public class QuestHandler {
             removeFromQuestJournal(quest);
 
             Dungeon.level.spawnQuestGiverNPCs();
-            //setQuestNPCIcons();
+            setQuestNPCIcons();
 
             if (actComplete()) {
 
@@ -789,13 +856,17 @@ public class QuestHandler {
                 Game.switchScene(InterlevelScene.class);
             }
 
-
-            if (npc != null) {
-                npc.removeQuest();
-            }
+//
+//            if (npc != null) {
+//                npc.removeQuest();
+//            }
 
         } else {
             removeFromQuestJournal(quest);
+
+            setQuestObjectiveComplete(DataHandler.getInstance().questList, quest.questName);
+            quest.getCurObjective().objectiveComplete = true;
+
             quest.curObjective++;
 
             showNextObjectiveMessage(quest);

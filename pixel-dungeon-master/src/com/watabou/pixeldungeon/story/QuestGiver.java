@@ -24,13 +24,15 @@ public class QuestGiver {
     }
 
 
-    public String getRandomMotiveType() {
+    public String getRandomMotiveType(String storyPhase) {
 
         Collections.shuffle(motives);
 
-        String motiveType = motives.get(0).type;
+        while (!motives.get(0).storyPhase.equals(storyPhase)) {
+            Collections.shuffle(motives);
+        }
 
-        return motiveType;
+        return motives.get(0).type;
 
     }
 
@@ -42,28 +44,28 @@ public class QuestGiver {
 
     }
 
-    public void createNewMotive(String type) {
+    public void createNewMotive(String type, String storyPhase) {
 
-        Motive motive = new Motive(type);
+        Motive motive = new Motive(type, storyPhase);
 
         motives.add(motive);
+        //System.out.println("added motive: " +type+ " with story phase " +storyPhase);
     }
 
-    public void addMotiveObjectives(String type, String...objectiveTypes) {
+    public void addMotiveObjectives(String type, String storyPhase, String...objectiveTypes) {
 
         for (Motive motive : motives) {
 
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 motive.populateObjectives(objectiveTypes);
             }
-            return;
         }
     }
 
-    public String getRandomObjective(String type) {
+    public String getRandomObjective(String type, String storyPhase) {
 
         for (Motive motive : motives) {
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 return motive.getRandomObjective();
             }
         }
@@ -71,54 +73,52 @@ public class QuestGiver {
         return null;
     }
 
-    public void addEnemies(String type, String...enemies) {
+    public void addEnemies(String type, String storyPhase, String...enemies) {
 
         for (Motive motive : motives) {
 
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 motive.populateEnemies(enemies);
             }
-            return;
         }
     }
 
-    public void addBossEnemies(String type, String...bossEnemies) {
+    public void addBossEnemies(String type, String storyPhase, String...bossEnemies) {
 
         for (Motive motive : motives) {
 
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 motive.populateBossEnemies(bossEnemies);
             }
-            return;
         }
     }
 
-    public void addItems(String type, String...items) {
+    public void addItems(String type, String storyPhase, String...items) {
 
         for (Motive motive : motives) {
 
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 motive.populateItems(items);
+                System.out.println("adding items to motive type" +motive.type+ ", story phase " +motive.storyPhase);
             }
-            return;
         }
     }
 
-    public void addNPCs(String type, String...npcs) {
+    public void addNPCs(String type, String storyPhase, String...npcs) {
 
         for (Motive motive : motives) {
 
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 motive.populateNPCs(npcs);
+                System.out.println("adding npcs to motive type" +motive.type+ ", story phase " +motive.storyPhase);
             }
-            return;
         }
     }
 
-    public String getRandomEnemy(String type) {
+    public String getRandomEnemy(String type, String storyPhase) {
 
         for (Motive motive : motives) {
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 return motive.getRandomEnemy();
             }
         }
@@ -126,10 +126,10 @@ public class QuestGiver {
         return null;
     }
 
-    public String getRandomBossEnemy(String type) {
+    public String getRandomBossEnemy(String type, String storyPhase) {
 
         for (Motive motive : motives) {
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 return motive.getRandomBossEnemmy();
             }
         }
@@ -137,10 +137,10 @@ public class QuestGiver {
         return null;
     }
 
-    public String getRandomItem(String type) {
+    public String getRandomItem(String type, String storyPhase) {
 
         for (Motive motive : motives) {
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 return motive.getRandomItem();
             }
         }
@@ -148,10 +148,10 @@ public class QuestGiver {
         return null;
     }
 
-    public String getRandomNPC(String type) {
+    public String getRandomNPC(String type, String storyPhase) {
 
         for (Motive motive : motives) {
-            if (motive.type.equals(type)) {
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 return motive.getRandomNPC();
             }
         }
@@ -160,7 +160,26 @@ public class QuestGiver {
     }
 
 
+
+    public void displayMotives() {
+
+        for (Motive motive : motives) {
+
+            System.out.println("Motive Type: " +motive.type);
+            System.out.println("Motive Story Phase: " +motive.storyPhase);
+            System.out.println("\n");
+
+        }
+
+
+
+    }
+
+
     public class Motive {
+
+
+        public String storyPhase;
 
         public String type;
         public ArrayList<String> objectiveTypes;
@@ -172,8 +191,10 @@ public class QuestGiver {
         public ArrayList<String> items;
         public ArrayList<String> npcs;
 
-        public Motive(String type) {
+        public Motive(String type, String storyPhase) {
             this.type = type;
+            this.storyPhase = storyPhase;
+
             objectiveTypes = new ArrayList<>();
 
             enemies = new ArrayList<>();
@@ -229,6 +250,7 @@ public class QuestGiver {
             for (int i = 0; i < values.length; i++) {
                 String curItem = values[i];
                 items.add(curItem);
+
             }
         }
 
