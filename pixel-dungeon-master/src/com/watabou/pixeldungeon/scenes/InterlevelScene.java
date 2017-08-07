@@ -327,8 +327,9 @@ public class InterlevelScene extends PixelScene {
             level.createMobs();
         }
 
-        level.spawnQuestGiverNPCs();
         level.spawnSpeakToQuestNPCS();
+        level.spawnQuestGiverNPCs();
+
         level.spawnFetchItems();
         level.spawnKillQuestMobs();
         //level.removeUnessessaryNPCs();
@@ -369,8 +370,9 @@ public class InterlevelScene extends PixelScene {
 //            level.mobs.clear();
 //            level.createMobs();
 
-            level.spawnQuestGiverNPCs();
+
             level.spawnSpeakToQuestNPCS();
+            level.spawnQuestGiverNPCs();
             level.spawnFetchItems();
             level.spawnKillQuestMobs();
             //level.removeUnessessaryNPCs();

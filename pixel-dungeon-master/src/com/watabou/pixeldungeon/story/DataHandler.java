@@ -9,16 +9,11 @@ import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Relative;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Wizard;
 import com.watabou.pixeldungeon.items.Item;
-import com.watabou.pixeldungeon.levels.ForestLevel;
 import com.watabou.pixeldungeon.levels.Level;
-import com.watabou.pixeldungeon.levels.SewerLevel;
 import com.watabou.pixeldungeon.quests.Quest;
 import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -29,7 +24,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,7 +57,7 @@ public class DataHandler {
 
     public int currentAct = 1;
 
-    StoryVariables storyVariables = StoryVariables.getInstance();
+    StoryGenerator storyGenerator = StoryGenerator.getInstance();
 
     public void nextAct() {
 
@@ -134,7 +128,7 @@ public class DataHandler {
                     Element questTwo = doc.createElement("quest");
                     firstTemplate.appendChild(questTwo);
 
-                    storyVariables.createActOne(questOne, questTwo, doc);
+                    storyGenerator.createActOne(questOne, questTwo, doc);
 
                     break;
 
@@ -246,7 +240,7 @@ public class DataHandler {
                     Element questTwo = doc.createElement("quest");
                     firstTemplate.appendChild(questTwo);
 
-                    storyVariables.createActTwo(questOne, questTwo, doc);
+                    storyGenerator.createActTwo(questOne, questTwo, doc);
 //
 //                    createQuestWithQuestGiver(quest, doc, "Seeking Power", "MENTOR", "tier 2", "mentor_location", "none", "blah", "blah blah", "blah blah blah");
 //
@@ -357,7 +351,7 @@ public class DataHandler {
                     Element questTwo = doc.createElement("quest");
                     firstTemplate.appendChild(questTwo);
 
-                    storyVariables.createActThree(questOne, questTwo, doc);
+                    storyGenerator.createActThree(questOne, questTwo, doc);
 
 //                    Element quest = doc.createElement("quest");
 //                    firstTemplate.appendChild(quest);
@@ -1409,6 +1403,48 @@ public class DataHandler {
         Element dialogue = doc.createElement("quest_dialogue");
         dialogue.appendChild(doc.createTextNode(questDialogue));
         questNode.appendChild(dialogue);
+    }
+
+    public void setQuestDialogue(String actXML, String givenQuestName, String questNotGiven) {
+        try {
+
+            String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Data/";
+            File file = new File(fullPath, actXML); //actOne.xml
+
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(file);
+
+            doc.getDocumentElement().normalize();
+
+            //get list of quests in the Act
+            NodeList questList = doc.getElementsByTagName("quest");
+
+            System.out.println("size of quest list is: " +questList.getLength());
+
+            for (int i = 0; i < questList.getLength(); i++) {
+                Node curQuestNode = questList.item(i);
+
+                //obtain quest elements for each quest in the list
+                if (curQuestNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element questElement = (Element) curQuestNode;
+
+                    String questName = questElement.getElementsByTagName("quest_name").item(0).getTextContent();
+
+                    if (questName.equals(givenQuestName)) {
+
+                        Node questNotGivenDialogue = questElement.getElementsByTagName("quest_not_given_dialogue").item(0);
+                        questNotGivenDialogue.setTextContent(questNotGiven);
+
+                        System.out.println("great success!");
+                    }
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

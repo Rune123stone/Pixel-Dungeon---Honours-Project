@@ -37,7 +37,6 @@ import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.blobs.Blob;
-import com.watabou.pixeldungeon.actors.hero.HeroBackground;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.actors.mobs.npcs.NPC;
 import com.watabou.pixeldungeon.effects.BannerSprites;
@@ -54,18 +53,15 @@ import com.watabou.pixeldungeon.items.wands.WandOfBlink;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.levels.RegularLevel;
 import com.watabou.pixeldungeon.levels.features.Chasm;
-import com.watabou.pixeldungeon.overworld.OverworldMap;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.quests.Quest;
-import com.watabou.pixeldungeon.quests.QuestHandler;
-import com.watabou.pixeldungeon.quests.QuestObjective;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.sprites.DiscardedItemSprite;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.sprites.PlantSprite;
 import com.watabou.pixeldungeon.story.DataHandler;
-import com.watabou.pixeldungeon.story.StoryVariables;
+import com.watabou.pixeldungeon.story.StoryGenerator;
 import com.watabou.pixeldungeon.ui.AttackIndicator;
 import com.watabou.pixeldungeon.ui.Banner;
 import com.watabou.pixeldungeon.ui.BusyIndicator;
@@ -360,7 +356,7 @@ public class GameScene extends PixelScene {
 //		}
 
 		if (DataHandler.getInstance().actStarting) {
-			WndNoQuestGiver.showQuestDialogue(StoryVariables.getInstance().firstStory);
+			WndNoQuestGiver.showQuestDialogue(StoryGenerator.getInstance().firstStory);
 			DataHandler.getInstance().actStarting = false;
 		}
 

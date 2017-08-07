@@ -71,7 +71,8 @@ public class Blacksmith extends NPC {
 	private static final String TXT_LOOKS_BETTER	= "your %s certainly looks better now";
 	
 	{
-		name = "troll blacksmith";
+		//name = "troll blacksmith";
+		name = "Mentor";
 		spriteClass = BlacksmithSprite.class;
 	}
 	

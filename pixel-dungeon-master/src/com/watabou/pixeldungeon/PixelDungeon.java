@@ -16,7 +16,7 @@ import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.scenes.TitleScene;
 import com.watabou.pixeldungeon.story.DataHandler;
-import com.watabou.pixeldungeon.story.StoryVariables;
+import com.watabou.pixeldungeon.story.StoryGenerator;
 
 public class PixelDungeon extends Game {
 
@@ -24,9 +24,9 @@ public class PixelDungeon extends Game {
 		super( TitleScene.class );
 		// super(OverworldScene.class);
 
-		StoryVariables storyVariables = StoryVariables.getInstance();
+		StoryGenerator storyGenerator = StoryGenerator.getInstance();
 
-		storyVariables.doStoryStuff();
+		storyGenerator.doStoryStuff();
 
 		DataHandler dataHandler = DataHandler.getInstance();
 

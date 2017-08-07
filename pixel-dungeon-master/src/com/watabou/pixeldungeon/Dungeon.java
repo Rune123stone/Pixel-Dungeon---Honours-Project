@@ -785,13 +785,12 @@ public class Dungeon {
 				Dungeon.hero = (Hero)bundle.get(DUNGEONHERO);
 				gold = bundle.getInt(DUNGEONHEROGOLD);
 				break;
-			case "Caves":
+			case "Cave": //try Caves if not working
 				bundle = gameBundle(previousZone);
 				Dungeon.hero = (Hero)bundle.get(CAVESHERO);
 				gold = bundle.getInt(CAVESHEROGOLD);
 				break;
 			case "Town":
-				System.out.println("Im here ellen");
 				bundle = gameBundle(previousZone);
 				Dungeon.hero = (Hero)bundle.get(TOWNHERO);
 				gold = bundle.getInt(TOWNHEROGOLD);
@@ -825,6 +824,8 @@ public class Dungeon {
 		// *** Loads individual levels as well as the hero's position in those levels. ***
 		InputStream input = null;
 		String posKey = "";
+
+		System.out.println("Current level trying to be loaded is: " +OverworldScene.hero.currentZone);
 
 		switch (OverworldScene.hero.currentZone) {
 			case "Forest":
@@ -918,7 +919,7 @@ public class Dungeon {
 				posKey = DUNGEONHEROPOS;
 				input = Game.instance.openFileInput("Dungeon");
 				break;
-			case "Cave":
+			case "Cave": //try Cave if not working
 				Terrain.flags[Terrain.WATER] = Terrain.PASSABLE | Terrain.LIQUID | Terrain.UNSTITCHABLE; //allows the her to pass over water.
 				Terrain.flags[Terrain.WALL_DECO] = Terrain.flags[Terrain.WALL]; //allows the her to NOT pass over wall decoration cells.
 

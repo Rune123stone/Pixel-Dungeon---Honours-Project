@@ -61,7 +61,8 @@ import com.watabou.utils.Random;
 public class Ghost extends NPC {
 
 	{
-		name = "sad ghost";
+//		name = "sad ghost";
+		name = "Mentor";
 		spriteClass = GhostSprite.class;
 		
 		flying = true;
