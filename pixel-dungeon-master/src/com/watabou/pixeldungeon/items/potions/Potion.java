@@ -244,6 +244,7 @@ public class Potion extends Item {
 	
 	@Override
 	public String name() {
+		identify();
 		return isKnown() ? name : color + " potion";
 	}
 	

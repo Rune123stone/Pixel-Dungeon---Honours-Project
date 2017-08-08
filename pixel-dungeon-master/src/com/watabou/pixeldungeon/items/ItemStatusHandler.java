@@ -121,7 +121,12 @@ public class ItemStatusHandler<T extends Item> {
 	}
 	
 	public int image( T item ) {
-		return images.get( item.getClass() );
+		try {
+			return images.get(item.getClass());
+		} catch (Exception e) {
+
+		}
+		return item.image;
 	}
 	
 	public String label( T item ) {

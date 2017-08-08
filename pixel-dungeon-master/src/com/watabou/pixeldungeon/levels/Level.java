@@ -363,6 +363,7 @@ public abstract class Level implements Bundlable {
                         questGiverLevel = "ShadowLands";
                     }
 
+                    System.out.println("QuestGiverLevel is: " +questGiverLevel);
                     if (questGiverLevel.equals("Cave")) {
                         questGiverLevel = "Caves";
                     }
@@ -588,6 +589,7 @@ public abstract class Level implements Bundlable {
                     }
 
                     String levelClassName = levelName.concat("Level");
+
                     if (this.getClass().getSimpleName().equals(levelClassName) && (curObjective.questType.equals("kill") || curObjective.questType.equals("kill_fetch"))) {
 
                         if (!isMobSpawned(curObjective.enemy)) {
@@ -779,7 +781,7 @@ public abstract class Level implements Bundlable {
                 pos = ShadowLandsLevel.spawnPos();
                 break;
             case "Town":
-                pos = 820;
+                pos = randomRespawnCell();
         }
 
         return pos;

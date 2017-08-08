@@ -111,6 +111,7 @@ public class Item implements Bundlable {
 	public static String boss_location;
 
 	public static void setItemQuestVariables(String itemName) {
+
 		switch (itemName) {
 			case "Knuckles":
 				collectable = "Bear Fur";
@@ -207,6 +208,9 @@ public class Item implements Bundlable {
 			GameScene.pickUp( this );
 			Sample.INSTANCE.play( Assets.SND_ITEM );
 			hero.spendAndNext( TIME_TO_PICK_UP );
+
+			identify();
+
 			return true;
 			
 		} else {
@@ -521,6 +525,7 @@ public class Item implements Bundlable {
 	}
 	
 	public String name() {
+		identify();
 		return name;
 	}
 	

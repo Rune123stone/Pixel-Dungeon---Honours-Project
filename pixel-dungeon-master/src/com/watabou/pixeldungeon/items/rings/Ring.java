@@ -263,6 +263,7 @@ public class Ring extends EquipableItem {
 	
 	@Override
 	public String name() {
+		identify();
 		return isKnown() ? name : gem + " ring";
 	}
 	

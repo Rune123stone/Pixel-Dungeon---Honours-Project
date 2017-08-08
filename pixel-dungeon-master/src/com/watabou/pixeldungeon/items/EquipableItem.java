@@ -46,6 +46,8 @@ public abstract class EquipableItem extends Item {
 	public void doDrop( Hero hero ) {
 		if (!isEquipped( hero ) || doUnequip( hero, false, false )) {
 			super.doDrop( hero );
+			super.identify();
+			super.levelKnown = true;
 		}
 	}
 	

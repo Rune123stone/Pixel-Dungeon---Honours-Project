@@ -1,6 +1,7 @@
 package com.watabou.pixeldungeon.windows;
 
 import com.watabou.noosa.BitmapText;
+import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.ui.Component;
 import com.watabou.pixeldungeon.Dungeon;
@@ -21,6 +22,7 @@ public class WndQuestJournal extends Window {
     private static final int HEIGHT_L	= 144;
 
     private static final int ITEM_HEIGHT	= 18;
+    private static final int MARGIN = 4;
 
     private static final String TXT_TITLE	= "Quest Journal";
 
@@ -42,15 +44,23 @@ public class WndQuestJournal extends Window {
 
         float pos = 6;
 
+
         for (QuestJournal.QuestEntry questEntry : QuestJournal.questEntries) {
 
             ListQuestItem questItem = new ListQuestItem(questEntry.entry);
             questItem.setRect(0, pos, WIDTH, ITEM_HEIGHT);
-            content.add(questItem);
+           //content.add(questItem);
+
+            BitmapTextMultiline info = PixelScene.createMultiline( questEntry.entry, 8);
+            info.maxWidth = WIDTH - 5;
+            info.measure();
+            info.x = info.y = MARGIN;
+
+            content.add(info);
+
             questItem.feature.y = pos;
 
             pos += questItem.height();
-            //System.out.println("pos: " +pos);
         }
 
         content.setSize(WIDTH, pos);

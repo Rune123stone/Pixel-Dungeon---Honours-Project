@@ -515,9 +515,9 @@ public class StoryGenerator {
 
         generateQuestDialogue(motiveName);
 
-        questCreator(firstQuest, document, "questOne", "none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(firstQuest, document, "questOne", levelOne, "none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
-        objectiveCreator(motiveName, "NORMAL", levelOne, levelOne, questGiver.getRandomObjective(motiveName, "NORMAL"), firstQuest, document);
+        objectiveCreator(motiveName, "NORMAL", levelOne, "Town", questGiver.getRandomObjective(motiveName, "NORMAL"), firstQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actOne.xml", "questOne", questNotGivenDialogue);
 
@@ -526,9 +526,9 @@ public class StoryGenerator {
 
         generateQuestDialogue(motiveName);
 
-        questCreator(secondQuest, document, "questTwo", "questOne", questNotGivenDialogue, questGivenDialogue, questNotGivenDialogue);
+        questCreator(secondQuest, document, "questTwo", "Town", "questOne", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
-        objectiveCreator(motiveName, "SERIOUS", levelTwo, levelOne, questGiver.getRandomObjective(motiveName, "SERIOUS"), secondQuest, document);
+        objectiveCreator(motiveName, "SERIOUS", levelTwo, "Town", questGiver.getRandomObjective(motiveName, "SERIOUS"), secondQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actOne.xml", "questTwo", questNotGivenDialogue);
 
@@ -541,11 +541,11 @@ public class StoryGenerator {
 
         generateQuestDialogue(motiveName);
 
-        questCreator(firstQuest, document, "questThree", "none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(firstQuest, document, "questThree", "Town","none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
         //String motive = questGiver.getRandomMotiveType("CATASTROPHE");
 
-        objectiveCreator(motiveName, "CATASTROPHE", levelThree, levelOne, questGiver.getRandomObjective(motiveName, "CATASTROPHE"), firstQuest, document);
+        objectiveCreator(motiveName, "CATASTROPHE", levelThree, "Town", questGiver.getRandomObjective(motiveName, "CATASTROPHE"), firstQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actTwo.xml", "questThree", questNotGivenDialogue);
 
@@ -555,34 +555,34 @@ public class StoryGenerator {
 
         generateQuestDialogue(motiveName);
 
-        questCreator(secondQuest, document, "questFour", "questThree", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(secondQuest, document, "questFour", "Town","questThree", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
-        objectiveCreator(motiveName, "INVESTIGATE", levelFour, levelOne, questGiver.getRandomObjective(motiveName, "INVESTIGATE"), secondQuest, document);
+        objectiveCreator(motiveName, "INVESTIGATE", levelFour, "Town", questGiver.getRandomObjective(motiveName, "INVESTIGATE"), secondQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actTwo.xml", "questFour", questNotGivenDialogue);
     }
 
     public void createActThree(Element firstQuest, Element secondQuest, Document document) {
 
-        String motiveName = questGiver.getRandomMotiveType("BOSS");
+        String motiveName = questGiver.getRandomMotiveType("STRENGTHEN");
 
         generateQuestDialogue(motiveName);
 
-        questCreator(firstQuest, document, "questFive", "none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(firstQuest, document, "questFive", "Town","none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
-        objectiveCreator(motiveName, "BOSS", levelFive, levelOne, questGiver.getRandomObjective(motiveName, "BOSS"), firstQuest, document);
+        objectiveCreator(motiveName, "STRENGTHEN", levelFive, "Town", questGiver.getRandomObjective(motiveName, "STRENGTHEN"), firstQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actThree.xml", "questFive", questNotGivenDialogue);
 
 
 
-        motiveName = questGiver.getRandomMotiveType("PARTY");
+        motiveName = questGiver.getRandomMotiveType("RESOLVE");
 
         generateQuestDialogue(motiveName);
 
-        questCreator(secondQuest, document, "questSix", "questFive", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(secondQuest, document, "questSix", "Town","questFive", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
-        objectiveCreator(motiveName, "PARTY", levelSix, levelOne, questGiver.getRandomObjective(motiveName, "PARTY"), secondQuest, document);
+        objectiveCreator(motiveName, "RESOLVE", levelSix, "Town", questGiver.getRandomObjective(motiveName, "RESOLVE"), secondQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actThree.xml", "questSix", questNotGivenDialogue);
 
@@ -590,161 +590,12 @@ public class StoryGenerator {
 
 
 
-    public void createKnight() {
 
-        HeroBackground knight = new HeroBackground("Knight");
-
-
-        /**
-         * START MENTOR
-         */
-        QuestGiver mentorQuestGiver = new QuestGiver("Ghost", "Blacksmith");
-
-        /**
-         * START Act One Story Phases
-          */
-        //NORMAL story phase motives
-        mentorQuestGiver.createNewMotive("train", "NORMAL");
-        mentorQuestGiver.createNewMotive("simple task", "NORMAL");
-
-         //train motive
-        mentorQuestGiver.addMotiveObjectives("train", "NORMAL","kill", "kill_fetch", "fetch");
-        mentorQuestGiver.addEnemies("train", "NORMAL","Bat", "Crab", "Bandit", "Albino", "Gnoll", "Thief");
-        mentorQuestGiver.addItems("train", "NORMAL", "DarkGold", "DwarfToken");
-
-         //simple task motive
-        mentorQuestGiver.addMotiveObjectives("simple task", "NORMAL", "fetch", "kill_fetch");
-        mentorQuestGiver.addEnemies("simple task", "NORMAL","Bat", "Crab", "Bandit", "Albino", "Gnoll", "Thief");
-        mentorQuestGiver.addItems("simple task", "NORMAL",  "DwarfToken", "DriedRose", "DarkGold");
-
-
-       //SERIOUS story phase motives
-        mentorQuestGiver.createNewMotive("gang problem", "SERIOUS");
-        mentorQuestGiver.createNewMotive("powerful item", "SERIOUS");
-
-         //gang problem motive
-        mentorQuestGiver.addMotiveObjectives("gang problem", "SERIOUS", "kill", "kill_fetch");
-        mentorQuestGiver.addEnemies("gang problem", "SERIOUS", "Bandit",  "Shaman", "Thief");
-        mentorQuestGiver.addItems("gang problem", "SERIOUS","Letter", "DriedRose");
-
-         //powerful item motive
-        mentorQuestGiver.addMotiveObjectives("powerful item", "SERIOUS", "fetch", "kill_fetch");
-        mentorQuestGiver.addEnemies("powerful item", "SERIOUS", "Bandit",  "Shaman", "Thief");
-        mentorQuestGiver.addItems("powerful item", "SERIOUS","RatSkull", "DwarfToken");
-        /**
-         * END Act One Story Phases
-         */
-
-        /**
-         * START Act Two Story Phases
-         */
-        //CATASTROPHE story phase motives
-        mentorQuestGiver.createNewMotive("boss killing people", "CATASTROPHE");
-        mentorQuestGiver.createNewMotive("demon awakened", "CATASTROPHE");
-
-        //boss killing people motive
-        mentorQuestGiver.addMotiveObjectives("boss killing people", "CATASTROPHE","kill", "kill_fetch", "fetch");
-        mentorQuestGiver.addEnemies("boss killing people", "CATASTROPHE","Skeleton", "Golem", "Brute");
-        mentorQuestGiver.addItems("boss killing people", "CATASTROPHE", "Letter","DwarfToken", "Pickaxe");
-
-        //Demon awakened motive
-        mentorQuestGiver.addMotiveObjectives("demon awakened", "CATASTROPHE", "fetch", "kill_fetch");
-        mentorQuestGiver.addEnemies("demon awakened", "CATASTROPHE","Warlock", "Shaman", "Succubus");
-        mentorQuestGiver.addItems("demon awakened", "CATASTROPHE", "DarkGold", "DriedRose", "DwarfToken", "Pickaxe");
-
-
-        //INVESTIGATE story phase motives
-        mentorQuestGiver.createNewMotive("find information", "INVESTIGATE");
-        mentorQuestGiver.createNewMotive("take out henchmen", "INVESTIGATE");
-
-        //find information motive
-        mentorQuestGiver.addMotiveObjectives("find information", "INVESTIGATE", "kill_fetch", "fetch");
-        mentorQuestGiver.addEnemies("find information", "INVESTIGATE","Skeleton", "Golem", "Brute");
-        mentorQuestGiver.addItems("find information", "INVESTIGATE", "Letter", "DwarfToken", "Pickaxe");
-
-        //take out henchmen motive
-        mentorQuestGiver.addMotiveObjectives("take out henchmen", "INVESTIGATE", "kill", "kill_fetch");
-        mentorQuestGiver.addEnemies("take out henchmen", "INVESTIGATE","Warlock", "Shaman", "Succubus", "Golem", "Brute");
-        mentorQuestGiver.addItems("take out henchmen", "INVESTIGATE", "DarkGold", "DriedRose", "DwarfToken", "Pickaxe");
-        /**
-         * END Act Two Story Phases
-         */
-
-
-        /**
-         * START Act Three Story Phases
-         */
-        //CATASTROPHE story phase motives
-        mentorQuestGiver.createNewMotive("kill boss", "BOSS");
-        mentorQuestGiver.createNewMotive("cleanse land", "BOSS");
-
-        //boss killing people motive
-        mentorQuestGiver.addMotiveObjectives("kill boss", "BOSS","kill");
-        mentorQuestGiver.addEnemies("kill boss", "BOSS","King", "Monk", "Eye");
-        mentorQuestGiver.addItems("kill boss", "BOSS", "Letter","DwarfToken", "Pickaxe");
-
-        //cleanse land motive
-        mentorQuestGiver.addMotiveObjectives("cleanse land", "BOSS",  "kill_fetch");
-        mentorQuestGiver.addEnemies("cleanse land", "BOSS","Eye", "Monk");
-        mentorQuestGiver.addItems("cleanse land", "BOSS", "Pickaxe", "DriedRose");
-
-
-        //PARTY story phase motives
-        mentorQuestGiver.createNewMotive("return to family", "PARTY");
-        mentorQuestGiver.createNewMotive("business as usual", "PARTY");
-
-        //return to family motive
-        mentorQuestGiver.addMotiveObjectives("return to family", "PARTY", "speak");
-        mentorQuestGiver.addNPCs("return to family", "PARTY","Blacksmith", "Imp");
-
-        //business as usual motive
-        mentorQuestGiver.addMotiveObjectives("business as usual", "PARTY", "kill", "kill_fetch");
-        mentorQuestGiver.addEnemies("business as usual", "PARTY","Crab", "Rat", "Albino");
-        mentorQuestGiver.addItems("business as usual", "PARTY",  "Pickaxe", "RatSkull");
-        /**
-         * END Act Three Story Phases
-         */
-
-
-
-        knight.actOneQuestGivers.add(mentorQuestGiver);
-
-        questGiver = mentorQuestGiver;
-
-//
-//        //DAMSEL
-//        knightQuestGiver = new QuestGiver("Imp", "Wandmaker");
-//
-//        knightQuestGiver.createNewMotive("lost item");
-//        knightQuestGiver.createNewMotive("defend honour");
-//
-//        knightQuestGiver.addMotiveObjectives("lost item",  "kill_fetch", "fetch");
-//        knightQuestGiver.addMotiveObjectives("defend honour", "kill", "kill_fetch");
-//
-//        knightQuestGiver.addEnemies("lost item", "Bat", "Crab", "Bandit", "Albino", "Gnoll", "Shaman", "Thief");
-//        knightQuestGiver.addBossEnemies("lost item", "King", "Succubus", "Monk", "Brute", "Warlock", "Eye");
-//        knightQuestGiver.addItems("lost item", "DriedRose",  "Letter", "RatSkull");
-//
-//        knightQuestGiver.addEnemies("defend honour",  "Bandit", "Thief");
-//        knightQuestGiver.addBossEnemies("defend honour", "King", "Succubus", "Monk", "Brute", "Warlock", "Eye");
-//        knightQuestGiver.addItems("defend honour","DriedRose", "DwarfToken", "Pickaxe", "RatSkull");
-//
-//        knight.actOneQuestGivers.add(knightQuestGiver);
-
-
-
-        Collections.shuffle(knight.actOneQuestGivers);
-
-        questGiver = knight.actOneQuestGivers.get(0);
-
-
-    }
-
-    public void questCreator(Element questNode, Document document, String questName, String prerequisiteQuestName, String questNotGivenDialogue, String questGivenDialogue, String questCompletedDialogue) {
+    public void questCreator(Element questNode, Document document, String questName, String levelName, String prerequisiteQuestName, String questNotGivenDialogue, String questGivenDialogue, String questCompletedDialogue) {
 
         String questGiverName = questGiver.name;
 
-        DataHandler.getInstance().createQuestWithQuestGiver(questNode, document, questName, questGiverName, "40xp", levelOne, prerequisiteQuestName, questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        DataHandler.getInstance().createQuestWithQuestGiver(questNode, document, questName, questGiverName, "40xp", levelName, prerequisiteQuestName, questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
     }
 
@@ -877,8 +728,8 @@ public class StoryGenerator {
             case "gang problem":
                 questNotGivenDialogue = "There is a gang that is terrorizing these lands.";
                 break;
-            case "powerful item":
-                questNotGivenDialogue = "I've heard tales of a powerful item that could serve your adventures well.";
+            case "useful item":
+                questNotGivenDialogue = "I've heard tales of a powerful item that could serve you well on your well on your adventures.";
                 break;
 
             case "boss killing people":
@@ -894,17 +745,17 @@ public class StoryGenerator {
                 questNotGivenDialogue = "Weaken the enemy by taking out their most trusted henchmen.";
                 break;
 
+            case "obtain powerful item":
+                questNotGivenDialogue = "In order to defeat this enemy, you're going to need an item of legendary power.";
+                break;
+            case "destroy minions":
+                questNotGivenDialogue = "You must strike at the enemy's generals before they take over the Kingdom!.";
+                break;
             case "kill boss":
-                questNotGivenDialogue = "You need to defeat this great enemy, you're the only one who can do it.";
+                questNotGivenDialogue = "Now, go finish this!.";
                 break;
             case "cleanse land":
-                questNotGivenDialogue = "You need to cleanse this land from the enemy.";
-                break;
-            case "return to family":
-                questNotGivenDialogue = "You've done it! You should return to your loved ones and tell them the news.";
-                break;
-            case "business as usual":
-                questNotGivenDialogue = "Well done! Don't flatter yourself though, get back to work!";
+                questNotGivenDialogue = "You must cleanse the lands of this evil.";
                 break;
 
         }
@@ -943,17 +794,17 @@ public class StoryGenerator {
                 questGivenDialogue = "Go kill some henchmen!";
                 break;
 
+            case "obtain powerful item":
+                questGivenDialogue = "You're not getting to the final level with that gear, go get that legendary item!";
+                break;
+            case "destroy minions":
+                questGivenDialogue = "No scary generals here, go find them!";
+                break;
             case "kill boss":
-                questGivenDialogue = "Good luck, you're going to need it.";
+                questGivenDialogue = "What are you waiting for??";
                 break;
             case "cleanse land":
-                questGivenDialogue = "You'll be fine.";
-                break;
-            case "return to family":
-                questGivenDialogue = "Say hi to the family for me!";
-                break;
-            case "business as usual":
-                questGivenDialogue = "Okay, you can take a break before going off.";
+                questGivenDialogue = "If you're okay with everyone dying, let's keep this conversation going.";
                 break;
 
         }
@@ -992,17 +843,17 @@ public class StoryGenerator {
                 questCompletedDialogue = "I believe we're ready to take it to the enemy.";
                 break;
 
+            case "obtain powerful item":
+                questCompletedDialogue = "You are now ready for the final battle.";
+                break;
+            case "destroy minions":
+                questCompletedDialogue = "You have greatly weakened the enemy. Now is the time to strike!";
+                break;
             case "kill boss":
-                questCompletedDialogue = "You've done it! With my help of course, actually, it was mostly me.";
+                questCompletedDialogue = "The land belongs to the people once more!";
                 break;
             case "cleanse land":
-                questCompletedDialogue = "The land is restored to it's former glory!.";
-                break;
-            case "return to family":
-                questCompletedDialogue = "Thank you so much!.";
-                break;
-            case "business as usual":
-                questCompletedDialogue = "Not bad, now beat it, kid.";
+                questCompletedDialogue = "Thanks to you, we are free from this evil!";
                 break;
 
         }
@@ -1022,6 +873,172 @@ public class StoryGenerator {
 
         return random.nextInt((max + 1) - min) + min;
     }
+
+    // CREATING HERO BACKGROUNDS AND QUEST GIVERS + MOTIVES
+    public void createKnight() {
+
+        HeroBackground knight = new HeroBackground("Knight");
+
+
+        /**
+         * START Mentor Quest Giver
+         */
+        QuestGiver mentorQuestGiver = new QuestGiver("Ghost", "Blacksmith");
+
+        /**
+         * START Act One Story Phases
+         */
+        //NORMAL story phase motives
+        mentorQuestGiver.createNewMotive("train", "NORMAL");
+        mentorQuestGiver.createNewMotive("simple task", "NORMAL");
+
+        //train motive
+        mentorQuestGiver.addMotiveObjectives("train", "NORMAL","kill", "kill_fetch", "fetch");
+        mentorQuestGiver.addEnemies("train", "NORMAL","Bat", "Crab", "Rat", "Gnoll");
+        mentorQuestGiver.addItems("train", "NORMAL", "ScrollOfEnchantment", "PotionOfHealing", "PotionOfLevitation");
+
+        //simple task motive
+        mentorQuestGiver.addMotiveObjectives("simple task", "NORMAL", "fetch", "kill_fetch");
+        mentorQuestGiver.addEnemies("simple task", "NORMAL","Bat", "Crab", "Bandit", "Albino", "Gnoll", "Thief");
+        mentorQuestGiver.addItems("simple task", "NORMAL",  "RingOfElements", "ScrollOfMirrorImage", "Longsword");
+
+
+        //SERIOUS story phase motives
+        mentorQuestGiver.createNewMotive("gang problem", "SERIOUS");
+        mentorQuestGiver.createNewMotive("useful item", "SERIOUS");
+
+        //gang problem motive
+        mentorQuestGiver.addMotiveObjectives("gang problem", "SERIOUS", "kill", "kill_fetch");
+        mentorQuestGiver.addEnemies("gang problem", "SERIOUS", "Bandit",  "Shaman", "Thief");
+        mentorQuestGiver.addItems("gang problem", "SERIOUS","RatSkull", "DarkGold", "Pickaxe");
+
+        //powerful item motive
+        mentorQuestGiver.addMotiveObjectives("useful item", "SERIOUS", "fetch", "kill_fetch");
+        mentorQuestGiver.addEnemies("useful item", "SERIOUS", "Skeleton",  "Eye", "Brute");
+        mentorQuestGiver.addItems("useful item", "SERIOUS","WarHammer", "RingOfEvasion", "RingOfHaste", "MailArmor");
+        /**
+         * END Act One Story Phases
+         */
+
+        /**
+         * START Act Two Story Phases
+         */
+        //CATASTROPHE story phase motives
+        mentorQuestGiver.createNewMotive("boss killing people", "CATASTROPHE");
+        mentorQuestGiver.createNewMotive("demon awakened", "CATASTROPHE");
+
+        //boss killing people motive
+        mentorQuestGiver.addMotiveObjectives("boss killing people", "CATASTROPHE","kill", "kill_fetch", "fetch");
+        mentorQuestGiver.addEnemies("boss killing people", "CATASTROPHE","Skeleton", "Golem", "Brute");
+        mentorQuestGiver.addItems("boss killing people", "CATASTROPHE", "RatSkull","DwarfToken");
+
+        //Demon awakened motive
+        mentorQuestGiver.addMotiveObjectives("demon awakened", "CATASTROPHE", "kill", "kill_fetch");
+        mentorQuestGiver.addEnemies("demon awakened", "CATASTROPHE","Warlock", "Shaman", "Succubus");
+        mentorQuestGiver.addItems("demon awakened", "CATASTROPHE", "DarkGold", "RatSkull", "DwarfToken");
+
+
+        //INVESTIGATE story phase motives
+        mentorQuestGiver.createNewMotive("find information", "INVESTIGATE");
+        mentorQuestGiver.createNewMotive("take out henchmen", "INVESTIGATE");
+
+        //find information motive
+        mentorQuestGiver.addMotiveObjectives("find information", "INVESTIGATE", "kill_fetch", "fetch");
+        mentorQuestGiver.addEnemies("find information", "INVESTIGATE","Skeleton", "Golem", "Brute", "Eye");
+        mentorQuestGiver.addItems("find information", "INVESTIGATE", "Letter", "CorpseDust", "Dagger");
+
+        //take out henchmen motive
+        mentorQuestGiver.addMotiveObjectives("take out henchmen", "INVESTIGATE", "kill", "kill_fetch");
+        mentorQuestGiver.addEnemies("take out henchmen", "INVESTIGATE","Warlock", "Shaman", "Succubus", "Golem", "Brute");
+        mentorQuestGiver.addItems("take out henchmen", "INVESTIGATE", "DarkGold", "RatSkull", "DwarfToken");
+        /**
+         * END Act Two Story Phases
+         */
+
+
+        /**
+         * START Act Three Story Phases
+         */
+        //STRENGTHEN story phase motives
+        mentorQuestGiver.createNewMotive("obtain powerful item", "STRENGTHEN");
+        mentorQuestGiver.createNewMotive("destroy minions", "STRENGTHEN");
+
+        //obtain powerful item motive
+        mentorQuestGiver.addMotiveObjectives("obtain powerful item", "STRENGTHEN", "fetch", "kill_fetch");
+        mentorQuestGiver.addEnemies("obtain powerful item", "STRENGTHEN","Shaman", "Succubus", "Golem", "Monk");
+        mentorQuestGiver.addItems("obtain powerful item", "STRENGTHEN", "PlateArmor", "MailArmor", "Spear", "Sword");
+
+        //destroy minions motive
+        mentorQuestGiver.addMotiveObjectives("destroy minions", "STRENGTHEN", "kill", "kill_fetch");
+        mentorQuestGiver.addEnemies("destroy minions", "STRENGTHEN","Shaman", "Succubus", "Monk");
+        mentorQuestGiver.addItems("destroy minions", "STRENGTHEN",  "PlateArmor", "MailArmor", "RingOfEvasion");
+
+
+
+        //RESOLVE story phase motives
+        mentorQuestGiver.createNewMotive("kill boss", "RESOLVE");
+        mentorQuestGiver.createNewMotive("cleanse land", "RESOLVE");
+
+        //boss killing people motive
+        mentorQuestGiver.addMotiveObjectives("kill boss", "RESOLVE","kill");
+        mentorQuestGiver.addEnemies("kill boss", "RESOLVE","King", "Monk", "Eye");
+
+        //cleanse land motive
+        mentorQuestGiver.addMotiveObjectives("cleanse land", "RESOLVE",  "kill_fetch");
+        mentorQuestGiver.addEnemies("cleanse land", "RESOLVE","Eye", "Monk");
+        mentorQuestGiver.addItems("cleanse land", "RESOLVE", "CorpseDust", "DriedRose");
+        /**
+         * END Act Three Story Phases
+         */
+
+        /**
+         * END Mentor Quest Giver
+         */
+
+
+
+        knight.actOneQuestGivers.add(mentorQuestGiver);
+
+        questGiver = mentorQuestGiver;
+
+
+        /**
+         * START Princess Quest Giver
+         */
+        QuestGiver princessQuestGiver = new QuestGiver("Imp", "Wandmaker");
+
+
+        /**
+         * START Act One Story Phases
+         */
+        //NORMAL story phase motives
+        princessQuestGiver.createNewMotive("lost item", "NORMAL");
+        princessQuestGiver.createNewMotive("defend honor", "NORMAL");
+
+        //lost item motive
+        princessQuestGiver.addMotiveObjectives("lost item", "NORMAL", "fetch", "kill_fetch");
+        princessQuestGiver.addEnemies("lost item", "NORMAL", "Bat", "Gnoll", "Crab");
+        princessQuestGiver.addItems("lost item", "NORMAL", "RingOfElements", "RingOfEvasion", "RingOfHaste", "RingOfHerbalism");
+
+        //defend honor motive
+        princessQuestGiver.addMotiveObjectives("defend honor", "NORMAL", "kill", "kill_fetch");
+        princessQuestGiver.addEnemies("defend honor", "NORMAL", "Thief", "Bandit", "Rat");
+        princessQuestGiver.addItems("defend honor", "NORMAL", "DriedRose", "RingOfEvasion");
+
+
+        //SERIOUS story phase motives
+        princessQuestGiver.createNewMotive("", "SERIOUS");
+        princessQuestGiver.createNewMotive("", "SERIOUS");
+
+
+
+        Collections.shuffle(knight.actOneQuestGivers);
+
+        questGiver = knight.actOneQuestGivers.get(0);
+
+
+    }
+
 
 
 

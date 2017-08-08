@@ -702,26 +702,33 @@ public class QuestHandler {
         switch (objective.questType) {
 
             case "speak":
-                journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
+                //journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
+                journalEntry = "Speak to " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
                 break;
             case "speak_fetch":
-                journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
+                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
+                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
-                    journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
+                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ "'s in the " +objective.level;
                 } else {
-                    journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
+                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
                 }
                 break;
             case "kill_fetch":
-                journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
+                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
+                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
                 break;
             case "fetch":
-                journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
+                //journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
+                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from somewhere in the " +objective.level;
                 break;
             case "use_item":
-                journalEntry = "Use " +objective.itemName;
+                //journalEntry = "Use " +objective.itemName;
+                journalEntry = "Use " +DataHandler.getInstance().getItemName(objective.itemName);
                 break;
         }
 
@@ -738,26 +745,33 @@ public class QuestHandler {
         switch (objective.questType) {
 
             case "speak":
-                journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
+                //journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
+                journalEntry = "Speak to " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
                 break;
             case "speak_fetch":
-                journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
+                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
+                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
-                    journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
+                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ "'s in the " +objective.level;
                 } else {
-                    journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
+                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
                 }
                 break;
             case "kill_fetch":
-                journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
+                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
+                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
                 break;
             case "fetch":
-                journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
+                //journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
+                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from somewhere in the " +objective.level;
                 break;
             case "use_item":
-                journalEntry = "Use " +objective.itemName;
+                //journalEntry = "Use " +objective.itemName;
+                journalEntry = "Use " +DataHandler.getInstance().getItemName(objective.itemName);
                 break;
         }
 
@@ -824,36 +838,37 @@ public class QuestHandler {
 
             if (actComplete()) {
 
-                try {
-                    Dungeon.saveAll();
-
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-
-
-                DataHandler.getInstance().nextAct();
-
-                int currentAct = DataHandler.getInstance().currentAct;
-
-                switch (currentAct) {
-
-                    case 2:
-                        DataHandler.getInstance().questList = DataHandler.getInstance().actTwoQuests;
-                        break;
-                    case 3:
-                        DataHandler.getInstance().questList = DataHandler.getInstance().actThreeQuests;
-                        break;
-                    case 4:
-                        InterlevelScene.mode = InterlevelScene.Mode.CREDITS;
-                        Game.switchScene(InterlevelScene.class);
-                        return;
-                }
-
-                DataHandler.getInstance().actStarting = true;
-
-                InterlevelScene.mode = InterlevelScene.Mode.NEXTACT;
-                Game.switchScene(InterlevelScene.class);
+                DataHandler.getInstance().actComplete = true;
+//                try {
+//                    Dungeon.saveAll();
+//
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                }
+//
+//
+//                DataHandler.getInstance().nextAct();
+//
+//                int currentAct = DataHandler.getInstance().currentAct;
+//
+//                switch (currentAct) {
+//
+//                    case 2:
+//                        DataHandler.getInstance().questList = DataHandler.getInstance().actTwoQuests;
+//                        break;
+//                    case 3:
+//                        DataHandler.getInstance().questList = DataHandler.getInstance().actThreeQuests;
+//                        break;
+//                    case 4:
+//                        InterlevelScene.mode = InterlevelScene.Mode.CREDITS;
+//                        Game.switchScene(InterlevelScene.class);
+//                        return;
+//                }
+//
+//                DataHandler.getInstance().actStarting = true;
+//
+//                InterlevelScene.mode = InterlevelScene.Mode.NEXTACT;
+//                Game.switchScene(InterlevelScene.class);
             }
 
 //

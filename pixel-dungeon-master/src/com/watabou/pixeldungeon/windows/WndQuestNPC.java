@@ -1,5 +1,6 @@
 package com.watabou.pixeldungeon.windows;
 
+import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.Challenges;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
@@ -11,6 +12,8 @@ import com.watabou.pixeldungeon.items.armor.Armor;
 import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.weapon.Weapon;
 import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
+import com.watabou.pixeldungeon.scenes.InterlevelScene;
+import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.pixeldungeon.utils.GLog;
 
 public class WndQuestNPC extends WndQuest{
@@ -82,6 +85,41 @@ public class WndQuestNPC extends WndQuest{
 //            Ghost.Quest.complete();
         } catch (Exception e) {
 
+        }
+
+        if (DataHandler.getInstance().actComplete) {
+            try {
+                Dungeon.saveAll();
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+
+            DataHandler.getInstance().nextAct();
+
+            int currentAct = DataHandler.getInstance().currentAct;
+
+            switch (currentAct) {
+
+                case 2:
+                    DataHandler.getInstance().questList = DataHandler.getInstance().actTwoQuests;
+                    break;
+                case 3:
+                    DataHandler.getInstance().questList = DataHandler.getInstance().actThreeQuests;
+                    break;
+                case 4:
+                    InterlevelScene.mode = InterlevelScene.Mode.CREDITS;
+                    Game.switchScene(InterlevelScene.class);
+                    return;
+            }
+
+            DataHandler.getInstance().actStarting = true;
+
+            InterlevelScene.mode = InterlevelScene.Mode.NEXTACT;
+            Game.switchScene(InterlevelScene.class);
+
+            DataHandler.getInstance().actComplete = false;
         }
 
 

@@ -51,6 +51,7 @@ public class DataHandler {
     public String story = "";
 
     public boolean actStarting = false;
+    public boolean actComplete = false;
 
     public ArrayList<Quest> givenQuests = new ArrayList<>();
     public ArrayList<Quest> questList = new ArrayList<>();
@@ -1662,6 +1663,73 @@ public class DataHandler {
         } catch (Exception e) {
             System.out.println("Error in newItem");
             e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public String getItemName(String givenItemClassName) {
+
+        Class<?> item;
+
+        String itemPackage = "com.watabou.pixeldungeon.items.quest.";
+        String itemClassName = itemPackage.concat(givenItemClassName);
+
+        try {
+
+            item = Class.forName(itemClassName);
+
+            Item questItem = (Item) item.newInstance();
+
+            return questItem.name();
+
+
+        } catch (Exception e) {
+
+        }
+
+        return null;
+    }
+
+    public String getEnemyName(String givenEnemyClassName) {
+        Class<?> enemy;
+
+        String enemyPackage = "com.watabou.pixeldungeon.actors.mobs.";
+        String enemyClassName = enemyPackage.concat(givenEnemyClassName);
+
+        try {
+
+            enemy = Class.forName(enemyClassName);
+
+            Mob questEnemy = (Mob) enemy.newInstance();
+
+            return questEnemy.name;
+
+
+        } catch (Exception e) {
+
+        }
+
+        return null;
+    }
+
+    public String getNPCName(String givenNPCClassName) {
+        Class<?> npc;
+
+        String npcPackage = "com.watabou.pixeldungeon.actors.mobs.npcs.";
+        String npcClassName = npcPackage.concat(givenNPCClassName);
+
+        try {
+
+            npc = Class.forName(npcClassName);
+
+            NPC questNPC = (NPC) npc.newInstance();
+
+            return questNPC.name;
+
+
+        } catch (Exception e) {
+
         }
 
         return null;

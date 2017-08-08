@@ -151,6 +151,7 @@ public abstract class Scroll extends Item {
 	
 	@Override
 	public String name() {
+		identify();
 		return isKnown() ? name : "scroll \"" + rune + "\"";
 	}
 	
