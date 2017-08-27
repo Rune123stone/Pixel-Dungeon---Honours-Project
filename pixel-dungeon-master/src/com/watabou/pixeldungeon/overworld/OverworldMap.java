@@ -462,7 +462,7 @@ public class OverworldMap  {
 
     //sets water texture
     public static String waterTexture() {
-        return Assets.WATER_CAVES;
+        return Assets.WATER_PRISON;
     }
 
     // **** START: Zone Logic ****

@@ -5,12 +5,16 @@ import java.util.Collections;
 
 public class QuestGiver {
 
+    public String NPC;
     public String name;
+
     public ArrayList<Motive> motives;
 
     public ArrayList<String> namesList;
 
-    public QuestGiver(String...names) {
+    public int xmlID;
+
+    public QuestGiver(String name, String...names) {
 
         namesList = new ArrayList<>();
 
@@ -18,7 +22,9 @@ public class QuestGiver {
 
         Collections.shuffle(namesList);
 
-        name = namesList.get(0);
+        NPC = namesList.get(0);
+
+        this.name = name;
 
         motives = new ArrayList<>();
     }
@@ -83,6 +89,18 @@ public class QuestGiver {
         }
     }
 
+    public void displayEnemies(String type, String storyPhase) {
+        for (Motive motive : motives) {
+
+            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
+                for (String enemy : motive.enemies) {
+                    System.out.println(enemy);
+                }
+            }
+
+        }
+    }
+
     public void addBossEnemies(String type, String storyPhase, String...bossEnemies) {
 
         for (Motive motive : motives) {
@@ -99,7 +117,6 @@ public class QuestGiver {
 
             if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 motive.populateItems(items);
-                System.out.println("adding items to motive type" +motive.type+ ", story phase " +motive.storyPhase);
             }
         }
     }
@@ -157,6 +174,10 @@ public class QuestGiver {
         }
 
         return null;
+    }
+
+    public void setXMLID(int xmlID) {
+        this.xmlID = xmlID;
     }
 
 

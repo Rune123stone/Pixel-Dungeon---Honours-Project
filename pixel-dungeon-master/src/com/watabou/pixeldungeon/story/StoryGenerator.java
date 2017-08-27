@@ -1,14 +1,19 @@
 package com.watabou.pixeldungeon.story;
 
 
-import com.watabou.pixeldungeon.quests.Quest;
+import com.watabou.pixeldungeon.PixelDungeon;
+import com.watabou.pixeldungeon.R;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class StoryGenerator {
 
@@ -16,7 +21,7 @@ public class StoryGenerator {
     private static StoryGenerator storyGenerator;
 
     public QuestGiver questGiver;
-    public static String actOneOpeningStory;
+    public String background;
 
     private StoryGenerator() {
     }
@@ -28,7 +33,6 @@ public class StoryGenerator {
         }
         return storyGenerator;
     }
-
 
 
     //a list of levels that can be used for an act's quests
@@ -66,17 +70,69 @@ public class StoryGenerator {
     }
 
 
-
-    public ArrayList<String> heroBackgrounds = new ArrayList<>();
-
-    public String heroBackground;
+    public ArrayList<HeroBackground> heroBackgrounds = new ArrayList<>();
+    public HeroBackground chosenBackground;
 
     public void populateHeroBackgrounds() {
 
-        heroBackgrounds.add("Knight");
-        heroBackgrounds.add("Peasant");
-        heroBackgrounds.add("Explorer");
-        heroBackgrounds.add("Gentleman");
+        HeroBackground heroBackground;
+        QuestGiver questGiver;
+
+        // START Creating Knight
+        heroBackground = new HeroBackground("Knight");
+
+        questGiver = new QuestGiver("Mentor", "Ghost");
+        questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
+//        questGiver = new QuestGiver("Princess", "Imp");
+//        questGiver.setXMLID(R.raw.knight_princess_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
+//        questGiver = new QuestGiver("PlaceHolder", "Blacksmith");
+//        questGiver.setXMLID(R.raw.knight_placeholder_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+
+        heroBackgrounds.add(heroBackground);
+        // END Creating Knight
+
+        // START Creating Peasant
+//        heroBackground = new HeroBackground("Peasant");
+//
+//        questGiver = new QuestGiver("Farmer", "Ghost");
+//        questGiver.setXMLID(R.raw.peasant_farmer_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
+//        questGiver = new QuestGiver("Relative", "Imp");
+//        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
+//        questGiver = new QuestGiver("PlaceHolder", "Blacksmith");
+//        questGiver.setXMLID(R.raw.peasant_placeholder_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
+//        heroBackgrounds.add(heroBackground);
+        // END Creating Peasant
+
+        // START Creating Explorer
+//        heroBackground = new HeroBackground("Explorer");
+//
+//        questGiver = new QuestGiver("Cartographer", "Ghost");
+//        questGiver.setXMLID(R.raw.explorer_cartographer_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
+//        questGiver = new QuestGiver("PlaceHolder1", "Imp");
+//        questGiver.setXMLID(R.raw.explorer_placeholder1_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
+//        questGiver = new QuestGiver("PlaceHolder2", "Blacksmith");
+//        questGiver.setXMLID(R.raw.explorer_placeholder2_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
+//        heroBackgrounds.add(heroBackground);
+        // END Creating Explorer
+
+        //new QuestGiver(name, NPC) <- NPC represents the NPC used i.e. if "Ghost", will use "Ghost" NPC class.
 
     }
 
@@ -84,56 +140,13 @@ public class StoryGenerator {
 
         Collections.shuffle(heroBackgrounds);
 
-        heroBackground = heroBackgrounds.get(0);
-
-        heroBackground = "Knight";
+        chosenBackground = heroBackgrounds.get(0);
     }
 
+    public void selectQuestGiver() {
+        Collections.shuffle(chosenBackground.questGivers);
 
-
-
-    public ArrayList<String> levelOneQuestGivers = new ArrayList<>();
-
-    public String levelOneQuestGiver;
-
-    public void populateLevelOneQuestGivers() {
-
-        switch (heroBackground) {
-
-            case "Knight":
-                levelOneQuestGivers.add("Mentor");
-                levelOneQuestGivers.add("Damsel"); //in distress
-                levelOneQuestGivers.add("Stranger");
-                break;
-
-            case "Peasant":
-                levelOneQuestGivers.add("Relative");
-                levelOneQuestGivers.add("Friend");
-                levelOneQuestGivers.add("Farmer");
-
-            case "Explorer":
-                levelOneQuestGivers.add("Stranger");
-                levelOneQuestGivers.add("Partner");
-                levelOneQuestGivers.add("Civilian");
-
-            case "Gentleman":
-                levelOneQuestGivers.add("Hot Babe 1");
-                levelOneQuestGivers.add("Hot Babe 2");
-                levelOneQuestGivers.add("Hot Babe 3");
-
-        }
-
-
-    }
-
-    public void selectLevelOneQuestGiver() {
-
-        Collections.shuffle(levelOneQuestGivers);
-
-        levelOneQuestGiver = levelOneQuestGivers.get(0);
-
-        levelOneQuestGiver = "Mentor";
-
+        questGiver = chosenBackground.questGivers.get(0);
     }
 
 
@@ -144,6 +157,8 @@ public class StoryGenerator {
     public String fieldsStory;
     public String dungeonStory;
 
+    public String firstStory;
+
     public String questNotGivenDialogue;
     public String questGivenDialogue;
     public String questCompletedDialogue;
@@ -151,7 +166,7 @@ public class StoryGenerator {
 
     public void setLevelStories() {
 
-        switch (heroBackground) {
+        switch (chosenBackground.background) {
 
             case "Knight":
                 shadowLandsStory = "The shadow lands is a dangerous place, even for a knight.";
@@ -161,9 +176,9 @@ public class StoryGenerator {
                 fieldsStory = "The fields are home to many of the peasants you spit on on a daily basis.";
                 dungeonStory = "Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum.";
 
-                switch (levelOneQuestGiver) {
+                switch (questGiver.name) {
 
-                    case "Mentor":
+                    case "Mentor": //mentor
                         shadowLandsStory = shadowLandsStory.concat(" You're not sure why your mentor asked you to meet in a place like this.");
                         forestStory = forestStory.concat(" Your mentor has asked for you two to meet here.");
                         cavesStory = cavesStory.concat(" These caves have been deserted for years, why would the mentor ask you to come down here?");
@@ -172,7 +187,7 @@ public class StoryGenerator {
                         dungeonStory = dungeonStory.concat(" It's not your turn for guard duty, why would the mentor want to meet you here?");
                         break;
 
-                    case "Damsel":
+                    case "Princess": //princess
                         shadowLandsStory = shadowLandsStory.concat(" The princess has always been one for danger, you should find her.");
                         forestStory = forestStory.concat(" The princess always chooses the most romantic places to meet. You should find her.");
                         cavesStory = cavesStory.concat(" Not the most romantic of places, but at least you and the Princess will be alone here. You should find her.");
@@ -181,7 +196,7 @@ public class StoryGenerator {
                         dungeonStory = dungeonStory.concat(" This isn't exactly a place for a princess, you should find her.");
                         break;
 
-                    case "Stranger":
+                    case "PlaceHolder": //stranger
                         shadowLandsStory = shadowLandsStory.concat(" It's your turn to look for corpses for some reason. Look around and see if you can find anything.");
                         forestStory = forestStory.concat(" The forest is always soothing to walk through. Walk through it and see if you come upon anyone interesting.");
                         cavesStory = cavesStory.concat(" Why would anyone be down here? Oh well, walk around and find someone.");
@@ -203,7 +218,7 @@ public class StoryGenerator {
                 fieldsStory = "The fields are home to many of the peasants you spit on on a daily basis.";
                 dungeonStory = "Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum.";
 
-                switch (levelOneQuestGiver) {
+                switch (questGiver.name) {
 
                     case "Relative":
                         shadowLandsStory = shadowLandsStory.concat(" You're not sure why your mentor asked you to meet in a place like this.");
@@ -244,7 +259,7 @@ public class StoryGenerator {
                 fieldsStory = "The fields are home to many of the peasants you spit on on a daily basis.";
                 dungeonStory = "Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum.";
 
-                switch (levelOneQuestGiver) {
+                switch (questGiver.name) {
 
                     case "Stranger":
                         shadowLandsStory = shadowLandsStory.concat(" You're not sure why your mentor asked you to meet in a place like this.");
@@ -275,186 +290,12 @@ public class StoryGenerator {
                 }
 
 
-
-                break;
-
-
-            case "Gentleman":
-
-                shadowLandsStory = "A well-trained knight barely has a chance of survival here, you have my condolences.";
-                forestStory = "The over abundance of trees makes the Forest great for gathering firewood.";
-                cavesStory = "These caves were once used for mining materials used to make weapons and armor for knights such as yourself.";
-                castleStory = "The castle was one your home, before the king went bonkers.";
-                fieldsStory = "The fields are home to many of the peasants you spit on on a daily basis.";
-                dungeonStory = "Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum.";
-
-                switch (levelOneQuestGiver) {
-
-                    case "Hot Babe 1":
-                        shadowLandsStory = shadowLandsStory.concat(" You're not sure why your mentor asked you to meet in a place like this.");
-                        forestStory = forestStory.concat(" Your mentor has asked for you two to meet here.");
-                        cavesStory = cavesStory.concat(" These caves have been deserted for years, why would the mentor ask you to come down here?");
-                        castleStory = castleStory.concat(" Your mentor would like to meet you here, perhaps to reminisce.");
-                        fieldsStory = fieldsStory.concat(" Maybe your mentor wants you to make fun of some peasants with him?");
-                        dungeonStory = dungeonStory.concat(" It's not your turn for guard duty, why would the mentor want to meet you here?");
-                        break;
-
-                    case "Hot Babe 2":
-                        shadowLandsStory = shadowLandsStory.concat(" The princess has always been one for danger, you should find her.");
-                        forestStory = forestStory.concat(" The princess always chooses the most romantic places to meet. You should find her.");
-                        cavesStory = cavesStory.concat(" Not the most romantic of places, but at least you and the Princess will be alone here. You should find her.");
-                        castleStory = castleStory.concat(" The princess has been homeless since the mad king, maybe she came back to try and not be homeless. Find her.");
-                        fieldsStory = fieldsStory.concat(" The princess does enjoy watching me mistreat the common folk, you should find her and get mistreating.");
-                        dungeonStory = dungeonStory.concat(" This isn't exactly a place for a princess, you should find her.");
-                        break;
-
-                    case "Hot Babe 3":
-                        shadowLandsStory = shadowLandsStory.concat(" It's your turn to look for corpses for some reason. Look around and see if you can find anything.");
-                        forestStory = forestStory.concat(" The forest is always soothing to walk through. Walk through it and see if you come upon anyone interesting.");
-                        cavesStory = cavesStory.concat(" Why would anyone be down here? Oh well, walk around and find someone.");
-                        castleStory = castleStory.concat(" You haven't been here since the last time you were here. Find someone new!");
-                        fieldsStory = fieldsStory.concat(" You've spat on every peasant here, but you feel like you need to mistreat more people. Find someone new.");
-                        dungeonStory = dungeonStory.concat(" Make sure everything's alright here. Walk around and find snything out of place.");
-
-                }
-
-
                 break;
 
         }
 
 
-
-
     }
-
-
-    String questOneMotive;
-
-    public void setQuestMotives() {
-
-        Random random = new Random();
-
-        int motiveSelector = random.nextInt((2 - 1) + 1) + 1;
-
-        switch (levelOneQuestGiver) {
-
-            case "Mentor":
-
-                if (motiveSelector == 1) {
-                    questOneMotive = "train";
-                } else {
-                    questOneMotive = "powerful item";
-                }
-
-                break;
-
-            case "Damsel":
-
-                if (motiveSelector == 1) {
-                    questOneMotive = "retrieve lost item";
-                } else {
-                    questOneMotive = "rescue";
-                }
-
-                break;
-
-            case "Stranger":
-
-                if (motiveSelector == 1) {
-                    questOneMotive = "looking for friend";
-                } else {
-                    questOneMotive = "wants food";
-                }
-
-                break;
-
-        }
-
-
-
-    }
-
-    public void setFirstQuest(Element questNode, Document doc) {
-
-        Random random = new Random();
-
-        int objectiveSelector = random.nextInt((2 - 1) + 1) + 1;
-
-        switch (questOneMotive) {
-
-            case "train":
-
-                if (objectiveSelector == 1) {
-
-                    String questNotGiven  = "You need serious training, kill 5 bats to get stronger.";
-                    String questGiven     = "What are you doing here? Go kill some bats.";
-                    String questCompleted = "Not bad, you still suck though.";
-
-                    DataHandler.getInstance().createQuestWithQuestGiver(questNode, doc, "You need to train boi", "Ghost", "40xp", levelOne,
-                            "none", questNotGiven, questGiven, questCompleted);
-
-                    DataHandler.getInstance().createKillObjective(questNode, doc, "Kill Bats", "Bat", "5", levelOne);
-
-                    DataHandler.getInstance().createSpeakObjective(questNode, doc, "Return to mentor", "Ghost", levelOne, questCompleted);
-
-                } else {
-
-                    String questNotGiven  = "It's said that some bats have powerful items in their pockets. Kill some until you find this item, then bring it to me.";
-                    String questGiven     = "What are you doing here? Go search the pockets of bats.";
-                    String questCompleted = "Let's see what special properties this item has.";
-
-                    DataHandler.getInstance().createQuestWithQuestGiver(questNode, doc, "Bat pockets", "Ghost", "40xp", levelOne,
-                            "none", questNotGiven, questGiven, questCompleted);
-
-                    DataHandler.getInstance().createKillFetchObjective(questNode, doc, "Kill Bats", "Bat", "5", "PhantomFish",levelOne);
-
-                    DataHandler.getInstance().createSpeakObjective(questNode, doc, "Return to mentor", "Ghost", levelOne, questCompleted);
-
-                }
-
-                break;
-
-            case "powerful item":
-
-                if (objectiveSelector == 1) {
-
-                    String questNotGiven  = "Legend speaks of a powerful item, to find it we'll need information. Go fetch some.";
-                    String questGiven     = "What are you doing here? Go collect some info.";
-                    String questCompleted = "Not bad, you still suck though.";
-
-                    DataHandler.getInstance().createQuestWithQuestGiver(questNode, doc, "You need to info boi", "Ghost", "40xp", levelOne,
-                            "none", questNotGiven, questGiven, questCompleted);
-
-                    DataHandler.getInstance().createFetchObjective(questNode, doc, "Fetch info", "Letter", levelOne);
-
-                    DataHandler.getInstance().createSpeakObjective(questNode, doc, "Return to mentor", "Ghost", levelOne, questCompleted);
-
-                } else {
-
-                    String questNotGiven  = "Legend speaks of a powerful item, to find it we'll need information. KIll some enemies until you learn something.";
-                    String questGiven     = "What are you doing here? Go collect some info.";
-                    String questCompleted = "Not bad, you still suck though.";
-
-                    DataHandler.getInstance().createQuestWithQuestGiver(questNode, doc, "You need to info boi", "Ghost", "40xp", levelOne,
-                            "none", questNotGiven, questGiven, questCompleted);
-
-                    DataHandler.getInstance().createKillFetchObjective(questNode, doc, "Fetch info from enemies", "Shaman", "5", "Letter",  levelOne);
-
-                    DataHandler.getInstance().createSpeakObjective(questNode, doc, "Return to mentor", "Ghost", levelOne, questCompleted);
-
-                }
-
-                break;
-
-        }
-
-
-
-    }
-
-    public String firstStory;
-
     public void setActOpeningStory() {
 
         switch (levelOne) {
@@ -483,32 +324,24 @@ public class StoryGenerator {
     }
 
 
-
-
     public void doStoryStuff() {
-
         populateQuestLevels();
         selectActLevels();
 
         populateHeroBackgrounds();
         selectHeroBackground();
 
-        populateLevelOneQuestGivers();
-        selectLevelOneQuestGiver();
+        selectQuestGiver();
 
         setLevelStories();
 
         setActOpeningStory();
-
-        setQuestMotives();
-
     }
-
 
 
     public void createActOne(Element firstQuest, Element secondQuest, Document document) {
 
-        createKnight(); //will be random
+        //createKnight(); //will be random
 
         String motiveName = questGiver.getRandomMotiveType("NORMAL");
         //String objectiveType = questGiver.getRandomObjective(motiveName, "NORMAL");
@@ -520,6 +353,8 @@ public class StoryGenerator {
         objectiveCreator(motiveName, "NORMAL", levelOne, "Town", questGiver.getRandomObjective(motiveName, "NORMAL"), firstQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actOne.xml", "questOne", questNotGivenDialogue);
+
+//        System.out.println(questNotGivenDialogue);
 
 
         motiveName = questGiver.getRandomMotiveType("SERIOUS");
@@ -534,6 +369,10 @@ public class StoryGenerator {
 
     }
 
+    //dialogue testing
+
+
+    //////////////////////////////////////////////
 
     public void createActTwo(Element firstQuest, Element secondQuest, Document document) {
 
@@ -541,7 +380,7 @@ public class StoryGenerator {
 
         generateQuestDialogue(motiveName);
 
-        questCreator(firstQuest, document, "questThree", "Town","none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(firstQuest, document, "questThree", "Town", "none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
         //String motive = questGiver.getRandomMotiveType("CATASTROPHE");
 
@@ -550,12 +389,11 @@ public class StoryGenerator {
         DataHandler.getInstance().setQuestDialogue("actTwo.xml", "questThree", questNotGivenDialogue);
 
 
-
         motiveName = questGiver.getRandomMotiveType("INVESTIGATE");
 
         generateQuestDialogue(motiveName);
 
-        questCreator(secondQuest, document, "questFour", "Town","questThree", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(secondQuest, document, "questFour", "Town", "questThree", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
         objectiveCreator(motiveName, "INVESTIGATE", levelFour, "Town", questGiver.getRandomObjective(motiveName, "INVESTIGATE"), secondQuest, document);
 
@@ -568,19 +406,18 @@ public class StoryGenerator {
 
         generateQuestDialogue(motiveName);
 
-        questCreator(firstQuest, document, "questFive", "Town","none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(firstQuest, document, "questFive", "Town", "none", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
         objectiveCreator(motiveName, "STRENGTHEN", levelFive, "Town", questGiver.getRandomObjective(motiveName, "STRENGTHEN"), firstQuest, document);
 
         DataHandler.getInstance().setQuestDialogue("actThree.xml", "questFive", questNotGivenDialogue);
 
 
-
         motiveName = questGiver.getRandomMotiveType("RESOLVE");
 
         generateQuestDialogue(motiveName);
 
-        questCreator(secondQuest, document, "questSix", "Town","questFive", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
+        questCreator(secondQuest, document, "questSix", "Town", "questFive", questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
         objectiveCreator(motiveName, "RESOLVE", levelSix, "Town", questGiver.getRandomObjective(motiveName, "RESOLVE"), secondQuest, document);
 
@@ -589,11 +426,9 @@ public class StoryGenerator {
     }
 
 
-
-
     public void questCreator(Element questNode, Document document, String questName, String levelName, String prerequisiteQuestName, String questNotGivenDialogue, String questGivenDialogue, String questCompletedDialogue) {
 
-        String questGiverName = questGiver.name;
+        String questGiverName = questGiver.NPC;
 
         DataHandler.getInstance().createQuestWithQuestGiver(questNode, document, questName, questGiverName, "40xp", levelName, prerequisiteQuestName, questNotGivenDialogue, questGivenDialogue, questCompletedDialogue);
 
@@ -601,7 +436,7 @@ public class StoryGenerator {
 
     public void objectiveCreator(String motiveType, String storyPhase, String level, String returnLevel, String objectiveType, Element questNode, Document document) {
 
-        String questGiverName = questGiver.name;
+        String questGiverName = questGiver.NPC;
 
         switch (objectiveType) {
 
@@ -609,15 +444,15 @@ public class StoryGenerator {
 
                 String enemy = questGiver.getRandomEnemy(motiveType, storyPhase);
 
-                String objectiveName = "kill " +enemy;
+                String objectiveName = "kill " + enemy;
 
                 Integer amountToKill = getRandomAmountToKill(3, 5);
 
-                questNotGivenDialogue = questNotGivenDialogue.concat(" Kill " +amountToKill+ " " +enemy+ "in the " +level+ ".");
+                questNotGivenDialogue = questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + "in the " + level + ".");
 
                 DataHandler.getInstance().createKillObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), level);
 
-                objectiveName = "speak to " +questGiverName;
+                objectiveName = "speak to " + questGiverName;
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -629,15 +464,15 @@ public class StoryGenerator {
 
                 String item = questGiver.getRandomItem(motiveType, storyPhase);
 
-                objectiveName = "find a " +item+ " by killing " +enemy;
+                objectiveName = "find a " + item + " by killing " + enemy;
 
                 amountToKill = getRandomAmountToKill(4, 6);
 
-                questNotGivenDialogue = questNotGivenDialogue.concat(" Kill " +enemy+ "'s in the " +level+ " to find" +item+ ".");
+                questNotGivenDialogue = questNotGivenDialogue.concat(" Kill " + enemy + "'s in the " + level + " to find" + item + ".");
 
                 DataHandler.getInstance().createKillFetchObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), item, level);
 
-                objectiveName = "speak to " +questGiverName;
+                objectiveName = "speak to " + questGiverName;
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -647,13 +482,13 @@ public class StoryGenerator {
 
                 item = questGiver.getRandomItem(motiveType, storyPhase);
 
-                objectiveName = "fetch " +item;
+                objectiveName = "fetch " + item;
 
-                questNotGivenDialogue = questNotGivenDialogue.concat(" Find " +item+ " somewhere in the " +level+ ".");
+                questNotGivenDialogue = questNotGivenDialogue.concat(" Find " + item + " somewhere in the " + level + ".");
 
                 DataHandler.getInstance().createFetchObjective(questNode, document, objectiveName, item, level);
 
-                objectiveName = "speak to " +questGiverName;
+                objectiveName = "speak to " + questGiverName;
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -663,13 +498,13 @@ public class StoryGenerator {
 
                 String npc = questGiver.getRandomNPC(motiveType, storyPhase);
 
-                objectiveName = "speak to  " +npc;
+                objectiveName = "speak to  " + npc;
 
-                questNotGivenDialogue = questNotGivenDialogue.concat(" Speak to " +npc+ " in the " +level+ ".");
+                questNotGivenDialogue = questNotGivenDialogue.concat(" Speak to " + npc + " in the " + level + ".");
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, npc, level, "some dialogue");
 
-                objectiveName = "speak to " +questGiverName;
+                objectiveName = "speak to " + questGiverName;
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -681,13 +516,13 @@ public class StoryGenerator {
 
                 item = questGiver.getRandomItem(motiveType, storyPhase);
 
-                objectiveName = "fetch " +item+ " from " +npc;
+                objectiveName = "fetch " + item + " from " + npc;
 
-                questNotGivenDialogue = questNotGivenDialogue.concat(" Fetch " +item+ " from " +npc+ " in the " +level+ ".");
+                questNotGivenDialogue = questNotGivenDialogue.concat(" Fetch " + item + " from " + npc + " in the " + level + ".");
 
                 DataHandler.getInstance().createSpeakFetchObjective(questNode, document, objectiveName, npc, item, level);
 
-                objectiveName = "speak to " +questGiverName;
+                objectiveName = "speak to " + questGiverName;
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -697,13 +532,13 @@ public class StoryGenerator {
 
                 item = questGiver.getRandomItem(motiveType, storyPhase);
 
-                objectiveName = "use " +item;
+                objectiveName = "use " + item;
 
-                questNotGivenDialogue = questNotGivenDialogue.concat(" Use the " +item+ " item.");
+                questNotGivenDialogue = questNotGivenDialogue.concat(" Use the " + item + " item.");
 
                 DataHandler.getInstance().createUseItemObjective(questNode, document, objectiveName, item, level);
 
-                objectiveName = "speak to " +questGiverName;
+                objectiveName = "speak to " + questGiverName;
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -859,7 +694,6 @@ public class StoryGenerator {
         }
 
 
-
     }
 
     public void generateQuestDialogue(String motiveName) {
@@ -893,14 +727,14 @@ public class StoryGenerator {
         mentorQuestGiver.createNewMotive("simple task", "NORMAL");
 
         //train motive
-        mentorQuestGiver.addMotiveObjectives("train", "NORMAL","kill", "kill_fetch", "fetch");
-        mentorQuestGiver.addEnemies("train", "NORMAL","Bat", "Crab", "Rat", "Gnoll");
+        mentorQuestGiver.addMotiveObjectives("train", "NORMAL", "kill", "kill_fetch", "fetch");
+        mentorQuestGiver.addEnemies("train", "NORMAL", "Bat", "Crab", "Rat", "Gnoll");
         mentorQuestGiver.addItems("train", "NORMAL", "ScrollOfEnchantment", "PotionOfHealing", "PotionOfLevitation");
 
         //simple task motive
         mentorQuestGiver.addMotiveObjectives("simple task", "NORMAL", "fetch", "kill_fetch");
-        mentorQuestGiver.addEnemies("simple task", "NORMAL","Bat", "Crab", "Bandit", "Albino", "Gnoll", "Thief");
-        mentorQuestGiver.addItems("simple task", "NORMAL",  "RingOfElements", "ScrollOfMirrorImage", "Longsword");
+        mentorQuestGiver.addEnemies("simple task", "NORMAL", "Bat", "Crab", "Bandit", "Albino", "Gnoll", "Thief");
+        mentorQuestGiver.addItems("simple task", "NORMAL", "RingOfElements", "ScrollOfMirrorImage", "Longsword");
 
 
         //SERIOUS story phase motives
@@ -909,13 +743,13 @@ public class StoryGenerator {
 
         //gang problem motive
         mentorQuestGiver.addMotiveObjectives("gang problem", "SERIOUS", "kill", "kill_fetch");
-        mentorQuestGiver.addEnemies("gang problem", "SERIOUS", "Bandit",  "Shaman", "Thief");
-        mentorQuestGiver.addItems("gang problem", "SERIOUS","RatSkull", "DarkGold", "Pickaxe");
+        mentorQuestGiver.addEnemies("gang problem", "SERIOUS", "Bandit", "Shaman", "Thief");
+        mentorQuestGiver.addItems("gang problem", "SERIOUS", "RatSkull", "DarkGold", "Pickaxe");
 
         //powerful item motive
         mentorQuestGiver.addMotiveObjectives("useful item", "SERIOUS", "fetch", "kill_fetch");
-        mentorQuestGiver.addEnemies("useful item", "SERIOUS", "Skeleton",  "Eye", "Brute");
-        mentorQuestGiver.addItems("useful item", "SERIOUS","WarHammer", "RingOfEvasion", "RingOfHaste", "MailArmor");
+        mentorQuestGiver.addEnemies("useful item", "SERIOUS", "Skeleton", "Eye", "Brute");
+        mentorQuestGiver.addItems("useful item", "SERIOUS", "WarHammer", "RingOfEvasion", "RingOfHaste", "MailArmor");
         /**
          * END Act One Story Phases
          */
@@ -928,13 +762,13 @@ public class StoryGenerator {
         mentorQuestGiver.createNewMotive("demon awakened", "CATASTROPHE");
 
         //boss killing people motive
-        mentorQuestGiver.addMotiveObjectives("boss killing people", "CATASTROPHE","kill", "kill_fetch", "fetch");
-        mentorQuestGiver.addEnemies("boss killing people", "CATASTROPHE","Skeleton", "Golem", "Brute");
-        mentorQuestGiver.addItems("boss killing people", "CATASTROPHE", "RatSkull","DwarfToken");
+        mentorQuestGiver.addMotiveObjectives("boss killing people", "CATASTROPHE", "kill", "kill_fetch", "fetch");
+        mentorQuestGiver.addEnemies("boss killing people", "CATASTROPHE", "Skeleton", "Golem", "Brute");
+        mentorQuestGiver.addItems("boss killing people", "CATASTROPHE", "RatSkull", "DwarfToken");
 
         //Demon awakened motive
         mentorQuestGiver.addMotiveObjectives("demon awakened", "CATASTROPHE", "kill", "kill_fetch");
-        mentorQuestGiver.addEnemies("demon awakened", "CATASTROPHE","Warlock", "Shaman", "Succubus");
+        mentorQuestGiver.addEnemies("demon awakened", "CATASTROPHE", "Warlock", "Shaman", "Succubus");
         mentorQuestGiver.addItems("demon awakened", "CATASTROPHE", "DarkGold", "RatSkull", "DwarfToken");
 
 
@@ -944,12 +778,12 @@ public class StoryGenerator {
 
         //find information motive
         mentorQuestGiver.addMotiveObjectives("find information", "INVESTIGATE", "kill_fetch", "fetch");
-        mentorQuestGiver.addEnemies("find information", "INVESTIGATE","Skeleton", "Golem", "Brute", "Eye");
+        mentorQuestGiver.addEnemies("find information", "INVESTIGATE", "Skeleton", "Golem", "Brute", "Eye");
         mentorQuestGiver.addItems("find information", "INVESTIGATE", "Letter", "CorpseDust", "Dagger");
 
         //take out henchmen motive
         mentorQuestGiver.addMotiveObjectives("take out henchmen", "INVESTIGATE", "kill", "kill_fetch");
-        mentorQuestGiver.addEnemies("take out henchmen", "INVESTIGATE","Warlock", "Shaman", "Succubus", "Golem", "Brute");
+        mentorQuestGiver.addEnemies("take out henchmen", "INVESTIGATE", "Warlock", "Shaman", "Succubus", "Golem", "Brute");
         mentorQuestGiver.addItems("take out henchmen", "INVESTIGATE", "DarkGold", "RatSkull", "DwarfToken");
         /**
          * END Act Two Story Phases
@@ -965,14 +799,13 @@ public class StoryGenerator {
 
         //obtain powerful item motive
         mentorQuestGiver.addMotiveObjectives("obtain powerful item", "STRENGTHEN", "fetch", "kill_fetch");
-        mentorQuestGiver.addEnemies("obtain powerful item", "STRENGTHEN","Shaman", "Succubus", "Golem", "Monk");
+        mentorQuestGiver.addEnemies("obtain powerful item", "STRENGTHEN", "Shaman", "Succubus", "Golem", "Monk");
         mentorQuestGiver.addItems("obtain powerful item", "STRENGTHEN", "PlateArmor", "MailArmor", "Spear", "Sword");
 
         //destroy minions motive
         mentorQuestGiver.addMotiveObjectives("destroy minions", "STRENGTHEN", "kill", "kill_fetch");
-        mentorQuestGiver.addEnemies("destroy minions", "STRENGTHEN","Shaman", "Succubus", "Monk");
-        mentorQuestGiver.addItems("destroy minions", "STRENGTHEN",  "PlateArmor", "MailArmor", "RingOfEvasion");
-
+        mentorQuestGiver.addEnemies("destroy minions", "STRENGTHEN", "Shaman", "Succubus", "Monk");
+        mentorQuestGiver.addItems("destroy minions", "STRENGTHEN", "PlateArmor", "MailArmor", "RingOfEvasion");
 
 
         //RESOLVE story phase motives
@@ -980,12 +813,12 @@ public class StoryGenerator {
         mentorQuestGiver.createNewMotive("cleanse land", "RESOLVE");
 
         //boss killing people motive
-        mentorQuestGiver.addMotiveObjectives("kill boss", "RESOLVE","kill");
-        mentorQuestGiver.addEnemies("kill boss", "RESOLVE","King", "Monk", "Eye");
+        mentorQuestGiver.addMotiveObjectives("kill boss", "RESOLVE", "kill");
+        mentorQuestGiver.addEnemies("kill boss", "RESOLVE", "King", "Monk", "Eye");
 
         //cleanse land motive
-        mentorQuestGiver.addMotiveObjectives("cleanse land", "RESOLVE",  "kill_fetch");
-        mentorQuestGiver.addEnemies("cleanse land", "RESOLVE","Eye", "Monk");
+        mentorQuestGiver.addMotiveObjectives("cleanse land", "RESOLVE", "kill_fetch");
+        mentorQuestGiver.addEnemies("cleanse land", "RESOLVE", "Eye", "Monk");
         mentorQuestGiver.addItems("cleanse land", "RESOLVE", "CorpseDust", "DriedRose");
         /**
          * END Act Three Story Phases
@@ -996,8 +829,6 @@ public class StoryGenerator {
          */
 
 
-
-        knight.actOneQuestGivers.add(mentorQuestGiver);
 
         questGiver = mentorQuestGiver;
 
@@ -1032,15 +863,116 @@ public class StoryGenerator {
 
 
 
-        Collections.shuffle(knight.actOneQuestGivers);
-
-        questGiver = knight.actOneQuestGivers.get(0);
 
 
     }
 
 
+    public void createQuestGiverMotives(PixelDungeon c) {
+        try {
 
+            //InputStream is = c.getResources().openRawResource(R.raw.knight_mentor_quest_giver);
+            InputStream is = c.getResources().openRawResource(questGiver.xmlID);
+
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(is);
+
+            doc.getDocumentElement().normalize();
+
+            NodeList motiveList = doc.getElementsByTagName("motive");
+
+            for (int i = 0; i < motiveList.getLength(); i++) {
+
+                Node curMotive = motiveList.item(i);
+
+                //obtain quest elements for each quest in the list
+                if (curMotive.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element motiveElement = (Element) curMotive;
+
+                    String motiveName = motiveElement.getElementsByTagName("motiveName").item(0).getTextContent();
+                    String storyPhase = motiveElement.getElementsByTagName("storyPhase").item(0).getTextContent();
+
+                    questGiver.createNewMotive(motiveName, storyPhase);
+
+                    //getting motive quest objectives
+                    NodeList objectiveTypeList = motiveElement.getElementsByTagName("objectiveType");
+
+                    for (int j = 0; j < objectiveTypeList.getLength(); j++) {
+
+                        Node objectiveTypeNode = objectiveTypeList.item(j);
+
+                        if (objectiveTypeNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element objectiveTypeElement = (Element)objectiveTypeNode;
+
+                            String objectiveType = objectiveTypeElement.getElementsByTagName("objectiveTypeName").item(0).getTextContent();
+
+                            questGiver.addMotiveObjectives(motiveName, storyPhase, objectiveType);
+                        }
+                    }
+
+                    //getting motive quest enemies
+                    NodeList enemyList = motiveElement.getElementsByTagName("enemy");
+
+                    for (int k = 0; k < enemyList.getLength(); k++) {
+
+                        Node enemyNode = enemyList.item(k);
+
+                        if (enemyNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element enemyElement = (Element)enemyNode;
+
+                            String enemyName = enemyElement.getElementsByTagName("enemyName").item(0).getTextContent();
+
+                            questGiver.addEnemies(motiveName, storyPhase, enemyName);
+                        }
+                    }
+
+                    //getting motive quest items
+                    NodeList itemList = motiveElement.getElementsByTagName("item");
+
+                    for (int l = 0; l < itemList.getLength(); l++) {
+
+                        Node itemNode = itemList.item(l);
+
+                        if (itemNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element itemElement = (Element)itemNode;
+
+                            String itemName = itemElement.getElementsByTagName("itemName").item(0).getTextContent();
+
+                            questGiver.addItems(motiveName, storyPhase, itemName);
+                        }
+                    }
+
+                    //getting motive quest npcs
+                    NodeList npcList = motiveElement.getElementsByTagName("npc");
+
+                    for (int m = 0; m < npcList.getLength(); m++) {
+
+                        Node npcNode = npcList.item(m);
+
+                        if (npcNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element npcElement = (Element)npcNode;
+
+                            String npcName = npcElement.getElementsByTagName("npcName").item(0).getTextContent();
+
+                            questGiver.addNPCs(motiveName, storyPhase, npcName);
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error in method: readXML(), Class StoryGenerator");
+            e.printStackTrace();
+        }
+
+
+    }
 
 
 }

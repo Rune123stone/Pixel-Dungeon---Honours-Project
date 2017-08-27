@@ -474,6 +474,7 @@ public class DataHandler {
 
                     } else {
                         String questNotGivenDialogue = questElement.getElementsByTagName("quest_not_given_dialogue").item(0).getTextContent();
+                        System.out.println(questNotGivenDialogue);
                         String questGivenDialogue = questElement.getElementsByTagName("quest_given_dialogue").item(0).getTextContent();
                         String questCompletedDialogue = questElement.getElementsByTagName("quest_completed_dialogue").item(0).getTextContent();
 

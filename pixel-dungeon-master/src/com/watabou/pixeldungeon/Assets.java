@@ -178,7 +178,7 @@ public class Assets {
 	public static final String SND_MIMIC	= "snd_mimic.mp3";
 
 	// **** Overworld Assets ****
-	public static final String OVERWORLD_MAP_ASSETS = "overworld_tiles.png";
+	public static final String OVERWORLD_MAP_ASSETS = "overworld_tileset.png";
 	public static final String OVERWORLD_THEME = "overworldTheme.mp3";
 
 	// **** Town Assets ****

@@ -23,16 +23,17 @@ public class PixelDungeon extends Game {
 	public PixelDungeon() {
 		super( TitleScene.class );
 		// super(OverworldScene.class);
-
-		StoryGenerator storyGenerator = StoryGenerator.getInstance();
-
-		storyGenerator.doStoryStuff();
-
-		DataHandler dataHandler = DataHandler.getInstance();
-
-		dataHandler.generateStoryXMLs();
-		dataHandler.createQuests();
-		dataHandler.displayQuests();
+//
+//		StoryGenerator storyGenerator = StoryGenerator.getInstance();
+//
+//		storyGenerator.doStoryStuff();
+//
+//		DataHandler dataHandler = DataHandler.getInstance();
+//
+//		dataHandler.generateStoryXMLs();
+//		dataHandler.createQuests();
+//		dataHandler.displayQuests();
+//
 
 
 
@@ -185,6 +186,30 @@ public class PixelDungeon extends Game {
 			Assets.SND_BEE,
 			Assets.SND_DEGRADE,
 			Assets.SND_MIMIC );
+
+//		System.out.println("Reading XML: ");
+//		StoryGenerator.getInstance().createQuestGiverMotives(this);
+//		System.out.println("Done reading XML");
+
+		StoryGenerator storyGenerator = StoryGenerator.getInstance();
+
+		storyGenerator.doStoryStuff();
+
+		System.out.println("Reading XML: ");
+		StoryGenerator.getInstance().createQuestGiverMotives(this);
+		System.out.println("Done reading XML");
+
+		DataHandler dataHandler = DataHandler.getInstance();
+
+		dataHandler.generateStoryXMLs();
+		dataHandler.createQuests();
+		dataHandler.displayQuests();
+//
+//		System.out.println("Reading XML: ");
+//		StoryGenerator.getInstance().createQuestGiverMotives(this);
+//		System.out.println("Done reading XML");
+//
+
 	}
 
 	@Override
