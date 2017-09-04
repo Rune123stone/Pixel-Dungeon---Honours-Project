@@ -29,6 +29,17 @@ public class QuestGiver {
         motives = new ArrayList<>();
     }
 
+    public Motive getMotive(String motiveName) {
+
+        for (Motive motive : motives) {
+
+            if (motive.type.equals(motiveName)) {
+                return motive;
+            }
+        }
+        return null;
+    }
+
 
     public String getRandomMotiveType(String storyPhase) {
 
@@ -50,9 +61,9 @@ public class QuestGiver {
 
     }
 
-    public void createNewMotive(String type, String storyPhase) {
+    public void createNewMotive(String type, String storyPhase, String questNotGivenDialogue, String questGivenDialogue, String questCompleteDialogue) {
 
-        Motive motive = new Motive(type, storyPhase);
+        Motive motive = new Motive(type, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
 
         motives.add(motive);
         //System.out.println("added motive: " +type+ " with story phase " +storyPhase);
@@ -196,7 +207,6 @@ public class QuestGiver {
 
     }
 
-
     public class Motive {
 
 
@@ -212,9 +222,16 @@ public class QuestGiver {
         public ArrayList<String> items;
         public ArrayList<String> npcs;
 
-        public Motive(String type, String storyPhase) {
+        public String questNotGivenDialogue;
+        public String questGivenDialogue;
+        public String questCompleteDialogue;
+
+        public Motive(String type, String storyPhase, String questNotGivenDialogue, String questGivenDialogue, String questCompleteDialogue) {
             this.type = type;
             this.storyPhase = storyPhase;
+            this.questNotGivenDialogue = questNotGivenDialogue;
+            this.questGivenDialogue = questGivenDialogue;
+            this.questCompleteDialogue = questCompleteDialogue;
 
             objectiveTypes = new ArrayList<>();
 

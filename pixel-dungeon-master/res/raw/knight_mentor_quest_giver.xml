@@ -7,6 +7,10 @@
 			<motiveName>train</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
+			<questNotGivenDialogue>You need to train.</questNotGivenDialogue>
+			<questGivenDialogue>Go train!</questGivenDialogue>
+			<questCompleteDialogue>You've trained well. You're ready for something more challening.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -45,6 +49,10 @@
 		<motive>
 			<motiveName>simple task</motiveName>
 			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>This is a simple task to get you started.</questNotGivenDialogue>
+			<questGivenDialogue>Don't just stand there, I've given you a task!</questGivenDialogue>
+			<questCompleteDialogue>Good job! But the next quest won't be so easy.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -88,6 +96,10 @@
 			<motiveName>gang problem</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
 
+			<questNotGivenDialogue>There is a gang that is terrorizing these lands.</questNotGivenDialogue>
+			<questGivenDialogue>Go take care of that gang!</questGivenDialogue>
+			<questCompleteDialogue>Good job! They won't try that again soon.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -120,6 +132,10 @@
 		<motive>
 			<motiveName>useful item</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>I've heard tales of a powerful item that could serve you well on your well on your adventures.</questNotGivenDialogue>
+			<questGivenDialogue>That item won't find itself!</questGivenDialogue>
+			<questCompleteDialogue>This item should serve your adventures well.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -157,6 +173,10 @@
 			<motiveName>boss killing people</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
+			<questNotGivenDialogue>There is a powerful enemy that must be stopped.</questNotGivenDialogue>
+			<questGivenDialogue>Didn't I just say that there's a powerful enemy at large?</questGivenDialogue>
+			<questCompleteDialogue>You've got a tough road ahead.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -190,6 +210,10 @@
 			<motiveName>demon awakened</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
+			<questNotGivenDialogue>There is an evil force that has been awakened.</questNotGivenDialogue>
+			<questGivenDialogue>Sure, we can talk while there's a scary enemy destroying the lands.</questGivenDialogue>
+			<questCompleteDialogue>It's worse than I thought, we'll have to prepare for this.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -222,6 +246,10 @@
 		<motive>
 			<motiveName>find information</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>In order to defeat this evil, you must find out more about it.</questNotGivenDialogue>
+			<questGivenDialogue>Go find out more about this!</questGivenDialogue>
+			<questCompleteDialogue>I believe we're ready for the next step.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -258,6 +286,10 @@
 		<motive>
 			<motiveName>take out henchmen</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>Weaken the enemy by taking out their most trusted henchmen.</questNotGivenDialogue>
+			<questGivenDialogue>Go kill some henchmen!</questGivenDialogue>
+			<questCompleteDialogue>I believe we're ready to take it to the enemy.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -298,6 +330,10 @@
 			<motiveName>obtain powerful item</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
 
+			<questNotGivenDialogue>In order to defeat this enemy, you're going to need an item of legendary power.</questNotGivenDialogue>
+			<questGivenDialogue>You're not getting to the final level with that gear, go get that legendary item!</questGivenDialogue>
+			<questCompleteDialogue>You are now ready for the final battle.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -337,6 +373,10 @@
 			<motiveName>destroy minions</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
 
+			<questNotGivenDialogue>You must strike at the enemy's generals before they take over the Kingdom!</questNotGivenDialogue>
+			<questGivenDialogue>No scary generals here, go find them!</questGivenDialogue>
+			<questCompleteDialogue>You have greatly weakened the enemy. Now is the time to strike!</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -370,6 +410,10 @@
 			<motiveName>kill boss</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
+			<questNotGivenDialogue>Now, go finish this!</questNotGivenDialogue>
+			<questGivenDialogue>What are you waiting for??</questGivenDialogue>
+			<questCompleteDialogue>The land belongs to the people once more!</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -389,6 +433,10 @@
 		<motive>
 			<motiveName>cleanse land</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>You must cleanse the lands of this evil.</questNotGivenDialogue>
+			<questGivenDialogue>If you're okay with everyone dying, let's keep this conversation going.</questGivenDialogue>
+			<questCompleteDialogue>Thanks to you, we are free from this evil!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>

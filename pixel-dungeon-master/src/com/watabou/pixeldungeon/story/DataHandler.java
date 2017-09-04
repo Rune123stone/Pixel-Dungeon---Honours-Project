@@ -108,6 +108,7 @@ public class DataHandler {
             int template = 1;
             System.out.println(template);
 
+
             switch (template) {
                 // *** IF 1st template is chosen, generate the following XML data ***
                 case 1:
@@ -170,6 +171,7 @@ public class DataHandler {
                     break;
             }
 
+
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
 
@@ -201,6 +203,8 @@ public class DataHandler {
             fOut.close();
 
             System.out.println("file saved");
+
+
 
 
         } catch (Exception e) {
@@ -1151,12 +1155,16 @@ public class DataHandler {
             generateRandomItem();
             generateNPCData();
 
+
+           // setQuestDialogue("actOne.xml", "questOne", "OwiJEOIWEJFIOWJEFOIWJEFOPIJwoiefjwoiefjaopwijfopiaewjfgoierjg");
             createActOneQuests();
             createActTwoQuests();
             createActThreeQuests();
             currentAct = 1;
         }
     }
+
+
 
     //returns value based on the given XML tag
     public static String getVariableInfo(String xmlTag) {
@@ -1235,6 +1243,7 @@ public class DataHandler {
             System.out.println("Quest Giver: " + quest.questGiver);
             System.out.println("Quest Giver Level: " + quest.questGiverLevel);
             System.out.println("Prerequisite Quest Name: " + quest.prerequisiteQuestName);
+            System.out.println("Quest Not Given: " +quest.QUEST_NOT_GIVEN_TEXT);
             System.out.println();
 
             //quest.displayObjectives();
@@ -1433,17 +1442,31 @@ public class DataHandler {
                     Element questElement = (Element) curQuestNode;
 
                     String questName = questElement.getElementsByTagName("quest_name").item(0).getTextContent();
+                    System.out.println(questName);
 
                     if (questName.equals(givenQuestName)) {
 
                         Node questNotGivenDialogue = questElement.getElementsByTagName("quest_not_given_dialogue").item(0);
+                        System.out.println("before: " +questNotGivenDialogue.getTextContent());
                         questNotGivenDialogue.setTextContent(questNotGiven);
 
-                        System.out.println("great success!");
+
+                        System.out.println(questNotGiven);
+
+                        System.out.println("after: " +questNotGivenDialogue.getTextContent());
                     }
 
                 }
             }
+
+//            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+//            Transformer transformer = transformerFactory.newTransformer();
+//            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//            DOMSource source = new DOMSource(doc);
+//            StreamResult result = new StreamResult(file);
+//            transformer.transform(source, result);
+
+            System.out.println("great success!");
         } catch (Exception e) {
             e.printStackTrace();
         }
