@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+        <questGiver>
+            <name>Farmer</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Peasant - Farmer - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Peasant - Farmer - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Peasant - Farmer - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Peasant - Farmer - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Peasant - Farmer - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Peasant - Farmer - Fields</story>
+            </level>
+        </questGiver>
+
+        <questGiver>
+            <name>Relative</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Peasant - Relative - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Peasant - Relative - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Peasant - Relative - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Peasant - Relative - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Peasant - Relative - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Peasant - Relative - Fields</story>
+            </level>
+        </questGiver>
+
+        <questGiver>
+            <name>PlaceHolder</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Peasant - PlaceHolder - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Peasant - PlaceHolder - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Peasant - PlaceHolder - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Peasant - PlaceHolder - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Peasant - PlaceHolder - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Peasant - PlaceHolder - Fields</story>
+            </level>
+        </questGiver>
+
+
+</resources>

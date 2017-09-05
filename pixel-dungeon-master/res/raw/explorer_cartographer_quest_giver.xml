@@ -8,7 +8,7 @@
 			<storyPhase>NORMAL</storyPhase>
 
 			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
+			<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>

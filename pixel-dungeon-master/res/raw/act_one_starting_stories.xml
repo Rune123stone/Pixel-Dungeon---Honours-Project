@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <background>
+        <name>Knight</name>
+        <level>
+            <name>Shadow Lands</name>
+            <story>Knight - Shadow Lands</story>
+        </level>
+        <level>
+            <name>Forest</name>
+            <story>Knight - Forest</story>
+        </level>
+        <level>
+            <name>Caves</name>
+            <story>Knight - Caves</story>
+        </level>
+        <level>
+            <name>Dungeon</name>
+            <story>Knight - Dungeon</story>
+        </level>
+        <level>
+            <name>Fields</name>
+            <story>Knight - Fields</story>
+        </level>
+        <level>
+            <name>Castle</name>
+            <story>Knight - Castle</story>
+        </level>
+    </background>
+
+    <background>
+        <name>Peasant</name>
+        <level>
+            <name>Shadow Lands</name>
+            <story>Peasant - Shadow Lands</story>
+        </level>
+        <level>
+            <name>Forest</name>
+            <story>Peasant - Forest</story>
+        </level>
+        <level>
+            <name>Caves</name>
+            <story>Peasant - Caves</story>
+        </level>
+        <level>
+            <name>Dungeon</name>
+            <story>Peasant - Dungeon</story>
+        </level>
+        <level>
+            <name>Fields</name>
+            <story>Peasant - Fields</story>
+        </level>
+        <level>
+            <name>Castle</name>
+            <story>Peasant - Castle</story>
+        </level>
+    </background>
+
+    <background>
+        <name>Explorer</name>
+        <level>
+            <name>Shadow Lands</name>
+            <story>Explorer - Shadow Lands</story>
+        </level>
+        <level>
+            <name>Forest</name>
+            <story>Explorer - Forest</story>
+        </level>
+        <level>
+            <name>Caves</name>
+            <story>Explorer - Caves</story>
+        </level>
+        <level>
+            <name>Dungeon</name>
+            <story>Explorer - Dungeon</story>
+        </level>
+        <level>
+            <name>Fields</name>
+            <story>Explorer - Fields</story>
+        </level>
+        <level>
+            <name>Castle</name>
+            <story>Explorer - Castle</story>
+        </level>
+    </background>
+
+</resources>

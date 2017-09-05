@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <questGiver>
+            <name>Cartographer</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Explorer - Cartographer - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Explorer - Cartographer - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Explorer - Cartographer - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Explorer - Cartographer - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Explorer - Cartographer - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Explorer - Cartographer - Fields</story>
+            </level>
+        </questGiver>
+
+        <questGiver>
+            <name>PlaceHolder1</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Explorer - PlaceHolder1 - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Explorer - PlaceHolder1 - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Explorer - PlaceHolder1 - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Explorer - PlaceHolder1 - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Explorer - PlaceHolder1 - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Explorer - PlaceHolder1 - Fields</story>
+            </level>
+        </questGiver>
+
+        <questGiver>
+            <name>PlaceHolder2</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Explorer - PlaceHolder2 - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Explorer - PlaceHolder2 - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Explorer - PlaceHolder2 - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Explorer - PlaceHolder2 - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Explorer - PlaceHolder2 - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Explorer - PlaceHolder2 - Fields</story>
+            </level>
+        </questGiver>
+
+</resources>

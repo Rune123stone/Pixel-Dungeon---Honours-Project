@@ -1156,9 +1156,16 @@ public class DataHandler {
             generateNPCData();
 
 
-           // setQuestDialogue("actOne.xml", "questOne", "OwiJEOIWEJFIOWJEFOIWJEFOPIJwoiefjwoiefjaopwijfopiaewjfgoierjg");
+            setQuestDialogue("actOne.xml", "questOne", StoryGenerator.getInstance().chosenMotives.get(0).questNotGivenDialogue);
+            setQuestDialogue("actOne.xml", "questTwo", StoryGenerator.getInstance().chosenMotives.get(1).questNotGivenDialogue);
             createActOneQuests();
+
+            setQuestDialogue("actTwo.xml", "questThree", StoryGenerator.getInstance().chosenMotives.get(2).questNotGivenDialogue);
+            setQuestDialogue("actTwo.xml", "questFour", StoryGenerator.getInstance().chosenMotives.get(3).questNotGivenDialogue);
             createActTwoQuests();
+
+            setQuestDialogue("actThree.xml", "questFive", StoryGenerator.getInstance().chosenMotives.get(4).questNotGivenDialogue);
+            setQuestDialogue("actThree.xml", "questSix", StoryGenerator.getInstance().chosenMotives.get(5).questNotGivenDialogue);
             createActThreeQuests();
             currentAct = 1;
         }
@@ -1459,12 +1466,12 @@ public class DataHandler {
                 }
             }
 
-//            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-//            Transformer transformer = transformerFactory.newTransformer();
-//            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-//            DOMSource source = new DOMSource(doc);
-//            StreamResult result = new StreamResult(file);
-//            transformer.transform(source, result);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(file);
+            transformer.transform(source, result);
 
             System.out.println("great success!");
         } catch (Exception e) {

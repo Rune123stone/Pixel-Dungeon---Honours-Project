@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <questGiver>
+            <name>Mentor</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Knight - Mentor - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Knight - Mentor - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Knight - Mentor - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Knight - Mentor - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Knight - Mentor - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Knight - Mentor - Fields</story>
+            </level>
+        </questGiver>
+
+        <questGiver>
+            <name>Princess</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Knight - Princess - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Knight - Princess - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Knight - Princess - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Knight - Princess - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Knight - Princess - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Knight - Princess - Fields</story>
+            </level>
+        </questGiver>
+
+        <questGiver>
+            <name>PlaceHolder</name>
+            <level>
+                <name>Shadow Lands</name>
+                <story>Knight - PlaceHolder - Shadow Lands</story>
+            </level>
+            <level>
+                <name>Forest</name>
+                <story>Knight - PlaceHolder - Forest</story>
+            </level>
+            <level>
+                <name>Caves</name>
+                <story>Knight - PlaceHolder - Caves</story>
+            </level>
+            <level>
+                <name>Castle</name>
+                <story>Knight - PlaceHolder - Castle</story>
+            </level>
+            <level>
+                <name>Dungeon</name>
+                <story>Knight - PlaceHolder - Dungeon</story>
+            </level>
+            <level>
+                <name>Fields</name>
+                <story>Knight - PlaceHolder - Fields</story>
+            </level>
+        </questGiver>
+
+</resources>

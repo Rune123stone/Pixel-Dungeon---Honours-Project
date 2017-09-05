@@ -356,7 +356,7 @@ public class GameScene extends PixelScene {
 //		}
 
 		if (DataHandler.getInstance().actStarting) {
-			WndNoQuestGiver.showQuestDialogue(StoryGenerator.getInstance().firstStory);
+			WndNoQuestGiver.showQuestDialogue(StoryGenerator.getInstance().actOneStory);
 			DataHandler.getInstance().actStarting = false;
 		}
 

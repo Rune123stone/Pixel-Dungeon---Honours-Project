@@ -187,13 +187,10 @@ public class PixelDungeon extends Game {
 			Assets.SND_DEGRADE,
 			Assets.SND_MIMIC );
 
-//		System.out.println("Reading XML: ");
-//		StoryGenerator.getInstance().createQuestGiverMotives(this);
-//		System.out.println("Done reading XML");
-
 		StoryGenerator storyGenerator = StoryGenerator.getInstance();
 
-		storyGenerator.doStoryStuff();
+		storyGenerator.initializeStoryVariables();
+		storyGenerator.createActOneStory(this);
 
 		System.out.println("Reading XML: ");
 		StoryGenerator.getInstance().createQuestGiverMotives(this);
@@ -204,11 +201,6 @@ public class PixelDungeon extends Game {
 		dataHandler.generateStoryXMLs();
 		dataHandler.createQuests();
 		dataHandler.displayQuests();
-//
-//		System.out.println("Reading XML: ");
-//		StoryGenerator.getInstance().createQuestGiverMotives(this);
-//		System.out.println("Done reading XML");
-//
 
 	}
 
