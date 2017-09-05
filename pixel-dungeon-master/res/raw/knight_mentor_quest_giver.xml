@@ -100,6 +100,8 @@
 			<questGivenDialogue>Go take care of that gang!</questGivenDialogue>
 			<questCompleteDialogue>Good job! They won't try that again soon.</questCompleteDialogue>
 
+			<actTwoOpeningStory>KNIGHT - MENTOR - GANG PROBLEM - ACT TWO</actTwoOpeningStory>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -136,6 +138,8 @@
 			<questNotGivenDialogue>I've heard tales of a powerful item that could serve you well on your well on your adventures.</questNotGivenDialogue>
 			<questGivenDialogue>That item won't find itself!</questGivenDialogue>
 			<questCompleteDialogue>This item should serve your adventures well.</questCompleteDialogue>
+
+			<actTwoOpeningStory>KNIGHT - MENTOR - USEFUL ITEM - ACT TWO</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -251,6 +255,8 @@
 			<questGivenDialogue>Go find out more about this!</questGivenDialogue>
 			<questCompleteDialogue>I believe we're ready for the next step.</questCompleteDialogue>
 
+			<actThreeOpeningStory>KNIGHT - MENTOR - FIND INFORMATION - ACT THREE</actThreeOpeningStory>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -290,6 +296,8 @@
 			<questNotGivenDialogue>Weaken the enemy by taking out their most trusted henchmen.</questNotGivenDialogue>
 			<questGivenDialogue>Go kill some henchmen!</questGivenDialogue>
 			<questCompleteDialogue>I believe we're ready to take it to the enemy.</questCompleteDialogue>
+
+			<actThreeOpeningStory>KNIGHT - MENTOR - TAKE OUT HENCHMEN - ACT THREE</actThreeOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>

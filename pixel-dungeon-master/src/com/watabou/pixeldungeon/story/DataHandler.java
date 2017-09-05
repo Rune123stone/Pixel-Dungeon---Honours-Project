@@ -1438,8 +1438,6 @@ public class DataHandler {
             //get list of quests in the Act
             NodeList questList = doc.getElementsByTagName("quest");
 
-            System.out.println("size of quest list is: " +questList.getLength());
-
             for (int i = 0; i < questList.getLength(); i++) {
                 Node curQuestNode = questList.item(i);
 
@@ -1449,18 +1447,11 @@ public class DataHandler {
                     Element questElement = (Element) curQuestNode;
 
                     String questName = questElement.getElementsByTagName("quest_name").item(0).getTextContent();
-                    System.out.println(questName);
 
                     if (questName.equals(givenQuestName)) {
 
                         Node questNotGivenDialogue = questElement.getElementsByTagName("quest_not_given_dialogue").item(0);
-                        System.out.println("before: " +questNotGivenDialogue.getTextContent());
                         questNotGivenDialogue.setTextContent(questNotGiven);
-
-
-                        System.out.println(questNotGiven);
-
-                        System.out.println("after: " +questNotGivenDialogue.getTextContent());
                     }
 
                 }

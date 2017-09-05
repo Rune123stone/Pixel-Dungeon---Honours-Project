@@ -5,27 +5,27 @@
             <name>Mentor</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>Knight - Mentor - Shadow Lands</story>
+                <story>The shadow lands is a dangerous place, even for a knight. You're not sure why your mentor asked you to meet in a place like this.</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>Knight - Mentor - Forest</story>
+                <story>The forests have always been a beautiful part of the Kingdom. Your mentor has asked for you two to meet here.</story>
             </level>
             <level>
                 <name>Caves</name>
-                <story>Knight - Mentor - Caves</story>
+                <story>These caves were once used for mining materials used to make weapons and armor for knights such as yourself. These caves have been deserted for years, why would the mentor ask you to come down here?</story>
             </level>
             <level>
                 <name>Castle</name>
-                <story>Knight - Mentor - Castle</story>
+                <story>The castle was one your home, before the king went bonkers. Your mentor would like to meet you here, perhaps to reminisce.</story>
             </level>
             <level>
                 <name>Dungeon</name>
-                <story>Knight - Mentor - Dungeon</story>
+                <story>Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum. It's not your turn for guard duty, why would the mentor want to meet you here?</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Knight - Mentor - Fields</story>
+                <story>The fields are home to many of the peasants you spit on on a daily basis. Maybe your mentor wants you to make fun of some peasants with him?</story>
             </level>
         </questGiver>
 
@@ -33,27 +33,27 @@
             <name>Princess</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>Knight - Princess - Shadow Lands</story>
+                <story>The shadow lands is a dangerous place, even for a knight. The princess has always been one for danger, you should find her.</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>Knight - Princess - Forest</story>
+                <story>The forests have always been a beautiful part of the Kingdom. The princess always chooses the most romantic places to meet. You should find her.</story>
             </level>
             <level>
                 <name>Caves</name>
-                <story>Knight - Princess - Caves</story>
+                <story>These caves were once used for mining materials used to make weapons and armor for knights such as yourself. Not the most romantic of places, but at least you and the Princess will be alone here. You should find her.</story>
             </level>
             <level>
                 <name>Castle</name>
-                <story>Knight - Princess - Castle</story>
+                <story>The castle was one your home, before the king went bonkers. The princess has been a little homesick after since the great war, but she shouldn't have come back to this place. Find her.</story>
             </level>
             <level>
                 <name>Dungeon</name>
-                <story>Knight - Princess - Dungeon</story>
+                <story>Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum. This isn't exactly a place for a princess, you should find her.</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Knight - Princess - Fields</story>
+                <story>The fields are home to many of the peasants you spit on on a daily basis. Maybe your mentor wants you to make fun of some peasants with him?</story>
             </level>
         </questGiver>
 
@@ -61,27 +61,27 @@
             <name>PlaceHolder</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>Knight - PlaceHolder - Shadow Lands</story>
+                <story>The shadow lands is a dangerous place, even for a knight. It's your turn to look for corpses for some reason. Look around and see if you can find anything.</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>Knight - PlaceHolder - Forest</story>
+                <story>The forests have always been a beautiful part of the Kingdom. The forest is always soothing to walk through. Walk through it and see if you come upon anyone interesting.</story>
             </level>
             <level>
                 <name>Caves</name>
-                <story>Knight - PlaceHolder - Caves</story>
+                <story>These caves were once used for mining materials used to make weapons and armor for knights such as yourself. Why would anyone be down here? Oh well, walk around and find someone.</story>
             </level>
             <level>
                 <name>Castle</name>
-                <story>Knight - PlaceHolder - Castle</story>
+                <story>The castle was one your home, before the king went bonkers. You haven't been here since the last time you were here. Find someone new!</story>
             </level>
             <level>
                 <name>Dungeon</name>
-                <story>Knight - PlaceHolder - Dungeon</story>
+                <story>Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum. Make sure everything's alright here. Walk around and find anything out of place.</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Knight - PlaceHolder - Fields</story>
+                <story>The fields are home to many of the peasants you spit on on a daily basis. You've spat on every peasant here, but you feel like you need to mistreat more people. Find someone new.</story>
             </level>
         </questGiver>
 

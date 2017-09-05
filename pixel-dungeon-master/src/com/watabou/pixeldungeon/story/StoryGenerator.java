@@ -150,151 +150,9 @@ public class StoryGenerator {
         questGiver = chosenBackground.questGivers.get(0);
     }
 
-
-    public String shadowLandsStory;
-    public String cavesStory;
-    public String forestStory;
-    public String castleStory;
-    public String fieldsStory;
-    public String dungeonStory;
-
     public String actOneStory;
     public String actTwoStory;
     public String actThreeStory;
-
-
-    public void setLevelStories() {
-
-        switch (chosenBackground.background) {
-
-            case "Knight":
-                shadowLandsStory = "The shadow lands is a dangerous place, even for a knight.";
-                forestStory = "The forests have always been a beautiful part of the Kingdom.";
-                cavesStory = "These caves were once used for mining materials used to make weapons and armor for knights such as yourself.";
-                castleStory = "The castle was one your home, before the king went bonkers.";
-                fieldsStory = "The fields are home to many of the peasants you spit on on a daily basis.";
-                dungeonStory = "Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum.";
-
-                switch (questGiver.name) {
-
-                    case "Mentor": //mentor
-                        shadowLandsStory = shadowLandsStory.concat(" You're not sure why your mentor asked you to meet in a place like this.");
-                        forestStory = forestStory.concat(" Your mentor has asked for you two to meet here.");
-                        cavesStory = cavesStory.concat(" These caves have been deserted for years, why would the mentor ask you to come down here?");
-                        castleStory = castleStory.concat(" Your mentor would like to meet you here, perhaps to reminisce.");
-                        fieldsStory = fieldsStory.concat(" Maybe your mentor wants you to make fun of some peasants with him?");
-                        dungeonStory = dungeonStory.concat(" It's not your turn for guard duty, why would the mentor want to meet you here?");
-                        break;
-
-                    case "Princess": //princess
-                        shadowLandsStory = shadowLandsStory.concat(" The princess has always been one for danger, you should find her.");
-                        forestStory = forestStory.concat(" The princess always chooses the most romantic places to meet. You should find her.");
-                        cavesStory = cavesStory.concat(" Not the most romantic of places, but at least you and the Princess will be alone here. You should find her.");
-                        castleStory = castleStory.concat(" The princess has been homeless since the mad king, maybe she came back to try and not be homeless. Find her.");
-                        fieldsStory = fieldsStory.concat(" The princess does enjoy watching me mistreat the common folk, you should find her and get mistreating.");
-                        dungeonStory = dungeonStory.concat(" This isn't exactly a place for a princess, you should find her.");
-                        break;
-
-                    case "PlaceHolder": //stranger
-                        shadowLandsStory = shadowLandsStory.concat(" It's your turn to look for corpses for some reason. Look around and see if you can find anything.");
-                        forestStory = forestStory.concat(" The forest is always soothing to walk through. Walk through it and see if you come upon anyone interesting.");
-                        cavesStory = cavesStory.concat(" Why would anyone be down here? Oh well, walk around and find someone.");
-                        castleStory = castleStory.concat(" You haven't been here since the last time you were here. Find someone new!");
-                        fieldsStory = fieldsStory.concat(" You've spat on every peasant here, but you feel like you need to mistreat more people. Find someone new.");
-                        dungeonStory = dungeonStory.concat(" Make sure everything's alright here. Walk around and find snything out of place.");
-
-                }
-
-
-                break;
-
-            case "Peasant":
-
-                shadowLandsStory = "A well-trained knight barely has a chance of survival here, you have my condolences.";
-                forestStory = "The over abundance of trees makes the Forest great for gathering firewood.";
-                cavesStory = "These caves were once used for mining materials used to make weapons and armor for knights such as yourself.";
-                castleStory = "The castle was one your home, before the king went bonkers.";
-                fieldsStory = "The fields are home to many of the peasants you spit on on a daily basis.";
-                dungeonStory = "Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum.";
-
-                switch (questGiver.name) {
-
-                    case "Relative":
-                        shadowLandsStory = shadowLandsStory.concat(" You're not sure why your mentor asked you to meet in a place like this.");
-                        forestStory = forestStory.concat(" Your mentor has asked for you two to meet here.");
-                        cavesStory = cavesStory.concat(" These caves have been deserted for years, why would the mentor ask you to come down here?");
-                        castleStory = castleStory.concat(" Your mentor would like to meet you here, perhaps to reminisce.");
-                        fieldsStory = fieldsStory.concat(" Maybe your mentor wants you to make fun of some peasants with him?");
-                        dungeonStory = dungeonStory.concat(" It's not your turn for guard duty, why would the mentor want to meet you here?");
-                        break;
-
-                    case "Friend":
-                        shadowLandsStory = shadowLandsStory.concat(" The princess has always been one for danger, you should find her.");
-                        forestStory = forestStory.concat(" The princess always chooses the most romantic places to meet. You should find her.");
-                        cavesStory = cavesStory.concat(" Not the most romantic of places, but at least you and the Princess will be alone here. You should find her.");
-                        castleStory = castleStory.concat(" The princess has been homeless since the mad king, maybe she came back to try and not be homeless. Find her.");
-                        fieldsStory = fieldsStory.concat(" The princess does enjoy watching me mistreat the common folk, you should find her and get mistreating.");
-                        dungeonStory = dungeonStory.concat(" This isn't exactly a place for a princess, you should find her.");
-                        break;
-
-                    case "Farmer":
-                        shadowLandsStory = shadowLandsStory.concat(" It's your turn to look for corpses for some reason. Look around and see if you can find anything.");
-                        forestStory = forestStory.concat(" The forest is always soothing to walk through. Walk through it and see if you come upon anyone interesting.");
-                        cavesStory = cavesStory.concat(" Why would anyone be down here? Oh well, walk around and find someone.");
-                        castleStory = castleStory.concat(" You haven't been here since the last time you were here. Find someone new!");
-                        fieldsStory = fieldsStory.concat(" You've spat on every peasant here, but you feel like you need to mistreat more people. Find someone new.");
-                        dungeonStory = dungeonStory.concat(" Make sure everything's alright here. Walk around and find snything out of place.");
-
-                }
-
-                break;
-
-            case "Explorer":
-
-                shadowLandsStory = "A well-trained knight barely has a chance of survival here, you have my condolences.";
-                forestStory = "The over abundance of trees makes the Forest great for gathering firewood.";
-                cavesStory = "These caves were once used for mining materials used to make weapons and armor for knights such as yourself.";
-                castleStory = "The castle was one your home, before the king went bonkers.";
-                fieldsStory = "The fields are home to many of the peasants you spit on on a daily basis.";
-                dungeonStory = "Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum.";
-
-                switch (questGiver.name) {
-
-                    case "Stranger":
-                        shadowLandsStory = shadowLandsStory.concat(" You're not sure why your mentor asked you to meet in a place like this.");
-                        forestStory = forestStory.concat(" Your mentor has asked for you two to meet here.");
-                        cavesStory = cavesStory.concat(" These caves have been deserted for years, why would the mentor ask you to come down here?");
-                        castleStory = castleStory.concat(" Your mentor would like to meet you here, perhaps to reminisce.");
-                        fieldsStory = fieldsStory.concat(" Maybe your mentor wants you to make fun of some peasants with him?");
-                        dungeonStory = dungeonStory.concat(" It's not your turn for guard duty, why would the mentor want to meet you here?");
-                        break;
-
-                    case "Partner":
-                        shadowLandsStory = shadowLandsStory.concat(" The princess has always been one for danger, you should find her.");
-                        forestStory = forestStory.concat(" The princess always chooses the most romantic places to meet. You should find her.");
-                        cavesStory = cavesStory.concat(" Not the most romantic of places, but at least you and the Princess will be alone here. You should find her.");
-                        castleStory = castleStory.concat(" The princess has been homeless since the mad king, maybe she came back to try and not be homeless. Find her.");
-                        fieldsStory = fieldsStory.concat(" The princess does enjoy watching me mistreat the common folk, you should find her and get mistreating.");
-                        dungeonStory = dungeonStory.concat(" This isn't exactly a place for a princess, you should find her.");
-                        break;
-
-                    case "Civilian":
-                        shadowLandsStory = shadowLandsStory.concat(" It's your turn to look for corpses for some reason. Look around and see if you can find anything.");
-                        forestStory = forestStory.concat(" The forest is always soothing to walk through. Walk through it and see if you come upon anyone interesting.");
-                        cavesStory = cavesStory.concat(" Why would anyone be down here? Oh well, walk around and find someone.");
-                        castleStory = castleStory.concat(" You haven't been here since the last time you were here. Find someone new!");
-                        fieldsStory = fieldsStory.concat(" You've spat on every peasant here, but you feel like you need to mistreat more people. Find someone new.");
-                        dungeonStory = dungeonStory.concat(" Make sure everything's alright here. Walk around and find snything out of place.");
-
-                }
-
-
-                break;
-
-        }
-
-
-    }
 
     public void createActOneStory(PixelDungeon c) {
         try {
@@ -376,11 +234,6 @@ public class StoryGenerator {
         selectHeroBackground();
 
         selectQuestGiver();
-
-        setLevelStories();
-
-        //setActOpeningStory();
-
     }
 
     public void createActOne(Element firstQuest, Element secondQuest, Document document) {
@@ -393,9 +246,23 @@ public class StoryGenerator {
 
         motiveName = questGiver.getRandomMotiveType("SERIOUS");
         motive = questGiver.getMotive(motiveName);
+
+        actTwoStory = motive.actOpeningStory;
+
+        while (actTwoStory == null) {
+            motiveName = questGiver.getRandomMotiveType("SERIOUS");
+            motive = questGiver.getMotive(motiveName);
+            actTwoStory = motive.actOpeningStory;
+            System.out.println(motive.actOpeningStory);
+        }
+
+        System.out.println(motive.actOpeningStory);
+
         questCreator(secondQuest, document, "questTwo", "Town", "questOne", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
         objectiveCreator(motive, motiveName, "SERIOUS", levelTwo, "Town", questGiver.getRandomObjective(motiveName, "SERIOUS"), secondQuest, document);
         chosenMotives.add(motive);
+
+
     }
 
     public void createActTwo(Element firstQuest, Element secondQuest, Document document) {
@@ -409,6 +276,18 @@ public class StoryGenerator {
 
         motiveName = questGiver.getRandomMotiveType("INVESTIGATE");
         motive = questGiver.getMotive(motiveName);
+
+        actThreeStory = motive.actOpeningStory;
+
+        while (actThreeStory == null) {
+            motiveName = questGiver.getRandomMotiveType("INVESTIGATE");
+            motive = questGiver.getMotive(motiveName);
+            actThreeStory = motive.actOpeningStory;
+            System.out.println(motive.actOpeningStory);
+        }
+
+        System.out.println(motive.actOpeningStory);
+
         questCreator(secondQuest, document, "questFour", "Town", "questThree", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
         objectiveCreator(motive, motiveName, "INVESTIGATE", levelFour, "Town", questGiver.getRandomObjective(motiveName, "INVESTIGATE"), secondQuest, document);
         chosenMotives.add(motive);
@@ -457,7 +336,7 @@ public class StoryGenerator {
                 Integer amountToKill = getRandomAmountToKill(3, 5);
 
                 //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + "in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + "in the " + level + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + " in the " + level + ".");
 
                 DataHandler.getInstance().createKillObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), level);
 
@@ -478,7 +357,7 @@ public class StoryGenerator {
                 amountToKill = getRandomAmountToKill(4, 6);
 
                 //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + enemy + "'s in the " + level + " to find" + item + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + enemy + "'s in the " + level + " to find" + item + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + enemy + "'s in the " + level + " to find " + item + ".");
 
                 DataHandler.getInstance().createKillFetchObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), item, level);
 
@@ -598,7 +477,30 @@ public class StoryGenerator {
                     String questGivenDialogue    = motiveElement.getElementsByTagName("questGivenDialogue").item(0).getTextContent();
                     String questCompleteDialogue = motiveElement.getElementsByTagName("questCompleteDialogue").item(0).getTextContent();
 
-                    questGiver.createNewMotive(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
+
+                    NodeList actTwoOpeningStoryNodeList    = motiveElement.getElementsByTagName("actTwoOpeningStory");
+
+                    if (actTwoOpeningStoryNodeList.getLength() != 0) {
+                        String actTwoOpeningStory = actTwoOpeningStoryNodeList.item(0).getTextContent();
+                        //System.out.println(actTwoOpeningStory);
+                        questGiver.createNewMotiveWithDialogue(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue, actTwoOpeningStory);
+                    } else {
+                        questGiver.createNewMotive(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
+                    }
+
+
+
+                    NodeList actThreeOpeningStoryNodeList  = motiveElement.getElementsByTagName("actThreeOpeningStory");
+
+                    if (actThreeOpeningStoryNodeList.getLength() != 0) {
+                        String actThreeOpeningStory = actThreeOpeningStoryNodeList.item(0).getTextContent();
+                        //System.out.println(actThreeOpeningStory);
+                        questGiver.createNewMotiveWithDialogue(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue, actThreeOpeningStory);
+                    } else {
+                        questGiver.createNewMotive(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
+                    }
+
+                    //questGiver.createNewMotive(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
 
                     //getting motive quest objectives
                     NodeList objectiveTypeList = motiveElement.getElementsByTagName("objectiveType");

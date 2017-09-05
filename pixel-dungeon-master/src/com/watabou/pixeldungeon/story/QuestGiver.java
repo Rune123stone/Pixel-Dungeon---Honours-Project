@@ -69,6 +69,16 @@ public class QuestGiver {
         //System.out.println("added motive: " +type+ " with story phase " +storyPhase);
     }
 
+    public void createNewMotiveWithDialogue(String type, String storyPhase, String questNotGivenDialogue, String questGivenDialogue, String questCompleteDialogue, String actOpeningDialogue) {
+
+        Motive motive = new Motive(type, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue, actOpeningDialogue);
+
+        System.out.println(motive.storyPhase);
+        System.out.println(motive.actOpeningStory);
+        motives.add(motive);
+        //System.out.println("added motive: " +type+ " with story phase " +storyPhase);
+    }
+
     public void addMotiveObjectives(String type, String storyPhase, String...objectiveTypes) {
 
         for (Motive motive : motives) {
@@ -226,12 +236,31 @@ public class QuestGiver {
         public String questGivenDialogue;
         public String questCompleteDialogue;
 
+        public String actOpeningStory;
+
         public Motive(String type, String storyPhase, String questNotGivenDialogue, String questGivenDialogue, String questCompleteDialogue) {
             this.type = type;
             this.storyPhase = storyPhase;
             this.questNotGivenDialogue = questNotGivenDialogue;
             this.questGivenDialogue = questGivenDialogue;
             this.questCompleteDialogue = questCompleteDialogue;
+
+            objectiveTypes = new ArrayList<>();
+
+            enemies = new ArrayList<>();
+            bossEnemies = new ArrayList<>();
+            items = new ArrayList<>();
+            npcs = new ArrayList<>();
+        }
+
+        public Motive(String type, String storyPhase, String questNotGivenDialogue, String questGivenDialogue, String questCompleteDialogue, String actOpeningStory) {
+            this.type = type;
+            this.storyPhase = storyPhase;
+            this.questNotGivenDialogue = questNotGivenDialogue;
+            this.questGivenDialogue = questGivenDialogue;
+            this.questCompleteDialogue = questCompleteDialogue;
+
+            this.actOpeningStory = actOpeningStory;
 
             objectiveTypes = new ArrayList<>();
 

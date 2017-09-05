@@ -6,11 +6,11 @@
             <name>Farmer</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>Peasant - Farmer - Shadow Lands</story>
+                <story>A well-trained knight barely has a chance of survival here, you have my condolences.</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>Peasant - Farmer - Forest</story>
+                <story>The over abundance of trees makes the Forest great for gathering firewood.</story>
             </level>
             <level>
                 <name>Caves</name>
@@ -34,11 +34,11 @@
             <name>Relative</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>Peasant - Relative - Shadow Lands</story>
+                <story>A well-trained knight barely has a chance of survival here, you have my condolences.</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>Peasant - Relative - Forest</story>
+                <story>The over abundance of trees makes the Forest great for gathering firewood.</story>
             </level>
             <level>
                 <name>Caves</name>
@@ -62,11 +62,11 @@
             <name>PlaceHolder</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>Peasant - PlaceHolder - Shadow Lands</story>
+                <story>A well-trained knight barely has a chance of survival here, you have my condolences.</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>Peasant - PlaceHolder - Forest</story>
+                <story>The over abundance of trees makes the Forest great for gathering firewood.</story>
             </level>
             <level>
                 <name>Caves</name>

@@ -154,8 +154,6 @@ public class NPC extends Mob {
 			this.sprite.hideQuestHandInIcon();
 
 			questHandler.handleNPCInteraction(this, quest);
-			System.out.println(quest.QUEST_NOT_GIVEN_TEXT);
-
 
 
 		} else {
