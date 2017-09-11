@@ -192,10 +192,6 @@ public class PixelDungeon extends Game {
 		storyGenerator.initializeStoryVariables();
 		storyGenerator.createActOneStory(this);
 
-		System.out.println("Reading XML: ");
-
-		System.out.println("Done reading XML");
-
 		DataHandler dataHandler = DataHandler.getInstance();
 
 		storyGenerator.createQuestGiverMotives(this);

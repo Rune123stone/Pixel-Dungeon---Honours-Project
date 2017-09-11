@@ -19,6 +19,7 @@ package com.watabou.pixeldungeon.scenes;
 
 import java.util.HashMap;
 
+import android.app.Activity;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Camera;
@@ -39,6 +40,7 @@ import com.watabou.pixeldungeon.effects.BannerSprites;
 import com.watabou.pixeldungeon.effects.Speck;
 import com.watabou.pixeldungeon.effects.BannerSprites.Type;
 import com.watabou.pixeldungeon.story.DataHandler;
+import com.watabou.pixeldungeon.story.StoryGenerator;
 import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.Icons;

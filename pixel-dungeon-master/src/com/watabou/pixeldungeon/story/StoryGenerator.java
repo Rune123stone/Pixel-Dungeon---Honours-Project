@@ -21,7 +21,6 @@ public class StoryGenerator {
     private static StoryGenerator storyGenerator;
 
     public QuestGiver questGiver;
-    public String background;
     public ArrayList<QuestGiver.Motive> chosenMotives = new ArrayList<>();
 
     private StoryGenerator() {
@@ -37,7 +36,7 @@ public class StoryGenerator {
 
 
     //a list of levels that can be used for an act's quests
-    public ArrayList<String> questLevels = new ArrayList<>();
+    private ArrayList<String> questLevels = new ArrayList<>();
 
     public String levelOne;
     public String levelTwo;
@@ -46,7 +45,7 @@ public class StoryGenerator {
     public String levelFive;
     public String levelSix;
 
-    public void populateQuestLevels() {
+    private void populateQuestLevels() {
 
         questLevels.add("Forest");
         questLevels.add("Caves");
@@ -57,7 +56,7 @@ public class StoryGenerator {
 
     }
 
-    public void selectActLevels() {
+    private void selectActLevels() {
 
         Collections.shuffle(questLevels);
 
@@ -74,7 +73,7 @@ public class StoryGenerator {
     public ArrayList<HeroBackground> heroBackgrounds = new ArrayList<>();
     public HeroBackground chosenBackground;
 
-    public void populateHeroBackgrounds() {
+    private void populateHeroBackgrounds() {
 
         HeroBackground heroBackground;
         QuestGiver questGiver;
@@ -86,9 +85,9 @@ public class StoryGenerator {
         questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
         heroBackground.addQuestGiver(questGiver);
 
-//        questGiver = new QuestGiver("Princess", "Imp");
-//        questGiver.setXMLID(R.raw.knight_princess_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
+        questGiver = new QuestGiver("Princess", "Imp");
+        questGiver.setXMLID(R.raw.knight_princess_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
 //
 //        questGiver = new QuestGiver("PlaceHolder", "Blacksmith");
 //        questGiver.setXMLID(R.raw.knight_placeholder_quest_giver);
@@ -137,14 +136,14 @@ public class StoryGenerator {
 
     }
 
-    public void selectHeroBackground() {
+    private void selectHeroBackground() {
 
         Collections.shuffle(heroBackgrounds);
 
         chosenBackground = heroBackgrounds.get(0);
     }
 
-    public void selectQuestGiver() {
+    private void selectQuestGiver() {
         Collections.shuffle(chosenBackground.questGivers);
 
         questGiver = chosenBackground.questGivers.get(0);
@@ -333,14 +332,26 @@ public class StoryGenerator {
 
                 String objectiveName = "kill " + enemy;
 
-                Integer amountToKill = getRandomAmountToKill(3, 5);
+                Integer amountToKill;
+
+                if (motiveType.equals("RESOLVE")) {
+                   amountToKill = 1;
+                } else {
+                    amountToKill = getRandomAmountToKill(3, 5);
+                }
 
                 //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + "in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + " in the " + level + ".");
+                if (amountToKill > 1) {
+                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " +DataHandler.getInstance().getEnemyName(enemy)+ "'s in the " + level + ".");
+                } else {
+                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill the " +DataHandler.getInstance().getEnemyName(enemy)+ " in the " + level + ".");
+                }
+
+                //motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + " in the " + level + ".");
 
                 DataHandler.getInstance().createKillObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), level);
 
-                objectiveName = "speak to " + questGiverName;
+                objectiveName = "speak to " +DataHandler.getInstance().getNPCName(questGiverName);
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -357,11 +368,11 @@ public class StoryGenerator {
                 amountToKill = getRandomAmountToKill(4, 6);
 
                 //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + enemy + "'s in the " + level + " to find" + item + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + enemy + "'s in the " + level + " to find " + item + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " +DataHandler.getInstance().getEnemyName(enemy)+ "'s in the "  +level+ " to find " +item+ ".");
 
                 DataHandler.getInstance().createKillFetchObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), item, level);
 
-                objectiveName = "speak to " + questGiverName;
+                objectiveName = "speak to " +DataHandler.getInstance().getNPCName(questGiverName);
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -374,11 +385,11 @@ public class StoryGenerator {
                 objectiveName = "fetch " + item;
 
                 //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Find " + item + " somewhere in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Find " + item + " somewhere in the " + level + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Find " +item+ " somewhere in the " + level + ".");
 
                 DataHandler.getInstance().createFetchObjective(questNode, document, objectiveName, item, level);
 
-                objectiveName = "speak to " + questGiverName;
+                objectiveName = "speak to " +DataHandler.getInstance().getNPCName(questGiverName);
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -390,14 +401,16 @@ public class StoryGenerator {
 
                 objectiveName = "speak to  " + npc;
 
+                String completeDialogue = motive.questCompleteDialogue;
+
                 //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Speak to " + npc + " in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Speak to " + npc + " in the " + level + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Speak to " +DataHandler.getInstance().getNPCName(npc)+ " in the " + level + ".");
 
-                DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, npc, level, "some dialogue");
+                DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, npc, level, completeDialogue);
 
-                objectiveName = "speak to " + questGiverName;
-
-                DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
+//                objectiveName = "speak to " + questGiverName;
+//
+//                DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
                 break;
 
@@ -407,14 +420,14 @@ public class StoryGenerator {
 
                 item = questGiver.getRandomItem(motiveType, storyPhase);
 
-                objectiveName = "fetch " + item + " from " + npc;
+                objectiveName = "fetch " +item+ " from " +DataHandler.getInstance().getNPCName(npc);
 
                 //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Fetch " + item + " from " + npc + " in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Fetch " + item + " from " + npc + " in the " + level + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Fetch " +item+ " from " +DataHandler.getInstance().getNPCName(npc)+ " in the " + level + ".");
 
                 DataHandler.getInstance().createSpeakFetchObjective(questNode, document, objectiveName, npc, item, level);
 
-                objectiveName = "speak to " + questGiverName;
+                objectiveName = "speak to " +DataHandler.getInstance().getNPCName(questGiverName);
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 
@@ -431,7 +444,7 @@ public class StoryGenerator {
 
                 DataHandler.getInstance().createUseItemObjective(questNode, document, objectiveName, item, level);
 
-                objectiveName = "speak to " + questGiverName;
+                objectiveName = "speak to " +DataHandler.getInstance().getNPCName(questGiverName);
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
 

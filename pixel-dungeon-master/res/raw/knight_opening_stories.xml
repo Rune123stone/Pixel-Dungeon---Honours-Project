@@ -25,7 +25,7 @@
             </level>
             <level>
                 <name>Fields</name>
-                <story>The fields are home to many of the peasants you spit on on a daily basis. Maybe your mentor wants you to make fun of some peasants with him?</story>
+                <story>The fields are home to many of the peasants you protect on a daily basis. Your mentor has never taken kindly to these harsh lands, it seems odd that he would ask to meet here. Find him.</story>
             </level>
         </questGiver>
 
@@ -53,35 +53,35 @@
             </level>
             <level>
                 <name>Fields</name>
-                <story>The fields are home to many of the peasants you spit on on a daily basis. Maybe your mentor wants you to make fun of some peasants with him?</story>
+                <story>The fields are home to many of the peasants you spit protect a daily basis. Perhaps the princess wanted to spend some time with the people. You should find her.</story>
             </level>
         </questGiver>
 
         <questGiver>
-            <name>PlaceHolder</name>
+            <name>Oracle</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>The shadow lands is a dangerous place, even for a knight. It's your turn to look for corpses for some reason. Look around and see if you can find anything.</story>
+                <story>The shadow lands is a dangerous place, even for a knight. The village Oracle must be desperate if he asked you to meet in a place like this.</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>The forests have always been a beautiful part of the Kingdom. The forest is always soothing to walk through. Walk through it and see if you come upon anyone interesting.</story>
+                <story>The forests have always been a beautiful part of the Kingdom. The letter from the Oracle said to meet him here. You should look for him.</story>
             </level>
             <level>
                 <name>Caves</name>
-                <story>These caves were once used for mining materials used to make weapons and armor for knights such as yourself. Why would anyone be down here? Oh well, walk around and find someone.</story>
+                <story>These caves were once used for mining materials used to make weapons and armor for knights such as yourself. Why would the Oracle be down here? Oh well, walk around and find him.</story>
             </level>
             <level>
                 <name>Castle</name>
-                <story>The castle was one your home, before the king went bonkers. You haven't been here since the last time you were here. Find someone new!</story>
+                <story>The castle was one your home, before the king went bonkers. You haven't been here since the last time you were here. The Oracle mentioned that he'd be here by noon, you should find him.</story>
             </level>
             <level>
                 <name>Dungeon</name>
-                <story>Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum. Make sure everything's alright here. Walk around and find anything out of place.</story>
+                <story>Housing some of the most dangerous prisoners, the Dungeon is a fortress of scum. The Oracle hardly leaves his village, why would he want to meet here?</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>The fields are home to many of the peasants you spit on on a daily basis. You've spat on every peasant here, but you feel like you need to mistreat more people. Find someone new.</story>
+                <story>The fields are home to many of the peasants you protect on a daily basis. Fitting for the Oracle to ask you to meet him in his home land. You should look for him.</story>
             </level>
         </questGiver>
 

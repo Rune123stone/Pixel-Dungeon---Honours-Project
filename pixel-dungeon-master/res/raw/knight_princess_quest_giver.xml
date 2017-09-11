@@ -2,14 +2,15 @@
 <resources>
 
 	<QuestGiver>
-		<name>Ghost</name>
+		<name>Imp</name>
 		<motive>
-			<motiveName>train</motiveName>
+			<motiveName>lost item</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>Do you have any idea how long I've been waiting for you? No matter. Champion, I need your help. You see, my precious ring was stolen by some thugs not too long ago. My sources say that they've tracked the thieves to this location. Champion, I need you to collect this ring for me, by any means necessary.</questNotGivenDialogue>
+			<questGivenDialogue>Do not dawdle, champion.</questGivenDialogue>
+			<questCompleteDialogue>Thank you champion! Please choose a reward from my royal treasures, you've earned it.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -18,10 +19,7 @@
 			</objectiveType>
 
 			<enemy>
-				<enemyName>Bat</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Crab</enemyName>
+				<enemyName>Thief</enemyName>
 			</enemy>
 			<enemy>
 				<enemyName>Rat</enemyName>
@@ -31,26 +29,33 @@
 			</enemy>
 
 			<item>
-				<itemName>ScrollOfEnchantment</itemName>
+				<itemName>RingOfHerbalism</itemName>
 			</item>
 			<item>
-				<itemName>PotionOfHealing</itemName>
+				<itemName>RingOfElements</itemName>
 			</item>
 			<item>
-				<itemName>PotionOfLevitation</itemName>
+				<itemName>RingOfHaste</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>simple task</motiveName>
+			<motiveName>prove yourself</motiveName>
 			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Hello young Knight! I see you're a little confused as to why I've summoned you here - you see, I'm looking for a champion to escort me as I travel the lands and aid it's people in any way that I can. In order to know whether you're fit for the job, I'm going to have to put your skills to the test.</questNotGivenDialogue>
+			<questGivenDialogue>You're not getting any closer to being my escort by just standing there.</questGivenDialogue>
+			<questCompleteDialogue>You are indeed worthy of being my champion! Please, choose a reward from my arsenal of treasures.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
 			<objectiveType>
 				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
 
 			<enemy>
@@ -73,20 +78,46 @@
 			</enemy>
 
 			<item>
-				<itemName>RingOfElements</itemName>
+				<itemName>PotionOfExperience</itemName>
 			</item>
 			<item>
-				<itemName>ScrollOfMirrorImage</itemName>
+				<itemName>ScrollOfLullaby</itemName>
 			</item>
 			<item>
-				<itemName>Longsword</itemName>
+				<itemName>PotionOfStrength</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>gang problem</motiveName>
+			<motiveName>deliver message</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>Because the annual Ravens-only party has just begun, we're short on messengers at the moment. I need you to deliver a message to my paramour, tell him to meet me in Town at midnight. Off you go!</questNotGivenDialogue>
+			<questGivenDialogue>Time is short champion, please hurry.</questGivenDialogue>
+			<questCompleteDialogue>Oh how marvelous! It's been so long since I've been able to see my darling Princess. You deserve a reward for your actions.</questCompleteDialogue>
+
+			<actTwoOpeningStory>The princess will never your contribution to her magical night with Cameron - the most handsome lad in all the lands. She has once again requested your presence, you should not tarry. Find and speak to her at once.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Paramour</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>silly servants</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>It has just come to my attention that there is a group of disgruntled servants who are stirring up unrest within the Kingdom. I'm afraid they have to be purged before we have a revolt on our hands. They may have stolen heirlooms from the royal treasury, please return them should you find any.</questNotGivenDialogue>
+			<questGivenDialogue>If you're okay with a revolt, please, let's continue this conversation.</questGivenDialogue>
+			<questCompleteDialogue>You have done the Kingdom and its people a great service brave knight!</questCompleteDialogue>
+
+			<actTwoOpeningStory>Thanks to your chivalrous brutality, the Kingdoms servants have been working twice as hard for half the pay with not even a whisper of insurgency among them. Your services to the crown has earned you another audience with the princess. You should find and speak to her.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -96,50 +127,14 @@
 			</objectiveType>
 
 			<enemy>
-				<enemyName>Bandit</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
 				<enemyName>Thief</enemyName>
 			</enemy>
-
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-			<item>
-				<itemName>Pickaxe</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>useful item</motiveName>
-			<storyPhase>SERIOUS</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
-
 			<enemy>
-				<enemyName>Skeleton</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Eye</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
+				<enemyName>Bandit</enemyName>
 			</enemy>
 
 			<item>
-				<itemName>WarHammer</itemName>
+				<itemName>Amulet</itemName>
 			</item>
 			<item>
 				<itemName>RingOfEvasion</itemName>
@@ -148,51 +143,37 @@
 				<itemName>RingOfHaste</itemName>
 			</item>
 			<item>
-				<itemName>MailArmor</itemName>
+				<itemName>TomeOfMastery</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>boss killing people</motiveName>
+			<motiveName>king killed</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
+			<questNotGivenDialogue>Tragedy has befallen the Kingdom young Knight! The King, my father, has been assassinated. I need you to deliver this scroll to the Captain of the Guard; I must meet with the royal counselors to discuss the plans from here.</questNotGivenDialogue>
+			<questGivenDialogue>Sorry champion, I just need some time to myself.</questGivenDialogue>
+			<questCompleteDialogue>Thank you champion, I will be sure to keep an eye out for any more potential threats. You should get back to the princess, I'm sure she has more for you to do.</questCompleteDialogue>
+
 			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
+				<objectiveTypeName>speak</objectiveTypeName>
 			</objectiveType>
 
-			<enemy>
-				<enemyName>Skeleton</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
+			<npc>
+				<npcName>KnightsGuard</npcName>
+			</npc>
 
 		</motive>
 
 		<motive>
-			<motiveName>demon awakened</motiveName>
+			<motiveName>anarchist group</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>I've received word that the Kingdoms granaries have been burnt to the ground by an unknown party. Champion, I need you to put a stop to this .</questNotGivenDialogue>
+			<questGivenDialogue>Please hurry, we rely heavily on those granaries for our cakes.</questGivenDialogue>
+			<questCompleteDialogue>Every cake and ale lover thanks you for your deeds, champion. Cameron has already rebuilt all of the burnt granaries and has filled them to the brim with the finest wheat we've ever seen.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -207,21 +188,17 @@
 				<enemyName>Succubus</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-
 		</motive>
 
 		<motive>
 			<motiveName>find information</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>The Knights Guard may have found the cause of this recent catastrophe, but we need you to investigate further. It seems that in all the commotion, a scoundrel has looted a powerful artifact from the royal vault. In the wrong hands, it could spell disaster for us all. In order to find the one responsible, we will need an ancient trinket known as the Eye of Yore. Retrieve it, champion.</questNotGivenDialogue>
+			<questGivenDialogue>Please hurry champion, without the Eye we will never solve this.</questGivenDialogue>
+			<questCompleteDialogue>With this trinket, we can gaze into the past and find the one responsible for this heinous crime.</questCompleteDialogue>
+
+			<actThreeOpeningStory>Through the Eye of Yore you were able to witness the events inside the vault and identify the culprit. You should find the princess and discuss the next step.</actThreeOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -244,59 +221,38 @@
 			</enemy>
 
 			<item>
-				<itemName>Letter</itemName>
-			</item>
-			<item>
-				<itemName>CorpseDust</itemName>
-			</item>
-			<item>
-				<itemName>Dagger</itemName>
+				<itemName>EyeOfYore</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>take out henchmen</motiveName>
+			<motiveName>conspiracy</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
 
+			<questNotGivenDialogue>Ever since the catastrophe there has been an increasing number of attacks on the villagers. I'm sure this is no coincidence, champion I need you to go and speak to one of the village people and find out more about this threat.</questNotGivenDialogue>
+			<questGivenDialogue>Go champion, are lands are in grave peril!</questGivenDialogue>
+			<questCompleteDialogue>Champion! Thank goodness you've arrived! We've been under constant attack from an enemy the likes of which we've never seen! Please take care of this evil that plagues our lands.</questCompleteDialogue>
+
+			<actThreeOpeningStory>The villagers have informed you of the enemy that is reeking havoc across the lands. Although all may seem lost, the princess has informed you that she knows of a way to defeat this evil. Find and speak to her.</actThreeOpeningStory>
+
 			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
+				<objectiveTypeName>speak</objectiveTypeName>
 			</objectiveType>
 
-			<enemy>
-				<enemyName>Warlock</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
+			<npc>
+				<npcName>Villager</npcName>
+			</npc>
 
 		</motive>
 
 		<motive>
-			<motiveName>obtain powerful item</motiveName>
+			<motiveName>obtain kings weapon</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>My father faced a similar evil during the Great War not so long ago; he used to tell me tales of his grand battles when I was a child. In these tales, he mentioned a powerful weapon that greatly aided him against his foes. I've managed to find the whereabouts of this weapon, I hope it aids us as much as it did my father.</questNotGivenDialogue>
+			<questGivenDialogue>Do you have the weapon yet? We're running out of time!</questGivenDialogue>
+			<questCompleteDialogue>This is it, this will help us make our final stand against this evil.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -306,12 +262,6 @@
 			</objectiveType>
 
 			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
 				<enemyName>Golem</enemyName>
 			</enemy>
 			<enemy>
@@ -319,27 +269,22 @@
 			</enemy>
 
 			<item>
-				<itemName>PlateArmor</itemName>
-			</item>
-			<item>
-				<itemName>MailArmor</itemName>
+				<itemName>WarHammer</itemName>
 			</item>
 			<item>
 				<itemName>Spear</itemName>
-			</item>
-			<item>
-				<itemName>Sword</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>destroy minions</motiveName>
+			<motiveName>weaken enemy</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>Champion, if what I've learned is true, the enemy is gathering his forces in order to make his final move. The Knights Guard have informed me of a group of foes marching towards the Kingdom. We need you to find and destroy them.</questNotGivenDialogue>
+			<questGivenDialogue>Please champion, they march as we speak!</questGivenDialogue>
+			<questCompleteDialogue>This is a tremendous victory for us all, only the final battle remains.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -354,21 +299,15 @@
 				<enemyName>Monk</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>PlateArmor</itemName>
-			</item>
-			<item>
-				<itemName>MailArmor</itemName>
-			</item>
-			<item>
-				<itemName>RingOfEvasion</itemName>
-			</item>
-
 		</motive>
 
 		<motive>
 			<motiveName>kill boss</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>You must now strike the final blow, champion. Slay this evil, and strike fear into the hearts of all who oppose the Kingdom!</questNotGivenDialogue>
+			<questGivenDialogue>You must hurry!</questGivenDialogue>
+			<questCompleteDialogue>The Kingdom will never forget what you've done champion! Now, I go to live out the rest of my days with the handsome Cameron!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
@@ -378,7 +317,7 @@
 				<enemyName>King</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Monk</enemyName>
+				<enemyName>Warlock</enemyName>
 			</enemy>
 			<enemy>
 				<enemyName>Eye</enemyName>
@@ -387,29 +326,23 @@
 		</motive>
 
 		<motive>
-			<motiveName>cleanse land</motiveName>
+			<motiveName>destroy conduit</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
+			<questNotGivenDialogue>Champion, I've received word that the enemy causing the destruction of these lands is merely a conduit of a greater evil! In order to stop this greater power from being summoned into this world, you must slay the conduit.</questNotGivenDialogue>
+			<questGivenDialogue>The fate of the Kingdom rests in your hands, champion.</questGivenDialogue>
+			<questCompleteDialogue>The bards will be singing your praises for years to come champion! As a reward for your bravery, I'm appointing you as the new Knights Guard. Wait, you thought I was going to reward you with my hand in marriage? Oh, I'm sorry, I, er, well, I know you saved us from internal damnation, but there's just something about Cameron that makes me feel...alive. </questCompleteDialogue>
+
 			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
+				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
 
 			<enemy>
 				<enemyName>Eye</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Monk</enemyName>
+				<enemyName>Succubus</enemyName>
 			</enemy>
-
-			<item>
-				<itemName>CorpseDust</itemName>
-			</item>
-			<item>
-				<itemName>DriedRose</itemName>
-			</item>
 
 		</motive>
 
