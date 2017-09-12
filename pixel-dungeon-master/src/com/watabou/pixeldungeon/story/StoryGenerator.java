@@ -88,10 +88,10 @@ public class StoryGenerator {
         questGiver = new QuestGiver("Princess", "Imp");
         questGiver.setXMLID(R.raw.knight_princess_quest_giver);
         heroBackground.addQuestGiver(questGiver);
-//
-//        questGiver = new QuestGiver("PlaceHolder", "Blacksmith");
-//        questGiver.setXMLID(R.raw.knight_placeholder_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
+
+        questGiver = new QuestGiver("Seer", "Seer");
+        questGiver.setXMLID(R.raw.knight_seer_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
 
         heroBackgrounds.add(heroBackground);
         // END Creating Knight

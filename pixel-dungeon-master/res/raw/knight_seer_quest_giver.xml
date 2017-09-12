@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<QuestGiver>
+		<name>Seer</name>
+		<motive>
+			<motiveName>collect ingredients</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Ahh you must be the brave soul sent to help me collect ingredients for my next concoction! Go forth and gather these ingredients and you shall be duly rewarded. Meet me in the town to the north once you have completed your task.</questNotGivenDialogue>
+			<questGivenDialogue>Bring me those ingredients.</questGivenDialogue>
+			<questCompleteDialogue>Goood gooood, yess, these will do nicely! Please, choose a reward from my treasure box.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Crab</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Rat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Albino</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>MysteryMeat</itemName>
+			</item>
+			<item>
+				<itemName>Pasty</itemName>
+			</item>
+			<item>
+				<itemName>ChargrilledMeat</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>nasty rodents</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Yes yes hello, now that the pleasantries are out of the way, I need you to take care of some vermin that have been ripping through my mushroom garden! I've tracked the foul creatures to this area. Find me in the town to the north of here once you've rid the world of those wretched beasts.</questNotGivenDialogue>
+			<questGivenDialogue>My mushrooms won't survive another day if you don't stop those vermin!</questGivenDialogue>
+			<questCompleteDialogue>You're back! My mushrooms are safe you say? Excellent! Champion, please, choose a reward from my collection, you have earned it.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Bat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Rat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Crab</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Gnoll</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>find assistant</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>My friend, I'm afraid I need your help once more. You see, several days ago, I entrusted my nitwit of an assistant with the task of gathering herbs from a rather dangerous area. I fear he may be lost, or worse, working for another seer! Please, find him and tell him to come back.</questNotGivenDialogue>
+			<questGivenDialogue>This is the fourth assistant I've lost this month!</questGivenDialogue>
+			<questCompleteDialogue>Oh, hello. I don't suppose you know how to get out of here do you? You do? Thank the Gods! You say my master sent you to find me? *Sigh* I better get back to him then. Thank you, champion. Here, I found some items that might be useful for you - but you can only choose one of them.</questCompleteDialogue>
+
+			<actTwoOpeningStory>Even though the Seer lost his assistant shortly after he returned, he remains eternally grateful for your services. Not long after you both went your separate ways, you received a letter from the Seer requesting that you meet him in the Town as soon as possible. You should find him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Assistant</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>potion of remembrance</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>Curse this memory loss! A few days ago, I had a vision of great importance; a vision of something that affects the fate of the entire Kingdom! Alas, I'm prone to amnesia and cannot recall this vision. Champion, I require your aid once more.</questNotGivenDialogue>
+			<questGivenDialogue>Who are you? Ahh, hurry champion, it's getting worse!</questGivenDialogue>
+			<questCompleteDialogue>What's this? Who are you? Ahh yes, I remember! Thank you champion!</questCompleteDialogue>
+
+			<actTwoOpeningStory>After drinking the potion, the Seer went into a panic and ran into the Forest. You assumed he would be alright without your help, so you went home. Several days later, you received a letter from the Seer detailing that he'd recovered his memory and that he urgently needs to speak to you in the Town. Find him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>PotionOfRemembrance</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>visions of evil</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>A great darkness is coming for us all, champion! I've had a vision of a group of cultists attempting to perform a sacred ritual that could summon forth a demon of overwhelming power! Please champion, stop this from happening!</questNotGivenDialogue>
+			<questGivenDialogue>My visions only have a 60% chance of coming true, but you should still go and take care of those cultists.</questGivenDialogue>
+			<questCompleteDialogue>My vision was correct? This is both exciting and terrible news. Those cultists cannot be the only ones that want to bring down the Kingdom, we must get to the bottom of this.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>visions of anarchy</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>Champion, I've had a vision of a group of thieves that seek to kill the Princess and overthrow the Kingdom! They are heading for her as we speak! You must hurry!</questNotGivenDialogue>
+			<questGivenDialogue>The Princess cannot fall, Champion! Hurry!.</questGivenDialogue>
+			<questCompleteDialogue>Thank the Gods you've stopped them! Although, I am sure more will follow. We must determine why this group of anarchists wants to see the Kingdom in ruin.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Gnoll</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>potion of vision</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>We need to infiltrate the evil group's headquarters in order to find out what dastardly deeds what they are planning, unfortunately we have no idea where their lair could be. However, I have managed to find a recipe for a potion that just might be able to help us! The Potion of Vision will allow me to witness their meetings without actually being there! All we need is a personal item from one of culprits. That is where you come in, Champion.</questNotGivenDialogue>
+			<questGivenDialogue>Hurry Champion!</questGivenDialogue>
+			<questCompleteDialogue>Excellent! Now, to begin the brewing.</questCompleteDialogue>
+
+			<actThreeOpeningStory>After The Potion of Vision's effects wore off, the Seer needed time to recover. After a few days, you received a letter from him requesting that you meet him in the Town to discuss what happens next. Find him. </actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Gnoll</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>PhantomFish</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>find elder</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>I'm afraid the evil group is able to block my visions, Champion. I cannot determine what their ultimate goal is. I do, however, know someone who may be able to help. You must find my master, the Elder One. His power of vision is unlike anything I've ever seen.</questNotGivenDialogue>
+			<questGivenDialogue>Go Champion, find my master!</questGivenDialogue>
+			<questCompleteDialogue>I knew this day would come, very well. I will peer into the void and determine what these scoundrels seek.</questCompleteDialogue>
+
+			<actThreeOpeningStory>After receiving help from the Elder One, you returned to the Seer to inform him of the news. After a few days of relentless planning, the Seer informed you that he is ready to give you your next task. Find him.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>ElderOne</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>obtain powerful potion</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>In order to defeat this evil, we must slay it's leader. This, however, will not be easy. My visions have informed me that you must be under the affects of a powerful potion if you ever hope to accomplish this task. I can create such a potion for you, but I will need the right ingredients.</questNotGivenDialogue>
+			<questGivenDialogue>Bring me those ingredients, Champion!</questGivenDialogue>
+			<questCompleteDialogue>Now, to make the final preparations.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Warlock</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>CorpseDust</itemName>
+			</item>
+			<item>
+				<itemName>PhantomFish</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>weaken enemy</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>Good news, Champion! Through many hours of vision-ing, I have managed to track down the evil group's food supply! Why does this matter you ask? Well, for years I've been working on a food-poison that could bring even the mightiest warriors to their knees! If you find me the ingredients I need, I'll be able to poison the leaders of this evil group so that you may slay them once and for all!</questNotGivenDialogue>
+			<questGivenDialogue>I still need those ingredients!</questGivenDialogue>
+			<questCompleteDialogue>Excellent! Now, where's my stirring stick?</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Scorpio</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>CorpseDust</itemName>
+			</item>
+			<item>
+				<itemName>PhantomFish</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>kill boss</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>All preparations are in place, Champion! Go now, stop these evil-doers before it is too late!</questNotGivenDialogue>
+			<questGivenDialogue>Will you still be my assistant after this?</questGivenDialogue>
+			<questCompleteDialogue>We've done it, Champion! I can finally apply to become an Elder!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>King</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Warlock</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>slay demon</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>You are now ready for the final battle, Champion. If this is the last time we see each other, I am proud to have had you as an assistant.</questNotGivenDialogue>
+			<questGivenDialogue>Till next we meet, Champion!</questGivenDialogue>
+			<questCompleteDialogue>You...you did it? Excellent, Champion! What? Of course I did not doubt you! Yes, I did interview a group of new assistants, but that's not because I had no faith in you!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Eye</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Succubus</enemyName>
+			</enemy>
+
+		</motive>
+
+	</QuestGiver>
+
+</resources>

@@ -116,6 +116,7 @@ public class QuestHandler {
 
 
 
+
     /**
      * fetch objective logic
      */
@@ -288,8 +289,6 @@ public class QuestHandler {
     public static void spawnKillQuestMobsInSameLevelAsHero(Quest quest, Level level) {
 
         try {
-
-            System.out.println("WEOIFHWEIOFHIOWEHFIOWHEFIOHWEIFHIOWEHFIFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
 
             String mobPackage = "com.watabou.pixeldungeon.actors.mobs.";
             String mobClassName = mobPackage.concat(quest.getCurObjective().enemy);

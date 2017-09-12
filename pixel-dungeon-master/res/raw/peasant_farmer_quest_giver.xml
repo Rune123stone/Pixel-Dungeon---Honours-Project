@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
 	<QuestGiver>
-		<name>Ghost</name>
+		<name>Farmer</name>
 		<motive>
 			<motiveName>train</motiveName>
 			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Greetings young knight! I summoned you here because I fear your life of luxury has made you soft and weak. You need to train if you are to proudly wear that armor.</questNotGivenDialogue>
+			<questGivenDialogue>What are you still doing here? I've given you a task, now go forth and complete it!</questGivenDialogue>
+			<questCompleteDialogue>Perhaps there is hope for you yet. Here, choose either a new weapon or new armor - you're going to need it for your next quest.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
@@ -45,6 +50,10 @@
 		<motive>
 			<motiveName>simple task</motiveName>
 			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Ahh, you've finally arrived! I seem to recall that you owe me a few favours for saving your skin during the Great War. You thought that I did that without expecting anything in return? Oh dear boy, you've much to learn.</questNotGivenDialogue>
+			<questGivenDialogue>Don't just stand there, I need you to take care of this!</questGivenDialogue>
+			<questCompleteDialogue>Outstanding! Here, you may choose either a weapon or some armor from my collection, they will serve you well in the adventures to follow - yes, there's more mindless tasks to come.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -88,6 +97,12 @@
 			<motiveName>gang problem</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
 
+			<questNotGivenDialogue>Now that you're a bit more experienced I'd like to discuss a more serious matter with you. I've heard rumours of a gang terrorizing the people of these lands. I'd like you to stop them at their source.</questNotGivenDialogue>
+			<questGivenDialogue>Go take care of that gang!</questGivenDialogue>
+			<questCompleteDialogue>You continue to impress me, knight! The people won't soon forget Sir... erm, Sir... hmm, it seems I've forgotten your name. No matter! Choose a reward.</questCompleteDialogue>
+
+			<actTwoOpeningStory>Defeating those thugs has earned you great respect among the people, they however still do not know your name. Your mentor has requested for you to meet him once again, it sounded urgent this time. You should find him.</actTwoOpeningStory>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -120,6 +135,12 @@
 		<motive>
 			<motiveName>useful item</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>As your mentor, I have always been strongly devoted to bettering your combat skills. Since I have failed at that so many times, we'll have to rely on powerful items rather than your own ability. I've heard tales of such an item that may serve you well on your adventures.</questNotGivenDialogue>
+			<questGivenDialogue>That item won't find itself!</questGivenDialogue>
+			<questCompleteDialogue>Excellent! Although, just to be sure, you should take another item.</questCompleteDialogue>
+
+			<actTwoOpeningStory>You've been training for weeks on end to prove that you are more than just the armor you wear and the weapons you wield, however, you cannot deny that you'd be a lot worse off without this new item. Your mentor has told you to meet him here, you should find him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -157,12 +178,10 @@
 			<motiveName>boss killing people</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>I'm afraid I have some terrible news, an evil Overlord has sounded the drums of war and has sent his minions to attack the lands and it's people. We cannot stand idly by and let this happen. And by that I mean you cannot stand idly by.</questNotGivenDialogue>
+			<questGivenDialogue>Didn't I just say that there's a powerful enemy at large?</questGivenDialogue>
+			<questCompleteDialogue>I fear this is just the beginning of our struggles. Sorry, your struggles.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -177,22 +196,16 @@
 				<enemyName>Brute</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-
 		</motive>
 
 		<motive>
 			<motiveName>demon awakened</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>I've received some grave news from the Citadel. An ancient evil, deep within the core of these lands, has awoken from it's slumber and has driven many of the lands citizens and creatures mad. We have no choice, you must purge them.</questNotGivenDialogue>
+			<questGivenDialogue>You can procrastinate all you want, I'm not giving you the next quest until you finish this one.</questGivenDialogue>
+			<questCompleteDialogue>In all my years, I never thought I'd live to see a threat this great.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -207,21 +220,17 @@
 				<enemyName>Succubus</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-
 		</motive>
 
 		<motive>
 			<motiveName>find information</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>We're not going to be able to win this one with sheer force, we'll need to be smart about it. I know, not your strongest feature, but that's why I'm here. I've heard rumours of an artifact that may hold the key to defeating this evil, but I must study it in order to know for sure. That's where you come in.</questNotGivenDialogue>
+			<questGivenDialogue>Look, normally I'd humour you and have a chat but we've got about 24 hours before we all die, so, if you could find that artifact, that would be great.</questGivenDialogue>
+			<questCompleteDialogue>Ahh yes, this is exactly what we need! I believe we still have a chance to end this!</questCompleteDialogue>
+
+			<actThreeOpeningStory>After days of research, your mentor has finally found the key to defeating this foe! You should find him, he's more than likely got something for you to do.</actThreeOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -259,9 +268,12 @@
 			<motiveName>take out henchmen</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>According to the townsfolk, the enemy's henchmen are out on patrol. By eliminating them, we can greatly weaken their master!</questNotGivenDialogue>
+			<questGivenDialogue>Go kill some henchmen!</questGivenDialogue>
+			<questCompleteDialogue>We've dealt a tremendous blow to their forces! We may be able to win this.</questCompleteDialogue>
+
+			<actThreeOpeningStory>The attacks have become less frequent ever since you took care of those henchmen, but it's only a matter of time before more henchmen are created. Your mentor mentioned that he may have found a way to defeat this evil once and for all. You should find him.</actThreeOpeningStory>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -282,21 +294,15 @@
 				<enemyName>Brute</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-
 		</motive>
 
 		<motive>
 			<motiveName>obtain powerful item</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>In order to defeat this enemy and his minions, you're going to need an item of legendary power. Lucky for you, I happened to know the whereabouts of such an item.</questNotGivenDialogue>
+			<questGivenDialogue>You're not getting to the final level with that gear, go get that legendary item!</questGivenDialogue>
+			<questCompleteDialogue>You are now ready for the final battle.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -337,9 +343,10 @@
 			<motiveName>destroy minions</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>According to the legends, the enemy absorbs power from his second-in-command, the Generals. By eliminating the Generals, we may be able to weaken the enemy enough for you to face him.</questNotGivenDialogue>
+			<questGivenDialogue>No scary generals here, go find them!</questGivenDialogue>
+			<questCompleteDialogue>You have greatly weakened the enemy. Now is the time to strike!</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -354,21 +361,15 @@
 				<enemyName>Monk</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>PlateArmor</itemName>
-			</item>
-			<item>
-				<itemName>MailArmor</itemName>
-			</item>
-			<item>
-				<itemName>RingOfEvasion</itemName>
-			</item>
-
 		</motive>
 
 		<motive>
 			<motiveName>kill boss</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>This is the moment we have been preparing for, this is perhaps the most important task you will undertake in your entire life. If you don't succeed, we will all die. Just keep that in mind, you know, for a little extra motivation.</questNotGivenDialogue>
+			<questGivenDialogue>What are you waiting for??</questGivenDialogue>
+			<questCompleteDialogue>The lands belong to the people once more! Do not forget who gave you this opportunity when you're bathing in your piles of gold.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
@@ -389,6 +390,10 @@
 		<motive>
 			<motiveName>cleanse land</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>Good news, hero! I've figured out a way to stop this evil once and for all. There is an artifact of exceptional power that, when combined with the right spices, will cleanse the evil from this land. The problem is, this artifact is in dangerous territory, that's where you come in.</questNotGivenDialogue>
+			<questGivenDialogue>If you're okay with everyone dying, let's keep this conversation going.</questGivenDialogue>
+			<questCompleteDialogue>I..er, I mean we've done it! Let the mountains sing praises of Sir, erm, Sir Knight and his much-more-handsome Mentor!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -414,5 +419,4 @@
 		</motive>
 
 	</QuestGiver>
-
 </resources>
