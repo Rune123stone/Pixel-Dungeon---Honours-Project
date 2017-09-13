@@ -38,6 +38,7 @@ import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.windows.WndGame;
 import com.watabou.pixeldungeon.windows.WndHero;
+import com.watabou.pixeldungeon.windows.WndQuestJournal;
 
 public class StatusPane extends Component {
 	
@@ -49,7 +50,7 @@ public class StatusPane extends Component {
 	
 	private Image hp;
 	private Image exp;
-	
+
 	private int lastLvl = -1;
 	private int lastKeys = -1;
 	
@@ -81,6 +82,14 @@ public class StatusPane extends Component {
 				GameScene.show( new WndHero() );
 			};			
 		} );
+
+		add( new TouchArea( 0, 36, 26, 23 ) {
+			@Override
+			protected void onClick( Touch touch ) {
+				GameScene.show( new WndQuestJournal() );
+			};
+		} );
+
 		
 		btnMenu = new MenuButton();
 		add( btnMenu );
@@ -102,7 +111,7 @@ public class StatusPane extends Component {
 		
 		exp = new Image( Assets.XP_BAR );
 		add( exp );
-		
+
 		level = new BitmapText( PixelScene.font1x );
 		level.hardlight( 0xFFEBA4 );
 		add( level );
@@ -135,7 +144,7 @@ public class StatusPane extends Component {
 		
 		height = 32;
 		
-		shield.size( width, shield.height );
+		shield.size( width , shield.height );
 		
 		avatar.x = PixelScene.align( camera(), shield.x + 15 - avatar.width / 2 );
 		avatar.y = PixelScene.align( camera(), shield.y + 16 - avatar.height / 2 );

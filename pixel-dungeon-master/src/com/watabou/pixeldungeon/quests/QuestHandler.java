@@ -252,8 +252,6 @@ public class QuestHandler {
         }
     }
 
-
-
     /**
      * kill & kill_fetch objective logic
      */
@@ -428,6 +426,9 @@ public class QuestHandler {
                 //GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
                 GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
+                System.out.println(item.getClass().getSimpleName());
+
+
                 completeQuest(npc, quest);
 
             } else {
@@ -482,7 +483,6 @@ public class QuestHandler {
     //gets called when speaking to an NPC you must speak to as part of the speak quest.
     public void handleSpeakQuest(NPC npc, Quest quest) {
         System.out.println("handle speak to quest");
-
 
         GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 

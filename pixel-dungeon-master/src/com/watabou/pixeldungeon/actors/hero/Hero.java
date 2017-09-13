@@ -278,13 +278,16 @@ public class Hero extends Char {
 		if (rangedWeapon != null && Level.distance( pos, target.pos ) == 1) {
 			accuracy *= 0.5f;
 		}
-		
+
+		accuracy = 100;
 		KindOfWeapon wep = rangedWeapon != null ? rangedWeapon : belongings.weapon;
 		if (wep != null) {
 			return (int)(attackSkill * accuracy * wep.acuracyFactor( this ));
 		} else {
 			return (int)(attackSkill * accuracy);
 		}
+
+
 	}
 	
 	@Override
@@ -300,7 +303,7 @@ public class Hero extends Char {
 		}
 		
 		int aEnc = belongings.armor != null ? belongings.armor.STR - STR() : 0;
-		
+		defenseSkill = 100;
 		if (aEnc > 0) {
 			return (int)(defenseSkill * evasion / Math.pow( 1.5, aEnc ));
 		} else {

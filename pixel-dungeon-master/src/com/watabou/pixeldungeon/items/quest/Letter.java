@@ -17,7 +17,7 @@ public class Letter extends Item {
         unique = true;
     }
 
-    String letterContent = "Im a letter bru";
+    String letterContent = "Confidential - do not read.";
 
     @Override
     public boolean isUpgradable() {

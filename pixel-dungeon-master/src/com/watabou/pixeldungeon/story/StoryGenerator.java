@@ -14,6 +14,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StoryGenerator {
 
@@ -58,9 +60,13 @@ public class StoryGenerator {
 
     private void selectActLevels() {
 
+        levelOne = chosenBackground.getRandomStartingLevel();
+
+        questLevels.remove(levelOne);
+
         Collections.shuffle(questLevels);
 
-        levelOne = questLevels.remove(0);
+        //levelOne = questLevels.remove(0);
         levelTwo = questLevels.remove(0);
         levelThree = questLevels.remove(0);
         levelFour = questLevels.remove(0);
@@ -81,17 +87,23 @@ public class StoryGenerator {
         // START Creating Knight
         heroBackground = new HeroBackground("Knight");
 
-        questGiver = new QuestGiver("Mentor", "Ghost");
-        questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
-        heroBackground.addQuestGiver(questGiver);
+        heroBackground.addStartingLevel("Dungeon");
+        heroBackground.addStartingLevel("Forest");
+        heroBackground.addStartingLevel("Fields");
+        heroBackground.addStartingLevel("Caves");
 
+//        questGiver = new QuestGiver("Mentor", "Ghost");
+//        questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+//
         questGiver = new QuestGiver("Princess", "Imp");
+        questGiver.setHomeLevel("Town");
         questGiver.setXMLID(R.raw.knight_princess_quest_giver);
         heroBackground.addQuestGiver(questGiver);
-
-        questGiver = new QuestGiver("Seer", "Seer");
-        questGiver.setXMLID(R.raw.knight_seer_quest_giver);
-        heroBackground.addQuestGiver(questGiver);
+//
+//        questGiver = new QuestGiver("Seer", "Seer");
+//        questGiver.setXMLID(R.raw.knight_seer_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
 
         heroBackgrounds.add(heroBackground);
         // END Creating Knight
@@ -99,7 +111,12 @@ public class StoryGenerator {
         // START Creating Peasant
 //        heroBackground = new HeroBackground("Peasant");
 //
-//        questGiver = new QuestGiver("Farmer", "Ghost");
+//        heroBackground.addStartingLevel("Fields");
+//        heroBackground.addStartingLevel("Forest");
+//        heroBackground.addStartingLevel("Caves");
+//
+//        questGiver = new QuestGiver("Farmer", "Farmer");
+//        questGiver.setHomeLevel("Fields");
 //        questGiver.setXMLID(R.raw.peasant_farmer_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 //
@@ -111,7 +128,7 @@ public class StoryGenerator {
 //        questGiver.setXMLID(R.raw.peasant_placeholder_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 //
-//        heroBackgrounds.add(heroBackground);
+       //heroBackgrounds.add(heroBackground);
         // END Creating Peasant
 
         // START Creating Explorer
@@ -227,10 +244,10 @@ public class StoryGenerator {
 
     public void initializeStoryVariables() {
         populateQuestLevels();
-        selectActLevels();
-
         populateHeroBackgrounds();
+
         selectHeroBackground();
+        selectActLevels();
 
         selectQuestGiver();
     }
@@ -240,7 +257,7 @@ public class StoryGenerator {
         String motiveName = questGiver.getRandomMotiveType("NORMAL");
         QuestGiver.Motive motive = questGiver.getMotive(motiveName);
         questCreator(firstQuest, document, "questOne", levelOne, "none", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
-        objectiveCreator(motive, motiveName, "NORMAL", levelOne, "Town", questGiver.getRandomObjective(motiveName, "NORMAL"), firstQuest, document);
+        objectiveCreator(motive, motiveName, "NORMAL", levelOne, questGiver.homeLevel, questGiver.getRandomObjective(motiveName, "NORMAL"), firstQuest, document);
         chosenMotives.add(motive);
 
         motiveName = questGiver.getRandomMotiveType("SERIOUS");
@@ -255,10 +272,8 @@ public class StoryGenerator {
             System.out.println(motive.actOpeningStory);
         }
 
-        System.out.println(motive.actOpeningStory);
-
-        questCreator(secondQuest, document, "questTwo", "Town", "questOne", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
-        objectiveCreator(motive, motiveName, "SERIOUS", levelTwo, "Town", questGiver.getRandomObjective(motiveName, "SERIOUS"), secondQuest, document);
+        questCreator(secondQuest, document, "questTwo", questGiver.homeLevel, "questOne", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
+        objectiveCreator(motive, motiveName, "SERIOUS", levelTwo, questGiver.homeLevel, questGiver.getRandomObjective(motiveName, "SERIOUS"), secondQuest, document);
         chosenMotives.add(motive);
 
 
@@ -268,8 +283,8 @@ public class StoryGenerator {
 
         String motiveName = questGiver.getRandomMotiveType("CATASTROPHE");
         QuestGiver.Motive motive = questGiver.getMotive(motiveName);
-        questCreator(firstQuest, document, "questThree", "Town", "none", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
-        objectiveCreator(motive, motiveName, "CATASTROPHE", levelThree, "Town", questGiver.getRandomObjective(motiveName, "CATASTROPHE"), firstQuest, document);
+        questCreator(firstQuest, document, "questThree", questGiver.homeLevel, "none", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
+        objectiveCreator(motive, motiveName, "CATASTROPHE", levelThree, questGiver.homeLevel, questGiver.getRandomObjective(motiveName, "CATASTROPHE"), firstQuest, document);
         chosenMotives.add(motive);
 
 
@@ -287,8 +302,8 @@ public class StoryGenerator {
 
         System.out.println(motive.actOpeningStory);
 
-        questCreator(secondQuest, document, "questFour", "Town", "questThree", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
-        objectiveCreator(motive, motiveName, "INVESTIGATE", levelFour, "Town", questGiver.getRandomObjective(motiveName, "INVESTIGATE"), secondQuest, document);
+        questCreator(secondQuest, document, "questFour", questGiver.homeLevel, "questThree", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
+        objectiveCreator(motive, motiveName, "INVESTIGATE", levelFour, questGiver.homeLevel, questGiver.getRandomObjective(motiveName, "INVESTIGATE"), secondQuest, document);
         chosenMotives.add(motive);
     }
 
@@ -296,15 +311,15 @@ public class StoryGenerator {
 
         String motiveName = questGiver.getRandomMotiveType("STRENGTHEN");
         QuestGiver.Motive motive = questGiver.getMotive(motiveName);
-        questCreator(firstQuest, document, "questFive", "Town", "none", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
-        objectiveCreator(motive, motiveName, "STRENGTHEN", levelFive, "Town", questGiver.getRandomObjective(motiveName, "STRENGTHEN"), firstQuest, document);
+        questCreator(firstQuest, document, "questFive", questGiver.homeLevel, "none", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
+        objectiveCreator(motive, motiveName, "STRENGTHEN", levelFive, questGiver.homeLevel, questGiver.getRandomObjective(motiveName, "STRENGTHEN"), firstQuest, document);
         chosenMotives.add(motive);
 
 
         motiveName = questGiver.getRandomMotiveType("RESOLVE");
         motive = questGiver.getMotive(motiveName);
-        questCreator(secondQuest, document, "questSix", "Town", "questFive", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
-        objectiveCreator(motive, motiveName, "RESOLVE", levelSix, "Town", questGiver.getRandomObjective(motiveName, "RESOLVE"), secondQuest, document);
+        questCreator(secondQuest, document, "questSix", questGiver.homeLevel, "questFive", motive.questNotGivenDialogue, motive.questGivenDialogue, motive.questCompleteDialogue);
+        objectiveCreator(motive, motiveName, "RESOLVE", levelSix, questGiver.homeLevel, questGiver.getRandomObjective(motiveName, "RESOLVE"), secondQuest, document);
         chosenMotives.add(motive);
     }
 
@@ -334,20 +349,17 @@ public class StoryGenerator {
 
                 Integer amountToKill;
 
-                if (motiveType.equals("RESOLVE")) {
+                if (storyPhase.equals("RESOLVE")) {
                    amountToKill = 1;
                 } else {
                     amountToKill = getRandomAmountToKill(3, 5);
                 }
 
-                //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + "in the " + level + ".");
                 if (amountToKill > 1) {
-                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " +DataHandler.getInstance().getEnemyName(enemy)+ "'s in the " + level + ".");
+                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill " + amountToKill + " " +classNameDeconstructor(enemy)+ "'s in the " + level + ".");
                 } else {
-                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill the " +DataHandler.getInstance().getEnemyName(enemy)+ " in the " + level + ".");
+                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill the " +classNameDeconstructor(enemy)+ " in the " + level + ".");
                 }
-
-                //motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + amountToKill + " " + enemy + " in the " + level + ".");
 
                 DataHandler.getInstance().createKillObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), level);
 
@@ -367,8 +379,7 @@ public class StoryGenerator {
 
                 amountToKill = getRandomAmountToKill(4, 6);
 
-                //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " + enemy + "'s in the " + level + " to find" + item + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Kill " +DataHandler.getInstance().getEnemyName(enemy)+ "'s in the "  +level+ " to find " +item+ ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill " +classNameDeconstructor(enemy)+ "'s in the "  +level+ " to find " +classNameDeconstructor(item)+ ".");
 
                 DataHandler.getInstance().createKillFetchObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), item, level);
 
@@ -384,8 +395,7 @@ public class StoryGenerator {
 
                 objectiveName = "fetch " + item;
 
-                //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Find " + item + " somewhere in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Find " +item+ " somewhere in the " + level + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Find " +classNameDeconstructor(item)+ " somewhere in the " + level + ".");
 
                 DataHandler.getInstance().createFetchObjective(questNode, document, objectiveName, item, level);
 
@@ -403,8 +413,7 @@ public class StoryGenerator {
 
                 String completeDialogue = motive.questCompleteDialogue;
 
-                //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Speak to " + npc + " in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Speak to " +DataHandler.getInstance().getNPCName(npc)+ " in the " + level + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Speak to " +classNameDeconstructor(npc)+ " in the " + level + ".");
 
                 DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, npc, level, completeDialogue);
 
@@ -422,8 +431,7 @@ public class StoryGenerator {
 
                 objectiveName = "fetch " +item+ " from " +DataHandler.getInstance().getNPCName(npc);
 
-                //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Fetch " + item + " from " + npc + " in the " + level + ".");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Fetch " +item+ " from " +DataHandler.getInstance().getNPCName(npc)+ " in the " + level + ".");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Fetch " +classNameDeconstructor(item)+ " from " +classNameDeconstructor(npc)+ " in the " + level + ".");
 
                 DataHandler.getInstance().createSpeakFetchObjective(questNode, document, objectiveName, npc, item, level);
 
@@ -439,8 +447,7 @@ public class StoryGenerator {
 
                 objectiveName = "use " + item;
 
-                //questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Use the " + item + " item.");
-                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat(" Use the " + item + " item.");
+                motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Use the " + classNameDeconstructor(item) + " item.");
 
                 DataHandler.getInstance().createUseItemObjective(questNode, document, objectiveName, item, level);
 
@@ -452,6 +459,22 @@ public class StoryGenerator {
         }
 
 
+    }
+
+    public String classNameDeconstructor(String className) {
+        String s = className;
+        StringBuilder out = new StringBuilder(s);
+        Pattern p = Pattern.compile("[A-Z]");
+        Matcher m = p.matcher(s);
+        int extraFeed = 0;
+        while(m.find()){
+            if(m.start()!=0){
+                out = out.insert(m.start()+extraFeed, " ");
+                extraFeed++;
+            }
+        }
+
+        return out.toString();
     }
 
 

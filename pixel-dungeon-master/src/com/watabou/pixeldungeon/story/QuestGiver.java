@@ -7,6 +7,7 @@ public class QuestGiver {
 
     public String NPC;
     public String name;
+    public String homeLevel;
 
     public ArrayList<Motive> motives;
 
@@ -27,6 +28,10 @@ public class QuestGiver {
         this.name = name;
 
         motives = new ArrayList<>();
+    }
+
+    public void setHomeLevel(String homeLevel) {
+        this.homeLevel = homeLevel;
     }
 
     public Motive getMotive(String motiveName) {

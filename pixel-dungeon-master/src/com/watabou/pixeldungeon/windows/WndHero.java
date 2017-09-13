@@ -110,7 +110,7 @@ public class WndHero extends WndTabbed {
 			title.hardlight( TITLE_COLOR );
 			title.measure();
 			add( title );
-			
+
 			RedButton btnCatalogus = new RedButton( TXT_CATALOGUS ) {
 				@Override
 				protected void onClick() {
@@ -128,22 +128,23 @@ public class WndHero extends WndTabbed {
 					GameScene.show( new WndJournal() );
 				}
 			};
-			btnJournal.setRect( 
+			btnJournal.setRect(
 				btnCatalogus.right() + 2, btnCatalogus.top(),
 				btnJournal.reqWidth() + 2, btnJournal.reqHeight() + 2 );
 			add( btnJournal );
 
-			RedButton btnQuestJournal = new RedButton( QUEST_JOURNAL ) {
-				@Override
-				protected void onClick() {
-					hide();
-					GameScene.show( new WndQuestJournal() );
-				}
-			};
-			btnQuestJournal.setRect(
-					btnJournal.right() + 2, btnJournal.top(),
-					btnQuestJournal.reqWidth() + 2, btnQuestJournal.reqHeight() + 2 );
-			add( btnQuestJournal );
+
+//			RedButton btnQuestJournal = new RedButton( QUEST_JOURNAL ) {
+//				@Override
+//				protected void onClick() {
+//					hide();
+//					GameScene.show( new WndQuestJournal() );
+//				}
+//			};
+//			btnQuestJournal.setRect(
+//					btnJournal.right() + 2, btnJournal.top(),
+//					btnQuestJournal.reqWidth() + 2, btnQuestJournal.reqHeight() + 2 );
+//			add( btnQuestJournal );
 			
 			pos = btnCatalogus.bottom() + GAP;
 			

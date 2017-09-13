@@ -198,18 +198,20 @@ public class Item implements Bundlable {
 	public boolean doPickUp( Hero hero ) {
 		if (collect( hero.belongings.backpack )) {
 
-			if (quest != null) {
-
-				if (quest.getCurObjective().questType.equals("fetch") || quest.getCurObjective().questType.equals("kill_fetch") || quest.getCurObjective().questType.equals("speak_fetch")) {
-					QuestHandler.completeQuest(null, quest);
-				}
-			}
-			
 			GameScene.pickUp( this );
 			Sample.INSTANCE.play( Assets.SND_ITEM );
 			hero.spendAndNext( TIME_TO_PICK_UP );
 
 			identify();
+
+			if (quest != null) {
+
+				if (quest.getCurObjective().questType.equals("fetch") || quest.getCurObjective().questType.equals("kill_fetch") || quest.getCurObjective().questType.equals("speak_fetch")) {
+					delete( hero );
+					QuestHandler.completeQuest(null, quest);
+				}
+			}
+
 
 			return true;
 			
@@ -219,8 +221,12 @@ public class Item implements Bundlable {
 	}
 	
 	public void doDrop( Hero hero ) {	
-		hero.spendAndNext( TIME_TO_DROP );			
-		Dungeon.level.drop( detachAll( hero.belongings.backpack ), hero.pos ).sprite.drop( hero.pos );	
+		hero.spendAndNext( TIME_TO_DROP );
+		Dungeon.level.drop( detachAll( hero.belongings.backpack ), hero.pos ).sprite.drop( hero.pos );
+	}
+
+	public void delete ( Hero hero ) {
+		 detachAll( hero.belongings.backpack );
 	}
 	
 	public void doThrow( Hero hero ) {
