@@ -2,14 +2,15 @@
 <resources>
 
 	<QuestGiver>
-		<name>Ghost</name>
+		<name>Relative</name>
 		<motive>
-			<motiveName>train</motiveName>
+			<motiveName>lost wedding ring</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>Why hey there, cousin! Fancy seein' you around these parts. You say you've fallen on hard times, huh? Well, you can always rely on me if you need a place to stay or somethin' to eat. I'll even give ya some coin if you're willin' to do some work for me. See, I've been out here lookin' for my fiance's wedding ring for a good few hours now and I just can't seem to find it! Leave it to me to lose it in a place like this. If you could find it for me, I'd sure appreciate it!</questNotGivenDialogue>
+			<questGivenDialogue>Don't ask how I lost it, just find it, please!</questGivenDialogue>
+			<questCompleteDialogue>You found it? I can't believe it! Thanks cousin, you've just saved me from a world o' hurt! You've earned yourself a permanent residence at my place, I could use someone like you. Now I promised you a reward, so please, choose somethin' from my collection of scrap!</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -22,29 +23,24 @@
 			</enemy>
 			<enemy>
 				<enemyName>Crab</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Rat</enemyName>
 			</enemy>
 			<enemy>
 				<enemyName>Gnoll</enemyName>
 			</enemy>
 
 			<item>
-				<itemName>ScrollOfEnchantment</itemName>
-			</item>
-			<item>
-				<itemName>PotionOfHealing</itemName>
-			</item>
-			<item>
-				<itemName>PotionOfLevitation</itemName>
+				<itemName>WeddingRing</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>simple task</motiveName>
+			<motiveName>prepare feast</motiveName>
 			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Cousin! What's it been, 10 years since we last saw each other? You ain't lookin' so good, when's the last time you had a decent meal? You know what, you're joinin' me for a feast tonight. I've got everything ready for it except the meat; I've been out here trying to scramble up some from the nearby animals but I've just never been much of a hunter. Say, maybe you could help me out? Not only will I give you the best meal of your life, but I'll also let you choose a reward from my collection of scrap! </questNotGivenDialogue>
+			<questGivenDialogue>Mmm, charred meat with roasted potatoes on the side, I can't wait!</questGivenDialogue>
+			<questCompleteDialogue>I knew I could rely on you! You always were a great hunter. I could use someone like you to help me with some errands, so you know what? You're staying at my place now! Here, choose somethin' from my collection of scrap!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -58,354 +54,266 @@
 			</enemy>
 			<enemy>
 				<enemyName>Crab</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Bandit</enemyName>
 			</enemy>
 			<enemy>
 				<enemyName>Albino</enemyName>
 			</enemy>
-			<enemy>
-				<enemyName>Gnoll</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Thief</enemyName>
-			</enemy>
 
 			<item>
-				<itemName>RingOfElements</itemName>
-			</item>
-			<item>
-				<itemName>ScrollOfMirrorImage</itemName>
-			</item>
-			<item>
-				<itemName>Longsword</itemName>
+				<itemName>Tools</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>gang problem</motiveName>
+			<motiveName>pest control</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>Now that you're stayin' at my place, I was wonderin' if you could help me out with some trouble I've been havin'. Lately, there's been a bunch of vermin running around the house, even more than usual! I need you to go to where they're comin' from and stop them at the source.</questNotGivenDialogue>
+			<questGivenDialogue>Those vermin'll eat us out of the house if they get into our food supply!</questGivenDialogue>
+			<questCompleteDialogue>Not a single vermin in sight! I knew I could count on you, cousin!</questCompleteDialogue>
+
+			<actTwoOpeningStory>After you took care of the vermin, your cousin told you that he had to go into Town for a few days. You offered to join him on the journey, but he declined, saying that he needs you to take care of the house while he's away. He said he'd be back by today, you should look around the area for him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Albino</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Rat</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>preparing for winter</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>Winter's around the corner cousin, and they say it's gonna be a long one! I've been so busy takin' care of errands around the house that I ain't had the chance to go and gather some decent firewood. It may sound silly, but I've heard tales of a magical-kind-o' firewood that'll burn for 2 months straight! I know it may be a wild goose chase, but could you go and look for some? I'll even tell ya where they say it can be found.</questNotGivenDialogue>
+			<questGivenDialogue>I sure hope those tales are true!</questGivenDialogue>
+			<questCompleteDialogue>Magical firewood's real? Well, I've seen just about everything then! This winter's gonna be a lot warmer thanks to you, cousin!</questCompleteDialogue>
+
+			<actTwoOpeningStory>The magical firewood did indeed burn for 2 months straight that winter, just long enough for the snow to melt. After winter had passed, your cousin left for a few days to visit his fiance. He said he'd be back by today, look around the area for him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>MagicalFirewood</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>attempted assassination</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>You're not gonna believe this, cousin! I was on my way back home, mindin' my own, and all of a sudden, a bunch of these hooded figures jumped out and tried to kill me! Luckily I managed to fight 'em off, but as they ran off, I heard one shout "we'll be back!". I don't know what's goin' on, cousin! Why would anyone want me dead so badly? I ain't got much money, or land. I can't think about that right now though; right now, I need to think about how I'm gonna protect myself! Hmm, I heard that alchemists have come far these days, they've even got invisibility potions now! Cousin, I know it's askin' a lot, but could you please go get me one of them potions? I'd do it myself but I'm afraid of runnin' into those assassins again!</questNotGivenDialogue>
+			<questGivenDialogue>Why would anyone want me dead?</questGivenDialogue>
+			<questCompleteDialogue>I feel safer already, cousin!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
 			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
+				<objectiveTypeName>fetch</objectiveTypeName>
 			</objectiveType>
 
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Shaman</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>PotionOfInvisibility</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>ritual blood</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>Cousin! Boy am I glad to see a friendly face! I don't know what I've gotten myself into. On my way home, I noticed that some strange lookin' fellers started following me, I paid no mind to it at first, but with every step I took, they drew closer and closer towards me! Eventually, I just started runnin' for my life! "What do you want!?" I shouted at the top of my lungs, and they yelled back "The blood of the Chosen!". I had no idea what they were talkin' about! Luckily, I managed to lose 'em and make my way back home. I was in such a rush that I dropped all my belongings on the way back home! I know this is askin' a lot, but could you go look for my bag? Everythin' I own is in there!</questNotGivenDialogue>
+			<questGivenDialogue>The blood of the Chosen...what does that even mean?</questGivenDialogue>
+			<questCompleteDialogue>You found my bag? Thank you so much!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>CousinsBag</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>find sacred scroll</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>I've just gotta know why those people are after me, cousin! I've heard a rumour that some strange fellers are holdin' a meeting not too far from here, maybe it's the same ones that were after me? In any case, maybe one of 'em has got some information on what the heck is goin' on!</questNotGivenDialogue>
+			<questGivenDialogue>Whatever information you find, I doubt it'll be anything good.</questGivenDialogue>
+			<questCompleteDialogue>You found a scroll, you say? Let me read it ...... But, but that's impossible, I'm just a simple man that comes from a simple family, how can any of this be true?</questCompleteDialogue>
+
+			<actThreeOpeningStory>The scroll you found contained a sketch of your cousin with the words "Eliminate the true heir to the throne, the only one that can stop our leader. Only then, can we destroy the Kingdom!" below it. If what this scroll says is true, then your family is part of the Royal Bloodline! You must ensure that your cousin fulfills his destiny, and rids the world of this evil. You should find and speak to him.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
 			<enemy>
 				<enemyName>Bandit</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Thief</enemyName>
+				<enemyName>Warlock</enemyName>
 			</enemy>
 
 			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-			<item>
-				<itemName>Pickaxe</itemName>
+				<itemName>CultistsScroll</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>useful item</motiveName>
-			<storyPhase>SERIOUS</storyPhase>
+			<motiveName>seeking knowledge</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>I can't go the rest of my life livin' in fear, I need to know why I'm bein' hunted! I've never been one to put his faith in Seers, but I don't seem to have a choice. I'm too afraid to leave here, cousin, so maybe you could go see the Seer for me and ask him what's goin' on?</questNotGivenDialogue>
+			<questGivenDialogue>Things used to be so simple.</questGivenDialogue>
+			<questCompleteDialogue>Ahh, yes, come closer. He's your cousin, you say? Then, using your blood, I can perform the ritual of visions and seek the information you desire.</questCompleteDialogue>
+
+			<actThreeOpeningStory>The ritual of visions informed the Seer of your cousins rightful place in the Kingdom - he was born to defeat a great evil, an evil that will stop at nothing to destroy this world. After hearing this news, you returned to your cousin. It took a while for him to process the news, but eventually, he accepted it and began training right away. You should find him and see if he needs help.</actThreeOpeningStory>
 
 			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
+				<objectiveTypeName>speak</objectiveTypeName>
 			</objectiveType>
+
+			<npc>
+				<npcName>Seer</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>king's armor</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>If that is indeed my place in the world, then I will bear it! I will defeat this evil and bring peace to the Kingdom! Cousin, I know I've asked a lot of you but while I train, I need you to fetch my armor from the Blacksmith.</questNotGivenDialogue>
+			<questGivenDialogue>So the Kingdom's fate rests in my hands? No pressure at all.</questGivenDialogue>
+			<questCompleteDialogue>Ahh, armor fit for a King! Thank you, cousin.</questCompleteDialogue>
+
 			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
+				<objectiveTypeName>speak_fetch</objectiveTypeName>
 			</objectiveType>
 
-			<enemy>
-				<enemyName>Skeleton</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Eye</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
+			<npc>
+				<npcName>Blacksmith</npcName>
+			</npc>
 
-			<item>
-				<itemName>WarHammer</itemName>
-			</item>
-			<item>
-				<itemName>RingOfEvasion</itemName>
-			</item>
-			<item>
-				<itemName>RingOfHaste</itemName>
-			</item>
 			<item>
 				<itemName>MailArmor</itemName>
 			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>boss killing people</motiveName>
-			<storyPhase>CATASTROPHE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Skeleton</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>demon awakened</motiveName>
-			<storyPhase>CATASTROPHE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Warlock</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>find information</motiveName>
-			<storyPhase>INVESTIGATE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Skeleton</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Eye</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>Letter</itemName>
-			</item>
-			<item>
-				<itemName>CorpseDust</itemName>
-			</item>
-			<item>
-				<itemName>Dagger</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>take out henchmen</motiveName>
-			<storyPhase>INVESTIGATE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Warlock</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>obtain powerful item</motiveName>
-			<storyPhase>STRENGTHEN</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Monk</enemyName>
-			</enemy>
-
 			<item>
 				<itemName>PlateArmor</itemName>
 			</item>
-			<item>
-				<itemName>MailArmor</itemName>
-			</item>
-			<item>
-				<itemName>Spear</itemName>
-			</item>
-			<item>
-				<itemName>Sword</itemName>
-			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>destroy minions</motiveName>
+			<motiveName>potion of protection</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>Very well, if that is my place in the world, then I must accept it. Cousin, you know I'm not the best fighter, but I will train harder than I ever have for this! Just in case it's not enough, I need you to get me a potion of protection; that should allow me to at least stand a fighting chance against this evil.</questNotGivenDialogue>
+			<questGivenDialogue>Using potions isn't cheating, right?</questGivenDialogue>
+			<questCompleteDialogue>Thank you, cousin! Now at least there's a chance for victory!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
 			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
+				<objectiveTypeName>fetch</objectiveTypeName>
 			</objectiveType>
 
 			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
 				<enemyName>Monk</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Shaman</enemyName>
 			</enemy>
 
 			<item>
-				<itemName>PlateArmor</itemName>
-			</item>
-			<item>
-				<itemName>MailArmor</itemName>
-			</item>
-			<item>
-				<itemName>RingOfEvasion</itemName>
+				<itemName>PotionOfHealing</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>kill boss</motiveName>
+			<motiveName>kill minions</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
+			<questNotGivenDialogue>Now is the time, cousin. I don't know if we'll ever see each other again, but know that I couldn't have gotten this far without you. I have one more task for you, if you will. I'm sure this evil force will send it's armies after me when I attack it; I need you to keep them busy while I deal with the leader. We'll meet back here when this is all over, if we're still alive, that is.</questNotGivenDialogue>
+			<questGivenDialogue>Good luck, cousin. Let's end this!</questGivenDialogue>
+			<questCompleteDialogue>We've done it, cousin! No, you've done it. The Kingdom would be in ruin if it weren't for you.</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
 
+			<enemy>
+				<enemyName>Succubus</enemyName>
+			</enemy>
+			<enemy>
+			<enemyName>King</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Monk</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Scorpio</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>source of power</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>Cousin, before I go to face this evil, I must ask one more thing from you. You see, I've heard that the source of this evil's power is an artifact, an artifact that holds the power to destroying worlds! It is currently on it's way to the leader of this evil group, and once it arrives, we've lost all hope. I need you to collect that artifact while I keep the leader occupied! We will meet back here once you've found it.</questNotGivenDialogue>
+			<questGivenDialogue>You must be strong, cousin!</questGivenDialogue>
+			<questCompleteDialogue>Now, to destroy the artifact! ....BLAAAMMM.... It is done, the Kingdom is safe once again!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Monk</enemyName>
+			</enemy>
 			<enemy>
 				<enemyName>King</enemyName>
 			</enemy>
-			<enemy>
-				<enemyName>Monk</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Eye</enemyName>
-			</enemy>
-
-		</motive>
-
-		<motive>
-			<motiveName>cleanse land</motiveName>
-			<storyPhase>RESOLVE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Eye</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Monk</enemyName>
-			</enemy>
 
 			<item>
-				<itemName>CorpseDust</itemName>
+				<itemName>PhantomFish</itemName>
 			</item>
 			<item>
 				<itemName>DriedRose</itemName>

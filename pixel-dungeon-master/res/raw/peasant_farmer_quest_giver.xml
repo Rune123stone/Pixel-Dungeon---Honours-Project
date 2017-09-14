@@ -32,7 +32,7 @@
 			<storyPhase>NORMAL</storyPhase>
 
 			<questNotGivenDialogue>Now where did I lose those tools? Oh, hi there stranger! Listen, you wouldn't happen to be lookin' for some work would ya? See, I seem to have misplaced my box o' tools somewhere around these parts. If you were to find 'em for me I'd really appreciate it. I'd even give ya a reward from my box o' loot!</questNotGivenDialogue>
-			<questGivenDialogue>I sure do appreciate you're help!</questGivenDialogue>
+			<questGivenDialogue>I sure do appreciate your help!</questGivenDialogue>
 			<questCompleteDialogue>You found 'em! I can't tell you how grateful I am, friend! Now I promised you a reward from my box o' loot, and I aim to deliver! Please, choose somethin'.</questCompleteDialogue>
 
 			<objectiveType>

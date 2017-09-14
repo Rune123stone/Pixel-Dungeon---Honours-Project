@@ -1146,7 +1146,6 @@ public class DataHandler {
         if (story.equals("Mentor_Story")) {
             Mentor.setMentorVariables();
             Wizard.setWizardVariables();
-            Relative.setRelativeVariables();
         }
     }
 

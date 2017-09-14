@@ -96,39 +96,40 @@ public class StoryGenerator {
 //        questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 //
-        questGiver = new QuestGiver("Princess", "Imp");
-        questGiver.setHomeLevel("Town");
-        questGiver.setXMLID(R.raw.knight_princess_quest_giver);
-        heroBackground.addQuestGiver(questGiver);
+//        questGiver = new QuestGiver("Princess", "Imp");
+//        questGiver.setHomeLevel("Town");
+//        questGiver.setXMLID(R.raw.knight_princess_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
 //
 //        questGiver = new QuestGiver("Seer", "Seer");
 //        questGiver.setXMLID(R.raw.knight_seer_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 
-        heroBackgrounds.add(heroBackground);
+        //heroBackgrounds.add(heroBackground);
         // END Creating Knight
 
         // START Creating Peasant
-//        heroBackground = new HeroBackground("Peasant");
-//
-//        heroBackground.addStartingLevel("Fields");
-//        heroBackground.addStartingLevel("Forest");
-//        heroBackground.addStartingLevel("Caves");
+        heroBackground = new HeroBackground("Peasant");
+
+        heroBackground.addStartingLevel("Fields");
+        heroBackground.addStartingLevel("Forest");
+        heroBackground.addStartingLevel("Caves");
 //
 //        questGiver = new QuestGiver("Farmer", "Farmer");
 //        questGiver.setHomeLevel("Fields");
 //        questGiver.setXMLID(R.raw.peasant_farmer_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 //
-//        questGiver = new QuestGiver("Relative", "Imp");
-//        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
+        questGiver = new QuestGiver("Relative", "Relative");
+        questGiver.setHomeLevel("Forest");
+        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
 //
 //        questGiver = new QuestGiver("PlaceHolder", "Blacksmith");
 //        questGiver.setXMLID(R.raw.peasant_placeholder_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 //
-       //heroBackgrounds.add(heroBackground);
+       heroBackgrounds.add(heroBackground);
         // END Creating Peasant
 
         // START Creating Explorer
@@ -437,7 +438,7 @@ public class StoryGenerator {
 
                 objectiveName = "speak to " +DataHandler.getInstance().getNPCName(questGiverName);
 
-                DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, "done");
+                DataHandler.getInstance().createSpeakObjective(questNode, document, objectiveName, questGiverName, returnLevel, motive.questCompleteDialogue);
 
                 break;
 

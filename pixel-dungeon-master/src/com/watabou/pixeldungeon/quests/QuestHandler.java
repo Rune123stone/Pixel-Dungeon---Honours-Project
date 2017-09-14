@@ -565,7 +565,7 @@ public class QuestHandler {
 
         if (Dungeon.level.getClass().getSimpleName().equals(questLevelClass)) {
 
-            GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
+            GameScene.show(new WndQuest(npc, "Here you go!"));
 
             String itemPackage = "com.watabou.pixeldungeon.items.quest.";
             String itemName = questObjective.itemName;

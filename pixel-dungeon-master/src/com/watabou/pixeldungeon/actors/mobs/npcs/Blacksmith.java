@@ -72,7 +72,7 @@ public class Blacksmith extends NPC {
 	
 	{
 		//name = "troll blacksmith";
-		name = "Mentor";
+		name = "Blacksmith";
 		spriteClass = BlacksmithSprite.class;
 	}
 	
