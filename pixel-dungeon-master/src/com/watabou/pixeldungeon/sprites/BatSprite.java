@@ -21,10 +21,9 @@ import com.watabou.noosa.TextureFilm;
 import com.watabou.pixeldungeon.Assets;
 
 public class BatSprite extends MobSprite {
-	
+
 	public BatSprite() {
 		super();
-		
 		texture( Assets.BAT );
 		
 		TextureFilm frames = new TextureFilm( texture, 15, 15 );
@@ -43,4 +42,5 @@ public class BatSprite extends MobSprite {
 		
 		play( idle );
 	}
+
 }

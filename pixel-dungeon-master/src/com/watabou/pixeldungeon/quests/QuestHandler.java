@@ -1,6 +1,7 @@
 package com.watabou.pixeldungeon.quests;
 
 import com.watabou.noosa.Game;
+import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.Journal;
 import com.watabou.pixeldungeon.actors.Actor;
@@ -15,6 +16,7 @@ import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.sprites.BlacksmithSprite;
 import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.story.DataHandler;
+import com.watabou.pixeldungeon.story.StoryGenerator;
 import com.watabou.pixeldungeon.windows.WndMessage;
 import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.pixeldungeon.windows.WndQuestNPC;
@@ -23,6 +25,8 @@ import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class QuestHandler {
 
@@ -70,8 +74,47 @@ public class QuestHandler {
                     speakQuestInteract(npc, quest);
                     break;
             }
+
+            handleNPCRemoval(npc);
+
         }
 
+    }
+
+    public void handleNPCRemoval(NPC npc) {
+
+        if (npc.getClass().getSimpleName().equals(StoryGenerator.getInstance().questGiver.name)) {
+
+            String curLevelClass = Dungeon.level.getClass().getSimpleName();
+            String curLevel = getLevelName(curLevelClass);
+
+            if (!(StoryGenerator.getInstance().questGiver.homeLevel.equals(curLevel))) {
+                npc.destroy();
+                npc.sprite.killAndErase();
+            }
+        }
+    }
+
+    public String getLevelName(String levelClassName) {
+        switch (levelClassName) {
+
+            case "ForestLevel":
+                return "Forest";
+            case "CavesLevel":
+                return "Caves";
+            case "ShadowLandsLevel":
+                return "Shadow Lands";
+            case "CityLevel":
+                return "Castle";
+            case "FieldsLevel":
+                return "Fields";
+            case "TownLevel":
+                return "Town";
+            case "SewerLevel":
+                return "Dungeon";
+        }
+
+        return null;
     }
 
 
@@ -704,37 +747,57 @@ public class QuestHandler {
 
             case "speak":
                 //journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
-                journalEntry = "Speak to " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
+                journalEntry = "Speak to " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "speak_fetch":
                 //journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
-                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
+                journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
                     //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
-                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ "'s in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ "'s in the " +classNameDeconstructor(objective.level);
                 } else {
                     //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
-                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 }
                 break;
             case "kill_fetch":
                 //journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
-                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
+                journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "fetch":
                 //journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
-                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from somewhere in the " +objective.level;
+                journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from somewhere in the " +classNameDeconstructor(objective.level);
                 break;
             case "use_item":
                 //journalEntry = "Use " +objective.itemName;
-                journalEntry = "Use " +DataHandler.getInstance().getItemName(objective.itemName);
+                journalEntry = "Use " +classNameDeconstructor(objective.itemName);
                 break;
         }
 
         //Journal.addQuestEntry(journalEntry);
         QuestJournal.addQuestEntry(journalEntry);
+    }
+
+    public static String classNameDeconstructor(String className) {
+        String s = className;
+        StringBuilder out = new StringBuilder(s);
+        Pattern p = Pattern.compile("[A-Z]");
+        Matcher m = p.matcher(s);
+        int extraFeed = 0;
+        while(m.find()){
+            if(m.start()!=0){
+                out = out.insert(m.start()+extraFeed, " ");
+                extraFeed++;
+            }
+        }
+
+        if (out.toString().equals("City")) {
+            return "Castle";
+        }
+
+        return out.toString();
     }
 
     public static void removeFromQuestJournal(Quest quest) {
@@ -747,32 +810,32 @@ public class QuestHandler {
 
             case "speak":
                 //journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
-                journalEntry = "Speak to " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
+                journalEntry = "Speak to " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "speak_fetch":
                 //journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
-                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
+                journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
                     //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
-                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ "'s in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ "'s in the " +classNameDeconstructor(objective.level);
                 } else {
                     //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
-                    journalEntry = "Kill " +objective.leftToKill+ " " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
+                    journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 }
                 break;
             case "kill_fetch":
                 //journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
-                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from " +DataHandler.getInstance().getEnemyName(objective.enemy)+ " in the " +objective.level;
+                journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "fetch":
                 //journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
-                journalEntry = "Collect a " +DataHandler.getInstance().getItemName(objective.itemName)+ " from somewhere in the " +objective.level;
+                journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from somewhere in the " +classNameDeconstructor(objective.level);
                 break;
             case "use_item":
                 //journalEntry = "Use " +objective.itemName;
-                journalEntry = "Use " +DataHandler.getInstance().getItemName(objective.itemName);
+                journalEntry = "Use " +classNameDeconstructor(objective.itemName);
                 break;
         }
 
@@ -799,7 +862,7 @@ public class QuestHandler {
                 objectiveDescription = "Speak to " +DataHandler.getInstance().getNPCName(objective.speakToNPC)+ " in the " +objective.level;
                 break;
             case "speak_fetch":
-                objectiveDescription = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
+                objectiveDescription = "Collect " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
@@ -809,10 +872,10 @@ public class QuestHandler {
                 }
                 break;
             case "kill_fetch":
-                objectiveDescription = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
+                objectiveDescription = "Collect " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
                 break;
             case "fetch":
-                objectiveDescription = "Collect a " +objective.itemName+ " from the " +objective.level;
+                objectiveDescription = "Collect " +objective.itemName+ " from the " +objective.level;
                 break;
             case "use_item":
                 objectiveDescription = "Use " +objective.itemName;

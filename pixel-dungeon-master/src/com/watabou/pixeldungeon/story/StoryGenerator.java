@@ -112,7 +112,6 @@ public class StoryGenerator {
         heroBackground = new HeroBackground("Peasant");
 
         heroBackground.addStartingLevel("Fields");
-        heroBackground.addStartingLevel("Forest");
         heroBackground.addStartingLevel("Caves");
 //
 //        questGiver = new QuestGiver("Farmer", "Farmer");
@@ -120,14 +119,15 @@ public class StoryGenerator {
 //        questGiver.setXMLID(R.raw.peasant_farmer_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 //
-        questGiver = new QuestGiver("Relative", "Relative");
-        questGiver.setHomeLevel("Forest");
-        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
-        heroBackground.addQuestGiver(questGiver);
-//
-//        questGiver = new QuestGiver("PlaceHolder", "Blacksmith");
-//        questGiver.setXMLID(R.raw.peasant_placeholder_quest_giver);
+//        questGiver = new QuestGiver("Relative", "Relative");
+//        questGiver.setHomeLevel("Forest");
+//        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
+
+        questGiver = new QuestGiver("Stranger", "Stranger");
+        questGiver.setHomeLevel("Shadow Lands");
+        questGiver.setXMLID(R.raw.peasant_stranger_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
 //
        heroBackgrounds.add(heroBackground);
         // END Creating Peasant

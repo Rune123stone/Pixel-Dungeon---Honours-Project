@@ -119,7 +119,7 @@ public class GameLog extends Component implements Signal.Listener<String> {
 				lastEntry = null;
 			}
 		}
-		
+
 		layout();
 	}
 	

@@ -17,10 +17,8 @@
  */
 package com.watabou.pixeldungeon.sprites;
 
-import com.watabou.noosa.Camera;
-import com.watabou.noosa.Game;
-import com.watabou.noosa.MovieClip;
-import com.watabou.noosa.Visual;
+import android.graphics.RectF;
+import com.watabou.noosa.*;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.noosa.tweeners.PosTweener;
@@ -28,6 +26,7 @@ import com.watabou.noosa.tweeners.Tweener;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.DungeonTilemap;
 import com.watabou.pixeldungeon.actors.Char;
+import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.effects.EmoIcon;
 import com.watabou.pixeldungeon.effects.FloatingText;
 import com.watabou.pixeldungeon.effects.IceBlock;
@@ -93,6 +92,19 @@ public class CharSprite extends MovieClip implements Tweener.Listener, MovieClip
 	public CharSprite() {
 		super();
 		listener = this;
+	}
+
+	public static Image avatar( String mobAsset ) {
+		RectF patch = new RectF();
+		patch.left = 0.0f;
+		patch.top = 0.1171875f;
+		patch.right = 0.046875f;
+		patch.bottom = 0.234375f;
+		Image avatar = new Image( mobAsset );
+		RectF frame = avatar.texture.uvRect( 1, -2, 15, 15 );
+		frame.offset( patch.left, patch.top );
+		avatar.frame( frame );
+		return avatar;
 	}
 	
 	public void link( Char ch ) {

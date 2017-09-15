@@ -271,7 +271,7 @@
 
 			<questNotGivenDialogue>Now we're ready to take this fight to the leader himself! Kill the gang leader and give this land back to the people it belongs to!</questNotGivenDialogue>
 			<questGivenDialogue>Will sure be nice to not have to worry about hoodlums rummaging through my belongings!</questGivenDialogue>
-			<questCompleteDialogue>Thanks to you, we all sleep soundly once again! I'm proud to call you my friend.</questCompleteDialogue>
+			<questCompleteDialogue>Thanks to you, we can all sleep soundly once again! I'm proud to call you my friend.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>

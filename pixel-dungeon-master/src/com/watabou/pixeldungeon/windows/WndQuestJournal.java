@@ -1,14 +1,19 @@
 package com.watabou.pixeldungeon.windows;
 
+import android.graphics.RectF;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.ui.Component;
+import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.Journal;
 import com.watabou.pixeldungeon.PixelDungeon;
+import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.quests.QuestJournal;
 import com.watabou.pixeldungeon.scenes.PixelScene;
+import com.watabou.pixeldungeon.sprites.BatSprite;
+import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.ui.Icons;
 import com.watabou.pixeldungeon.ui.ScrollPane;
 import com.watabou.pixeldungeon.ui.Window;
@@ -70,6 +75,9 @@ public class WndQuestJournal extends Window {
 
         list.setRect(0, txtTitle.height(), WIDTH, height - txtTitle.height());
 
+        //content.add(enemyImage);
+
+
     }
 
     public static class ListQuestItem extends Component {
@@ -110,13 +118,13 @@ public class WndQuestJournal extends Window {
 //
           //  icon.y = feature.baseLine() / 2;
 
-            System.out.println(feature.baseLine());
             feature.y = PixelScene.align(  feature.baseLine() );
         }
 
 
 
     }
+
 
 
 }

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<QuestGiver>
+		<name>Stranger</name>
+		<motive>
+			<motiveName>gather ingredient</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Ahh yess, come closer Peasant, I have a proposition for you. You seek fortune do you? It matters not how I know this, what matters is that I think we can both be of use to each other. You wish to know more, you say? Excellent! First, I need you to gather an important ingredient for me. You will find it on the corpses of vermin around this area. Once you've gathered it, find me in the Shadow Lands.</questNotGivenDialogue>
+			<questGivenDialogue>All will be revealed in time!</questGivenDialogue>
+			<questCompleteDialogue>You've done better than was expected, Peasant! Most do not return from the first task. I'd say a reward is in order; please, choose something from my secret stash.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Bat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Crab</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Rat</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>PhantomFish</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>harvest essence</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Do you seek more riches than you can imagine, Peasant? What am I saying, of course you do! I can help you, you know. All you have to do is complete a few 'favours' for me, and I will make you wealthier beyond your wildest dreams. First, I need you to harvest the life essence from the nearby vermin around the area. All you have to do is kill a few pests, and I'll gather their essence. Once you've completed your task, meet me in the Shadow Lands.</questNotGivenDialogue>
+			<questGivenDialogue>Just kill those creatures and I'll do the rest!</questGivenDialogue>
+			<questCompleteDialogue>I can feel the power of their essence in every bone in my body! You've done well, Peasant. You deserve a reward for your efforts; choose something from my collection.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Bat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Crab</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Gnoll</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>fetch potion vials</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>For your next task, I require you to fetch an order of potion vials from a smuggler not too far from here.</questNotGivenDialogue>
+			<questGivenDialogue>Get back here as soon as you've retrieved those vials!.</questGivenDialogue>
+			<questCompleteDialogue>Excellent! Now, let the brewing begin!</questCompleteDialogue>
+
+			<actTwoOpeningStory>As you watched the stranger brew vials of mysterious potions, you began to wonder if you hadn't perhaps made a grave mistake by helping him. But, his promise of 'riches beyond your wildest dreams' was too great of an offer to turn down. You must continue serving faithfully. You should ask speak to him and find out what the next step is..</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Smuggler</npcName>
+			</npc>
+
+			<item>
+				<itemName>PotionVials</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>collect more ingredients</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>Next, I need you collect potion ingredients from some rather dangerous creatures. Now, make haste peasant; and remember, untold riches await you in your future!</questNotGivenDialogue>
+			<questGivenDialogue>Bring me those ingredients, Peasant!</questGivenDialogue>
+			<questCompleteDialogue>Yess, exactly what I needed! Now, to add these to the cauldron.</questCompleteDialogue>
+
+			<actTwoOpeningStory>Lost in the thoughts of your future riches, you paid no mind to the stranger or his maniacal laughs as he was brewing his concoctions. A few hours later he indicated that he was ready to give you your next task; you should find and speak to him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Succubus</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>DarkGold</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>error in brewing</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>Curses! I seem to have made an error during the brewing process, Peasant. These potions are going to need one more ingredient before they're ready. Do not ask what the potions are for! You will find out in due time. Now, go collect that final ingredient.</questNotGivenDialogue>
+			<questGivenDialogue>Just one more ingredient, and they'll be ready!</questGivenDialogue>
+			<questCompleteDialogue>This is it, the final ingredient!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Shaman</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>CorpseDust</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>stealing formulas</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>While you were off completing your previous task, a group of bandits came here and attempted to steal my very secret formulas! We cannot let this happen again; these potions are MY work, and I will NOT allow them to slip into the hands of others! Peasant, I need you to go purge every thief you find so this does not happen again!</questNotGivenDialogue>
+			<questGivenDialogue>No one will interfere with my plans!</questGivenDialogue>
+			<questCompleteDialogue>Now there's no one left to get in our way!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>potions of control</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>You've done very well, Peasant. All those that came before you had failed, but thanks to you, I have finally completed my potions! I suppose you deserve to know what my plans are. You see, a single drop from from one of these vials is enough to turn anyone into a mindless servant who will serve no one but me! Using this, I will rule this Kingdom, and when I rule, I will shower you with riches! Now, to set my plans in motion. I'm going to need you to deliver a single potion to my assistant, he will then empty the vial into the nearby rivers and soon, the entire Kingdom's water supply will be corrupted!</questNotGivenDialogue>
+			<questGivenDialogue>The plan is almost complete!</questGivenDialogue>
+			<questCompleteDialogue>Ahh, so you're the masters new pet. Very well, give me the potions; and may we live to not regret this.</questCompleteDialogue>
+
+			<actThreeOpeningStory>It didn't take long for the potion to work it's wonders; soon, almost everyone in the Kingdom was under the strangers control. However, not all was going according to plan. A group of powerful monks, immune to the potions effects, had begun working on a cure and soon, more than half the Kingdom was back to normal. You have not come this far to fail, you should find and speak to the stranger.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Assistant</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>potions of resurrection</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>Nothing can stop us now, Peasant! By using these potions on our dead, we can bring them back to life and create an army unlike anyone has ever seen! Using them, we will rule this Kingdom and everyone in it; and when we rule, you will be showered with riches beyond your wildest dreams. However, in order to raise the dead, we must administer the potion using a sacred artifact. Find that artifact, and we shall have our army!</questNotGivenDialogue>
+			<questGivenDialogue>All we need is that artifact!</questGivenDialogue>
+			<questCompleteDialogue>Tonight, the dead shall walk among us!</questCompleteDialogue>
+
+			<actThreeOpeningStory>As you watched the armies of the dead march through Kingdom, you couldn't help but think "this better be worth it". Suddenly, a group of powerful monks appeared out of nowhere and started purging every undead in their path. In a fit of panic, you ran back to the stranger to tell him what you saw. Angered by the news, the stranger requested that you meet him later to discuss the next step. You should find and speak to him.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Shaman</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>ResurrectionArtifact</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>powerful weapon</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>If we are to rule this Kingdom, we cannot let those monks foil our plans! Peasant, you must stop them! Bring me a weapon, and I shall enchant it with the power that you need to defeat these holy warriors!</questNotGivenDialogue>
+			<questGivenDialogue>Do not waste any more time!</questGivenDialogue>
+			<questCompleteDialogue>With this weapon, you will become more powerful than you can imagine!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Skeleton</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Succubus</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>BattleAxe</itemName>
+			</item>
+			<item>
+				<itemName>Dagger</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>scroll of defence</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>We must stop these holy warriors if we are to ever rule this Kingdom, Peasant! I've heard legends of a powerful scroll that can make one immune to any form of attack for a certain time. If you are to defeat these monks, you must find that scroll!</questNotGivenDialogue>
+			<questGivenDialogue>Find that scroll, Peasant!</questGivenDialogue>
+			<questCompleteDialogue>Now you are ready to purge those monks from this world!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>ScrollOfDefence</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>kill boss - no betrayel</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>Go now, Peasant! Kill the holy warriors and secure your riches and our rule over this Kingdom!</questNotGivenDialogue>
+			<questGivenDialogue>Destroy them!</questGivenDialogue>
+			<questCompleteDialogue>*Maniacal laughter ensues* we will rule this Kingdom and all those in it!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Monk</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>kill boss - betrayel</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>You have everything you need to defeat the holy warriors! Go now, Peasant, and do not fail.</questNotGivenDialogue>
+			<questGivenDialogue>Destroy them!</questGivenDialogue>
+			<questCompleteDialogue>Now no one can stop us! The Kingdom is ours! Wait, what do you mean you don't need me anymore? This is all my work! You cannot kill me and take away everything that I've worked fo ...UUUGHGGG... *falls to the ground*.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Monk</enemyName>
+			</enemy>
+
+		</motive>
+
+	</QuestGiver>
+
+</resources>

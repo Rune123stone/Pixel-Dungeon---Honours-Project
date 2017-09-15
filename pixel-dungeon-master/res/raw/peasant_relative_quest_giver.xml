@@ -45,9 +45,6 @@
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
 
 			<enemy>
 				<enemyName>Bat</enemyName>
@@ -60,7 +57,7 @@
 			</enemy>
 
 			<item>
-				<itemName>Tools</itemName>
+				<itemName>ChargrilledMeat</itemName>
 			</item>
 
 		</motive>
