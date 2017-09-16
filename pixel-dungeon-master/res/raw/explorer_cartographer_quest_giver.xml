@@ -2,14 +2,15 @@
 <resources>
 
 	<QuestGiver>
-		<name>Ghost</name>
+		<name>Cartographer</name>
 		<motive>
-			<motiveName>train</motiveName>
+			<motiveName>lost scrolls</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<objectiveType>
-			<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>You there! I say, could you help an old cartographer out? During my exploration of this area, I seem to have misplaced my map. I'd look for it myself but I'm afraid that I'd just get lost if I delved deeper into this area without a map; you see, I've never been one for directions. You on the other hand, you seem like you have a good lay of the land! Find my map, explorer, and I'll give you a reward! Meet me in the nearby Town once you've found it.</questNotGivenDialogue>
+			<questGivenDialogue>I would've been stuck here if you hadn't come along!</questGivenDialogue>
+			<questCompleteDialogue>My map! Thank you, Explorer. Hmm, we'd make an excellent team, you and I...I'm getting ahead of myself. Please, choose a reward!</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
@@ -19,209 +20,209 @@
 
 			<enemy>
 				<enemyName>Bat</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Crab</enemyName>
 			</enemy>
 			<enemy>
 				<enemyName>Rat</enemyName>
 			</enemy>
-			<enemy>
-				<enemyName>Gnoll</enemyName>
-			</enemy>
 
 			<item>
-				<itemName>ScrollOfEnchantment</itemName>
-			</item>
-			<item>
-				<itemName>PotionOfHealing</itemName>
-			</item>
-			<item>
-				<itemName>PotionOfLevitation</itemName>
+				<itemName>LostMap</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>simple task</motiveName>
+			<motiveName>deliver maps</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
+			<questNotGivenDialogue>Hello there! Could I trouble you for some help, explorer? I need to deliver these maps to one of my customers but I just can't seem to find him. I'm sure you know a thing or two about tracking, so perhaps you can find him and deliver these maps for me? Tell him I sent you and he'll be sure to reward you, he owes me a few favours.</questNotGivenDialogue>
+			<questGivenDialogue>Please hurry, explorer! If those maps don't get delivered on time, it won't be good for my reputation!</questGivenDialogue>
+			<questCompleteDialogue>Ahh there my maps are! You say the cartographer sent you? And he said to give you a reward? Well, okay. I suppose I owe him that much. Here, choose something. He's been looking for an assistant for some time, you should see if he's got any more work for you. You'll find him in the nearby town.</questCompleteDialogue>
+
 			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
+				<objectiveTypeName>speak</objectiveTypeName>
 			</objectiveType>
 
-			<enemy>
-				<enemyName>Bat</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Crab</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Bandit</enemyName>
-			</enemy>
+			<npc>
+				<npcName>Customer</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>explore area - enemies</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>I think we can both be of use to each other, Explorer! I've been looking for an assistant for quite some time. You see, I love making maps, but I absolutely detest doing the exploration required in order to make them. If I had someone to do the exploring for me, then I could draw up maps based on the information they gather. You say you're interested? Splendid! Alright then, for your first task, I need you to get a good idea of what kind of creatures live in this area. All I know about them is that they're quite hostile, so you might be in for some combat. Return to me once you've gathered the results.</questNotGivenDialogue>
+			<questGivenDialogue>I'm really glad that I'm not the one doing this!</questGivenDialogue>
+			<questCompleteDialogue>Hmm, very interesting! You're even better than I expected, Explorer!</questCompleteDialogue>
+
+			<actTwoOpeningStory>Happy with your services, the cartographer decided to hire you as a full-time Explorer. He needed some time to draft up the latest map based on the information you brought him about the area's creatures, so there was not much for you to do. A few days later, the cartographer sent you a letter indicating that he urgently needed your services once again. You should find and speak to him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
 			<enemy>
 				<enemyName>Albino</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Gnoll</enemyName>
+				<enemyName>Bat</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Thief</enemyName>
+				<enemyName>Rat</enemyName>
 			</enemy>
 
+		</motive>
+
+		<motive>
+			<motiveName>pen fetching</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>I could use the services of an Explorer as talented as you! I don't have much to offer, but what I have, I will give you if you decide to accept my offer and become my assistant. You accept? Excellent! For your first task, Explorer, I need you to fetch my order of new pens from my pen-maker. Without them, I cannot begin drawing up my maps.</questNotGivenDialogue>
+			<questGivenDialogue>Please hurry, Explorer! Without those pens, there's not much I can do!</questGivenDialogue>
+			<questCompleteDialogue>Ahh my pens! Thank you, Explorer. Now, to start creating those maps!</questCompleteDialogue>
+
+			<actTwoOpeningStory>Before the cartographer retreated to his home to start drawing up his precious maps, he told you that he wouldn't have any work for you to do for a while. You decided to spend your time off in the Town gambling and flirting with the local women. A few days later, the cartographer sent you a letter indicating that he required your help once again. You should find and speak to him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>PenMaker</npcName>
+			</npc>
+
 			<item>
-				<itemName>RingOfElements</itemName>
-			</item>
-			<item>
-				<itemName>ScrollOfMirrorImage</itemName>
-			</item>
-			<item>
-				<itemName>Longsword</itemName>
+				<itemName>Pens</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>gang problem</motiveName>
-			<storyPhase>SERIOUS</storyPhase>
+			<motiveName>stolen scrolls</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>Ahh, there you are Explorer! Once again, I am in dire need of your assistance! Last night, while I was sleeping, a group of thieves broke into my home and stole my maps! Weeks and weeks of work, gone in an instant! Explorer, I know this is asking a great deal of you, but I need you to go and get my maps back from those scoundrels. I simply do not have the necessary coin to afford a loss of this magnitude!</questNotGivenDialogue>
+			<questGivenDialogue>I knew I should have checked the locks before going to bed!</questGivenDialogue>
+			<questCompleteDialogue>You got them back? Explorer, you've saved us both more coin than you can imagine!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
 			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
 
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
 			<enemy>
 				<enemyName>Bandit</enemyName>
 			</enemy>
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
+
+			<item>
+				<itemName>LostMap</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>dangerous task</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>Good news, Explorer! Earlier, an extremely wealthy customer offered me a great deal of coin to draw up a map of an area for her! Unfortunately, this area is crawling with bandits. Explorer, I need you to eliminate those scoundrels so we can begin mapping out the area in peace. I know this is a dangerous task, but we will both benefit greatly from it!</questNotGivenDialogue>
+			<questGivenDialogue>Please return from this in one piece, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>This is just the beginning of our successes, Explorer! We're moving up, thanks to you!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
 			<enemy>
 				<enemyName>Thief</enemyName>
 			</enemy>
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>explore area - herbs</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>Before I draft up my next map, I need you to gather data on the local plant-life of the area. If you bring me a sample, I should be able to extract the necessary information.</questNotGivenDialogue>
+			<questGivenDialogue>Go collect that sample, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>Ahh I've seen this type of herb before. Excellent work, Explorer! You've earned yourself a few days rest. I will let you know when I require your services again.</questCompleteDialogue>
+
+			<actThreeOpeningStory>You decided to spend your time off exploring some of the more remote areas of the Kingdom. A few days later, you received word that the cartographer requires your services once again.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
 
 			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-			<item>
-				<itemName>Pickaxe</itemName>
+				<itemName>PlantSample</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>useful item</motiveName>
-			<storyPhase>SERIOUS</storyPhase>
+			<motiveName>clear bandits</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>I've heard word from around the Town that gang-related activity has increased a great deal over past few days, Explorer. If we are to continue our work, we cannot afford to have bandits and thieves lurking around every area we try to explore! You have proven yourself to be an excellent fighter, Explorer. I need you to eliminate these scoundrels at their source. I've managed to locate where their camp is. You must eliminate them, post haste!</questNotGivenDialogue>
+			<questGivenDialogue>Our jobs should become a lot easier once those scoundrels have been dealt with!</questGivenDialogue>
+			<questCompleteDialogue>I knew you were up to the challenge, Explorer! Thanks to you, we are free to explore the Kingdom without the worry of bandits and thieves plaguing our minds.</questCompleteDialogue>
 
-			<enemy>
-				<enemyName>Skeleton</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Eye</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
+			<actThreeOpeningStory>After clearing out the bandit camp, you decided to take some time off to rest. Although the cartographer said you could take all the time you needed, it was not long before he interrupted your leave of absence with a request for your assistance. You should find and speak to him.</actThreeOpeningStory>
 
-			<item>
-				<itemName>WarHammer</itemName>
-			</item>
-			<item>
-				<itemName>RingOfEvasion</itemName>
-			</item>
-			<item>
-				<itemName>RingOfHaste</itemName>
-			</item>
-			<item>
-				<itemName>MailArmor</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>boss killing people</motiveName>
-			<storyPhase>CATASTROPHE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
 
 			<enemy>
-				<enemyName>Skeleton</enemyName>
+				<enemyName>Thief</enemyName>
 			</enemy>
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>special item</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>I have exciting news, Explorer! I have managed to locate an item that will greatly assist us with our work! Perhaps I should explain; you see, legends tell of an item that, when asked, will reveal whereabouts of any area in the Kingdom! You must find this item explorer, I've managed to locate the area it is in, but it will be up to you to find it!</questNotGivenDialogue>
+			<questGivenDialogue>Just imagine, so much information in the palm of our hands!</questGivenDialogue>
+			<questCompleteDialogue>I can't believe you found it! Just imagine how much we will be able to learn about the Kingdom!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
 			<enemy>
 				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>demon awakened</motiveName>
-			<storyPhase>CATASTROPHE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Warlock</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Shaman</enemyName>
 			</enemy>
 			<enemy>
 				<enemyName>Succubus</enemyName>
 			</enemy>
 
 			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
+				<itemName>PhantomFish</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>find information</motiveName>
-			<storyPhase>INVESTIGATE</storyPhase>
+			<motiveName>powerful weapon</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>We've almost mapped out the entire Kingdom, Explorer! There is, however, one area that we must be extremely cautious of, so much so, that you should be well prepared before you explore it. I've managed to find the location of a powerful weapon that could serve you greatly in that area. You must find it if we are to complete our maps, Explorer!</questNotGivenDialogue>
+			<questGivenDialogue>Find that weapon, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>This is it, Explorer! Just what you need for the final task.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -231,149 +232,39 @@
 			</objectiveType>
 
 			<enemy>
-				<enemyName>Skeleton</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
+				<enemyName>Monk</enemyName>
 			</enemy>
 			<enemy>
 				<enemyName>Brute</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Eye</enemyName>
+				<enemyName>Shaman</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>Letter</itemName>
-			</item>
-			<item>
-				<itemName>CorpseDust</itemName>
-			</item>
 			<item>
 				<itemName>Dagger</itemName>
 			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>take out henchmen</motiveName>
-			<storyPhase>INVESTIGATE</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Warlock</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Brute</enemyName>
-			</enemy>
-
 			<item>
-				<itemName>DarkGold</itemName>
-			</item>
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DwarfToken</itemName>
+				<itemName>BattleAxe</itemName>
 			</item>
 
 		</motive>
 
 		<motive>
-			<motiveName>obtain powerful item</motiveName>
-			<storyPhase>STRENGTHEN</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>fetch</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Golem</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Monk</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>PlateArmor</itemName>
-			</item>
-			<item>
-				<itemName>MailArmor</itemName>
-			</item>
-			<item>
-				<itemName>Spear</itemName>
-			</item>
-			<item>
-				<itemName>Sword</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>destroy minions</motiveName>
-			<storyPhase>STRENGTHEN</storyPhase>
-
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
-			<objectiveType>
-				<objectiveTypeName>kill</objectiveTypeName>
-			</objectiveType>
-
-			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Succubus</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Monk</enemyName>
-			</enemy>
-
-			<item>
-				<itemName>PlateArmor</itemName>
-			</item>
-			<item>
-				<itemName>MailArmor</itemName>
-			</item>
-			<item>
-				<itemName>RingOfEvasion</itemName>
-			</item>
-
-		</motive>
-
-		<motive>
-			<motiveName>kill boss</motiveName>
+			<motiveName>explore final area - enemies</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
+			<questNotGivenDialogue>It is time to finish the final map of the Kingdom, Explorer. I need you to explore the area, and return to me with the all the information you gather. The area is dangerous, so please be careful.</questNotGivenDialogue>
+			<questGivenDialogue>Make haste Explorer, but be careful!</questGivenDialogue>
+			<questCompleteDialogue>This is everything I need, Explorer! Thanks to you, I will be able to compile a full map of the Kingdom!</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
 
+			<enemy>
+				<enemyName>Succubus</enemyName>
+			</enemy>
 			<enemy>
 				<enemyName>King</enemyName>
 			</enemy>
@@ -381,34 +272,25 @@
 				<enemyName>Monk</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Eye</enemyName>
+				<enemyName>Scorpio</enemyName>
 			</enemy>
 
 		</motive>
 
 		<motive>
-			<motiveName>cleanse land</motiveName>
+			<motiveName>explore final area - collect herbs</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
+			<questNotGivenDialogue>I almost have all the information I need to compile a complete map of the Kingdom, Explorer! All I need is some information on one specific herb. Unfortunately, that herb only grows in an extremely dangerous area of the Kingdom. You must find and return that herb to me, Explorer.</questNotGivenDialogue>
+			<questGivenDialogue>This is it, Explorer! Find that herb!</questGivenDialogue>
+			<questCompleteDialogue>I now have all the information I need! I could not have done this without you, Explorer! Thanks to you, I can complete my map of the Kingdom!</questCompleteDialogue>
+
 			<objectiveType>
 				<objectiveTypeName>fetch</objectiveTypeName>
 			</objectiveType>
 
-			<enemy>
-				<enemyName>Eye</enemyName>
-			</enemy>
-			<enemy>
-				<enemyName>Monk</enemyName>
-			</enemy>
-
 			<item>
-				<itemName>CorpseDust</itemName>
-			</item>
-			<item>
-				<itemName>DriedRose</itemName>
+				<itemName>PlantSample</itemName>
 			</item>
 
 		</motive>

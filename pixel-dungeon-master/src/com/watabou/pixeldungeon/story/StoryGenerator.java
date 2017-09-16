@@ -124,20 +124,24 @@ public class StoryGenerator {
 //        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 
-        questGiver = new QuestGiver("Stranger", "Stranger");
-        questGiver.setHomeLevel("Shadow Lands");
-        questGiver.setXMLID(R.raw.peasant_stranger_quest_giver);
-        heroBackground.addQuestGiver(questGiver);
-//
-       heroBackgrounds.add(heroBackground);
+//        questGiver = new QuestGiver("Stranger", "Stranger");
+//        questGiver.setHomeLevel("Shadow Lands");
+//        questGiver.setXMLID(R.raw.peasant_stranger_quest_giver);
+//        heroBackground.addQuestGiver(questGiver);
+////
+//       heroBackgrounds.add(heroBackground);
         // END Creating Peasant
 
         // START Creating Explorer
-//        heroBackground = new HeroBackground("Explorer");
-//
-//        questGiver = new QuestGiver("Cartographer", "Ghost");
-//        questGiver.setXMLID(R.raw.explorer_cartographer_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
+        heroBackground = new HeroBackground("Explorer");
+
+        heroBackground.addStartingLevel("Forest");
+        heroBackground.addStartingLevel("Fields");
+
+        questGiver = new QuestGiver("Cartographer", "Cartographer");
+        questGiver.setHomeLevel("Town");
+        questGiver.setXMLID(R.raw.explorer_cartographer_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
 //
 //        questGiver = new QuestGiver("PlaceHolder1", "Imp");
 //        questGiver.setXMLID(R.raw.explorer_placeholder1_quest_giver);
@@ -147,7 +151,7 @@ public class StoryGenerator {
 //        questGiver.setXMLID(R.raw.explorer_placeholder2_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
 //
-//        heroBackgrounds.add(heroBackground);
+        heroBackgrounds.add(heroBackground);
         // END Creating Explorer
 
         //new QuestGiver(name, NPC) <- NPC represents the NPC used i.e. if "Ghost", will use "Ghost" NPC class.
