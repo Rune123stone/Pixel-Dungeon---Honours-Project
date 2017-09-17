@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<QuestGiver>
+		<name>Merchant</name>
+		<motive>
+			<motiveName>fetch supplies</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Ahh, you're an Explorer, aren't you? Just the person I need! You see, I'm all the way out here because I need to fetch an order of supplies for my shop from the local Blacksmith. He said to meet him out here, but I can't seem to find him. If you could obtain my order of supplies from him and bring them back to me in the nearby Town, I'll reward you with something from my stock of weapons and armor!</questNotGivenDialogue>
+			<questGivenDialogue>Do you have my supplies yet?</questGivenDialogue>
+			<questCompleteDialogue>I knew I could count on you! I'm a man of my word, so please, choose a reward from my stock.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>speak_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Blacksmith</npcName>
+			</npc>
+
+			<item>
+				<itemName>Supplies</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>lost weapon</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>An Explorer! Could you help me? I seem to have lost my weapon at some point during my travels. The roads can get rather dangerous, so travelling unarmed is not the best of ideas; and unfortunately, my occupation requires me to travel rather often. Why not just get another weapon you ask? Well, that weapon has been in my Family for generations, Explorer, and if I can help it, I'd like it keep it that way. Explorer, could you find my weapon and bring it back to me in the nearby Town? I'll be sure to reward you!</questNotGivenDialogue>
+			<questGivenDialogue>Please find my weapon, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>You found it! I cannot tell you how grateful I am, Explorer. Here, please choose something from my stock.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Rat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bat</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>Dagger</itemName>
+			</item>
+
+
+		</motive>
+
+		<motive>
+			<motiveName>deliver order</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>I could use someone like you, Explorer! I've never been one for travelling - I'm not much of a fighter and I get lost easily, those are not the best attributes for a travelling merchant! But, perhaps you could assist me? I'll reward you for each task you complete of course. You will? Excellent! For your first task, I need you to deliver this order to one of my customers.</questNotGivenDialogue>
+			<questGivenDialogue>Deliver that order as soon as possible, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>Ahh my order! Thank you, Explorer. That was a rather speedy delivery! Usually it takes a while for the merchant to get here; as you probably know, he's not good with directions. You deserve to be rewarded. I don't have much, but please, choose something from my collection.</questCompleteDialogue>
+
+			<actTwoOpeningStory>Word of your your quick deliveries has spread throughout the Kingdom. Because of this, the merchant has acquired a great many more customers. A few days ago, he informed you that he'll have a more dangerous task for you soon, and that you should prepare for it. You should find him and speak to him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Customer</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>collect meat</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>If you're looking for work, you and I could make quite the team, Explorer! If you work for me, then I could focus on running my shop here in the Town, and you could collect supplies and deliver orders! We'd both make a steady profit from it as well! You'll do it? Splendid! Seeing as it's almost winter, many customers will want to stock up on food. Could you collect some meat from nearby animals and bring it here?</questNotGivenDialogue>
+			<questGivenDialogue>Go and test your hunting skills, Explorer!.</questGivenDialogue>
+			<questCompleteDialogue>Yes that should be enough! Thank you, Explorer.</questCompleteDialogue>
+
+			<actTwoOpeningStory>Thanks to you, the merchant's stock has never been more bountiful and diverse! The merchant mentioned that he has an idea that could make the store even more successful, but it would be rather dangerous, for you at least. You should find him and speak to him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Bat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Rat</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>ChargrilledMeat</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>find treasure</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>Greetings Explorer! You look eager for work, I'm glad! I mentioned that I'd have a rather dangerous task for you; now, although that might seem frightening, keep in mind that if you succeed, we will greatly profit from it! I've heard rumours of a treasure hidden in a rather dangerous area that contains jewels of immense value! If anyone can find it, it's you!</questNotGivenDialogue>
+			<questGivenDialogue>Think of all the profit, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>This is it! So the tales were true! Wait, these are not real jewels, these are not worth anything! Curses, I apologise for sending you on a fools errand, Explorer. You should still be rewarded, though. Please, choose something.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>CollectionOfJewels</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>creatures gold</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>You look well, Explorer! I trust you've been preparing for the next task? Excellent! Lately, I've been studying books on some of the Kingdoms rare creatures, and I seem to have found something that can profit us both! It is said that a certain dangerous creature sometimes holds a valuable form of Gold in their possession! If you could get hold of this Gold, then perhaps we could sell it to one of the Nobles for a great profit! I have faith in your combat abilities, Explorer! I know you can accomplish this task.</questNotGivenDialogue>
+			<questGivenDialogue>We will soon have more coin than we can spend!</questGivenDialogue>
+			<questCompleteDialogue>You say this is the Gold that the creature carried? Those lying, cursed books! This is the same material that our coins are made from! My apologies, Explorer. We will have to find riches some other way.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Succubus</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>DarkGold</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>trusted informant</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>Explorer, I know that nothing came of the last task that I gave you, but this time, I think I may have something! During my studies, I have read tales of a treasure hidden somewhere in this Kingdom. The treasure is described to be worth more than all the jewels and artifacts in the world! Now, because of the previous tasks failure, I didn't think too much of this; but if there is even a slight chance that this legend is true, we must take it! Could you pay a visit to the seer, Explorer? Perhaps he will know something about this treasure.</questNotGivenDialogue>
+			<questGivenDialogue>Perhaps the seer will know more.</questGivenDialogue>
+			<questCompleteDialogue>Yes, I know this tale you speak of. It is indeed true. However, many have tried to obtain it and all have failed. If you still wish to attempt the task, then I will tell you what I know.</questCompleteDialogue>
+
+			<actThreeOpeningStory>The seer informed you that in order to obtain this treasure, you must face a dangerous trial and obtain a sacred artifact; only then will the way to the treasure be open to you. After listening to what the seer had to say, you returned to the merchant. Shocked that the treasure is in fact real, he begged you to help him obtain it. Naturally, you accepted. He told you to meet him back here in a few days once he's made some preparations. You should find and speak to him.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Seer</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>guarded information</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>Even though the previous task was a failure, I still believe greatness awaits us, Explorer! Earlier, I heard a group of cultists speaking of a treasure of immense value! They said that their evil master has found a way to obtain this treasure, and that they'd be meeting him later this evening to find out what information he has! Explorer, I need you to obtain this information from them.</questNotGivenDialogue>
+			<questGivenDialogue>Those cultists cannot get to the treasure before us, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>This is amazing, Explorer! We may finally have the riches we desire!</questCompleteDialogue>
+
+			<actThreeOpeningStory>The scroll you collected from the cultists read "Only those who obtain the sacred artifact may seek the riches of the Kingdom!" The merchant mentioned that he has an idea of what the sacred artifact refers to, however, he said he would need to do some more research and that you should return to him after a few days. It has been a few days, you should find and speak to him.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>Letter</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>obtain artifact - find</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>It is time for us to claim our riches, Explorer! According to the information you've found, we must obtain an artifact before we can find this treasure. In my studies, I have found where this artifact is. As you may have guessed, the area it is in is rather dangerous, so you must be prepared. Find this artifact and secure our riches, Explorer!</questNotGivenDialogue>
+			<questGivenDialogue>You can do this, Explorer!.</questGivenDialogue>
+			<questCompleteDialogue>The artifact! Now, to see what information it holds.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>Artifact</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>obtain artifact - kill</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>I'm afraid I have dire news, Explorer. In my studies, I have found that the artifact we need is guarded by extremely powerful creatures, more powerful than any you have ever faced before. I have seen you grow as a warrior, Explorer. I know you can defeat these enemies and claim this artifact!</questNotGivenDialogue>
+			<questGivenDialogue>You are ready to face these creatures, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>I knew you had the power to face them, Explorer! Using this artifact, we will obtain the treasure of legend!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Monk</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Eye</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Warlock</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>Artifact</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>find treasure - kill boss</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>The artifact has revealed the way to the treasure, Explorer! It has revealed that you must defeat a powerful enemy and obtain a sacred map that will lead us to the treasure! Bring me this map, Explorer. Then, the treasure is as good as ours!</questNotGivenDialogue>
+			<questGivenDialogue>Make haste Explorer!</questGivenDialogue>
+			<questCompleteDialogue>You've done it, Explorer! Thanks to you, we will be the wealthiest men in the Kingdom!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>King</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Warlock</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>LostMap</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>find treasure - find map</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>The treasure is as good as ours, Explorer! The artifact has revealed the location of a sacred map that will lead us directly to the treasure! In order to find this map, you must hold the artifact in your possession, only then, will it reveal itself to you. Take the artifact, Explorer, and find that map!</questNotGivenDialogue>
+			<questGivenDialogue>We are close now, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>This is it, the map to the treasure! Infinite riches await us, Explorer!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>LostMap</itemName>
+			</item>
+
+		</motive>
+
+	</QuestGiver>
+
+</resources>

@@ -138,14 +138,15 @@ public class StoryGenerator {
         heroBackground.addStartingLevel("Forest");
         heroBackground.addStartingLevel("Fields");
 
-        questGiver = new QuestGiver("Cartographer", "Cartographer");
-        questGiver.setHomeLevel("Town");
-        questGiver.setXMLID(R.raw.explorer_cartographer_quest_giver);
-        heroBackground.addQuestGiver(questGiver);
-//
-//        questGiver = new QuestGiver("PlaceHolder1", "Imp");
-//        questGiver.setXMLID(R.raw.explorer_placeholder1_quest_giver);
+//        questGiver = new QuestGiver("Cartographer", "Cartographer");
+//        questGiver.setHomeLevel("Town");
+//        questGiver.setXMLID(R.raw.explorer_cartographer_quest_giver);
 //        heroBackground.addQuestGiver(questGiver);
+//
+        questGiver = new QuestGiver("Merchant", "Merchant");
+        questGiver.setHomeLevel("Town");
+        questGiver.setXMLID(R.raw.explorer_merchant_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
 //
 //        questGiver = new QuestGiver("PlaceHolder2", "Blacksmith");
 //        questGiver.setXMLID(R.raw.explorer_placeholder2_quest_giver);

@@ -30,30 +30,30 @@
         </questGiver>
 
         <questGiver>
-            <name>PlaceHolder1</name>
+            <name>Merchant</name>
             <level>
                 <name>Shadow Lands</name>
-                <story>Explorer - PlaceHolder1 - Shadow Lands</story>
+                <story>Explorer - Merchant - Shadow Lands</story>
             </level>
             <level>
                 <name>Forest</name>
-                <story>Explorer - PlaceHolder1 - Forest</story>
+                <story>Explorer - Merchant - Forest</story>
             </level>
             <level>
                 <name>Caves</name>
-                <story>Explorer - PlaceHolder1 - Caves</story>
+                <story>Explorer - Merchant - Caves</story>
             </level>
             <level>
                 <name>Castle</name>
-                <story>Explorer - PlaceHolder1 - Castle</story>
+                <story>Explorer - Merchant - Castle</story>
             </level>
             <level>
                 <name>Dungeon</name>
-                <story>Explorer - PlaceHolder1 - Dungeon</story>
+                <story>Explorer - Merchant - Dungeon</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Explorer - PlaceHolder1 - Fields</story>
+                <story>Explorer - Merchant - Fields</story>
             </level>
         </questGiver>
 
