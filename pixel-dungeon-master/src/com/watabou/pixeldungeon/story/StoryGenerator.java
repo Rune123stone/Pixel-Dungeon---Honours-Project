@@ -92,20 +92,20 @@ public class StoryGenerator {
         heroBackground.addStartingLevel("Fields");
         heroBackground.addStartingLevel("Caves");
 
-//        questGiver = new QuestGiver("Mentor", "Ghost");
-//        questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
-//
-//        questGiver = new QuestGiver("Princess", "Imp");
-//        questGiver.setHomeLevel("Town");
-//        questGiver.setXMLID(R.raw.knight_princess_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
-//
-//        questGiver = new QuestGiver("Seer", "Seer");
-//        questGiver.setXMLID(R.raw.knight_seer_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
+        questGiver = new QuestGiver("Mentor", "Ghost");
+        questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
 
-        //heroBackgrounds.add(heroBackground);
+        questGiver = new QuestGiver("Princess", "Imp");
+        questGiver.setHomeLevel("Town");
+        questGiver.setXMLID(R.raw.knight_princess_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
+        questGiver = new QuestGiver("Seer", "Seer");
+        questGiver.setXMLID(R.raw.knight_seer_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
+        heroBackgrounds.add(heroBackground);
         // END Creating Knight
 
         // START Creating Peasant
@@ -113,23 +113,23 @@ public class StoryGenerator {
 
         heroBackground.addStartingLevel("Fields");
         heroBackground.addStartingLevel("Caves");
-//
-//        questGiver = new QuestGiver("Farmer", "Farmer");
-//        questGiver.setHomeLevel("Fields");
-//        questGiver.setXMLID(R.raw.peasant_farmer_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
-//
-//        questGiver = new QuestGiver("Relative", "Relative");
-//        questGiver.setHomeLevel("Forest");
-//        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
 
-//        questGiver = new QuestGiver("Stranger", "Stranger");
-//        questGiver.setHomeLevel("Shadow Lands");
-//        questGiver.setXMLID(R.raw.peasant_stranger_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
-////
-//       heroBackgrounds.add(heroBackground);
+        questGiver = new QuestGiver("Farmer", "Farmer");
+        questGiver.setHomeLevel("Fields");
+        questGiver.setXMLID(R.raw.peasant_farmer_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
+        questGiver = new QuestGiver("Relative", "Relative");
+        questGiver.setHomeLevel("Forest");
+        questGiver.setXMLID(R.raw.peasant_relative_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
+        questGiver = new QuestGiver("Stranger", "Stranger");
+        questGiver.setHomeLevel("Shadow Lands");
+        questGiver.setXMLID(R.raw.peasant_stranger_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
+       heroBackgrounds.add(heroBackground);
         // END Creating Peasant
 
         // START Creating Explorer
@@ -138,20 +138,21 @@ public class StoryGenerator {
         heroBackground.addStartingLevel("Forest");
         heroBackground.addStartingLevel("Fields");
 
-//        questGiver = new QuestGiver("Cartographer", "Cartographer");
-//        questGiver.setHomeLevel("Town");
-//        questGiver.setXMLID(R.raw.explorer_cartographer_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
-//
+        questGiver = new QuestGiver("Cartographer", "Cartographer");
+        questGiver.setHomeLevel("Town");
+        questGiver.setXMLID(R.raw.explorer_cartographer_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
         questGiver = new QuestGiver("Merchant", "Merchant");
         questGiver.setHomeLevel("Town");
         questGiver.setXMLID(R.raw.explorer_merchant_quest_giver);
         heroBackground.addQuestGiver(questGiver);
-//
-//        questGiver = new QuestGiver("PlaceHolder2", "Blacksmith");
-//        questGiver.setXMLID(R.raw.explorer_placeholder2_quest_giver);
-//        heroBackground.addQuestGiver(questGiver);
-//
+
+        questGiver = new QuestGiver("Johnny", "Johnny");
+        questGiver.setHomeLevel("Town");
+        questGiver.setXMLID(R.raw.explorer_johnny_quest_giver);
+        heroBackground.addQuestGiver(questGiver);
+
         heroBackgrounds.add(heroBackground);
         // END Creating Explorer
 

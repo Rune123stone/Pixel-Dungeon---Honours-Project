@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<QuestGiver>
+		<name>Johnny</name>
+		<motive>
+			<motiveName>fetch dress</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>Oh Hai, Explorer! I need your help, you see, I'm a very busy man. I work at the bank in the nearby Town and we just got a new client; don't ask about it, it's very confidential! Anyway, I need to run or I'll be late for work, so I need you to pick up a dress for my future wife, Lisa! Bring it back to me in the nearby Town!</questNotGivenDialogue>
+			<questGivenDialogue>I'd do anything for my Lisa, tshahaha.</questGivenDialogue>
+			<questCompleteDialogue>You got the dress? My Lisa's going to love this! Here, choose a reward!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>speak_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>DressMaker</npcName>
+			</npc>
+
+			<item>
+				<itemName>LisasDress</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>fetch flowers</motiveName>
+			<storyPhase>NORMAL</storyPhase>
+
+			<questNotGivenDialogue>I can't find any flowers out here! Oh Hai, Explorer! I need your help, I'm trying to find some flowers for my future wife, Lisa, but I can't seem to find any out here! I've heard you Explorers are good at finding things, so could you please find some flowers for me? I make a lot of money working at the bank in the nearby Town, so I'll reward you! Meet me in the Town when you've found the flowers!</questNotGivenDialogue>
+			<questGivenDialogue>My Lisa loves flowers!</questGivenDialogue>
+			<questCompleteDialogue>How did you do that!? I couldn't find them anywhere, Tshahaha! Here, please choose a reward!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Rat</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bat</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>Flowers</itemName>
+			</item>
+
+
+		</motive>
+
+		<motive>
+			<motiveName>obtain football</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>You sure are good at fetching things, Explorer! Maybe you can help me again. You see, I love American Football, my best friend, Mark, and I play it all the time! What do you mean you've never heard of it? I'll teach you, but first, I need to ask a favour. I've lost my Football, and I really need a new one! I've heard that some creatures nearby might have one!</questNotGivenDialogue>
+			<questGivenDialogue>We need that Football more than those creatures!</questGivenDialogue>
+			<questCompleteDialogue>You found it! This is going to change your life, Explorer! I will teach you how to play when Mark isn't so busy!</questCompleteDialogue>
+
+			<actTwoOpeningStory>You, Johnny, and  his best friend Mark spent the rest of the day playing Football. Eventually, Johnny told you that he may need your help again and that you shouldn't wonder too far off. A few days later, you received a letter from Johnny asking for your help. You should find and speak to him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Brute</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Crab</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>Football</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>best friend plans</motiveName>
+			<storyPhase>SERIOUS</storyPhase>
+
+			<questNotGivenDialogue>Oh hai again, Explorer! I could use your help again, I promise to make it worth your while! I need you to deliver a message to my best friend, Mark. Tell him that I'm free this afternoon if he still wants to go for coffee. If you tell Mark that I sent you, he'll give you a reward!</questNotGivenDialogue>
+			<questGivenDialogue>It'll be nice to catch up with Mark!</questGivenDialogue>
+			<questCompleteDialogue>Oh hey, Explorer! Sure, I can do coffee this afternoon. You can join us if you want?</questCompleteDialogue>
+
+			<actTwoOpeningStory>You decided to take Mark up on his offer, and join him and Johnny for coffee that day. Johnny mentioned that he could use someone like you, and that he'd probably need your help with something again soon. A few days later, Mark told you that Johnny urgently needs your help. You should find and speak to him.</actTwoOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Mark</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>diseased mother in law</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>I'm so happy to see you, Explorer! I desperately need your help! My mother-in-law, Claudette, has fallen ill, and it's not looking good! The local doctor said that this disease can only be caused by a specific type of poison and the only way to cure her is to find a herb that only grows in a really dangerous area of the Kingdom! Please find it, Explorer.</questNotGivenDialogue>
+			<questGivenDialogue>I hope Claudette will be okay!</questGivenDialogue>
+			<questCompleteDialogue>I can't believe you found it, Explorer! This will make my Lisa so happy! And, less importantly, Claudette will be okay!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>MedicinalHerb</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>poisoned rose bushes</motiveName>
+			<storyPhase>CATASTROPHE</storyPhase>
+
+			<questNotGivenDialogue>Explorer! Thank the Gods you've come back! Something terrible has happened to my Lisa's rose bushes! The roses are spreading poison to everyone that touches them! Explorer, my Lisa loves her roses, you must help me cleanse them of this poison! I've spoken to the local florist, and he told that the only way to stop a poison this strong is with a special type of dust that can only be gathered from some of the most dangerous creatures in the Kingdom! Please get that dust for me, Explorer!</questNotGivenDialogue>
+			<questGivenDialogue>My poor Lisa, she loves her roses!</questGivenDialogue>
+			<questCompleteDialogue>The dust! Thanks to you, my Lisa's roses are saved!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Golem</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Succubus</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>SpecialDust</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>increasing cult activity</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>I've heard that the poison is still spreading, Explorer! There must be someone or something behind this. Come to think of it, this all started happening once these shady-looking people appeared in the Town. They left this morning, but they couldn't have gone far! Explorer, I need you to find out if they are behind this! Find them, and see if you can find any information.</questNotGivenDialogue>
+			<questGivenDialogue>We cannot let this poison spread, Explorer!</questGivenDialogue>
+			<questCompleteDialogue>This letter is proof that they're behind this! We must stop these cultists, and save my Lisa! Oh right, and the Kingdom.</questCompleteDialogue>
+
+			<actThreeOpeningStory>The letter you found contained a recipe for the deadly poison that's been spreading throughout the Kingdom. You'll have to find the leader of these cultists if you are to put an end to this once and for all. Maybe Johnny will know where to start, find and speak to him.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Thief</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>Letter</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>ask mark</motiveName>
+			<storyPhase>INVESTIGATE</storyPhase>
+
+			<questNotGivenDialogue>I don't understand it, Explorer! This poison is still spreading! We must find out what's going on if we want my Lisa to be safe! Maybe Mark will know what's going on. Please go and speak to him, Explorer. There is no time to waste.</questNotGivenDialogue>
+			<questGivenDialogue>I hope Mark knows more than we do!</questGivenDialogue>
+			<questCompleteDialogue>I've also been trying to figure out what's been going on. I may have found something that could help; on my morning run, I spotted a hooded figure brewing a strange looking liquid in a cauldron. He was also muttering something about "poisoning the entire Kingdom". Maybe that's got something to do with this?</questCompleteDialogue>
+
+			<actThreeOpeningStory>Mark did indeed know more about this than you or Johnny. He also told you where he saw the hooded figure. After speaking to Mark, you returned to Johnny with the information you had gathered. He said that it was up to you to save the Kingdom and that the hooded figure needed to be defeated. He said that he may be able to assist you with that, but he needed some time to get a few things in order. You should find and speak to him.</actThreeOpeningStory>
+
+			<objectiveType>
+				<objectiveTypeName>speak</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Mark</npcName>
+			</npc>
+
+		</motive>
+
+		<motive>
+			<motiveName>collect potion</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>The only way you can stop the source of this poison, is if you're immune to this poison yourself! My Alchemist-friend has managed to create a potion that will make you immune to the effects of the poison for a short time. This will aid you greatly in the final battle! Go and fetch this potion, Explorer!</questNotGivenDialogue>
+			<questGivenDialogue>Go get that potion!</questGivenDialogue>
+			<questCompleteDialogue>Now you can put an end to this!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>speak_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<npc>
+				<npcName>Alchemist</npcName>
+			</npc>
+
+			<item>
+				<itemName>PotionOfImmunity</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>obtain powerful weapon</motiveName>
+			<storyPhase>STRENGTHEN</storyPhase>
+
+			<questNotGivenDialogue>I've got just the thing to help you, Explorer! Well, I know the location of just the thing to help you! I've heard that there's an ancient weapon of great power hidden within a dangerous area of the Kingdom! If you can find it, it'll make the final battle much easier!</questNotGivenDialogue>
+			<questGivenDialogue>Don't ask how I know about this, just find it!</questGivenDialogue>
+			<questCompleteDialogue>I'm so happy you survived! Now I don't have to kill this enemy!</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>fetch</objectiveTypeName>
+			</objectiveType>
+
+			<item>
+				<itemName>BattleAxe</itemName>
+			</item>
+			<item>
+				<itemName>Longsword</itemName>
+			</item>
+
+		</motive>
+
+		<motive>
+			<motiveName>kill boss</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>You're ready to defeat the enemy and end this plague, Explorer! I managed to find out where he's hiding, now all you have to do is kill him!</questNotGivenDialogue>
+			<questGivenDialogue>Go now! There's not much time!</questGivenDialogue>
+			<questCompleteDialogue>Thanks to you, my Lisa is safe! If you don't mind though, I'm going to tell her that I'm the one that saved the Kingdom.</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>King</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Warlock</enemyName>
+			</enemy>
+
+		</motive>
+
+		<motive>
+			<motiveName>kill boss - find cure</motiveName>
+			<storyPhase>RESOLVE</storyPhase>
+
+			<questNotGivenDialogue>You must hurry now, Explorer! You must find and defeat this enemy! And, if it's not asking too much, see if he has a cure for this poison!</questNotGivenDialogue>
+			<questGivenDialogue>Hopefully he carries around a formula for the cure!</questGivenDialogue>
+			<questCompleteDialogue>You defeated him AND found the cure? You are officially my new best friend, Explorer! I don't know how I'm going to break the news to Mark...</questCompleteDialogue>
+
+			<objectiveType>
+				<objectiveTypeName>kill_fetch</objectiveTypeName>
+			</objectiveType>
+
+			<enemy>
+				<enemyName>Warlock</enemyName>
+			</enemy>
+			<enemy>
+				<enemyName>Bandit</enemyName>
+			</enemy>
+
+			<item>
+				<itemName>PoisonCure</itemName>
+			</item>
+
+		</motive>
+
+	</QuestGiver>
+
+</resources>

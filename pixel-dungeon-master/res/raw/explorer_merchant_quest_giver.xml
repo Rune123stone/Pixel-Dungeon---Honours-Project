@@ -79,7 +79,7 @@
 			<storyPhase>SERIOUS</storyPhase>
 
 			<questNotGivenDialogue>If you're looking for work, you and I could make quite the team, Explorer! If you work for me, then I could focus on running my shop here in the Town, and you could collect supplies and deliver orders! We'd both make a steady profit from it as well! You'll do it? Splendid! Seeing as it's almost winter, many customers will want to stock up on food. Could you collect some meat from nearby animals and bring it here?</questNotGivenDialogue>
-			<questGivenDialogue>Go and test your hunting skills, Explorer!.</questGivenDialogue>
+			<questGivenDialogue>Go and test your hunting skills, Explorer!</questGivenDialogue>
 			<questCompleteDialogue>Yes that should be enough! Thank you, Explorer.</questCompleteDialogue>
 
 			<actTwoOpeningStory>Thanks to you, the merchant's stock has never been more bountiful and diverse! The merchant mentioned that he has an idea that could make the store even more successful, but it would be rather dangerous, for you at least. You should find him and speak to him.</actTwoOpeningStory>
@@ -196,7 +196,7 @@
 			<storyPhase>STRENGTHEN</storyPhase>
 
 			<questNotGivenDialogue>It is time for us to claim our riches, Explorer! According to the information you've found, we must obtain an artifact before we can find this treasure. In my studies, I have found where this artifact is. As you may have guessed, the area it is in is rather dangerous, so you must be prepared. Find this artifact and secure our riches, Explorer!</questNotGivenDialogue>
-			<questGivenDialogue>You can do this, Explorer!.</questGivenDialogue>
+			<questGivenDialogue>You can do this, Explorer!</questGivenDialogue>
 			<questCompleteDialogue>The artifact! Now, to see what information it holds.</questCompleteDialogue>
 
 			<objectiveType>
