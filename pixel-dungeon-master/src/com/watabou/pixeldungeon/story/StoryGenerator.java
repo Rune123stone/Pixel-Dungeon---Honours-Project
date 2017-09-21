@@ -1,8 +1,10 @@
 package com.watabou.pixeldungeon.story;
 
 
+import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.R;
+import com.watabou.pixeldungeon.quests.QuestJournal;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -19,7 +21,6 @@ import java.util.regex.Pattern;
 
 public class StoryGenerator {
 
-
     private static StoryGenerator storyGenerator;
 
     public QuestGiver questGiver;
@@ -28,7 +29,6 @@ public class StoryGenerator {
     private StoryGenerator() {
     }
 
-
     public static StoryGenerator getInstance() {
         if (storyGenerator == null) {
             storyGenerator = new StoryGenerator();
@@ -36,16 +36,15 @@ public class StoryGenerator {
         return storyGenerator;
     }
 
-
     //a list of levels that can be used for an act's quests
     private ArrayList<String> questLevels = new ArrayList<>();
 
     public String levelOne;
-    public String levelTwo;
-    public String levelThree;
-    public String levelFour;
-    public String levelFive;
-    public String levelSix;
+    private String levelTwo;
+    private String levelThree;
+    private String levelFour;
+    private String levelFive;
+    private String levelSix;
 
     private void populateQuestLevels() {
 
@@ -75,9 +74,8 @@ public class StoryGenerator {
 
     }
 
-
-    public ArrayList<HeroBackground> heroBackgrounds = new ArrayList<>();
-    public HeroBackground chosenBackground;
+    private ArrayList<HeroBackground> heroBackgrounds = new ArrayList<>();
+    private HeroBackground chosenBackground;
 
     private void populateHeroBackgrounds() {
 
@@ -92,12 +90,12 @@ public class StoryGenerator {
         heroBackground.addStartingLevel("Fields");
         heroBackground.addStartingLevel("Caves");
 
-        questGiver = new QuestGiver("Mentor", "Ghost");
+        questGiver = new QuestGiver("Mentor", "Mentor");
         questGiver.setHomeLevel("Town");
         questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
         heroBackground.addQuestGiver(questGiver);
 
-        questGiver = new QuestGiver("Princess", "Imp");
+        questGiver = new QuestGiver("Princess", "Princess");
         questGiver.setHomeLevel("Town");
         questGiver.setXMLID(R.raw.knight_princess_quest_giver);
         heroBackground.addQuestGiver(questGiver);
@@ -179,7 +177,7 @@ public class StoryGenerator {
     public String actTwoStory;
     public String actThreeStory;
 
-    public void createActOneStory(PixelDungeon c) {
+    public void createActOneStory(Game c) {
         try {
 
             int xmlID = 0;
@@ -252,8 +250,14 @@ public class StoryGenerator {
         }
     }
 
-
     public void initializeStoryVariables() {
+
+        chosenBackground = null;
+        questLevels.clear();
+        questGiver = null;
+        chosenMotives.clear();
+        QuestJournal.clearQuestJournal();
+
         populateQuestLevels();
         populateHeroBackgrounds();
 
@@ -495,7 +499,7 @@ public class StoryGenerator {
         return random.nextInt((max + 1) - min) + min;
     }
 
-    public void createQuestGiverMotives(PixelDungeon c) {
+    public void createQuestGiverMotives(Game c) {
         try {
 
             InputStream is = c.getResources().openRawResource(questGiver.xmlID);
@@ -529,13 +533,11 @@ public class StoryGenerator {
 
                     if (actTwoOpeningStoryNodeList.getLength() != 0) {
                         String actTwoOpeningStory = actTwoOpeningStoryNodeList.item(0).getTextContent();
-                        //System.out.println(actTwoOpeningStory);
+
                         questGiver.createNewMotiveWithDialogue(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue, actTwoOpeningStory);
                     } else {
                         questGiver.createNewMotive(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
                     }
-
-
 
                     NodeList actThreeOpeningStoryNodeList  = motiveElement.getElementsByTagName("actThreeOpeningStory");
 
@@ -546,8 +548,6 @@ public class StoryGenerator {
                     } else {
                         questGiver.createNewMotive(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
                     }
-
-                    //questGiver.createNewMotive(motiveName, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
 
                     //getting motive quest objectives
                     NodeList objectiveTypeList = motiveElement.getElementsByTagName("objectiveType");

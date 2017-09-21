@@ -22,20 +22,6 @@ public class PixelDungeon extends Game {
 
 	public PixelDungeon() {
 		super( TitleScene.class );
-		// super(OverworldScene.class);
-//
-//		StoryGenerator storyGenerator = StoryGenerator.getInstance();
-//
-//		storyGenerator.doStoryStuff();
-//
-//		DataHandler dataHandler = DataHandler.getInstance();
-//
-//		dataHandler.generateStoryXMLs();
-//		dataHandler.createQuests();
-//		dataHandler.displayQuests();
-//
-
-
 
 		com.watabou.utils.Bundle.addAlias(
 			com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade.class,
@@ -186,19 +172,6 @@ public class PixelDungeon extends Game {
 			Assets.SND_BEE,
 			Assets.SND_DEGRADE,
 			Assets.SND_MIMIC );
-
-		StoryGenerator storyGenerator = StoryGenerator.getInstance();
-
-		storyGenerator.initializeStoryVariables();
-		storyGenerator.createActOneStory(this);
-
-		DataHandler dataHandler = DataHandler.getInstance();
-
-		storyGenerator.createQuestGiverMotives(this);
-
-		dataHandler.generateStoryXMLs();
-		dataHandler.createQuests();
-		dataHandler.displayQuests();
 
 	}
 

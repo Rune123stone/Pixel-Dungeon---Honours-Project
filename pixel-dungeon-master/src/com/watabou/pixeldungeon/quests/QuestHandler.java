@@ -36,8 +36,6 @@ public class QuestHandler {
         this.questObjective = questObjective;
     }
 
-
-
     /**
      *  handles interaction with NPC if the NPC has a quest for the player
      */
@@ -117,8 +115,6 @@ public class QuestHandler {
         return null;
     }
 
-
-
     /**
      * use_item objective logic
      */
@@ -147,8 +143,6 @@ public class QuestHandler {
                     if (item.getClass().getSimpleName().equals(questItemName)) {
 
                         item.assignQuest(quest);
-                        System.out.println("assigned quest to item");
-
                     }
 
                 }
@@ -156,9 +150,6 @@ public class QuestHandler {
 
         }
     }
-
-
-
 
     /**
      * fetch objective logic
@@ -188,7 +179,6 @@ public class QuestHandler {
             }
 
             if (item != null) {
-                //GameScene.show(new WndQuestNPC(npc, item, questObjective.QUEST_COMPLETED_TEXT));
                 GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
                 completeQuest(npc, quest);
@@ -231,9 +221,6 @@ public class QuestHandler {
 
             String questObjectiveLevelClassName = questObjective.level.concat("Level");
 
-            System.out.println("questGiverClass name: " +questGiverLevelClassName);
-            System.out.println("objectiveClassName: " +questObjectiveLevelClassName);
-
             if (questObjectiveLevelClassName.equals(questGiverLevelClassName)) {
                 spawnQuestItem(questObjective.itemName, Dungeon.level, quest);
             }
@@ -251,7 +238,6 @@ public class QuestHandler {
 
         try {
             String itemPackage = "com.watabou.pixeldungeon.items.quest.";
-            //String itemClassName = itemPackage.concat(questObjective.itemName);
             String itemClassName = itemPackage.concat(itemName);
             Class<?> item = Class.forName(itemClassName);
 
@@ -280,10 +266,7 @@ public class QuestHandler {
 
             Item questItem = (Item)item.newInstance();
 
-            System.out.println("spawned item at pos: " +randomPos);
-            //level.drop((Item) item.newInstance(), randomPos);
             level.drop(questItem, randomPos);
-
 
             setUseItemQuest(questItem);
 
@@ -316,8 +299,6 @@ public class QuestHandler {
                 enemyMob.pos = level.randomRespawnCell(); //sets the enemy's position
                 level.mobs.add(enemyMob); //adds the enemy to the level
                 Actor.occupyCell(enemyMob);
-
-                System.out.println("spawned mob " + i + " at position " + enemyMob.pos);
             }
 
         } catch (Exception e) {
@@ -343,7 +324,6 @@ public class QuestHandler {
                 enemyMob.pos = level.randomRespawnCell(); //sets the enemy's position
                 GameScene.add(enemyMob);
 
-                System.out.println("spawned mob " + i + " at position " + enemyMob.pos);
             }
         } catch (Exception e) {
             System.out.println("error in spawnKillQuestMobs: ");
@@ -403,7 +383,6 @@ public class QuestHandler {
 
             if (Dungeon.level.getClass().getSimpleName().equals(questObjectiveLevelClassName)) {
                 spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
-                //spawnKillQuestMobs(quest, Dungeon.level);
             }
             //**** END ****
 
@@ -431,10 +410,8 @@ public class QuestHandler {
                 questObjective.leftToKill--;
             } else {
                 Dungeon.level.drop(questItem, curMob.pos).sprite.drop();
-//                setUseItemQuest(questItem);
-                questItem.assignQuest(quest);
 
-                //completeQuest(null, quest);
+                questItem.assignQuest(quest);
             }
 
         } catch (Exception e) {
@@ -502,7 +479,6 @@ public class QuestHandler {
 
             if (Dungeon.level.getClass().getSimpleName().equals(questObjectiveLevelClassName)) {
                 spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
-                //spawnKillQuestMobs(quest, Dungeon.level);
             }
             //**** END ****
 
@@ -514,10 +490,7 @@ public class QuestHandler {
             quest.given = true;
 
         }
-
     }
-
-
 
     /**
      * speak & speak_fetch objective logic
@@ -525,8 +498,6 @@ public class QuestHandler {
 
     //gets called when speaking to an NPC you must speak to as part of the speak quest.
     public void handleSpeakQuest(NPC npc, Quest quest) {
-        System.out.println("handle speak to quest");
-
         GameScene.show(new WndQuest(npc, quest.QUEST_COMPLETED_TEXT));
 
         quest.getCurObjective().objectiveCompleted();
@@ -575,7 +546,7 @@ public class QuestHandler {
 
             if (curNPCName.equals(npcName)) {
                 NPC speakToNPC = (NPC)mob;
-                //speakToNPC.questGiver = false;
+
                 speakToNPC.assignSpeakToQuest(true);
 
                 return;
@@ -638,13 +609,8 @@ public class QuestHandler {
         } else {
 
             GameScene.show(new WndQuest(npc, "You're talking to the wrong version of me brew"));
-
-
         }
-
     }
-
-
 
     /**
      * "helper/misc" methods
@@ -683,19 +649,12 @@ public class QuestHandler {
 
                     if (Dungeon.level.getClass().getSimpleName().equals(questObjectiveLevelClassName)) {
                         spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
-                        //spawnKillQuestMobs(quest, Dungeon.level);
                     }
-
-
-                    //spawnKillQuestMobsInSameLevelAsHero(quest, Dungeon.level);
                     break;
                 case "fetch":
                     spawnQuestItem(currentObjective.itemName, Dungeon.level, quest);
                 case "speak":
                 case "speak_fetch":
-//                    Dungeon.level.spawnSpeakToQuestNPCS();
-//                    setSpeakToQuestNPC(currentObjective.speakToNPC);
-
                     setSpeakToQuestNPC(questObjective.speakToNPC);
                     Dungeon.level.spawnSpeakToQuestNPCS();
                     setQuestNPCIcons();
@@ -725,8 +684,6 @@ public class QuestHandler {
             }
 
         }
-
-
     }
 
     public static void setQuestComplete(ArrayList<Quest> questList, String givenQuestName) {
@@ -746,37 +703,29 @@ public class QuestHandler {
         switch (objective.questType) {
 
             case "speak":
-                //journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
                 journalEntry = "Speak to " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "speak_fetch":
-                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
                 journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
-                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
                     journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ "'s in the " +classNameDeconstructor(objective.level);
                 } else {
-                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
                     journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 }
                 break;
             case "kill_fetch":
-                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
                 journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "fetch":
-                //journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
                 journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from somewhere in the " +classNameDeconstructor(objective.level);
                 break;
             case "use_item":
-                //journalEntry = "Use " +objective.itemName;
                 journalEntry = "Use " +classNameDeconstructor(objective.itemName);
                 break;
         }
 
-        //Journal.addQuestEntry(journalEntry);
         QuestJournal.addQuestEntry(journalEntry);
     }
 
@@ -809,32 +758,25 @@ public class QuestHandler {
         switch (objective.questType) {
 
             case "speak":
-                //journalEntry = "Speak to " +objective.speakToNPC+ " in the " +objective.level;
                 journalEntry = "Speak to " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "speak_fetch":
-                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.speakToNPC+ " in the " +objective.level;
                 journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.speakToNPC)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
-                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ "'s in the " +objective.level;
                     journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ "'s in the " +classNameDeconstructor(objective.level);
                 } else {
-                    //journalEntry = "Kill " +objective.leftToKill+ " " +objective.enemy+ " in the " +objective.level;
                     journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 }
                 break;
             case "kill_fetch":
-                //journalEntry = "Collect a " +objective.itemName+ " from " +objective.enemy+ " in the " +objective.level;
                 journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 break;
             case "fetch":
-                //journalEntry = "Collect a " +objective.itemName+ " from the " +objective.level;
                 journalEntry = "Collect " +classNameDeconstructor(objective.itemName)+ " from somewhere in the " +classNameDeconstructor(objective.level);
                 break;
             case "use_item":
-                //journalEntry = "Use " +objective.itemName;
                 journalEntry = "Use " +classNameDeconstructor(objective.itemName);
                 break;
         }
@@ -887,8 +829,6 @@ public class QuestHandler {
 
     public static void completeQuest(NPC npc, Quest quest) {
 
-        System.out.println("Is it the final quest and objective? " +isFinalQuest(quest, quest.getCurObjective()));
-
         if (quest.curObjective == (quest.questObjectives.size() - 1)) {
             quest.questCompleted();
 
@@ -903,42 +843,7 @@ public class QuestHandler {
             if (actComplete()) {
 
                 DataHandler.getInstance().actComplete = true;
-//                try {
-//                    Dungeon.saveAll();
-//
-//                } catch (Exception e) {
-//                    System.out.println(e.getMessage());
-//                }
-//
-//
-//                DataHandler.getInstance().nextAct();
-//
-//                int currentAct = DataHandler.getInstance().currentAct;
-//
-//                switch (currentAct) {
-//
-//                    case 2:
-//                        DataHandler.getInstance().questList = DataHandler.getInstance().actTwoQuests;
-//                        break;
-//                    case 3:
-//                        DataHandler.getInstance().questList = DataHandler.getInstance().actThreeQuests;
-//                        break;
-//                    case 4:
-//                        InterlevelScene.mode = InterlevelScene.Mode.CREDITS;
-//                        Game.switchScene(InterlevelScene.class);
-//                        return;
-//                }
-//
-//                DataHandler.getInstance().actStarting = true;
-//
-//                InterlevelScene.mode = InterlevelScene.Mode.NEXTACT;
-//                Game.switchScene(InterlevelScene.class);
             }
-
-//
-//            if (npc != null) {
-//                npc.removeQuest();
-//            }
 
         } else {
             removeFromQuestJournal(quest);
@@ -996,34 +901,11 @@ public class QuestHandler {
                         }
 
                     }
-
             }
         }
     }
 
-    public static boolean isFinalQuest(Quest givenQuest, QuestObjective givenObjective) {
-
-        int questListSize = DataHandler.getInstance().questList.size();
-
-        Quest finalQuest = DataHandler.getInstance().questList.get(questListSize - 1);
-
-        int objectiveListSize = finalQuest.questObjectives.size();
-
-        QuestObjective finalQuestObjective = finalQuest.questObjectives.get(objectiveListSize - 1);
-
-        if (givenQuest == finalQuest && givenObjective == finalQuestObjective) {
-            return true;
-        }
-
-        return false;
-    }
-
     public static void showCompleteQuestWindow(Quest quest) {
-
-//        if (isFinalQuest(quest, quest.getCurObjective())) {
-//
-//
-//        }
 
         String questGiverName = quest.questGiver;
 

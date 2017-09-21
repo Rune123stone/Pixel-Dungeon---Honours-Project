@@ -76,14 +76,6 @@ public class Quest implements Bundlable{
         prerequisiteQuestName = bundle.getString(PREREQUISITEQUESTNAME);
 
         questObjectives = new ArrayList<>();
-//        Collection objectiveCollection = bundle.getCollection(QUESTOBJECTIVES);
-//        questObjectives.addAll(objectiveCollection);
-//        System.out.println("QUEST OBJECTIVESwefwefwefwefwefwefwef");
-//        for (QuestObjective questObjective : questObjectives) {
-//            System.out.println("QUEST OBJECTIVES");
-//            System.out.println(questObjective.questType);
-//        }
-
 
         for (Bundlable bundlable : bundle.getCollection( QUESTOBJECTIVES )) {
             System.out.println("wefijweifjiwjfiwejf");
@@ -92,8 +84,6 @@ public class Quest implements Bundlable{
                 questObjectives.add((QuestObjective)bundlable);
             }
         }
-
-
 
         if (questGiver.equals("none")) {
             QUEST_NOT_GIVEN_TEXT = bundle.getString(QUESTNOTGIVENTEXT);
@@ -160,102 +150,11 @@ public class Quest implements Bundlable{
         System.out.println(given);
     }
 
-    public void displayObjectives() {
-        for (QuestObjective questObjective: questObjectives) {
-            System.out.println("---QUEST OBJECTIVES---");
-            System.out.println("Quest Type: " +questObjective.questType);
-            System.out.println("Quest Name: " +questObjective.questObjectiveName);
-
-            switch (questObjective.questType) {
-                case "speak":
-                    System.out.println("Speak To: " +questObjective.speakToNPC);
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-                case "kill":
-                    System.out.println("Enemy: " +questObjective.enemy);
-                    System.out.println("Amount to Kill: " +questObjective.leftToKill);
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-                case "collect":
-                    System.out.println("Item to Collect: " +questObjective.itemName);
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-                case "kill_collect":
-                    System.out.println("Enemy: " +questObjective.enemy);
-                    System.out.println("Amount to Kill: " +questObjective.leftToKill);
-                    System.out.println("Item to Collect: " +questObjective.itemName);
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-                case "rescue":
-                    System.out.println("Enemy: " +questObjective.enemy);
-                    System.out.println("Speak To: " +questObjective.speakToNPC);
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-                case "use_item":
-                    System.out.println("Item to Use: " +questObjective.itemName);
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-                case "travel":
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-                case "speak_collect":
-                    System.out.println("Speak To: " +questObjective.speakToNPC);
-                    System.out.println("Level: " +questObjective.level);
-                    System.out.println("Item to Collect: " +questObjective.itemName);
-                    break;
-                case "fight":
-                    System.out.println("Fight: " +questObjective.enemy);
-                    System.out.println("Level: " +questObjective.level);
-                    break;
-            }
-            System.out.println("---END OF OBJECTIVE---");
-        }
-    }
-
-    public void setDescription() {
-        QuestObjective questObjective = questObjectives.get(curObjective);
-
-        switch (questObjective.questType) {
-            case "speak":
-                questDescription = "Speak to " +questObjective.speakToNPC+ " in the " +questObjective.level+ " zone.";
-                break;
-            case "kill":
-                questDescription = "Kill " +questObjective.leftToKill+ " " +questObjective.enemy+ " in the " +questObjective.level+ " zone.";
-                break;
-            case "fetch":
-                questDescription = "Collect " +questObjective.itemName+ " from somewhere in the " +questObjective.level+ " zone.";
-                break;
-            case "kill_fetch":
-                questDescription = "Collect " +questObjective.itemName+ " by killing " +questObjective.leftToKill+ " " +questObjective.enemy+ " in the " +questObjective.level+ " zone.";
-                break;
-            case "rescue":
-                questDescription = "Rescue " +questObjective.speakToNPC+ " from " +questObjective.enemy+ " in the " +questObjective.level+ " zone.";
-                break;
-            case "use_item":
-                questDescription = "Use the " +questObjective.itemName+ " in the " +questObjective.level+ " zone.";
-                break;
-            case "travel":
-                questDescription = "Travel to the " +questObjective.level+ " zone.";
-                break;
-            case "speak_fetch":
-                questDescription = "Collect " +questObjective.itemName+ " from " +questObjective.speakToNPC+ " in the " +questObjective.level+ " zone.";
-                break;
-            case "fight":
-                questDescription = "Fight " +questObjective.enemy+ " in the " +questObjective.level+ " zone.";
-                break;
-        }
-
-    }
-
-
     public void displayObjectivesInSentence() {
 
         int i = 1;
         System.out.println("---QUEST OBJECTIVES---");
         for (QuestObjective questObjective: questObjectives) {
-
-//            System.out.println("Quest Type: " +questObjective.questType);
-//            System.out.println("Quest Objective Name: " +questObjective.questObjectiveName);
 
             switch (questObjective.questType) {
                 case "speak":
@@ -289,12 +188,4 @@ public class Quest implements Bundlable{
             i++;
         }
     }
-
-
-
-
-
-
-
-
 }

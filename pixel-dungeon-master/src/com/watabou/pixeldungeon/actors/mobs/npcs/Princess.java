@@ -10,19 +10,19 @@ import com.watabou.pixeldungeon.actors.buffs.Paralysis;
 import com.watabou.pixeldungeon.actors.buffs.Roots;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.scenes.GameScene;
-import com.watabou.pixeldungeon.sprites.GhostSprite;
+import com.watabou.pixeldungeon.sprites.ImpSprite;
 
 import java.util.HashSet;
 
-public class Mentor extends NPC {
+public class Princess extends NPC {
     {
-        name = "Mentor";
-        spriteClass = GhostSprite.class;
+        name = "Princess";
+        spriteClass = ImpSprite.class;
 
         state = PASSIVE;
     }
 
-    public Mentor() {
+    public Princess() {
         super();
 
         Sample.INSTANCE.load( Assets.SND_GHOST );

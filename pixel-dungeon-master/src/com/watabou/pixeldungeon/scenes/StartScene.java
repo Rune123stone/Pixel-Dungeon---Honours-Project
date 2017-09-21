@@ -300,8 +300,23 @@ public class StartScene extends PixelScene {
 	}
 	
 	private void startNewGame() {
+
+		StoryGenerator storyGenerator = StoryGenerator.getInstance();
+
+		storyGenerator.initializeStoryVariables();
+		storyGenerator.createActOneStory(PixelDungeon.instance);
+
+		DataHandler dataHandler = DataHandler.getInstance();
+
+		storyGenerator.createQuestGiverMotives(PixelDungeon.instance);
+
+		dataHandler.generateStoryXMLs();
+		dataHandler.createQuests();
+		dataHandler.displayQuests();
+
+		OverworldScene.hero = null;
+
 		Dungeon.hero = null;
-		//InterlevelScene.mode = InterlevelScene.Mode.OVERWORLD;
 
 		DataHandler.getInstance().actStarting = true;
 
@@ -319,8 +334,6 @@ public class StartScene extends PixelScene {
 		Game.instance.deleteFile("Tier");
 
 		Game.switchScene(InterlevelScene.class);
-
-
 
 
 		// *** END ***

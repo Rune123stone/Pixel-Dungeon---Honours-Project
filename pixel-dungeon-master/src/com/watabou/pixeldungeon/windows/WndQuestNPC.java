@@ -78,11 +78,7 @@ public class WndQuestNPC extends WndQuest{
             } else {
                 Dungeon.level.drop(reward, npc.pos).sprite.drop();
             }
-//
-//            npc.yell("Farewell, adventurer!");
-//            npc.die(null);
-//
-//            Ghost.Quest.complete();
+
         } catch (Exception e) {
 
         }
@@ -121,26 +117,5 @@ public class WndQuestNPC extends WndQuest{
 
             DataHandler.getInstance().actComplete = false;
         }
-
-
-//        if (questItem != null) {
-//            questItem.detach( Dungeon.hero.belongings.backpack );
-//        }
-//
-//        try {
-//            Item reward = index == 0 ? Ghost.Quest.weapon : Ghost.Quest.armor;
-//            if (reward.doPickUp(Dungeon.hero)) {
-//                GLog.i(Hero.TXT_YOU_NOW_HAVE, reward.name());
-//            } else {
-//                Dungeon.level.drop(reward, npc.pos).sprite.drop();
-//            }
-//
-//            npc.yell("Farewell, adventurer!");
-//            npc.die(null);
-//
-//            Ghost.Quest.complete();
-//        } catch (Exception e) {
-//
-//        }
     }
 }

@@ -71,7 +71,6 @@ public class QuestGiver {
         Motive motive = new Motive(type, storyPhase, questNotGivenDialogue, questGivenDialogue, questCompleteDialogue);
 
         motives.add(motive);
-        //System.out.println("added motive: " +type+ " with story phase " +storyPhase);
     }
 
     public void createNewMotiveWithDialogue(String type, String storyPhase, String questNotGivenDialogue, String questGivenDialogue, String questCompleteDialogue, String actOpeningDialogue) {
@@ -81,7 +80,6 @@ public class QuestGiver {
         System.out.println(motive.storyPhase);
         System.out.println(motive.actOpeningStory);
         motives.add(motive);
-        //System.out.println("added motive: " +type+ " with story phase " +storyPhase);
     }
 
     public void addMotiveObjectives(String type, String storyPhase, String...objectiveTypes) {
@@ -115,28 +113,6 @@ public class QuestGiver {
         }
     }
 
-    public void displayEnemies(String type, String storyPhase) {
-        for (Motive motive : motives) {
-
-            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
-                for (String enemy : motive.enemies) {
-                    System.out.println(enemy);
-                }
-            }
-
-        }
-    }
-
-    public void addBossEnemies(String type, String storyPhase, String...bossEnemies) {
-
-        for (Motive motive : motives) {
-
-            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
-                motive.populateBossEnemies(bossEnemies);
-            }
-        }
-    }
-
     public void addItems(String type, String storyPhase, String...items) {
 
         for (Motive motive : motives) {
@@ -153,7 +129,6 @@ public class QuestGiver {
 
             if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 motive.populateNPCs(npcs);
-                System.out.println("adding npcs to motive type" +motive.type+ ", story phase " +motive.storyPhase);
             }
         }
     }
@@ -163,17 +138,6 @@ public class QuestGiver {
         for (Motive motive : motives) {
             if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
                 return motive.getRandomEnemy();
-            }
-        }
-
-        return null;
-    }
-
-    public String getRandomBossEnemy(String type, String storyPhase) {
-
-        for (Motive motive : motives) {
-            if (motive.type.equals(type) && motive.storyPhase.equals(storyPhase)) {
-                return motive.getRandomBossEnemmy();
             }
         }
 
@@ -206,21 +170,6 @@ public class QuestGiver {
         this.xmlID = xmlID;
     }
 
-
-
-    public void displayMotives() {
-
-        for (Motive motive : motives) {
-
-            System.out.println("Motive Type: " +motive.type);
-            System.out.println("Motive Story Phase: " +motive.storyPhase);
-            System.out.println("\n");
-
-        }
-
-
-
-    }
 
     public class Motive {
 
@@ -301,20 +250,6 @@ public class QuestGiver {
 
             Collections.shuffle(enemies);
             return enemies.get(0);
-        }
-
-        public void populateBossEnemies(String...values) {
-
-            for (int i = 0; i < values.length; i++) {
-                String curBossEnemy = values[i];
-                bossEnemies.add(curBossEnemy);
-            }
-        }
-
-        public String getRandomBossEnemmy() {
-
-            Collections.shuffle(bossEnemies);
-            return bossEnemies.get(0);
         }
 
         public void populateItems(String...values) {

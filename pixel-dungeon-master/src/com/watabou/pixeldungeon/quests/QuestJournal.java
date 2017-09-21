@@ -1,6 +1,5 @@
 package com.watabou.pixeldungeon.quests;
 
-import com.watabou.noosa.Image;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 
@@ -13,7 +12,6 @@ public class QuestJournal {
         private static final String ENTRY = "quest entry";
 
         public String entry;
-        public String enemyImage;
 
         public QuestEntry(String entry) {
             this.entry = entry;
@@ -60,6 +58,10 @@ public class QuestJournal {
                 questEntries.remove(questEntry);
             }
         }
+    }
+
+    public static void clearQuestJournal() {
+        questEntries.clear();
     }
 
 
