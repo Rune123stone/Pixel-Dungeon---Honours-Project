@@ -7,7 +7,7 @@
 			<motiveName>lost wedding ring</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Why hey there, cousin! Fancy seein' you around these parts. You say you've fallen on hard times, huh? Well, you can always rely on me if you need a place to stay or somethin' to eat. I'll even give ya some coin if you're willin' to do some work for me. See, I've been out here lookin' for my fiance's wedding ring for a good few hours now and I just can't seem to find it! Leave it to me to lose it in a place like this. If you could find it for me, I'd sure appreciate it!</questNotGivenDialogue>
+			<questNotGivenDialogue>Why hey there, cousin! Fancy seein' you around these parts. You say you've fallen on hard times, huh? Well, you can always rely on me if you need a place to stay or somethin' to eat. I'll even give ya some coin if you're willin' to do some work for me. See, I've been out here lookin' for my fiance's wedding ring for a good few hours now and I just can't seem to find it! Leave it to me to lose it in a place like this. If you could find it for me, I'd sure appreciate it! If you find it, bring it back to me in the Forest.</questNotGivenDialogue>
 			<questGivenDialogue>Don't ask how I lost it, just find it, please!</questGivenDialogue>
 			<questCompleteDialogue>You found it? I can't believe it! Thanks cousin, you've just saved me from a world o' hurt! You've earned yourself a permanent residence at my place, I could use someone like you. Now I promised you a reward, so please, choose somethin' from my collection of scrap!</questCompleteDialogue>
 
@@ -38,7 +38,7 @@
 			<motiveName>prepare feast</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Cousin! What's it been, 10 years since we last saw each other? You ain't lookin' so good, when's the last time you had a decent meal? You know what, you're joinin' me for a feast tonight. I've got everything ready for it except the meat; I've been out here trying to scramble up some from the nearby animals but I've just never been much of a hunter. Say, maybe you could help me out? Not only will I give you the best meal of your life, but I'll also let you choose a reward from my collection of scrap! </questNotGivenDialogue>
+			<questNotGivenDialogue>Cousin! What's it been, 10 years since we last saw each other? You ain't lookin' so good, when's the last time you had a decent meal? You know what, you're joinin' me for a feast tonight. I've got everything ready for it except the meat; I've been out here trying to scramble up some from the nearby animals but I've just never been much of a hunter. Say, maybe you could help me out? Not only will I give you the best meal of your life, but I'll also let you choose a reward from my collection of scrap! Meet me in the Forest once you get the meat.</questNotGivenDialogue>
 			<questGivenDialogue>Mmm, charred meat with roasted potatoes on the side, I can't wait!</questGivenDialogue>
 			<questCompleteDialogue>I knew I could rely on you! You always were a great hunter. I could use someone like you to help me with some errands, so you know what? You're staying at my place now! Here, choose somethin' from my collection of scrap!</questCompleteDialogue>
 

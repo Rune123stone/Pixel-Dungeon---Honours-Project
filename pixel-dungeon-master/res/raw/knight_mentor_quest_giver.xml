@@ -7,7 +7,7 @@
 			<motiveName>train</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Greetings young knight! I summoned you here because I fear your life of luxury has made you soft and weak. You need to train if you are to proudly wear that armor.</questNotGivenDialogue>
+			<questNotGivenDialogue>Greetings young knight! I summoned you here because I fear your life of luxury has made you soft and weak. You need to train if you are to proudly wear that armor. Meet me back in the Town once you have completed your task.</questNotGivenDialogue>
 			<questGivenDialogue>What are you still doing here? I've given you a task, now go forth and complete it!</questGivenDialogue>
 			<questCompleteDialogue>Perhaps there is hope for you yet. Here, choose either a new weapon or new armor - you're going to need it for your next quest.</questCompleteDialogue>
 
@@ -50,7 +50,7 @@
 			<motiveName>simple task</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Ahh, you've finally arrived! I seem to recall that you owe me a few favours for saving your skin during the Great War. You thought that I did that without expecting anything in return? Oh dear boy, you've much to learn.</questNotGivenDialogue>
+			<questNotGivenDialogue>Ahh, you've finally arrived! I seem to recall that you owe me a few favours for saving your skin during the Great War. You thought that I did that without expecting anything in return? Oh dear boy, you've much to learn. Once you have finished your task, meet me back in thr Town.</questNotGivenDialogue>
 			<questGivenDialogue>Don't just stand there, I need you to take care of this!</questGivenDialogue>
 			<questCompleteDialogue>Outstanding! Here, you may choose either a weapon or some armor from my collection, they will serve you well in the adventures to follow - yes, there's more mindless tasks to come.</questCompleteDialogue>
 

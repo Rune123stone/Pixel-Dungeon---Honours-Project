@@ -1,90 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
         <questGiver>
             <name>Farmer</name>
             <level>
-                <name>Shadow Lands</name>
-                <story>A well-trained knight barely has a chance of survival here, you have my condolences.</story>
-            </level>
-            <level>
-                <name>Forest</name>
-                <story>The over abundance of trees makes the Forest great for gathering firewood.</story>
-            </level>
-            <level>
                 <name>Caves</name>
-                <story>Peasant - Farmer - Caves</story>
-            </level>
-            <level>
-                <name>Castle</name>
-                <story>Peasant - Farmer - Castle</story>
-            </level>
-            <level>
-                <name>Dungeon</name>
-                <story>Peasant - Farmer - Dungeon</story>
+                <story>These Caves are said to be home to some of the Kingdoms most dangerous creatures. It's rather odd that the local farmer would ask you to meet him down here, but you aren't in any position to turn down work. Find and speak to the Farmer.</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Peasant - Farmer - Fields</story>
+                <story>The Fields have been your home ever since you were a child. While you were tending to your crops, the local farmer asked if you could lend him a hand later. You should find him.</story>
             </level>
         </questGiver>
 
         <questGiver>
             <name>Relative</name>
             <level>
-                <name>Shadow Lands</name>
-                <story>A well-trained knight barely has a chance of survival here, you have my condolences.</story>
-            </level>
-            <level>
-                <name>Forest</name>
-                <story>The over abundance of trees makes the Forest great for gathering firewood.</story>
-            </level>
-            <level>
                 <name>Caves</name>
-                <story>Peasant - Relative - Caves</story>
-            </level>
-            <level>
-                <name>Castle</name>
-                <story>Peasant - Relative - Castle</story>
-            </level>
-            <level>
-                <name>Dungeon</name>
-                <story>Peasant - Relative - Dungeon</story>
+                <story>These Caves are said to be home to some of the Kingdoms most dangerous creatures. While passing by, you heard a familiar-sounding voice coming from inside, you should look around and find the source.</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Peasant - Relative - Fields</story>
+                <story>The Fields have been your home ever since you were a child. Some of the other peasants told you that they saw one of your relatives walking around near here. You should find him.</story>
             </level>
         </questGiver>
 
         <questGiver>
             <name>Stranger</name>
             <level>
-                <name>Shadow Lands</name>
-                <story>A well-trained knight barely has a chance of survival here, you have my condolences.</story>
-            </level>
-            <level>
-                <name>Forest</name>
-                <story>The over abundance of trees makes the Forest great for gathering firewood.</story>
-            </level>
-            <level>
                 <name>Caves</name>
-                <story>Peasant - PlaceHolder - Caves</story>
-            </level>
-            <level>
-                <name>Castle</name>
-                <story>Peasant - PlaceHolder - Castle</story>
-            </level>
-            <level>
-                <name>Dungeon</name>
-                <story>Peasant - PlaceHolder - Dungeon</story>
+                <story>These Caves are said to be home to some of the Kingdoms most dangerous creatures. While in the Town, you saw a notice that read: "Greatness awaits anyone willing to assist me with a few tasks. Should you be interested, find me in the nearby Caves". You're not one to turn down greatness, seeing as your life up to this point has been anything but 'great'. You should find and speak to this stranger.</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Peasant - PlaceHolder - Fields</story>
+                <story>The Fields have been your home ever since you were a child. You've heard from some of the locals that a strange man is wondering around near here, mumbling something about "treasures and riches". Since you have an interest in both of those things, perhaps he may be someone worth talking to. You should find and speak to him.</story>
             </level>
         </questGiver>
-
 
 </resources>

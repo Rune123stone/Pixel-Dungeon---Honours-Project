@@ -93,6 +93,7 @@ public class StoryGenerator {
         heroBackground.addStartingLevel("Caves");
 
         questGiver = new QuestGiver("Mentor", "Ghost");
+        questGiver.setHomeLevel("Town");
         questGiver.setXMLID(R.raw.knight_mentor_quest_giver);
         heroBackground.addQuestGiver(questGiver);
 
@@ -102,6 +103,7 @@ public class StoryGenerator {
         heroBackground.addQuestGiver(questGiver);
 
         questGiver = new QuestGiver("Seer", "Seer");
+        questGiver.setHomeLevel("Fields");
         questGiver.setXMLID(R.raw.knight_seer_quest_giver);
         heroBackground.addQuestGiver(questGiver);
 
@@ -233,7 +235,9 @@ public class StoryGenerator {
 
                                     String levelStory = curLevelElement.getElementsByTagName("story").item(0).getTextContent();
 
-                                    actOneStory = levelStory;
+                                    actOneStory = "Hero Background: " +chosenBackground.background;
+
+                                    actOneStory = actOneStory.concat("\n" + "\n" + levelStory);
 
                                 }
                             }

@@ -7,7 +7,7 @@
 			<motiveName>collect ingredients</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Ahh you must be the brave soul sent to help me collect ingredients for my next concoction! Go forth and gather these ingredients and you shall be duly rewarded. Meet me in the town to the north once you have completed your task.</questNotGivenDialogue>
+			<questNotGivenDialogue>Ahh you must be the brave soul sent to help me collect ingredients for my next concoction! Go forth and gather these ingredients and you shall be duly rewarded. Meet me in the Fields once you have completed your task.</questNotGivenDialogue>
 			<questGivenDialogue>Bring me those ingredients.</questGivenDialogue>
 			<questCompleteDialogue>Goood gooood, yess, these will do nicely! Please, choose a reward from my treasure box.</questCompleteDialogue>
 
@@ -44,7 +44,7 @@
 			<motiveName>nasty rodents</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Yes yes hello, now that the pleasantries are out of the way, I need you to take care of some vermin that have been ripping through my mushroom garden! I've tracked the foul creatures to this area. Find me in the town to the north of here once you've rid the world of those wretched beasts.</questNotGivenDialogue>
+			<questNotGivenDialogue>Yes yes hello, now that the pleasantries are out of the way, I need you to take care of some vermin that have been ripping through my mushroom garden! I've tracked the foul creatures to this area. Find me in the Fields once you've rid the world of those wretched beasts.</questNotGivenDialogue>
 			<questGivenDialogue>My mushrooms won't survive another day if you don't stop those vermin!</questGivenDialogue>
 			<questCompleteDialogue>You're back! My mushrooms are safe you say? Excellent! Champion, please, choose a reward from my collection, you have earned it.</questCompleteDialogue>
 

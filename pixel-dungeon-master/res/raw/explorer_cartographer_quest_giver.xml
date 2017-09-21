@@ -37,7 +37,7 @@
 
 			<questNotGivenDialogue>Hello there! Could I trouble you for some help, explorer? I need to deliver these maps to one of my customers but I just can't seem to find him. I'm sure you know a thing or two about tracking, so perhaps you can find him and deliver these maps for me? Tell him I sent you and he'll be sure to reward you, he owes me a few favours.</questNotGivenDialogue>
 			<questGivenDialogue>Please hurry, explorer! If those maps don't get delivered on time, it won't be good for my reputation!</questGivenDialogue>
-			<questCompleteDialogue>Ahh there my maps are! You say the cartographer sent you? And he said to give you a reward? Well, okay. I suppose I owe him that much. Here, choose something. He's been looking for an assistant for some time, you should see if he's got any more work for you. You'll find him in the nearby town.</questCompleteDialogue>
+			<questCompleteDialogue>Ahh there my maps are! You say the cartographer sent you? And he said to give you a reward? Well, okay. I suppose I owe him that much. Here, choose something. He's been looking for an assistant for some time, you should see if he's got any more work for you. You'll find him in the nearby Town.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>speak</objectiveTypeName>

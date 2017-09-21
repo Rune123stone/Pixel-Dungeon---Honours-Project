@@ -4,84 +4,36 @@
         <questGiver>
             <name>Cartographer</name>
             <level>
-                <name>Shadow Lands</name>
-                <story>Explorer - Cartographer - Shadow Lands</story>
-            </level>
-            <level>
                 <name>Forest</name>
-                <story>Explorer - Cartographer - Forest</story>
-            </level>
-            <level>
-                <name>Caves</name>
-                <story>Explorer - Cartographer - Caves</story>
-            </level>
-            <level>
-                <name>Castle</name>
-                <story>Explorer - Cartographer - Castle</story>
-            </level>
-            <level>
-                <name>Dungeon</name>
-                <story>Explorer - Cartographer - Dungeon</story>
+                <story>One of the most beautiful areas in the entire Kingdom, the Forest has always been a joy to explore. You've heard rumours of an old Cartographer out here that needs the assistance of an Explorer. You should find and speak to him.</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Explorer - Cartographer - Fields</story>
+                <story>A bit dry and yellow for your taste, but the Fields are an integral part of the Kingdom are and definitely worth exploring. While exploring, you heard some local peasants speak of the local cartographer being out here. It's rather strange for him to wonder so far from his home, you should find him and see if he needs help.</story>
             </level>
         </questGiver>
 
         <questGiver>
             <name>Merchant</name>
             <level>
-                <name>Shadow Lands</name>
-                <story>Explorer - Merchant - Shadow Lands</story>
-            </level>
-            <level>
                 <name>Forest</name>
-                <story>Explorer - Merchant - Forest</story>
-            </level>
-            <level>
-                <name>Caves</name>
-                <story>Explorer - Merchant - Caves</story>
-            </level>
-            <level>
-                <name>Castle</name>
-                <story>Explorer - Merchant - Castle</story>
-            </level>
-            <level>
-                <name>Dungeon</name>
-                <story>Explorer - Merchant - Dungeon</story>
+                <story>One of the most beautiful areas in the entire Kingdom, the Forest has always been a joy to explore. While in Town, you found out that the local merchant had stepped out of his shop to run a few errands here. He's been gone for a rather long time, you should find him and make sure he's alright. It would be a shame if something happened to him, he's had the best prices in Town for years!</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Explorer - Merchant - Fields</story>
+                <story>A bit dry and yellow for your taste, but the Fields are an integral part of the Kingdom are and definitely worth exploring. While speaking to the local populace, you found out that the local merchant from Town is wandering around here, aimlessly. You should find him and see if he needs help.</story>
             </level>
         </questGiver>
 
         <questGiver>
             <name>Johnny</name>
             <level>
-                <name>Shadow Lands</name>
-                <story>Explorer - PlaceHolder2 - Shadow Lands</story>
-            </level>
-            <level>
                 <name>Forest</name>
-                <story>Explorer - PlaceHolder2 - Forest</story>
-            </level>
-            <level>
-                <name>Caves</name>
-                <story>Explorer - PlaceHolder2 - Caves</story>
-            </level>
-            <level>
-                <name>Castle</name>
-                <story>Explorer - PlaceHolder2 - Castle</story>
-            </level>
-            <level>
-                <name>Dungeon</name>
-                <story>Explorer - PlaceHolder2 - Dungeon</story>
+                <story>One of the most beautiful areas in the entire Kingdom, the Forest has always been a joy to explore. You should explore the area Who knows, maybe you'll come across someone rather interesting.</story>
             </level>
             <level>
                 <name>Fields</name>
-                <story>Explorer - PlaceHolder2 - Fields</story>
+                <story>A bit dry and yellow for your taste, but the Fields are an integral part of the Kingdom are and definitely worth exploring. Explore the area and see if there is anyone in need of assistance.</story>
             </level>
         </questGiver>
 

@@ -282,7 +282,7 @@
 		</motive>
 
 		<motive>
-			<motiveName>kill boss - betrayel</motiveName>
+			<motiveName>kill boss - betrayal</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
 			<questNotGivenDialogue>You have everything you need to defeat the holy warriors! Go now, Peasant, and do not fail.</questNotGivenDialogue>
