@@ -2,16 +2,17 @@ package com.watabou.pixeldungeon.items.quest;
 
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.potions.Potion;
+import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 
 public class PotionOfRemembrance extends Potion{
     {
         name = "Potion of Remembrance";
+        image = ItemSpriteSheet.POTION_AMBER;
     }
 
     @Override
     protected void apply( Hero hero ) {
         setKnown();
-        //hero.earnExp( hero.maxExp() - hero.exp );
     }
 
     @Override

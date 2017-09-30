@@ -86,7 +86,9 @@ public class StartScene extends PixelScene {
 	
 	private boolean huntressUnlocked;
 	private Group unlock;
-	
+	public static boolean newGame = true;
+
+
 	public static HeroClass curClass;
 	
 	@Override
@@ -318,6 +320,7 @@ public class StartScene extends PixelScene {
 		dataHandler.displayQuests();
 
 		OverworldScene.hero = null;
+		OverworldScene.previousZone = null;
 
 		Dungeon.hero = null;
 
@@ -335,6 +338,8 @@ public class StartScene extends PixelScene {
 		Game.instance.deleteFile("Shadow Lands");
 		Game.instance.deleteFile("Castle");
 		Game.instance.deleteFile("Tier");
+
+		newGame = true;
 
 		Game.switchScene(InterlevelScene.class);
 

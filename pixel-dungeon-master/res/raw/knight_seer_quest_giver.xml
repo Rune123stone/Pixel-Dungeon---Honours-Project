@@ -72,7 +72,7 @@
 			<questGivenDialogue>This is the fourth assistant I've lost this month!</questGivenDialogue>
 			<questCompleteDialogue>Oh, hello. I don't suppose you know how to get out of here do you? You do? Thank the Gods! You say my master sent you to find me? *Sigh* I better get back to him then. Thank you, champion. Here, I found some items that might be useful for you - but you can only choose one of them.</questCompleteDialogue>
 
-			<actTwoOpeningStory>Even though the Seer lost his assistant shortly after he returned, he remains eternally grateful for your services. Not long after you both went your separate ways, you received a letter from the Seer requesting that you meet him in the Town as soon as possible. You should find him.</actTwoOpeningStory>
+			<actTwoOpeningStory>Even though the Seer lost his assistant shortly after he returned, he remains eternally grateful for your services. Not long after you both went your separate ways, you received a letter from the Seer requesting that you meet him in the Fields as soon as possible. You should find him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>speak</objectiveTypeName>
@@ -92,7 +92,7 @@
 			<questGivenDialogue>Who are you? Ahh, hurry champion, it's getting worse!</questGivenDialogue>
 			<questCompleteDialogue>What's this? Who are you? Ahh yes, I remember! Thank you champion!</questCompleteDialogue>
 
-			<actTwoOpeningStory>After drinking the potion, the Seer went into a panic and ran into the Forest. You assumed he would be alright without your help, so you went home. Several days later, you received a letter from the Seer detailing that he'd recovered his memory and that he urgently needs to speak to you in the Town. Find him.</actTwoOpeningStory>
+			<actTwoOpeningStory>After drinking the potion, the Seer went into a panic and ran into the Forest. You assumed he would be alright without your help, so you went home. Several days later, you received a letter from the Seer detailing that he'd recovered his memory and that he urgently needs to speak to you in the Fields. Find him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -164,7 +164,7 @@
 			<questGivenDialogue>Hurry Champion!</questGivenDialogue>
 			<questCompleteDialogue>Excellent! Now, to begin the brewing.</questCompleteDialogue>
 
-			<actThreeOpeningStory>After The Potion of Vision's effects wore off, the Seer needed time to recover. After a few days, you received a letter from him requesting that you meet him in the Town to discuss what happens next. Find him. </actThreeOpeningStory>
+			<actThreeOpeningStory>After The Potion of Vision's effects wore off, the Seer needed time to recover. After a few days, you received a letter from him requesting that you meet him in the Fields to discuss what happens next. Find him. </actThreeOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>

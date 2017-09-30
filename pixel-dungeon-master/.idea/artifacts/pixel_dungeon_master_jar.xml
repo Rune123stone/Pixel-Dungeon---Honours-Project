@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="pixel-dungeon-master:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/pixel_dungeon_master_jar</output-path>
+    <root id="archive" name="pixel-dungeon-master.jar">
+      <element id="module-output" name="pixel-dungeon-master" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../json-simple-1.1.jar" path-in-jar="/" />
+      <element id="library" level="project" name="PD-classes-master" />
+    </root>
+  </artifact>
+</component>

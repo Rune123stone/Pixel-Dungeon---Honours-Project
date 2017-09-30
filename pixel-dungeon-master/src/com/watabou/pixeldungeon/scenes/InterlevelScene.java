@@ -255,7 +255,10 @@ public class InterlevelScene extends PixelScene {
 
         // *** loads hero if it exists. ***
         try {
-            Dungeon.loadHero();
+            if (StartScene.newGame) {
+                Dungeon.loadHero();
+                StartScene.newGame = false;
+            }
         } catch (Exception e) {
             System.out.println("No such file.");
         }
