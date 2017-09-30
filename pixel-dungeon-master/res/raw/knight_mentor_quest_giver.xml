@@ -50,7 +50,7 @@
 			<motiveName>simple task</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Ahh, you've finally arrived! I seem to recall that you owe me a few favours for saving your skin during the Great War. You thought that I did that without expecting anything in return? Oh dear boy, you've much to learn. Once you have finished your task, meet me back in thr Town.</questNotGivenDialogue>
+			<questNotGivenDialogue>Ahh, you've finally arrived! I seem to recall that you owe me a few favours for saving your skin during the Great War. You thought that I did that without expecting anything in return? Oh dear boy, you've much to learn. Once you have finished your task, meet me back in the Town.</questNotGivenDialogue>
 			<questGivenDialogue>Don't just stand there, I need you to take care of this!</questGivenDialogue>
 			<questCompleteDialogue>Outstanding! Here, you may choose either a weapon or some armor from my collection, they will serve you well in the adventures to follow - yes, there's more mindless tasks to come.</questCompleteDialogue>
 

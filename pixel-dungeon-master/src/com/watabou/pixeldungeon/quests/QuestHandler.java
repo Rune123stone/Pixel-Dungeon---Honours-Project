@@ -710,7 +710,11 @@ public class QuestHandler {
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
-                    journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ "'s in the " +classNameDeconstructor(objective.level);
+                    if (pluralChecker(classNameDeconstructor(objective.enemy)).equals("EMPTY")) {
+                        journalEntry = "Kill " + objective.leftToKill + " " + classNameDeconstructor(objective.enemy) + "'s in the " + classNameDeconstructor(objective.level);
+                    } else {
+                        journalEntry = "Kill " + objective.leftToKill + " " + pluralChecker(classNameDeconstructor(objective.enemy)) + " in the " + classNameDeconstructor(objective.level);
+                    }
                 } else {
                     journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 }
@@ -727,6 +731,17 @@ public class QuestHandler {
         }
 
         QuestJournal.addQuestEntry(journalEntry);
+    }
+
+    public static String pluralChecker(String name) {
+        switch (name) {
+            case "Succubus":
+                return "Succubi";
+            case "Thief":
+                return "Thieves";
+        }
+
+        return "EMPTY";
     }
 
     public static String classNameDeconstructor(String className) {
@@ -765,7 +780,11 @@ public class QuestHandler {
                 break;
             case "kill":
                 if (objective.leftToKill > 1) {
-                    journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ "'s in the " +classNameDeconstructor(objective.level);
+                    if (pluralChecker(classNameDeconstructor(objective.enemy)).equals("EMPTY")) {
+                        journalEntry = "Kill " + objective.leftToKill + " " + classNameDeconstructor(objective.enemy) + "'s in the " + classNameDeconstructor(objective.level);
+                    } else {
+                        journalEntry = "Kill " + objective.leftToKill + " " + pluralChecker(classNameDeconstructor(objective.enemy)) + " in the " + classNameDeconstructor(objective.level);
+                    }
                 } else {
                     journalEntry = "Kill " +objective.leftToKill+ " " +classNameDeconstructor(objective.enemy)+ " in the " +classNameDeconstructor(objective.level);
                 }

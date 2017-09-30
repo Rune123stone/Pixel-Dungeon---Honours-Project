@@ -796,6 +796,29 @@ public class DataHandler {
         questObjective.appendChild(questLocation);
     }
 
+    public void deleteStoryXMLs() {
+
+        String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Data/";
+
+        File file = new File(fullPath, "ActOne.xml");
+        if (file.exists()) {
+            System.out.println("destroying act one");
+            file.delete();
+        }
+
+        file = new File(fullPath, "ActTwo.xml");
+        if (file.exists()) {
+            System.out.println("destroying act two");
+            file.delete();
+        }
+
+        file = new File(fullPath, "ActThree.xml");
+        if (file.exists()) {
+            System.out.println("destroying act three");
+            file.delete();
+        }
+    }
+
 
     /**
      * The following methods are used for returning instances of classes using reflection.

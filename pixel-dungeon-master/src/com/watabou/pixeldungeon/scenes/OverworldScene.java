@@ -68,6 +68,7 @@ public class OverworldScene extends PixelScene {
         scene = this;
         Camera.main.zoom( 1 );
         Camera.main.focusOn((Game.width / 2) - (OverworldMap.overworldMapWidth / 2), Game.height / 2);
+        //Camera.main.focusOn(((Game.width /2) - 150), Game.height /2);
 
         setMapTerrain();
 

@@ -49,7 +49,7 @@ public class InterlevelScene extends PixelScene {
     private static final String TXT_RETURNING = "Returning...";
     private static final String TXT_FALLING = "Falling...";
     private static final String TXT_OVERWORLD = "Travelling to Overworld...";
-    private static final String TXT_NEXTACT = "Next Act...";
+    private static String TXT_NEXTACT;
     private static final String TXT_CREDITS = "Amazing!";
 
     private static final String ERR_FILE_NOT_FOUND = "File not found. For some reason.";
@@ -110,6 +110,7 @@ public class InterlevelScene extends PixelScene {
                 text = TXT_OVERWORLD;
                 break;
             case NEXTACT:
+                TXT_NEXTACT = "Proceeding to Act " +DataHandler.getInstance().currentAct;
                 text = TXT_NEXTACT;
                 break;
             case CREDITS:

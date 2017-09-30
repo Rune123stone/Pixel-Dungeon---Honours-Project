@@ -32,18 +32,18 @@ public class FogOfWar extends Image {
 	/*
 	uncomment to reactivate fog of war
 	 */
-//	private static final int VISIBLE	= 0x00000000;
-//	private static final int VISITED	= 0xcc111111;
-//	private static final int MAPPED		= 0xcc442211;
-//	private static final int INVISIBLE	= 0xFF000000;
+	private static final int VISIBLE	= 0x00000000;
+	private static final int VISITED	= 0xcc111111;
+	private static final int MAPPED		= 0xcc442211;
+	private static final int INVISIBLE	= 0xFF000000;
 
 	/*
 	deactivates fog of war - remove when done testing
 	 */
-	private static final int VISIBLE	= 0x00000000;
-	private static final int VISITED	= 0x00000000;
-	private static final int MAPPED		= 0x00000000;
-	private static final int INVISIBLE	= 0x00000000;
+//	private static final int VISIBLE	= 0x00000000;
+//	private static final int VISITED	= 0x00000000;
+//	private static final int MAPPED		= 0x00000000;
+//	private static final int INVISIBLE	= 0x00000000;
 	///////////////////////////////////////////////////
 
 	private int[] pixels;

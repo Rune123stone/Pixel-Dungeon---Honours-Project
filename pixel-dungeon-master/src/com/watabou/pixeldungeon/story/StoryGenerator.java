@@ -4,6 +4,7 @@ package com.watabou.pixeldungeon.story;
 import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.R;
+import com.watabou.pixeldungeon.quests.QuestHandler;
 import com.watabou.pixeldungeon.quests.QuestJournal;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -371,10 +372,21 @@ public class StoryGenerator {
                 }
 
                 if (amountToKill > 1) {
-                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill " + amountToKill + " " +classNameDeconstructor(enemy)+ "'s in the " + level + ".");
+                    if (QuestHandler.pluralChecker(classNameDeconstructor(enemy)).equals("EMPTY")) {
+                        motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill " + amountToKill + " " +classNameDeconstructor(enemy)+ "'s in the " + level + ".");
+                    } else {
+                        motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill " +QuestHandler.pluralChecker(classNameDeconstructor(enemy))+ " in the " + level + ".");
+                    }
                 } else {
                     motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill the " +classNameDeconstructor(enemy)+ " in the " + level + ".");
                 }
+
+
+//                if (amountToKill > 1) {
+//                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill " + amountToKill + " " +classNameDeconstructor(enemy)+ "'s in the " + level + ".");
+//                } else {
+//                    motive.questNotGivenDialogue = motive.questNotGivenDialogue.concat("\n" + "\n" + "Quest Objective:" +"\n" + "Kill the " +classNameDeconstructor(enemy)+ " in the " + level + ".");
+//                }
 
                 DataHandler.getInstance().createKillObjective(questNode, document, objectiveName, enemy, amountToKill.toString(), level);
 

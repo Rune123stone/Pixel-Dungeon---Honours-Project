@@ -16,9 +16,11 @@ import java.util.Random;
 public class OverworldMap  {
 
     public static final int overworldMapWidth = 32; //Tiled map width
+    //public static final int overworldMapWidth = Game.width; //Tiled map width
     //public static final int overworldMapHeight = 32; //use the Tiled map height if map gives problems later on
 
-    public static final int overworldMapHeight = Game.height / OverworldTileMap.SIZE; //sets map height to full screen
+   // public static final int overworldMapHeight = Game.height / OverworldTileMap.SIZE; //sets map height to full screen
+    public static final int overworldMapHeight = Game.height;
     public static int overworldMapLength = overworldMapWidth * overworldMapHeight;
 
     public static int[] overworldMap = new int[overworldMapLength];

@@ -308,6 +308,9 @@ public class StartScene extends PixelScene {
 
 		DataHandler dataHandler = DataHandler.getInstance();
 
+		DataHandler.getInstance().deleteStoryXMLs();
+		DataHandler.getInstance().actComplete = false;
+
 		storyGenerator.createQuestGiverMotives(PixelDungeon.instance);
 
 		dataHandler.generateStoryXMLs();

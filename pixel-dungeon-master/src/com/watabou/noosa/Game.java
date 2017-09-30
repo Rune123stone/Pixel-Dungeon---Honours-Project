@@ -28,6 +28,7 @@ import com.watabou.input.Keys;
 import com.watabou.input.Touchscreen;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
+import com.watabou.pixeldungeon.story.DataHandler;
 import com.watabou.utils.BitmapCache;
 import com.watabou.utils.SystemTime;
 
@@ -149,6 +150,7 @@ public class Game extends Activity implements GLSurfaceView.Renderer, View.OnTou
 		
 		Music.INSTANCE.mute();
 		Sample.INSTANCE.reset();
+
 	}
 
 	@SuppressLint({ "Recycle", "ClickableViewAccessibility" })
@@ -233,6 +235,9 @@ public class Game extends Activity implements GLSurfaceView.Renderer, View.OnTou
 	}
 	
 	protected void destroyGame() {
+
+		DataHandler.getInstance().deleteStoryXMLs();
+
 		if (scene != null) {
 			scene.destroy();
 			scene = null;

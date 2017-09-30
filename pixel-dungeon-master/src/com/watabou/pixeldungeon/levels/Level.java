@@ -124,7 +124,6 @@ public abstract class Level implements Bundlable {
     public int entrance;
     public int exit;
 
-    //public static HashSet<Mob> mobs;
     public HashSet<Mob> mobs;
     public SparseArray<Heap> heaps;
     public HashMap<Class<? extends Blob>, Blob> blobs;
@@ -233,35 +232,6 @@ public abstract class Level implements Bundlable {
 
         spawnFetchItems();
         spawnKillQuestMobs();
-//
-//        if (!isTownLevel()) {
-//
-//            buildFlagMaps();
-//            cleanWalls();
-//
-//            createMobs();
-//            createItems();
-//
-//
-//
-//            setQuestList();
-//            handleNoQuestGiver();
-//
-//            spawnSpeakToQuestNPCS();
-//            spawnQuestGiverNPCs();
-//
-//            spawnFetchItems();
-//            spawnKillQuestMobs();
-//
-//
-//            //QuestHandler questHandler = new QuestHandler(new QuestObjective("FETCH", "Fetch me that shit", "DriedRose"));
-//            //questHandler.spawnKillQuestMobs(this);
-//            //createQuests();
-//
-//            //GenerateData generateData = GenerateData.getInstance();
-//
-//
-//        }
 
     }
 
@@ -665,84 +635,6 @@ public abstract class Level implements Bundlable {
         return false;
     }
 
-    //look at
-    public void removeUnessessaryNPCs() {
-
-        Iterator iterator = mobs.iterator();
-
-        while (iterator.hasNext()) {
-
-            Mob curMob = (Mob)iterator.next();
-
-            if (curMob instanceof NPC) {
-
-                NPC curNPC = (NPC)curMob;
-
-                if (curNPC.questGiver) {
-
-//                    String questGiverLevel = curNPC.quest.questGiverLevel;
-//
-//                    if (questGiverLevel.equals("Castle")) { //prevents nullPointer error - Castle uses the CityLevel class, there is no "CastleLevel" class.
-//                        questGiverLevel = "City";
-//                    }
-//
-//                    if (questGiverLevel.equals("Dungeon")) { //prevents nullPointer error - Dungeon uses the SewerLevel class, there is no "DungeonLevel" class.
-//                        questGiverLevel = "Sewer";
-//                    }
-//
-//                    if (questGiverLevel.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-//                        questGiverLevel = "ShadowLands";
-//                    }
-//
-//                    String questGiverLevelClass = questGiverLevel.concat("Level");
-//
-//                    if (this.getClass().getSimpleName().equals(questGiverLevelClass)) {
-//                        return;
-//                    } else if (curNPC.speakToQuest) {
-//                        return;
-//                    } else if ()
-//
-
-
-                    return;
-                }
-
-                if (curNPC.speakToQuest) {
-                    return;
-                }
-
-                iterator.remove();
-                System.out.println("Removed: " +curNPC.getClass().getSimpleName());
-
-            }
-
-        }
-//
-//        for (Mob mob : mobs) {
-//
-//            if (mob instanceof NPC) {
-//
-//                NPC curNPC = (NPC)mob;
-//
-//                if (curNPC.questGiver) {
-//                    return;
-//                }
-//
-//                if (curNPC.speakToQuest) {
-//                    return;
-//                }
-//
-//                mobs.remove(curNPC);
-//                System.out.println("Removed: " +curNPC.getClass().getSimpleName());
-//            }
-//
-//        }
-
-
-
-
-    }
-
 
     public int spawnPos(String zone) {
 
@@ -756,10 +648,6 @@ public abstract class Level implements Bundlable {
             zone = "Sewer";
         }
 
-//        if (zone.equals("Shadow Lands")) { //prevents nullPointer error - Shadow Lands uses the ShadowLandsLevel class, there is no "Shadow LandsLevel" class.
-//            zone = "Shadow Lands";
-//        }
-
         switch (zone) {
             case "Caves":
                 pos = CavesLevel.spawnPos();
@@ -772,7 +660,6 @@ public abstract class Level implements Bundlable {
                 break;
             case "Forest":
                 pos = ForestLevel.spawnPos();
-                //pos = randomRespawnCell();
                 break;
             case "City": //Castle
                 pos = randomRespawnCell();
@@ -862,12 +749,6 @@ public abstract class Level implements Bundlable {
             blobs.put(blob.getClass(), blob);
         }
 
-//        collection = bundle.getCollection(QUESTLIST);
-//        for (Bundlable b : collection) {
-//            questList.add((Quest)b);
-//            System.out.println("displaying q's");
-//            ((Quest) b).displayQuest();
-//        }
 
         for (Quest quest : DataHandler.getInstance().questList) {
             System.out.println("displaying q's");
@@ -889,7 +770,6 @@ public abstract class Level implements Bundlable {
         bundle.put(PLANTS, plants.values());
         bundle.put(MOBS, mobs);
         bundle.put(BLOBS, blobs.values());
-        //bundle.put(QUESTLIST, questList);
     }
 
     public int tunnelTile() {
