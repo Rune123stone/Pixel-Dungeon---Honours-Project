@@ -136,7 +136,7 @@ public class King extends Mob {
 	
 	@Override
 	public void die( Object cause ) {
-		GameScene.bossSlain();
+		//GameScene.bossSlain();
 		Dungeon.level.drop( new ArmorKit(), pos ).sprite.drop();
 		Dungeon.level.drop( new SkeletonKey(), pos ).sprite.drop();
 		

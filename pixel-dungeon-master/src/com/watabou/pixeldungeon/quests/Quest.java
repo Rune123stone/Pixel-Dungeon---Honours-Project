@@ -78,9 +78,7 @@ public class Quest implements Bundlable{
         questObjectives = new ArrayList<>();
 
         for (Bundlable bundlable : bundle.getCollection( QUESTOBJECTIVES )) {
-            System.out.println("wefijweifjiwjfiwejf");
             if (bundlable != null) {
-                System.out.println("not null");
                 questObjectives.add((QuestObjective)bundlable);
             }
         }

@@ -351,8 +351,6 @@ public abstract class Level implements Bundlable {
                             questGiver.pos = spawnPos(questGiverLevel); //assigns the NPC a specific position depending on the Level, eg. if Forest level, use Forest.spawnPos.
                             mobs.add(questGiver);
                             Actor.occupyCell(questGiver);
-
-                            System.out.println("Quest giver " +questGiverName+ " spawned at position " +questGiver.pos);
                         }
 //
                         // **** responsible for assigning a quest to the NPC if necessary ****
@@ -365,9 +363,6 @@ public abstract class Level implements Bundlable {
 
                             questGiver.assignQuest(quest);
                             questGiver.setQuestGiver(true);
-                            //questGiver.showQuestAlert();
-
-                            System.out.println("Succesfully spawned Quest Giver and assigned it a quest with name " +quest.questName);
                         } else {
                             System.out.println("Quest with the name " +quest.questName+ " cannot be assigned to " +quest.questGiver+ ".");
                             System.out.println("Prerequisite quest completed: " +prerequisiteQuestCompleted);
@@ -425,18 +420,13 @@ public abstract class Level implements Bundlable {
                             mobs.add(npc);
                             Actor.occupyCell(npc);
 
-                            System.out.println(speakToNPCName + " spawned at position " + npc.pos);
-
                             if (DataHandler.getInstance().prerequisiteQuestCompleted(quest.questName) && !quest.questComplete) {
 
                                 npc.assignQuest(quest);
                                 npc.setQuestGiver(false);
-                                System.out.println("assigned quest " +quest.questName+ " to " +speakToNPCName);
-                                System.out.println("setting quest giver for " +npc.getClass().getSimpleName()+ "to false at line: 409");
                             }
 
                             if (quest.given && !quest.questComplete && !questObjective.objectiveComplete) {
-                                System.out.println("mob not spawned, assigning speak to quest " +quest.questName);
                                 npc.assignSpeakToQuest(true);
                             }
 
@@ -457,13 +447,11 @@ public abstract class Level implements Bundlable {
 
                                     npc.assignQuest(quest);
                                     npc.setQuestGiver(false);
-                                    System.out.println("setting quest giver for " + npc.getClass().getSimpleName() + "to false at line: 426");
                                 }
                             }
 
                             if (quest.given && !quest.questComplete && !questObjective.objectiveComplete) {
 
-                                System.out.println("mob is spawned, assigning quest: " +quest.questName);
                                 npc.assignSpeakToQuest(true);
                             }
                         }
@@ -540,9 +528,6 @@ public abstract class Level implements Bundlable {
                 QuestObjective curObjective = quest.getCurObjective();
 
                 if (!curObjective.objectiveComplete) {
-
-                    System.out.println("curQuest objective is: " + curObjective.questType);
-
 
                     String levelName = curObjective.level;
 

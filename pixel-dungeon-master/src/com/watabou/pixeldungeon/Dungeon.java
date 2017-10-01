@@ -50,6 +50,7 @@ import com.watabou.pixeldungeon.scenes.InterlevelScene;
 import com.watabou.pixeldungeon.scenes.OverworldScene;
 import com.watabou.pixeldungeon.scenes.StartScene;
 import com.watabou.pixeldungeon.story.DataHandler;
+import com.watabou.pixeldungeon.story.StoryGenerator;
 import com.watabou.pixeldungeon.ui.QuickSlot;
 import com.watabou.pixeldungeon.utils.BArray;
 import com.watabou.pixeldungeon.utils.Utils;
@@ -181,7 +182,8 @@ public class Dungeon {
 				Level.setQuestList();
 			}
 
-			currentZone = DataHandler.getInstance().questList.get(0).questGiverLevel;
+			//currentZone = DataHandler.getInstance().questList.get(0).questGiverLevel;
+			currentZone = StoryGenerator.getInstance().levelOne;
 
 		} else {
 
@@ -192,6 +194,10 @@ public class Dungeon {
 		if (currentZone.equals("Caves")) {
 			currentZone = "Cave";
 		}
+
+
+
+		System.out.println("CURRENT ZONE: " +currentZone);
 
 		switch(currentZone) {
 			case "Forest":

@@ -35,20 +35,31 @@ import com.watabou.pixeldungeon.ui.Window;
 
 public class AboutScene extends PixelScene {
 
-	private static final String TXT = 
-		"Code & graphics: Watabou\n" +
-		"Music: Cube_Code\n\n" + 
-		"This game is inspired by Brian Walker's Brogue. " +
-		"Try it on Windows, Mac OS or Linux - it's awesome! ;)\n\n" +
-		"Please visit official website for additional info:";
+	private static final String TXT =
+		"Programming: Cameron Prinsloo\n\n" +
+		 "Overworld, Forest, Fields, Shadow Lands, and\n" +
+				"Caves Assets: Tayla Dix-Peek\n\n" +
+		 "Town Assets: https://opengameart.org/content/castle-tiles-for-rpgs\n\n\n" +
+
+		"This is a modded version of Watabou's Pixel Dungeon.\n" +
+
+	    "Please visit his website if you're interested in his work:";
+
+//originial text
+//	private static final String TXT =
+//			"Code & graphics: Watabou\n" +
+//					"Music: Cube_Code\n\n" +
+//					"This game is inspired by Brian Walker's Brogue. " +
+//					"Try it on Windows, Mac OS or Linux - it's awesome! ;)\n\n" +
+//					"Please visit official website for additional info:";
 	
-	private static final String LNK = "pixeldungeon.watabou.ru";
+	private static final String LNK = "watabou.itch.io";
 	
 	@Override
 	public void create() {
 		super.create();
 		
-		BitmapTextMultiline text = createMultiline( TXT, 8 );
+		BitmapTextMultiline text = createMultiline( TXT, 6 );
 		text.maxWidth = Math.min( Camera.main.width, 120 );
 		text.measure();
 		add( text );
@@ -56,7 +67,7 @@ public class AboutScene extends PixelScene {
 		text.x = align( (Camera.main.width - text.width()) / 2 );
 		text.y = align( (Camera.main.height - text.height()) / 2 );
 		
-		BitmapTextMultiline link = createMultiline( LNK, 8 );
+		BitmapTextMultiline link = createMultiline( LNK, 6 );
 		link.maxWidth = Math.min( Camera.main.width, 120 );
 		link.measure();
 		link.hardlight( Window.TITLE_COLOR );
