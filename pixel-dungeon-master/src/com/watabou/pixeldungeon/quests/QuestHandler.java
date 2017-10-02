@@ -291,7 +291,7 @@ public class QuestHandler {
             String mobClassName = mobPackage.concat(quest.getCurObjective().enemy);
             Class<?> enemy = Class.forName(mobClassName);
 
-            for (int i = 0; i < quest.getCurObjective().leftToKill; i++) { //for all enemies that need to spawn
+            for (int i = 0; i < quest.getCurObjective().leftToKill + 4; i++) { //for all enemies that need to spawn
                 Mob enemyMob = (Mob) enemy.newInstance(); //spawn new enemy
 
                 enemyMob.assignQuest(quest);
@@ -316,7 +316,7 @@ public class QuestHandler {
             String mobClassName = mobPackage.concat(quest.getCurObjective().enemy);
             Class<?> enemy = Class.forName(mobClassName);
 
-            for (int i = 0; i < quest.getCurObjective().leftToKill; i++) { //for all enemies that need to spawn
+            for (int i = 0; i < quest.getCurObjective().leftToKill + 4; i++) { //for all enemies that need to spawn
                 Mob enemyMob = (Mob) enemy.newInstance(); //spawn new enemy
 
                 enemyMob.assignQuest(quest);

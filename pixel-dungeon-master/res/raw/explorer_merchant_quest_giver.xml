@@ -62,7 +62,7 @@
 			<questGivenDialogue>Deliver that order as soon as possible, Explorer!</questGivenDialogue>
 			<questCompleteDialogue>Ahh my order! Thank you, Explorer. That was a rather speedy delivery! Usually it takes a while for the merchant to get here; as you probably know, he's not good with directions. You deserve to be rewarded. I don't have much, but please, choose something from my collection.</questCompleteDialogue>
 
-			<actTwoOpeningStory>Word of your your quick deliveries has spread throughout the Kingdom. Because of this, the merchant has acquired a great many more customers. A few days ago, he informed you that he'll have a more dangerous task for you soon, and that you should prepare for it. You should find him and speak to him.</actTwoOpeningStory>
+			<actTwoOpeningStory>Word of your quick deliveries has spread throughout the Kingdom. Because of this, the merchant has acquired a great many more customers. A few days ago, he informed you that he'll have a more dangerous task for you soon, and that you should prepare for it. You should find him and speak to him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>speak</objectiveTypeName>
@@ -105,7 +105,7 @@
 			<motiveName>find treasure</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
-			<questNotGivenDialogue>Greetings Explorer! You look eager for work, I'm glad! I mentioned that I'd have a rather dangerous task for you; now, although that might seem frightening, keep in mind that if you succeed, we will greatly profit from it! I've heard rumours of a treasure hidden in a rather dangerous area that contains jewels of immense value! If anyone can find it, it's you!</questNotGivenDialogue>
+			<questNotGivenDialogue>Greetings Explorer! You look eager for work, I'm glad! I mentioned that I'd have a rather dangerous task for you; now, although that might seem frightening, keep in mind that if you succeed, we will both greatly profit from it! I've heard rumours of a treasure hidden in a rather dangerous area that contains jewels of immense value! If anyone can find it, it's you!</questNotGivenDialogue>
 			<questGivenDialogue>Think of all the profit, Explorer!</questGivenDialogue>
 			<questCompleteDialogue>This is it! So the tales were true! Wait, these are not real jewels, these are not worth anything! Curses, I apologise for sending you on a fools errand, Explorer. You should still be rewarded, though. Please, choose something.</questCompleteDialogue>
 
@@ -125,7 +125,7 @@
 
 			<questNotGivenDialogue>You look well, Explorer! I trust you've been preparing for the next task? Excellent! Lately, I've been studying books on some of the Kingdoms rare creatures, and I seem to have found something that can profit us both! It is said that a certain dangerous creature sometimes holds a valuable form of Gold in their possession! If you could get hold of this Gold, then perhaps we could sell it to one of the Nobles for a great profit! I have faith in your combat abilities, Explorer! I know you can accomplish this task.</questNotGivenDialogue>
 			<questGivenDialogue>We will soon have more coin than we can spend!</questGivenDialogue>
-			<questCompleteDialogue>You say this is the Gold that the creature carried? Those lying, cursed books! This is the same material that our coins are made from! My apologies, Explorer. We will have to find riches some other way.</questCompleteDialogue>
+			<questCompleteDialogue>You say this is the Gold that the creature carried? Those lying, cursed books! This is the same material that our pennies are made from! My apologies, Explorer. We will have to find riches some other way.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -242,7 +242,7 @@
 			<storyPhase>RESOLVE</storyPhase>
 
 			<questNotGivenDialogue>The artifact has revealed the way to the treasure, Explorer! It has revealed that you must defeat a powerful enemy and obtain a sacred map that will lead us to the treasure! Bring me this map, Explorer. Then, the treasure is as good as ours!</questNotGivenDialogue>
-			<questGivenDialogue>Make haste Explorer!</questGivenDialogue>
+			<questGivenDialogue>Make haste, Explorer!</questGivenDialogue>
 			<questCompleteDialogue>You've done it, Explorer! Thanks to you, we will be the wealthiest men in the Kingdom!</questCompleteDialogue>
 
 			<objectiveType>

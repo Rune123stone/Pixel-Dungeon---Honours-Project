@@ -447,48 +447,33 @@ public class DataHandler {
 
     public void displayQuests() {
         System.out.println("***** ACT ONE *****");
+        int i = 1;
         for (Quest quest : actOneQuests) {
-            System.out.println("-----------QUEST----------");
-            System.out.println("Quest Name: " + quest.questName);
-            System.out.println("Quest Act: " + quest.associatedAct);
-            System.out.println("Quest Reward: " + quest.reward);
-            System.out.println("Quest Giver: " + quest.questGiver);
-            System.out.println("Quest Giver Level: " + quest.questGiverLevel);
-            System.out.println("Prerequisite Quest Name: " + quest.prerequisiteQuestName);
-            System.out.println("Quest Not Given: " +quest.QUEST_NOT_GIVEN_TEXT);
-            System.out.println();
+            System.out.println("Quest " +i);
 
             quest.displayObjectivesInSentence();
+
+            i++;
         }
 
         System.out.println("***** ACT TWO *****");
 
         for (Quest quest : actTwoQuests) {
-            System.out.println("-----------QUEST----------");
-            System.out.println("Quest Name: " + quest.questName);
-            System.out.println("Quest Act: " + quest.associatedAct);
-            System.out.println("Quest Reward: " + quest.reward);
-            System.out.println("Quest Giver: " + quest.questGiver);
-            System.out.println("Quest Giver Level: " + quest.questGiverLevel);
-            System.out.println("Prerequisite Quest Name: " + quest.prerequisiteQuestName);
-            System.out.println();
+            System.out.println("Quest " +i);
 
             quest.displayObjectivesInSentence();
+
+            i++;
         }
 
         System.out.println("***** ACT THREE *****");
 
         for (Quest quest : actThreeQuests) {
-            System.out.println("-----------QUEST----------");
-            System.out.println("Quest Name: " + quest.questName);
-            System.out.println("Quest Act: " + quest.associatedAct);
-            System.out.println("Quest Reward: " + quest.reward);
-            System.out.println("Quest Giver: " + quest.questGiver);
-            System.out.println("Quest Giver Level: " + quest.questGiverLevel);
-            System.out.println("Prerequisite Quest Name: " + quest.prerequisiteQuestName);
-            System.out.println();
+            System.out.println("Quest " +i);
 
             quest.displayObjectivesInSentence();
+
+            i++;
         }
     }
 

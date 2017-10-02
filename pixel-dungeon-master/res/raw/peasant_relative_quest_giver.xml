@@ -70,7 +70,7 @@
 			<questGivenDialogue>Those vermin'll eat us out of the house if they get into our food supply!</questGivenDialogue>
 			<questCompleteDialogue>Not a single vermin in sight! I knew I could count on you, cousin!</questCompleteDialogue>
 
-			<actTwoOpeningStory>After you took care of the vermin, your cousin told you that he had to go into Town for a few days. You offered to join him on the journey, but he declined, saying that he needs you to take care of the house while he's away. He said he'd be back by today, you should look around the area for him.</actTwoOpeningStory>
+			<actTwoOpeningStory>After you took care of the vermin, your relative told you that he had to go into Town for a few days. You offered to join him on the journey, but he declined, saying that he needs you to take care of the house while he's away. He said he'd be back by today, you should look around the area for him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
@@ -96,7 +96,7 @@
 			<questGivenDialogue>I sure hope those tales are true!</questGivenDialogue>
 			<questCompleteDialogue>Magical firewood's real? Well, I've seen just about everything then! This winter's gonna be a lot warmer thanks to you, cousin!</questCompleteDialogue>
 
-			<actTwoOpeningStory>The magical firewood did indeed burn for 2 months straight that winter, just long enough for the snow to melt. After winter had passed, your cousin left for a few days to visit his fiance. He said he'd be back by today, look around the area for him.</actTwoOpeningStory>
+			<actTwoOpeningStory>The magical firewood did indeed burn for 2 months straight that winter, just long enough for the snow to melt. After winter had passed, your relative left for a few days to visit his fiance. He said he'd be back by today, look around the area for him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>fetch</objectiveTypeName>
@@ -165,7 +165,7 @@
 			<questGivenDialogue>Whatever information you find, I doubt it'll be anything good.</questGivenDialogue>
 			<questCompleteDialogue>You found a scroll, you say? Let me read it ...... But, but that's impossible, I'm just a simple man that comes from a simple family, how can any of this be true?</questCompleteDialogue>
 
-			<actThreeOpeningStory>The scroll you found contained a sketch of your cousin with the words "Eliminate the true heir to the throne, the only one that can stop our leader. Only then, can we destroy the Kingdom!" below it. If what this scroll says is true, then your family is part of the Royal Bloodline! You must ensure that your cousin fulfills his destiny, and rids the world of this evil. You should find and speak to him.</actThreeOpeningStory>
+			<actThreeOpeningStory>The scroll you found contained a sketch of your relative with the words 'Eliminate the true heir to the throne, the only one that can stop our leader. Only then, can we destroy the Kingdom!' below it. If what this scroll says is true, then your family is part of the Royal Bloodline! You must ensure that your relative fulfills his destiny, and rids the world of this evil. You should find and speak to him.</actThreeOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -191,11 +191,11 @@
 			<motiveName>seeking knowledge</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
 
-			<questNotGivenDialogue>I can't go the rest of my life livin' in fear, I need to know why I'm bein' hunted! I've never been one to put his faith in Seers, but I don't seem to have a choice. I'm too afraid to leave here, cousin, so maybe you could go see the Seer for me and ask him what's goin' on?</questNotGivenDialogue>
+			<questNotGivenDialogue>I can't go the rest of my life livin' in fear, I need to know why I'm bein' hunted! I've never been one to put faith in Seers, but I don't seem to have a choice. I'm too afraid to leave here, cousin, so maybe you could go see the Seer for me and ask him what's goin' on?</questNotGivenDialogue>
 			<questGivenDialogue>Things used to be so simple.</questGivenDialogue>
 			<questCompleteDialogue>Ahh, yes, come closer. He's your cousin, you say? Then, using your blood, I can perform the ritual of visions and seek the information you desire.</questCompleteDialogue>
 
-			<actThreeOpeningStory>The ritual of visions informed the Seer of your cousins rightful place in the Kingdom - he was born to defeat a great evil, an evil that will stop at nothing to destroy this world. After hearing this news, you returned to your cousin. It took a while for him to process the news, but eventually, he accepted it and began training right away. You should find him and see if he needs help.</actThreeOpeningStory>
+			<actThreeOpeningStory>The ritual of visions informed the Seer of your relative's rightful place in the Kingdom - he was born to defeat a great evil, an evil that will stop at nothing to destroy this world. After hearing this news, you returned to your cousin. It took a while for him to process the news, but eventually, he accepted it and began training right away. You should find him and see if he needs help.</actThreeOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>speak</objectiveTypeName>
@@ -267,7 +267,7 @@
 			<motiveName>kill minions</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
-			<questNotGivenDialogue>Now is the time, cousin. I don't know if we'll ever see each other again, but know that I couldn't have gotten this far without you. I have one more task for you, if you will. I'm sure this evil force will send it's armies after me when I attack it; I need you to keep them busy while I deal with the leader. We'll meet back here when this is all over, if we're still alive, that is.</questNotGivenDialogue>
+			<questNotGivenDialogue>Now is the time, cousin. I don't know if we'll ever see each other again, but know that I couldn't have gotten this far without you. I have one more task for you, if you will. I'm sure this evil force will send its armies after me when I attack it; I need you to keep them busy while I deal with the leader. We'll meet back here when this is all over, if we're still alive, that is.</questNotGivenDialogue>
 			<questGivenDialogue>Good luck, cousin. Let's end this!</questGivenDialogue>
 			<questCompleteDialogue>We've done it, cousin! No, you've done it. The Kingdom would be in ruin if it weren't for you.</questCompleteDialogue>
 
@@ -284,9 +284,6 @@
 			<enemy>
 				<enemyName>Monk</enemyName>
 			</enemy>
-			<enemy>
-				<enemyName>Scorpio</enemyName>
-			</enemy>
 
 		</motive>
 
@@ -294,7 +291,7 @@
 			<motiveName>source of power</motiveName>
 			<storyPhase>RESOLVE</storyPhase>
 
-			<questNotGivenDialogue>Cousin, before I go to face this evil, I must ask one more thing from you. You see, I've heard that the source of this evil's power is an artifact, an artifact that holds the power to destroying worlds! It is currently on it's way to the leader of this evil group, and once it arrives, we've lost all hope. I need you to collect that artifact while I keep the leader occupied! We will meet back here once you've found it.</questNotGivenDialogue>
+			<questNotGivenDialogue>Cousin, before I go to face this evil, I must ask one more thing of you. You see, I've heard that the source of this evil's power is an artifact, an artifact that holds enough power to destroy worlds! It is currently on it's way to the leader of this evil group, and once it arrives, we've lost all hope. I need you to collect that artifact while I keep the leader occupied! We will meet back here once you've found it.</questNotGivenDialogue>
 			<questGivenDialogue>You must be strong, cousin!</questGivenDialogue>
 			<questCompleteDialogue>Now, to destroy the artifact! ....BLAAAMMM.... It is done, the Kingdom is safe once again!</questCompleteDialogue>
 

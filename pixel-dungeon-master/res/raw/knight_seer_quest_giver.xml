@@ -8,7 +8,7 @@
 			<storyPhase>NORMAL</storyPhase>
 
 			<questNotGivenDialogue>Ahh you must be the brave soul sent to help me collect ingredients for my next concoction! Go forth and gather these ingredients and you shall be duly rewarded. Meet me in the Fields once you have completed your task.</questNotGivenDialogue>
-			<questGivenDialogue>Bring me those ingredients.</questGivenDialogue>
+			<questGivenDialogue>Bring me those ingredients!</questGivenDialogue>
 			<questCompleteDialogue>Goood gooood, yess, these will do nicely! Please, choose a reward from my treasure box.</questCompleteDialogue>
 
 			<objectiveType>
@@ -160,7 +160,7 @@
 			<motiveName>potion of vision</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
 
-			<questNotGivenDialogue>We need to infiltrate the evil group's headquarters in order to find out what dastardly deeds what they are planning, unfortunately we have no idea where their lair could be. However, I have managed to find a recipe for a potion that just might be able to help us! The Potion of Vision will allow me to witness their meetings without actually being there! All we need is a personal item from one of culprits. That is where you come in, Champion.</questNotGivenDialogue>
+			<questNotGivenDialogue>We need to infiltrate the evil group's headquarters in order to find out what dastardly deeds they are planning, unfortunately we have no idea where their lair could be. However, I have managed to find a recipe for a potion that just might be able to help us! The Potion of Vision will allow me to witness their meetings without actually being there! All we need is a personal item from one of culprits. That is where you come in, Champion.</questNotGivenDialogue>
 			<questGivenDialogue>Hurry Champion!</questGivenDialogue>
 			<questCompleteDialogue>Excellent! Now, to begin the brewing.</questCompleteDialogue>
 

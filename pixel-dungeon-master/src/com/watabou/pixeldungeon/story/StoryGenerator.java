@@ -639,5 +639,28 @@ public class StoryGenerator {
 
     }
 
+    public void display() {
+
+        System.out.println("Quest Giver: " +questGiver.name);
+        System.out.println("\n");
+        System.out.println("Motives:");
+        System.out.println("---Act One---");
+        System.out.println("1) " +chosenMotives.get(0).type);
+        System.out.println("2) " +chosenMotives.get(1).type);
+
+        System.out.println("---Act Two---");
+        System.out.println("1) " +chosenMotives.get(2).type);
+        System.out.println("2) " +chosenMotives.get(3).type);
+
+        System.out.println("---Act Three---");
+        System.out.println("1) " +chosenMotives.get(4).type);
+        System.out.println("2) " +chosenMotives.get(5).type);
+
+        System.out.println("\n\n");
+        System.out.println("Quest Details:");
+        DataHandler.getInstance().displayQuests();
+
+    }
+
 
 }

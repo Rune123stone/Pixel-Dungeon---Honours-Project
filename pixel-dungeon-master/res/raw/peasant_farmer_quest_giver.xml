@@ -7,7 +7,7 @@
 			<motiveName>clear rodents</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>G'day stranger! I'm sure you're aware of the rodents that have been plaguing are farms for the last couple' days; almost half my harvest has been lost to those vermin! Listen, could you help out an old farmer and rid this land of those vile creatures? I'll be sure to reward ya. Meet me in the fields once ya've gotten rid o' those vermin!</questNotGivenDialogue>
+			<questNotGivenDialogue>G'day stranger! I'm sure you're aware of the rodents that have been plaguing are farms for the last couple' days; almost half my harvest has been lost to those vermin! Listen, could you help out an old farmer and rid this land of those vile creatures? I'll be sure to reward ya. Meet me in the Fields once ya've gotten rid o' those vermin!</questNotGivenDialogue>
 			<questGivenDialogue>It'll take me weeks to recover from this!</questGivenDialogue>
 			<questCompleteDialogue>You've done me and my family a great service, friend! I don't got much, but please choose a reward from my box o' loot.</questCompleteDialogue>
 
@@ -244,7 +244,7 @@
 			<motiveName>new captain</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
 
-			<questNotGivenDialogue>I suppose I should tell you the truth, friend. Before becomin' a measily farmer, I was once part of the Knights Guard. Heck, I was one of the best Knights that they had ever seen. Why am I tellin' you this? Well, I happen to know that when they choose the Captain of the Knights Guard, they don't care about what background you came from, just as long as you can deliver! In all my years, I ain't never seen a warrior as skilled as you, I believe you've got what it takes. Bring me a trophy from a powerful enemy, and I'll convince the Knights Guard to make you their captain. Yep, just like that, no strings attached.</questNotGivenDialogue>
+			<questNotGivenDialogue>I suppose I should tell you the truth, friend. Before becomin' a measly farmer, I was once part of the Knights Guard. Heck, I was one of the best Knights that they had ever seen. Why am I tellin' you this? Well, I happen to know that when they choose the Captain of the Knights Guard, they don't care about what background you came from, just as long as you can deliver! In all my years, I ain't never seen a warrior as skilled as you, I believe you've got what it takes. Bring me a trophy from a powerful enemy, and I'll convince the Knights Guard to make you their captain. Yep, just like that, no strings attached.</questNotGivenDialogue>
 			<questGivenDialogue>I sure do miss my heroic days as a Knight.</questGivenDialogue>
 			<questCompleteDialogue>Now THIS is a trophy! Welcome to the Knights Guard, Captain!</questCompleteDialogue>
 

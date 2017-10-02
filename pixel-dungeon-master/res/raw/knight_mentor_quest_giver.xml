@@ -2,7 +2,7 @@
 <resources>
 
 	<QuestGiver>
-		<name>Ghost</name>
+		<name>Mentor</name>
 		<motive>
 			<motiveName>train</motiveName>
 			<storyPhase>NORMAL</storyPhase>
@@ -96,15 +96,12 @@
 			<motiveName>gang problem</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
 
-			<questNotGivenDialogue>Now that you're a bit more experienced I'd like to discuss a more serious matter with you. I've heard rumours of a gang terrorizing the people of these lands. I'd like you to stop them at their source.</questNotGivenDialogue>
+			<questNotGivenDialogue>Now that you're a bit more experienced, I'd like to discuss a more serious matter with you. I've heard rumours of a gang terrorizing the people of these lands. I'd like you to stop them at their source.</questNotGivenDialogue>
 			<questGivenDialogue>Go take care of that gang!</questGivenDialogue>
 			<questCompleteDialogue>You continue to impress me, knight! The people won't soon forget Sir... erm, Sir... hmm, it seems I've forgotten your name. No matter! Choose a reward.</questCompleteDialogue>
 
 			<actTwoOpeningStory>Defeating those thugs has earned you great respect among the people, they however still do not know your name. Your mentor has requested for you to meet him once again, it sounded urgent this time. You should find him.</actTwoOpeningStory>
 
-			<objectiveType>
-				<objectiveTypeName>kill_fetch</objectiveTypeName>
-			</objectiveType>
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
 			</objectiveType>
@@ -113,18 +110,8 @@
 				<enemyName>Bandit</enemyName>
 			</enemy>
 			<enemy>
-				<enemyName>Shaman</enemyName>
-			</enemy>
-			<enemy>
 				<enemyName>Thief</enemyName>
 			</enemy>
-
-			<item>
-				<itemName>RatSkull</itemName>
-			</item>
-			<item>
-				<itemName>DarkGold</itemName>
-			</item>
 
 		</motive>
 
@@ -174,7 +161,7 @@
 			<motiveName>boss killing people</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
-			<questNotGivenDialogue>I'm afraid I have some terrible news, an evil Overlord has sounded the drums of war and has sent his minions to attack the lands and it's people. We cannot stand idly by and let this happen. And by that I mean you cannot stand idly by.</questNotGivenDialogue>
+			<questNotGivenDialogue>I'm afraid I have some terrible news, an evil Overlord has sounded the drums of war and has sent his minions to attack the lands and it's people. We cannot stand idly by and let this happen. And by that I mean you cannot stand idly by and let this happen.</questNotGivenDialogue>
 			<questGivenDialogue>Didn't I just say that there's a powerful enemy at large?</questGivenDialogue>
 			<questCompleteDialogue>I fear this is just the beginning of our struggles. Sorry, your struggles.</questCompleteDialogue>
 
@@ -248,9 +235,6 @@
 				<enemyName>Eye</enemyName>
 			</enemy>
 
-			<item>
-				<itemName>Letter</itemName>
-			</item>
 			<item>
 				<itemName>CorpseDust</itemName>
 			</item>

@@ -425,7 +425,7 @@ public class InterlevelScene extends PixelScene {
     private void credits() throws Exception {
         Actor.fixTime();
 
-        Game.switchScene(TitleScene.class);
+        Game.switchScene(CreditsScene.class);
     }
 
     private void resurrect() throws Exception {

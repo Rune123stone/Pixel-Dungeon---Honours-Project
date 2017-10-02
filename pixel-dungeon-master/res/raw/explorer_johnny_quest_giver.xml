@@ -31,7 +31,7 @@
 
 			<questNotGivenDialogue>I can't find any flowers out here! Oh Hai, Explorer! I need your help, I'm trying to find some flowers for my future wife, Lisa, but I can't seem to find any out here! I've heard you Explorers are good at finding things, so could you please find some flowers for me? I make a lot of money working at the bank in the nearby Town, so I'll reward you! Meet me in the Town when you've found the flowers!</questNotGivenDialogue>
 			<questGivenDialogue>My Lisa loves flowers!</questGivenDialogue>
-			<questCompleteDialogue>How did you do that!? I couldn't find them anywhere, Tshahaha! Here, please choose a reward!</questCompleteDialogue>
+			<questCompleteDialogue>How did you do that!? I couldn't find them anywhere, tshahaha! Here, please choose a reward!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -62,7 +62,7 @@
 			<questGivenDialogue>We need that Football more than those creatures!</questGivenDialogue>
 			<questCompleteDialogue>You found it! This is going to change your life, Explorer! I will teach you how to play when Mark isn't so busy!</questCompleteDialogue>
 
-			<actTwoOpeningStory>You, Johnny, and  his best friend Mark spent the rest of the day playing Football. Eventually, Johnny told you that he may need your help again and that you shouldn't wonder too far off. A few days later, you received a letter from Johnny asking for your help. You should find and speak to him.</actTwoOpeningStory>
+			<actTwoOpeningStory>You, Johnny, and  his best friend, Mark, spent the rest of the day playing Football. Eventually, Johnny told you that he may need your help again and that you shouldn't wonder too far off. A few days later, you received a letter from Johnny asking for your help. You should find and speak to him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -85,11 +85,11 @@
 			<motiveName>best friend plans</motiveName>
 			<storyPhase>SERIOUS</storyPhase>
 
-			<questNotGivenDialogue>Oh hai again, Explorer! I could use your help again, I promise to make it worth your while! I need you to deliver a message to my best friend, Mark. Tell him that I'm free this afternoon if he still wants to go for coffee. If you tell Mark that I sent you, he'll give you a reward!</questNotGivenDialogue>
+			<questNotGivenDialogue>Oh hai again, Explorer! I could use your help again, I promise to make it worth your while! I need you to deliver a message to my best friend, Mark. Tell him that I'm free this afternoon if he still wants to go for drinks at the tavern. If you tell Mark that I sent you, he'll give you a reward!</questNotGivenDialogue>
 			<questGivenDialogue>It'll be nice to catch up with Mark!</questGivenDialogue>
-			<questCompleteDialogue>Oh hey, Explorer! Sure, I can do coffee this afternoon. You can join us if you want?</questCompleteDialogue>
+			<questCompleteDialogue>Oh hey, Explorer! Sure, I can have drinks this afternoon. You can join us if you want?</questCompleteDialogue>
 
-			<actTwoOpeningStory>You decided to take Mark up on his offer, and join him and Johnny for coffee that day. Johnny mentioned that he could use someone like you, and that he'd probably need your help with something again soon. A few days later, Mark told you that Johnny urgently needs your help. You should find and speak to him.</actTwoOpeningStory>
+			<actTwoOpeningStory>You decided to take Mark up on his offer, and join him and Johnny for ale that day. Johnny mentioned that he could use someone like you, and that he'd probably need your help with something again soon. A few days later, Mark told you that Johnny urgently needs your help. You should find and speak to him.</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>speak</objectiveTypeName>
@@ -240,7 +240,7 @@
 
 			<questNotGivenDialogue>You're ready to defeat the enemy and end this plague, Explorer! I managed to find out where he's hiding, now all you have to do is kill him!</questNotGivenDialogue>
 			<questGivenDialogue>Go now! There's not much time!</questGivenDialogue>
-			<questCompleteDialogue>Thanks to you, my Lisa is safe! If you don't mind though, I'm going to tell her that I'm the one that saved the Kingdom.</questCompleteDialogue>
+			<questCompleteDialogue>Thanks to you, my Lisa is safe! If you don't mind though, I'm going to tell her that I'm the one who saved the Kingdom.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>

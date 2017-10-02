@@ -35,7 +35,7 @@
 			<motiveName>harvest essence</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Do you seek more riches than you can imagine, Peasant? What am I saying, of course you do! I can help you, you know. All you have to do is complete a few 'favours' for me, and I will make you wealthier beyond your wildest dreams. First, I need you to harvest the life essence from the nearby vermin around the area. All you have to do is kill a few pests, and I'll gather their essence. Once you've completed your task, meet me in the Shadow Lands.</questNotGivenDialogue>
+			<questNotGivenDialogue>Do you seek more riches than you can imagine, Peasant? What am I saying, of course you do! I can help you, you know. All you have to do is complete a few 'favours' for me, and I will make you wealthy beyond your wildest dreams. First, I need you to harvest the life essence from the nearby vermin around the area. All you have to do is kill a few pests, and I'll gather their essence. Once you've completed your task, meet me in the Shadow Lands.</questNotGivenDialogue>
 			<questGivenDialogue>Just kill those creatures and I'll do the rest!</questGivenDialogue>
 			<questCompleteDialogue>I can feel the power of their essence in every bone in my body! You've done well, Peasant. You deserve a reward for your efforts; choose something from my collection.</questCompleteDialogue>
 
@@ -63,7 +63,7 @@
 			<questGivenDialogue>Get back here as soon as you've retrieved those vials!.</questGivenDialogue>
 			<questCompleteDialogue>Excellent! Now, let the brewing begin!</questCompleteDialogue>
 
-			<actTwoOpeningStory>As you watched the stranger brew vials of mysterious potions, you began to wonder if you hadn't perhaps made a grave mistake by helping him. But, his promise of 'riches beyond your wildest dreams' was too great of an offer to turn down. You must continue serving faithfully. You should ask speak to him and find out what the next step is..</actTwoOpeningStory>
+			<actTwoOpeningStory>As you watched the stranger brew vials of mysterious potions, you began to wonder if you hadn't perhaps made a grave mistake by helping him. But, his promise of 'riches beyond your wildest dreams' was too great of an offer to turn down. You must continue serving faithfully. You should speak to him and find out what the next step is..</actTwoOpeningStory>
 
 			<objectiveType>
 				<objectiveTypeName>speak_fetch</objectiveTypeName>

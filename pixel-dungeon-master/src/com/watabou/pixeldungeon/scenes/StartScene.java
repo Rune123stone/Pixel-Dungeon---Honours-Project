@@ -317,7 +317,7 @@ public class StartScene extends PixelScene {
 
 		dataHandler.generateStoryXMLs();
 		dataHandler.createQuests();
-		dataHandler.displayQuests();
+		//dataHandler.displayQuests();
 
 		OverworldScene.hero = null;
 		OverworldScene.previousZone = null;
@@ -340,6 +340,8 @@ public class StartScene extends PixelScene {
 		Game.instance.deleteFile("Tier");
 
 		newGame = true;
+
+		storyGenerator.display();
 
 		Game.switchScene(InterlevelScene.class);
 

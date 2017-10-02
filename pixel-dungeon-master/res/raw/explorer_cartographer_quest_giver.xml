@@ -9,7 +9,7 @@
 
 			<questNotGivenDialogue>You there! I say, could you help an old cartographer out? During my exploration of this area, I seem to have misplaced my map. I'd look for it myself but I'm afraid that I'd just get lost if I delved deeper into this area without a map; you see, I've never been one for directions. You on the other hand, you seem like you have a good lay of the land! Find my map, explorer, and I'll give you a reward! Meet me in the nearby Town once you've found it.</questNotGivenDialogue>
 			<questGivenDialogue>I would've been stuck here if you hadn't come along!</questGivenDialogue>
-			<questCompleteDialogue>My map! Thank you, Explorer. Hmm, we'd make an excellent team, you and I...I'm getting ahead of myself. Please, choose a reward!</questCompleteDialogue>
+			<questCompleteDialogue>My map! Thank you, Explorer. Hmm, we'd make an excellent team, you and I, but I'm getting ahead of myself. Please, choose a reward!</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -35,7 +35,7 @@
 			<motiveName>deliver maps</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
-			<questNotGivenDialogue>Hello there! Could I trouble you for some help, explorer? I need to deliver these maps to one of my customers but I just can't seem to find him. I'm sure you know a thing or two about tracking, so perhaps you can find him and deliver these maps for me? Tell him I sent you and he'll be sure to reward you, he owes me a few favours.</questNotGivenDialogue>
+			<questNotGivenDialogue>Hello there! Could I trouble you for some help, Explorer? I need to deliver these maps to one of my customers but I just can't seem to find him. I'm sure you know a thing or two about tracking, so perhaps you can find him and deliver these maps for me? Tell him I sent you and he'll be sure to reward you, he owes me a few favours.</questNotGivenDialogue>
 			<questGivenDialogue>Please hurry, explorer! If those maps don't get delivered on time, it won't be good for my reputation!</questGivenDialogue>
 			<questCompleteDialogue>Ahh there my maps are! You say the cartographer sent you? And he said to give you a reward? Well, okay. I suppose I owe him that much. Here, choose something. He's been looking for an assistant for some time, you should see if he's got any more work for you. You'll find him in the nearby Town.</questCompleteDialogue>
 
@@ -169,7 +169,7 @@
 			<motiveName>clear bandits</motiveName>
 			<storyPhase>INVESTIGATE</storyPhase>
 
-			<questNotGivenDialogue>I've heard word from around the Town that gang-related activity has increased a great deal over past few days, Explorer. If we are to continue our work, we cannot afford to have bandits and thieves lurking around every area we try to explore! You have proven yourself to be an excellent fighter, Explorer. I need you to eliminate these scoundrels at their source. I've managed to locate where their camp is. You must eliminate them, post haste!</questNotGivenDialogue>
+			<questNotGivenDialogue>I've heard word from around the Town that gang-related activity has increased a great deal over the past few days, Explorer. If we are to continue our work, we cannot afford to have bandits and thieves lurking around every area we try to explore! You have proven yourself to be an excellent fighter, Explorer. I need you to eliminate these scoundrels at their source. I've managed to locate where their camp is. You must eliminate them, post haste!</questNotGivenDialogue>
 			<questGivenDialogue>Our jobs should become a lot easier once those scoundrels have been dealt with!</questGivenDialogue>
 			<questCompleteDialogue>I knew you were up to the challenge, Explorer! Thanks to you, we are free to explore the Kingdom without the worry of bandits and thieves plaguing our minds.</questCompleteDialogue>
 
@@ -192,7 +192,7 @@
 			<motiveName>special item</motiveName>
 			<storyPhase>STRENGTHEN</storyPhase>
 
-			<questNotGivenDialogue>I have exciting news, Explorer! I have managed to locate an item that will greatly assist us with our work! Perhaps I should explain; you see, legends tell of an item that, when asked, will reveal whereabouts of any area in the Kingdom! You must find this item explorer, I've managed to locate the area it is in, but it will be up to you to find it!</questNotGivenDialogue>
+			<questNotGivenDialogue>I have exciting news, Explorer! I have managed to locate an item that will greatly assist us with our work! Perhaps I should explain; you see, legends tell of an item that, when asked, will reveal the whereabouts of any area in the Kingdom! You must find this item explorer, I've managed to locate the area it is in, but it will be up to you to find it!</questNotGivenDialogue>
 			<questGivenDialogue>Just imagine, so much information in the palm of our hands!</questGivenDialogue>
 			<questCompleteDialogue>I can't believe you found it! Just imagine how much we will be able to learn about the Kingdom!</questCompleteDialogue>
 

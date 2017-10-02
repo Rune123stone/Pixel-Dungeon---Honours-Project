@@ -2,14 +2,14 @@
 <resources>
 
 	<QuestGiver>
-		<name>Imp</name>
+		<name>Princess</name>
 		<motive>
 			<motiveName>lost item</motiveName>
 			<storyPhase>NORMAL</storyPhase>
 
 			<questNotGivenDialogue>Do you have any idea how long I've been waiting for you? No matter. Champion, I need your help. You see, my precious ring was stolen by some thugs not too long ago. My sources say that they've tracked the thieves to this location. Champion, I need you to collect this ring for me, by any means necessary. Once you've found it, please return it to me, I'll be in the nearby Town.</questNotGivenDialogue>
 			<questGivenDialogue>Do not dawdle, champion.</questGivenDialogue>
-			<questCompleteDialogue>Thank you champion! Please choose a reward from my royal treasures, you've earned it.</questCompleteDialogue>
+			<questCompleteDialogue>Thank you, champion! Please choose a reward from my royal treasures, you've earned it.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill_fetch</objectiveTypeName>
@@ -115,7 +115,7 @@
 
 			<questNotGivenDialogue>It has just come to my attention that there is a group of disgruntled servants who are stirring up unrest within the Kingdom. I'm afraid they have to be purged before we have a revolt on our hands. They may have stolen heirlooms from the royal treasury, please return them should you find any.</questNotGivenDialogue>
 			<questGivenDialogue>If you're okay with a revolt, please, let's continue this conversation.</questGivenDialogue>
-			<questCompleteDialogue>You have done the Kingdom and its people a great service brave knight!</questCompleteDialogue>
+			<questCompleteDialogue>You have done the Kingdom and its people a great service, brave Knight!</questCompleteDialogue>
 
 			<actTwoOpeningStory>Thanks to your chivalrous brutality, the Kingdoms servants have been working twice as hard for half the pay with not even a whisper of insurgency among them. Your services to the crown has earned you another audience with the princess. You should find and speak to her.</actTwoOpeningStory>
 
@@ -154,7 +154,7 @@
 
 			<questNotGivenDialogue>Tragedy has befallen the Kingdom young Knight! The King, my father, has been assassinated. I need you to deliver this scroll to the Captain of the Guard; I must meet with the royal counselors to discuss the plans from here.</questNotGivenDialogue>
 			<questGivenDialogue>Sorry champion, I just need some time to myself.</questGivenDialogue>
-			<questCompleteDialogue>Thank you champion, I will be sure to keep an eye out for any more potential threats. You should get back to the princess, I'm sure she has more for you to do.</questCompleteDialogue>
+			<questCompleteDialogue>Thank you, champion, I will be sure to keep an eye out for any more potential threats. You should get back to the princess, I'm sure she has more for you to do.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>speak</objectiveTypeName>
@@ -170,9 +170,9 @@
 			<motiveName>anarchist group</motiveName>
 			<storyPhase>CATASTROPHE</storyPhase>
 
-			<questNotGivenDialogue>I've received word that the Kingdoms granaries have been burnt to the ground by an unknown party. Champion, I need you to put a stop to this .</questNotGivenDialogue>
+			<questNotGivenDialogue>I've received word that the Kingdoms granaries have been burnt to the ground by an unknown party. Champion, I need you to put a stop to this.</questNotGivenDialogue>
 			<questGivenDialogue>Please hurry, we rely heavily on those granaries for our cakes.</questGivenDialogue>
-			<questCompleteDialogue>Every cake and ale lover thanks you for your deeds, champion. Cameron has already rebuilt all of the burnt granaries and has filled them to the brim with the finest wheat we've ever seen.</questCompleteDialogue>
+			<questCompleteDialogue>Every cake and ale lover thanks you for your deeds, champion. My husband, Cameron, has already rebuilt all of the burnt granaries and has filled them to the brim with the finest wheat we've ever seen.</questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
@@ -331,7 +331,7 @@
 
 			<questNotGivenDialogue>Champion, I've received word that the enemy causing the destruction of these lands is merely a conduit of a greater evil! In order to stop this greater power from being summoned into this world, you must slay the conduit.</questNotGivenDialogue>
 			<questGivenDialogue>The fate of the Kingdom rests in your hands, champion.</questGivenDialogue>
-			<questCompleteDialogue>The bards will be singing your praises for years to come champion! As a reward for your bravery, I'm appointing you as the new Knights Guard. Wait, you thought I was going to reward you with my hand in marriage? Oh, I'm sorry, I, er, well, I know you saved us from internal damnation, but there's just something about Cameron that makes me feel...alive. </questCompleteDialogue>
+			<questCompleteDialogue>The bards will be singing your praises for years to come champion! As a reward for your bravery, I'm appointing you as the new captain of the Knights Guard. Wait, you thought I was going to reward you with my hand in marriage? Oh, I'm sorry, I, er, well, I know you saved us from internal damnation, but there's just something about Cameron that makes me feel...alive. </questCompleteDialogue>
 
 			<objectiveType>
 				<objectiveTypeName>kill</objectiveTypeName>
